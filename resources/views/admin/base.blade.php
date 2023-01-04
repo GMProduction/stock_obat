@@ -13,6 +13,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="{{ asset('css/appstyle/genosstailwind.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('local/vendor/swal2/dist/sweetalert2.min.css') }}" type="text/css">
 
     {{-- <link rel="stylesheet"
 
@@ -35,15 +36,15 @@
                         menu
                     </span></a>
 
-                <img src="{{ asset('/assets/local/logosurakarta.png') }}" class="logo   h-10   " alt="Surakarta Logo">
+                {{-- <img src="{{ asset('/assets/local/logosurakarta.png') }}" class="logo   h-10   " alt="Surakarta Logo"> --}}
 
-                <p class="text-xl font-bold">BPKAD SURAKARTA</p>
+                <p class="text-xl font-bold ml-4">Puskesmas </p>
             </div>
 
             <div class=" h-full flex items-center">
                 <button type="button" id="dropdownDefault" data-dropdown-toggle="dropdown"
                     class="block w-[35px] h-[35px] rounded-full bg-black/10 cursor-pointer overflow-hidden">
-                    <img src="{{ asset('/assets/local/profile.png') }}" class="logo   h-full w-full   "
+                    <img src="{{ asset('local/images/account.png') }}" class="logo   h-full w-full   "
                         alt="Surakarta Logo">
                 </button>
 
@@ -52,9 +53,10 @@
                 <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow ">
                     <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownDefault">
 
+                        <a class="block py-2 px-4 text-xs   text-black/30 ">Username</a>
+                        <div class="divide-y-2"></div>
                         <li>
-                            <a
-                                class="block py-2 px-4 hover:bg-gray-100  text-red-600 ">Sign
+                            <a class="block py-2 px-4 hover:bg-gray-100  text-red-600 cursor-pointer">Sign
                                 out</a>
                         </li>
                     </ul>
@@ -70,7 +72,7 @@
             <div class="min-h-[70px]"></div>
             <div class="p-3 py-5">
 
-                <a class="menu nav-link" onclick="dropdown()">
+                {{-- <a class="menu nav-link" onclick="dropdown()">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         settings
                     </span>
@@ -85,55 +87,86 @@
                 </a>
 
                 <div id="submenu" class="transition">
-                    <a class="menu  nav-link " >
+                    <a class="menu  nav-link ">
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text text-sm">Slider </p>
                     </a>
-                    <a class="menu  nav-link " >
+                    <a class="menu  nav-link ">
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text text-sm">Sejarah </p>
                     </a>
-                    <a class="menu nav-link" >
+                    <a class="menu nav-link">
 
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text ext-sm">Profil </p>
                     </a>
-                    <a class="menu" >
+                    <a class="menu">
 
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text ext-sm">Bidang </p>
                     </a>
-                    <a class="menu" >
+                    <a class="menu">
 
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text ext-sm">Aplikasi Online</p>
                     </a>
-                    <a class="menu" >
+                    <a class="menu">
 
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text ext-sm">Kontak Profil</p>
                     </a>
-                    <a class="menu" >
+                    <a class="menu">
 
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text ext-sm">Video Yotube</p>
                     </a>
-                </div>
+                </div> --}}
 
+                {{ $page }}
+                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link" href="/admin">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        dashboard
+                    </span>
+                    <p class="title-menu block menu-text">Dashboard</p>
+                </a>
+
+                <a class="menu  @if ($page == 'masterPage') bg-primarylight @endif nav-link" onclick="dropdown()">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        assignment
+                    </span>
+                    <div class="flex justify-between w-full">
+                        <p class="title-menu block menu-text">Master</p>
+                        <span id="arrow" class="material-symbols-outlined mr-2 menu-icon">
+                            expand_more
+
+                        </span>
+                    </div>
+
+                </a>
+
+                <div id="submenu" class="transition">
+                    <a class="menu  @if ($subpage == 'masterBarang') bg-primarylight2 @endif nav-link"  href="/admin/master">
+                        <span class="material-symbols-outlined mr-2 menu-icon">
+                            fiber_manual_record
+                        </span>
+                        <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
+                    </a>
+
+                </div>
 
                 <a class="menu  nav-link" href="/admin/informasi">
                     <span class="material-symbols-outlined mr-2 menu-icon">
@@ -159,7 +192,7 @@
 
             </div>
 
-            <div class="flex " style="min-height: calc(100vh - 70px)" >
+            <div class="flex " style="min-height: calc(100vh - 70px)">
                 <div class="side">
 
                 </div>
@@ -170,6 +203,10 @@
         </div>
     </div>
 
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
     <script type="text/javascript">
         function dropdown() {
             document.querySelector("#submenu").classList.toggle("hidden");
@@ -179,6 +216,7 @@
         dropdown();
     </script>
     <script src="{{ asset('/js/flowbite.js') }}"></script>
+    <script src="{{ asset('local/vendor/swal2/dist/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('/js/admin/nav.js') }}"></script>
     {{-- <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}
 

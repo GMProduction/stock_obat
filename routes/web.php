@@ -22,8 +22,9 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
+Route::get('/admin', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/admin/master', [\App\Http\Controllers\MasterController::class, 'index'])->name('masterbarang');
+Route::get('/admin/masterother', [\App\Http\Controllers\MasterOtherController::class, 'index'])->name('masterother');
+Route::get('/admin/stock/kodebarang', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
 
-Route::get('/admin/dashboard', function () {
-    return view('/admin/dashboard');
-});
 

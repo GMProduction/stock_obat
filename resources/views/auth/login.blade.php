@@ -25,7 +25,7 @@
     @yield('css')
 </head>
 
-<body class="relative" style="min-height: 100vh">
+<body class="relative bg-slate-100" style="min-height: 100vh" >
 
     {{-- BACKGROUND --}}
     <div class="absolute bottom-0 w-full z-[-1]">
@@ -49,7 +49,7 @@
             @endif
 
             <div class="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-6xl xl:p-0  ">
-                <div class=" space-y-4 md:space-y-6  grid grid-cols-2">
+                <div class="   grid md:grid-cols-2 grid-cols-1">
 
                     <div class="p-16">
                         <a href="#"
@@ -63,7 +63,7 @@
                             Login
                         </h1>
                         <p class="text-sm">Masukan Username dan Password</p>
-                        <form class="space-y-4 md:space-y-6" method="post">
+                        <form class="mt-6" method="post">
                             @csrf
                             <div>
                                 <label for="text"
@@ -72,7 +72,8 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5    "
                                     placeholder="username" required="">
                             </div>
-                            <div>
+
+                            <div class="mt-3">
                                 <label for="password"
                                     class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••"
@@ -81,17 +82,18 @@
                             </div>
 
                             <button type="submit"
-                                class="w-full text-white bg-primary hover: hover:bg-primarylight transition duration-300 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-5 text-center ">
+                                class="w-full mt-6 text-white bg-secondary hover: hover:bg-primarylight transition duration-300 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-5 text-center ">
                                 Sign
                                 in
                             </button>
+                            <p class="text-xs mt-3 text-black/60">Jika terjadi kesalahan sistem mohon hubungi administrator.</p>
 
                         </form>
                     </div>
 
-                    <div class="" style="background-color: #1D9FAC ">
+                    <div class="mt-0 rounded-r-lg bg-primary hidden md:block" >
 
-                        <img src="{{asset('/local/images/boxmedic.png')}}" class="mx-auto"/>
+                        <img src="{{asset('/local/images/boxmedic.png')}}" class="mx-auto mt-0"/>
                         <p class="text-center pt-4 text-2xl text-white p-0 m-0 font-bold">Aplikasi stock obat</p>
                         <p class="text-center text-sm text-white/80 p-0 m-0">Aplikasi managemen stock obat di puskesmas ---------------</p>
                     </div>
