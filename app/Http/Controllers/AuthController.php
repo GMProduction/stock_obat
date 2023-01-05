@@ -12,6 +12,7 @@ class AuthController extends CustomController
     public function __construct()
     {
         parent::__construct();
+        $this->middleware(['guest'])->except('logout');
     }
 
     public function login()
@@ -22,7 +23,7 @@ class AuthController extends CustomController
                 'password' => $this->postField('password')
             ];
             if ($this->isAuth($credentials)) {
-                return redirect('/admin');
+                return redirect()->route('dashboard');
             }
             return redirect()->back()->with('failed', 'Periksa Kembali Username dan Password Anda');
         }

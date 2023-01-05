@@ -136,15 +136,14 @@
                     </a>
                 </div> --}}
 
-                {{ $page }}
-                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link" href="/admin">
+                <a class="menu {{ request()->is('admin') ? 'bg-primarylight' : '' }}  nav-link" href="/admin">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         dashboard
                     </span>
                     <p class="title-menu block menu-text">Dashboard</p>
                 </a>
 
-                <a class="menu  @if ($page == 'masterPage') bg-primarylight @endif nav-link" onclick="dropdown()">
+                <a class="menu  {{ request()->is('admin/master*') ? 'bg-primarylight' : '' }} nav-link" onclick="dropdown()">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         assignment
                     </span>
@@ -159,7 +158,7 @@
                 </a>
 
                 <div id="submenu" class="transition">
-                    <a class="menu nav-link"  href="/admin/master">
+                    <a class="menu {{ request()->is('admin/master') ? 'bg-primarylight' : '' }} nav-link"  href="/admin/master">
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
