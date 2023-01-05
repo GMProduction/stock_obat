@@ -2,8 +2,6 @@ body {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
   font-family: "Noto Sans", sans-serif;
-  background-image: url("../../assets/local/background.png");
-  background-repeat: repeat;
 }
 body::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
@@ -30,14 +28,14 @@ body::-webkit-scrollbar {
   }
 
   .menu {
-    all: unset;
-    background-color: white;
+    // all: unset;
+    // background-color: white;
     transition: ease-in-out 0.2s;
     cursor: pointer;
     overflow: hidden;
     // border-bottom: 1px solid $font-grey7;
 
-    height: 30px;
+    // height: 30px;
     margin-bottom: 7px;
     border-radius: 5px;
     display: flex;
@@ -205,6 +203,23 @@ body::-webkit-scrollbar {
   }
 }
 
+.section {
+  background-color: white;
+  min-height: 100px;
+  box-shadow: 8px 10px 61px -14px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 8px 10px 61px -14px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 8px 10px 61px -14px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 16px;
+
+  .title {
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+}
+
 .tabs-btn {
   display: inline-block;
   color: #444;
@@ -351,7 +366,7 @@ table.dataTable.display tbody tr:hover {
   /*font-bold*/
   border-radius: 0.25rem;
   /*rounded*/
-  background: #667eea !important;
+  background: #29bac7 !important;
   /*bg-indigo-500*/
   border: 1px solid transparent;
   /*border border-transparent*/
@@ -367,7 +382,7 @@ table.dataTable.display tbody tr:hover {
   /*font-bold*/
   border-radius: 0.25rem;
   /*rounded*/
-  background: #667eea !important;
+  background: #29bac7 !important;
   /*bg-indigo-500*/
   border: 1px solid transparent;
   /*border border-transparent*/
@@ -384,7 +399,7 @@ table.dataTable.no-footer {
 /*Change colour of responsive icon*/
 table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
 table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
-  background-color: #667eea !important;
+  background-color: #29bac7 !important;
   /*bg-indigo-500*/
 }
 .dropzone .dz-preview .dz-error-message {
