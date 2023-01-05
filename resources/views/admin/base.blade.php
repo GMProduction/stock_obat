@@ -159,7 +159,7 @@
                 </a>
 
                 <div id="submenu" class="transition">
-                    <a class="menu  @if ($subpage == 'masterBarang') bg-primarylight2 @endif nav-link"  href="/admin/master">
+                    <a class="menu nav-link"  href="/admin/master">
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
