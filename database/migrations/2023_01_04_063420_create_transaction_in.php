@@ -13,7 +13,7 @@ class CreateTransactionIn extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_in', function (Blueprint $table) {
+        Schema::create('transaction_ins', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('budget_source_id')->unsigned();
@@ -33,6 +33,6 @@ class CreateTransactionIn extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction_in');
+        Schema::dropIfExists('transaction_ins');
     }
 }

@@ -11,6 +11,7 @@ class Medicine extends Model
 
     protected $fillable = [
         'category_id',
+        'unit_id',
         'name',
         'limit'
     ];
@@ -18,5 +19,10 @@ class Medicine extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class, 'unit_id');
     }
 }

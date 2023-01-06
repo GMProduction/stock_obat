@@ -26,3 +26,4 @@ Route::get('/admin/masterother', [\App\Http\Controllers\MasterOtherController::c
 Route::get('/admin/stock/kodebarang', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
 
 
+

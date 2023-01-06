@@ -10,6 +10,7 @@ class MedicineIn extends Model
     use HasFactory;
 
     protected $fillable = [
+        'transaction_in_id',
         'medicine_id',
         'unit_id',
         'expired_date',
@@ -17,6 +18,11 @@ class MedicineIn extends Model
         'price',
         'total',
     ];
+
+    public function transaction_in()
+    {
+        return $this->belongsTo(TransactionIn::class, 'transaction_in');
+    }
 
     public function medicine()
     {
