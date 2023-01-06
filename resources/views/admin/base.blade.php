@@ -166,6 +166,13 @@
                         <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
                     </a>
 
+                    <a class="menu nav-link" href="/admin/masterlokasi">
+                        <span class="material-symbols-outlined mr-2 menu-icon">
+                            fiber_manual_record
+                        </span>
+                        <p class="title-menu block nav-link menu-text text-sm">Master Lokasi </p>
+                    </a>
+
                 </div>
 
                 <a class="menu  nav-link" href="">
@@ -218,6 +225,7 @@
     <script src="{{ asset('/js/flowbite.js') }}"></script>
     <script src="{{ asset('local/vendor/swal2/dist/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('/js/admin/nav.js') }}"></script>
+    <script src="{{ asset('js/admin/admin.js') }}"></script>
     {{-- <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}
 
     @yield('morejs')
