@@ -22,9 +22,13 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
-Route::get('/admin', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-Route::get('/admin/master', [\App\Http\Controllers\MasterController::class, 'index'])->name('masterbarang');
-Route::get('/admin/masterother', [\App\Http\Controllers\MasterOtherController::class, 'index'])->name('masterother');
-Route::get('/admin/stock/kodebarang', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
+Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::prefix('master')->group(function (){
+    Route::get('', [\App\Http\Controllers\MasterController::class, 'index'])->name('masterbarang');
+    Route::get('masterother', [\App\Http\Controllers\MasterOtherController::class, 'index'])->name('masterother');
+    Route::get('master/masterother/datatable-unit', [\App\Http\Controllers\MasterOtherController::class, 'datatableUnit'])->name('datatableUnit');
+    Route::get('master/masterother/datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
+});
+Route::get('/stock/kodebarang', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
 
 

@@ -1280,6 +1280,9 @@ input:checked + .toggle-bg {
 .gap-4 {
   gap: 1rem;
 }
+.gap-2 {
+  gap: 0.5rem;
+}
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.25rem * var(--tw-space-x-reverse));
@@ -1386,9 +1389,6 @@ input:checked + .toggle-bg {
 }
 .bg-primarylight {
   background-color: #29bac777;
-}
-.bg-primarylight2 {
-  background-color: #29bac722;
 }
 .bg-red-100 {
   --tw-bg-opacity: 1;

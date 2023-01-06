@@ -137,7 +137,7 @@
                 </div> --}}
 
                 {{ $page }}
-                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link" href="/admin">
+                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link" href="{{route('dashboard')}}">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         dashboard
                     </span>
@@ -159,7 +159,7 @@
                 </a>
 
                 <div id="submenu" class="transition">
-                    <a class="menu nav-link"  href="/admin/master">
+                    <a class="menu nav-link"  href="{{route('masterbarang')}}">
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
@@ -168,14 +168,14 @@
 
                 </div>
 
-                <a class="menu  nav-link" href="/admin/informasi">
+                <a class="menu  nav-link" href="">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         info
                     </span>
                     <p class="title-menu block menu-text">Information</p>
                 </a>
 
-                <a class="menu nav-link" href="/admin/artikel">
+                <a class="menu nav-link" href="">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         feed
                     </span>
@@ -221,6 +221,22 @@
     {{-- <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}
 
     @yield('morejs')
+
+    <script>
+        jQuery.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
+            return {
+                "iStart": oSettings._iDisplayStart,
+                "iEnd": oSettings.fnDisplayEnd(),
+                "iLength": oSettings._iDisplayLength,
+                "iTotal": oSettings.fnRecordsTotal(),
+                "iFilteredTotal": oSettings.fnRecordsDisplay(),
+                "iPage": oSettings._iDisplayLength === -1 ?
+                    0 : Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                "iTotalPages": oSettings._iDisplayLength === -1 ?
+                    0 : Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+            };
+        };
+    </script>
 </body>
 
 </html>
