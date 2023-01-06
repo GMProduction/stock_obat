@@ -78,8 +78,10 @@
                             <td class="text-center text-sm">Tablet</td>
                             <td class="text-center text-sm">3</td>
                             <td class="text-center text-xs font-bold">
-                                <button class="bg-secondary rounded-full text-white px-3 py-2">Ubah</button>
-                                <button class="bg-red-500 rounded-full text-white px-3 py-2">Hapus</button>
+                                <button
+                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster">Ubah</button>
+                                <button class="bg-red-500 rounded-full text-white px-3 py-2"
+                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
                             </td>
                         </tr>
 
@@ -89,8 +91,10 @@
                             <td class="text-center text-sm">Tablet</td>
                             <td class="text-center text-sm">5</td>
                             <td class="text-center text-xs font-bold">
-                                <button class="bg-secondary rounded-full text-white px-3 py-2">Ubah</button>
-                                <button class="bg-red-500 rounded-full text-white px-3 py-2">Hapus</button>
+                                <button
+                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster">Ubah</button>
+                                <button class="bg-red-500 rounded-full text-white px-3 py-2"
+                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
                         </tr>
 
                     </tbody>
@@ -200,64 +204,6 @@
             </div>
         </div>
 
-        <!-- Modal Edit Master -->
-        <div id="modal_editMaster" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
-            <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow ">
-                    <!-- Modal header -->
-                    <div class="flex justify-between items-start p-4 rounded-t border-b ">
-                        <h3 class="text-xl font-semibold text-gray-900 ">
-                            Edit Master Obat
-                        </h3>
-                        <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                            onclick="modaleditmHide()">
-                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                    </div>
-                    <form method="post" enctype="multipart/form-data" action="" id="form-patch">
-                        @csrf
-                        <input type="hidden" name="id" id="id-edit" value="">
-                        <!-- Modal body -->
-                        <div class="p-6 ">
-                            <div class="mb-3">
-                                <label for="e-nama-info" class="block mb-2 text-sm font-medium text-gray-700 ">Nama Sumber
-                                    Anggaran</label>
-                                <input type="text" id="e-nama-info"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                    placeholder="Masukan Sumber Anggaran" required name="information-edit">
-                            </div>
-
-
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="flex items-center justify-between p-6 space-x-2 rounded-b border-t border-gray-200 ">
-                            <button id="btn-patch" onclick="confirmDelete()"
-                                class=" flex items-center text-white bg-red-500 hover:bg-red-300 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
-                                <span class="material-symbols-outlined text-white mr-3">
-                                    delete
-                                </span>Hapus
-                            </button>
-
-                            <button type="submit" id="btn-patch"
-                                class="flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
-                                <span class="material-symbols-outlined text-white mr-3">
-                                    save
-                                </span>Simpan Data
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-- Modal Tambah Sumber -->
         <div id="modal_tambahSumber" tabindex="-1" aria-hidden="true"

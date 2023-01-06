@@ -556,7 +556,7 @@
                 if (result.isConfirmed) {
                     Swal.fire(
                         'Data Dihapus!',
-                        'Data TElah TErhapus.',
+                        'Data Telah Terhapus.',
                         'success'
                     )
                 }
