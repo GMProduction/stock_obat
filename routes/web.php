@@ -25,9 +25,10 @@ Route::get('/login', function () {
 Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::prefix('master')->group(function (){
     Route::get('', [\App\Http\Controllers\MasterController::class, 'index'])->name('masterbarang');
-    Route::get('masterother', [\App\Http\Controllers\MasterOtherController::class, 'index'])->name('masterother');
-    Route::get('master/masterother/datatable-unit', [\App\Http\Controllers\MasterOtherController::class, 'datatableUnit'])->name('datatableUnit');
-    Route::get('master/masterother/datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
+    Route::get('other', [\App\Http\Controllers\MasterOtherController::class, 'index'])->name('masterother');
+    Route::get('lokasi', [\App\Http\Controllers\MasterLokasiController::class, 'index'])->name('masterlokasi');
+    Route::get('other/datatable-unit', [\App\Http\Controllers\MasterOtherController::class, 'datatableUnit'])->name('datatableUnit');
+    Route::get('other/datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
 });
 Route::get('/stock/kodebarang', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
 

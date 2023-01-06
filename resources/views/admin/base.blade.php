@@ -166,7 +166,7 @@
                         <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
                     </a>
 
-                    <a class="menu nav-link" href="/admin/masterlokasi">
+                    <a class="menu nav-link" href="{{route('masterlokasi')}}">
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
