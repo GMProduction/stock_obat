@@ -30,6 +30,12 @@ Route::prefix('master')->group(function (){
     Route::get('other/datatable-unit', [\App\Http\Controllers\MasterOtherController::class, 'datatableUnit'])->name('datatableUnit');
     Route::get('other/datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
 });
+
+Route::prefix('penerimaan')->group(function (){
+    Route::get('', [\App\Http\Controllers\PenerimaanController::class, 'index'])->name('penerimaanbarang');
+    Route::get('tambah', [\App\Http\Controllers\PenerimaanController::class, 'tambah'])->name('tambahbarang');
+});
+
 Route::get('/stock/kodebarang', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
 
 

@@ -20,7 +20,6 @@
 
 
     {{-- ICON --}}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     @yield('css')
 </head>
@@ -137,17 +136,17 @@
                 </div> --}}
 
                 {{ $page }}
-                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link" href="{{route('dashboard')}}">
-                    <span class="material-symbols-outlined mr-2 menu-icon">
-                        dashboard
-                    </span>
+                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link"
+                    href="{{ route('dashboard') }}">
+                    <img src={{ asset('local/icons/dashboard.svg') }}
+                        class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Dashboard</p>
                 </a>
 
                 <a class="menu  @if ($page == 'masterPage') bg-primarylight @endif nav-link" onclick="dropdown()">
-                    <span class="material-symbols-outlined mr-2 menu-icon">
-                        assignment
-                    </span>
+                    <img src={{ asset('local/icons/assignment.svg') }}
+                        class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+
                     <div class="flex justify-between w-full">
                         <p class="title-menu block menu-text">Master</p>
                         <span id="arrow" class="material-symbols-outlined mr-2 menu-icon">
@@ -159,34 +158,31 @@
                 </a>
 
                 <div id="submenu" class="transition">
-                    <a class="menu nav-link"  href="{{route('masterbarang')}}">
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
+                    <a class="menu nav-link" href="{{ route('masterbarang') }}">
+                        <img src={{ asset('local/icons/fiber_manual_record.svg') }}
+                            class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                         <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
                     </a>
 
-                    <a class="menu nav-link" href="{{route('masterlokasi')}}">
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
+                    <a class="menu nav-link" href="{{ route('masterlokasi') }}">
+                        <img src={{ asset('local/icons/fiber_manual_record.svg') }}
+                            class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                         <p class="title-menu block nav-link menu-text text-sm">Master Lokasi </p>
                     </a>
 
                 </div>
 
-                <a class="menu  nav-link" href="">
-                    <span class="material-symbols-outlined mr-2 menu-icon">
-                        info
-                    </span>
-                    <p class="title-menu block menu-text">Information</p>
+                <a class="menu  @if ($page == 'penerimaanPage') bg-primarylight @endif nav-link"
+                href="{{ route('penerimaanbarang') }}">
+                    <img src={{ asset('local/icons/in.svg') }}
+                    class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                    <p class="title-menu block menu-text">Penerimaan Barang</p>
                 </a>
 
                 <a class="menu nav-link" href="">
-                    <span class="material-symbols-outlined mr-2 menu-icon">
-                        feed
-                    </span>
-                    <p class="title-menu block menu-text">Artikel</p>
+                    <img src={{ asset('local/icons/out.svg') }}
+                    class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                    <p class="title-menu block menu-text">Pengeluaran Barang</p>
                 </a>
             </div>
 
@@ -231,7 +227,7 @@
     @yield('morejs')
 
     <script>
-        jQuery.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
+        jQuery.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
             return {
                 "iStart": oSettings._iDisplayStart,
                 "iEnd": oSettings.fnDisplayEnd(),

@@ -1,10 +1,7 @@
 @extends('admin.base')
 
 @section('css')
-    <!--Regular Datatables CSS-->
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
 @endsection
 @section('content')
     <div class="panel min-h-screen">
@@ -24,6 +21,17 @@
                     </a>
                 </li>
                 <li>
+                    <div class="flex items-center ">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Pernerimaan Barang</a>
+                    </div>
+                </li>
+                <li>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -31,74 +39,63 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Master Barang</a>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Tambah Barang</a>
                     </div>
                 </li>
 
             </ol>
         </nav>
 
+
+
+
         <div class="grid grid-cols-1 gap-4">
             <div class="section relative">
-                <p class="title ">Master Barang </p>
-                <div class="absolute right-0 top-0 mt-3 mr-3">
-                    <div class="flex">
-                        <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
-                                class="material-symbols-outlined mr-2 menu-icon text-sm">
-                                filter_alt
-                            </span>Filter</button>
-                        <button onclick="location.href='{{ route('masterother') }}'"
-                            class="bg-teal-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
-                                class="material-symbols-outlined mr-2 menu-icon text-sm">
-                                feed
-                            </span>Master Satuan / Asal Obat / Lokasi</button>
-                        <button
-                            class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm btn-tambahMaster"><span
-                                class="material-symbols-outlined mr-2 menu-ico text-sm">
-                                add
-                            </span>Tambah</button>
+                <p class="title ">Tambah Barang </p>
+                <div>
+                    <div class="mb-3 mt-5">
+                        <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor Batch
+                        </label>
+                        <input type="text" id="e-nama-info"
+                            class="bg-gray-50 border sm:w-96 w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
+                            placeholder="Nomor Batch"  readonly  name="nomor-batch">
                     </div>
                 </div>
                 <table id="tb-master" class="stripe hover mt-10"
                     style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
-                            <th data-priority="1" class="text-right text-sm">No</th>
-                            <th data-priority="2" class="text-center text-sm">Nama Obat</th>
-                            <th data-priority="2" class="text-center text-sm">Sumber Anggaran</th>
-                            <th data-priority="3" class="text-center text-sm">Satuan</th>
-                            <th data-priority="3" class="text-center text-sm">Qty Minimum Warning</th>
-                            <th data-priority="4" class="text-center text-sm">Action</th>
+                            <th data-priority="1" class="text-right text-xs">No</th>
+                            <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
+                            {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
+                            <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
+                            <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
+                            {{-- <th data-priority="3" class="text-center text-xs">Kadaluarsa</th>
+                            <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
+                            <th data-priority="3" class="text-center text-xs">Total Harga</th> --}}
+                            <th data-priority="4" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-                            <td class="text-right text-sm">1</td>
-                            <td class="text-center text-sm">Paracetamol</td>
-                            <td class="text-center text-sm">APBD</td>
-                            <td class="text-center text-sm">Tablet</td>
-                            <td class="text-center text-sm">3</td>
-                            <td class="text-center text-xs font-bold">
+                            <td class="text-right text-xs">1</td>
+                            <td class="text-center text-xs">12 Desember 2022</td>
+                            {{-- <td class="text-center text-xs">Paracetamol</td>
+                            <td class="text-center text-xs">Tablet</td> --}}
+                            <td class="text-center text-xs">Btch0122</td>
+                            {{-- <td class="text-center text-xs">20 Desember 2024</td>
+                            <td class="text-center text-xs">Rp 50.000</td>
+                            <td class="text-center text-xs">Rp 80.000</td> --}}
+                            <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">
                                 <button
-                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster">Ubah</button>
-                                <button class="bg-red-500 rounded-full text-white px-3 py-2"
+                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
+                                <button class="bg-red-500 rounded-full text-white px-3 py-2 text-xs"
                                     onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
                             </td>
                         </tr>
 
-                        <tr>
-                            <td class="text-right text-sm">2</td>
-                            <td class="text-center text-sm">Obat Mencret</td>
-                            <td class="text-center text-sm">APBD</td>
-                            <td class="text-center text-sm">Tablet</td>
-                            <td class="text-center text-sm">5</td>
-                            <td class="text-center text-xs font-bold">
-                                <button
-                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster">Ubah</button>
-                                <button class="bg-red-500 rounded-full text-white px-3 py-2"
-                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
-                        </tr>
+
 
                     </tbody>
                 </table>
@@ -133,18 +130,9 @@
                         @csrf
                         <input type="hidden" name="id" id="id-edit" value="">
                         <!-- Modal body -->
-
-
                         <div class="p-6 ">
-                            <div class="mb-3">
-                                <label for="nama-barang" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nama Barang </label>
-                                <input type="text" id="e-nama-info"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                    placeholder="Masukan Nama Barang" required name="nama-barang">
-                            </div>
-
                             <label for="countries"
-                                class="block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white">Pilih Sumber
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Sumber
                                 Anggaran</label>
                             <div class="flex">
                                 <select id="countries"
@@ -327,21 +315,8 @@
 
 @section('morejs')
     <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-
-            var table = $('#tb-master').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
 
 
-        });
-    </script>
 
     {{-- MODAL MASTER --}}
     <script>
