@@ -18,6 +18,7 @@ class CreateMedicines extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('unit_id')->unsigned();
             $table->string('name');
+            $table->integer('qty')->default(0);
             $table->integer('limit')->default(0);
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');
