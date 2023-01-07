@@ -2,24 +2,21 @@
 
 namespace App\Repository;
 
-use App\Models\Unit;
+use App\Models\BudgetSource;
 
-class UnitRepository extends BaseRepo
+class BudgetRepository extends BaseRepo
 {
-
     public function __construct()
     {
-        $this->class = 'Unit';
         $this->selectData = ['name'];
         $this->button = ['edit', 'delete'];
     }
 
     public function patchForm(){
-        return $this->patchData(Unit::class);
+        return $this->patchData(BudgetSource::class);
     }
 
     public function showDatatable(){
-        return $this->datatabe(Unit::query());
+        return $this->datatabe(BudgetSource::query());
     }
-
 }

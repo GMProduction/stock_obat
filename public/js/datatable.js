@@ -21,5 +21,6 @@ function datatable(tb, url, columns) {
             return nRow;
         },
         columns: columns
-    })
+    }).columns.adjust()
+        .responsive.recalc();
 }

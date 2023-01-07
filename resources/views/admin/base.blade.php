@@ -227,6 +227,7 @@
     <script src="{{ asset('/js/admin/nav.js') }}"></script>
     <script src="{{ asset('js/admin/admin.js') }}"></script>
     {{-- <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}
+    <script src="{{asset('js/datatable.js')}}"></script>
 
     @yield('morejs')
 

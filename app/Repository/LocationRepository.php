@@ -2,24 +2,22 @@
 
 namespace App\Repository;
 
-use App\Models\Unit;
+use App\Models\Location;
 
-class UnitRepository extends BaseRepo
+class LocationRepository extends BaseRepo
 {
-
     public function __construct()
     {
-        $this->class = 'Unit';
         $this->selectData = ['name'];
         $this->button = ['edit', 'delete'];
     }
 
     public function patchForm(){
-        return $this->patchData(Unit::class);
+        return $this->patchData(Location::class);
     }
 
     public function showDatatable(){
-        return $this->datatabe(Unit::query());
+        return $this->datatabe(Location::query());
     }
 
 }

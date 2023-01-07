@@ -24,6 +24,7 @@ class CreateMedicineIn extends Migration
             $table->timestamps();
             $table->foreign('medicine_id')->references('id')->on('medicines');
             $table->foreign('unit_id')->references('id')->on('units');
+            $table->softDeletes();
         });
     }
 

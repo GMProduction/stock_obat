@@ -17,6 +17,7 @@ class CreateUnit extends Migration
             $table->id();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
