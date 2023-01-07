@@ -23,6 +23,7 @@ class CreateTransactionIn extends Migration
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('budget_source_id')->references('id')->on('budget_sources');
+            $table->softDeletes();
         });
     }
 

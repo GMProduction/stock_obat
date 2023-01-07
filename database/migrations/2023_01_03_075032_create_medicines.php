@@ -23,6 +23,7 @@ class CreateMedicines extends Migration
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('unit_id')->references('id')->on('units');
+            $table->softDeletes();
         });
     }
 

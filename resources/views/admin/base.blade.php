@@ -136,7 +136,12 @@
                     </a>
                 </div> --}}
 
+<<<<<<< HEAD
                 <a class="menu {{ request()->is('admin') ? 'bg-primarylight' : '' }}  nav-link" href="/admin">
+=======
+                {{ $page }}
+                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link" href="{{route('dashboard')}}">
+>>>>>>> 365d35d41d3c717af1042d4cb4c689e817f78e47
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         dashboard
                     </span>
@@ -158,23 +163,34 @@
                 </a>
 
                 <div id="submenu" class="transition">
+<<<<<<< HEAD
                     <a class="menu {{ request()->is('admin/master') ? 'bg-primarylight' : '' }} nav-link"  href="/admin/master">
+=======
+                    <a class="menu nav-link"  href="{{route('masterbarang')}}">
+>>>>>>> 365d35d41d3c717af1042d4cb4c689e817f78e47
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
                         <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
                     </a>
 
+                    <a class="menu nav-link" href="{{route('masterlokasi')}}">
+                        <span class="material-symbols-outlined mr-2 menu-icon">
+                            fiber_manual_record
+                        </span>
+                        <p class="title-menu block nav-link menu-text text-sm">Master Lokasi </p>
+                    </a>
+
                 </div>
 
-                <a class="menu  nav-link" href="/admin/informasi">
+                <a class="menu  nav-link" href="">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         info
                     </span>
                     <p class="title-menu block menu-text">Information</p>
                 </a>
 
-                <a class="menu nav-link" href="/admin/artikel">
+                <a class="menu nav-link" href="">
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         feed
                     </span>
@@ -217,9 +233,27 @@
     <script src="{{ asset('/js/flowbite.js') }}"></script>
     <script src="{{ asset('local/vendor/swal2/dist/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('/js/admin/nav.js') }}"></script>
+    <script src="{{ asset('js/admin/admin.js') }}"></script>
     {{-- <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}
+    <script src="{{asset('js/datatable.js')}}"></script>
 
     @yield('morejs')
+
+    <script>
+        jQuery.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
+            return {
+                "iStart": oSettings._iDisplayStart,
+                "iEnd": oSettings.fnDisplayEnd(),
+                "iLength": oSettings._iDisplayLength,
+                "iTotal": oSettings.fnRecordsTotal(),
+                "iFilteredTotal": oSettings.fnRecordsDisplay(),
+                "iPage": oSettings._iDisplayLength === -1 ?
+                    0 : Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                "iTotalPages": oSettings._iDisplayLength === -1 ?
+                    0 : Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+            };
+        };
+    </script>
 </body>
 
 </html>
