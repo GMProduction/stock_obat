@@ -58,7 +58,6 @@ class TransactionInController extends CustomController
     {
         DB::beginTransaction();
         try {
-
             $data_request = [
                 'user_id' => 1,
                 'budget_source_id' => $this->postField('budget_source'),
@@ -69,7 +68,16 @@ class TransactionInController extends CustomController
             $transaction_in = TransactionIn::create($data_request);
             $medicine_ins = MedicineIn::whereNull('transaction_in_id')->get();
             foreach ($medicine_ins as $medicine_in) {
-
+                $medicine_in->update([
+                    'transaction_in_id' => $transaction_in->id
+                ]);
+                $qty_in = $medicine_in->qty;
+                $medicine = Medicine::find($medicine_in->id);
+                $current_qty = $medicine->qty;
+                $new_qty = $qty_in + $current_qty;
+                $medicine->update([
+                    'qty' => $new_qty
+                ]);
             }
             DB::commit();
             return $this->jsonResponse('success', 200);
