@@ -15,7 +15,8 @@ class Medicine extends Model
         'category_id',
         'unit_id',
         'name',
-        'limit'
+        'qty',
+        'limit',
     ];
 
     public function category()

@@ -67,9 +67,10 @@ class TransactionInController extends CustomController
                 'description' => $this->postField('description')
             ];
             $transaction_in = TransactionIn::create($data_request);
-            MedicineIn::whereNull('transaction_in_id')->update([
-                'transaction_in_id' => $transaction_in->id
-            ]);
+            $medicine_ins = MedicineIn::whereNull('transaction_in_id')->get();
+            foreach ($medicine_ins as $medicine_in) {
+
+            }
             DB::commit();
             return $this->jsonResponse('success', 200);
         } catch (\Exception $e) {
