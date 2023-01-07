@@ -136,12 +136,8 @@
                     </a>
                 </div> --}}
 
-<<<<<<< HEAD
-                <a class="menu {{ request()->is('admin') ? 'bg-primarylight' : '' }}  nav-link" href="/admin">
-=======
-                {{ $page }}
-                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link" href="{{route('dashboard')}}">
->>>>>>> 365d35d41d3c717af1042d4cb4c689e817f78e47
+                <a class="menu {{ request()->is('admin') ? 'bg-primarylight' : '' }}  nav-link" href="{{route('dashboard')}}">
+
                     <span class="material-symbols-outlined mr-2 menu-icon">
                         dashboard
                     </span>
@@ -163,11 +159,7 @@
                 </a>
 
                 <div id="submenu" class="transition">
-<<<<<<< HEAD
-                    <a class="menu {{ request()->is('admin/master') ? 'bg-primarylight' : '' }} nav-link"  href="/admin/master">
-=======
-                    <a class="menu nav-link"  href="{{route('masterbarang')}}">
->>>>>>> 365d35d41d3c717af1042d4cb4c689e817f78e47
+                    <a class="menu {{ request()->is('admin/master') ? 'bg-primarylight' : '' }} nav-link"  href="{{route('masterbarang')}}">
                         <span class="material-symbols-outlined mr-2 menu-icon">
                             fiber_manual_record
                         </span>
