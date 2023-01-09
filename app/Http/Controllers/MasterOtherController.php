@@ -46,4 +46,12 @@ class MasterOtherController extends Controller
         return response()->json('Data not found',400);
     }
 
+    public function getAllUnit(){
+        return $this->repo->getAll();
+    }
+
+    public function getAllBudget(){
+        return $this->repoBudget->getAll();
+    }
+
 }

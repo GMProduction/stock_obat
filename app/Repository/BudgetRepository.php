@@ -19,4 +19,10 @@ class BudgetRepository extends BaseRepo
     public function showDatatable(){
         return $this->datatabe(BudgetSource::query());
     }
+
+    public function getAll(){
+        return BudgetSource::all();
+    }
+
+
 }

@@ -13,7 +13,7 @@ abstract class BaseRepo
 {
 
     protected $button;
-    protected $selectData;
+    protected $selectData = [];
     protected $data;
     protected $class;
 
