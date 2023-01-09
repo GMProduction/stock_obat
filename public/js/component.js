@@ -24,7 +24,7 @@ function getDataSelect(url, select1, awal = 'Pilih Data',semua = null, a,parent)
     })
 }
 
-async function getSelect(id, url, nameValue = 'name', idValue, text = null, count = null, parent) {
+async function getSelect(id, url, nameValue = 'name', idValue, text = null, tags= false, count = null, parent) {
     var select = $('#' + id);
     select.empty();
     if (text) {
@@ -46,6 +46,7 @@ async function getSelect(id, url, nameValue = 'name', idValue, text = null, coun
         })
     })
     select.select2({
+        tags : tags,
         dropdownParent: parent
     })
 }

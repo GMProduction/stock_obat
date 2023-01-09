@@ -5,7 +5,7 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-    <link href="{{asset('js/select2/select2.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('js/select2/select2.min.css')}}" rel="stylesheet"/>
     <style>
 
         .select2-selection__rendered {
@@ -25,7 +25,7 @@
             height: 40px !important;
         }
 
-        .select2-container--default .select2-selection--single{
+        .select2-container--default .select2-selection--single {
             border: 1px solid #ddd !important;
         }
     </style>
@@ -86,7 +86,7 @@
                         </button>
                     </div>
                 </div>
-                <table id="tb-master" class="stripe hover mt-10"
+                <table id="tb-master" class="hover mt-10"
                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                     <tr>
@@ -156,74 +156,65 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
-                    <form method="post" enctype="multipart/form-data" action="" id="form-patch">
+                    <form onsubmit="return saveMedicine()" id="form-patch">
                         @csrf
-                        <input type="hidden" name="id" id="id-edit" value="">
+                        <input type="hidden" name="id" id="medicineId" value="">
                         <!-- Modal body -->
 
 
                         <div class="p-6 ">
                             <div class="mb-3">
                                 <label for="nama-barang" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nama Barang </label>
-                                <input type="text" id="e-nama-info"
+                                <input type="text" id="medicineName"
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                       placeholder="Masukan Nama Barang" required name="nama-barang">
+                                       placeholder="Masukan Nama Barang" required name="name">
                             </div>
 
                             <label for="countries"
-                                   class="block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white">Kategori Obat</label>
-                            <div class="flex">
-                                <select id="selectCategory"
+                                   class="block mt-3 text-sm font-medium text-gray-900 dark:text-white">Kategori Obat</label>
+                            <div class="flex flex-col">
+                                 <span id="tooltip-tambahsatuan" class="block mb-2 text-xs font-bold text-gray-900 dark:text-white">
+                                    Jika data kategori obat tidak ditemukan, ketik data satuan kemudian tekan "enter"
+                                </span>
+                                <select id="selectCategory" name="category_id"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected>Pilih Kategori Obat</option>
-                                    <option value="US">APBD</option>
-                                    <option value="CA">APBN</option>
                                 </select>
 
-                                <button data-tooltip-target="tooltip-tambahsumber" type="button"
-                                        class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsumber"><span
-                                        class="material-symbols-outlined menu-ico text-sm">
-                                        add
-                                    </span></button>
+                                {{--                                <button data-tooltip-target="tooltip-tambahsumber" type="button"--}}
+                                {{--                                        class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsumber"><span--}}
+                                {{--                                        class="material-symbols-outlined menu-ico text-sm">--}}
+                                {{--                                        add--}}
+                                {{--                                    </span></button>--}}
 
-                                <div id="tooltip-tambahsumber" role="tooltip"
-                                     class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                    Tambah sumber anggaran "jika belum ada di dalam menu"
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div>
                             </div>
 
                             <label for="countries"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-3">Pilih
+                                   class="block  text-sm font-medium text-gray-900 dark:text-white mt-3">Pilih
                                 Satuan</label>
 
-                            <div class="flex">
-                                <select id="selectUnit"
+                            <div class="flex flex-col">
+                                 <span id="tooltip-tambahsatuan" class="block mb-2 text-xs font-bold text-gray-900 dark:text-white">
+                                    Jika data satuan obat tidak ditemukan, ketik data satuan kemudian tekan "enter"
+                                </span>
+                                <select id="selectUnit" name="unit_id"
                                         class="flex-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected>Pilih Satuan</option>
-                                    <option value="US">Tablet</option>
-                                    <option value="CA">Sacet</option>
                                 </select>
 
-                                <button data-tooltip-target="tooltip-tambahsatuan" type="button"
-                                        class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsatuan"><span
-                                        class="material-symbols-outlined menu-ico text-sm">
-                                        add
-                                    </span></button>
+                                {{--                                <button data-tooltip-target="tooltip-tambahsatuan" type="button"--}}
+                                {{--                                        class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsatuan"><span--}}
+                                {{--                                        class="material-symbols-outlined menu-ico text-sm">--}}
+                                {{--                                        add--}}
+                                {{--                                    </span></button>--}}
 
-                                <div id="tooltip-tambahsatuan" role="tooltip"
-                                     class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                    Tambah satuan "jika belum ada di dalam menu"
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div>
+
                             </div>
 
                             <div class="mb-3">
                                 <label for="e-nama-info" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Qty
                                     Minimum Warning </label>
-                                <input type="number" id="e-nama-info" min="1"
+                                <input type="number" id="medicineLimit" min="1"
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                       placeholder="Qty Minimum Warning" required name="information-edit">
+                                       placeholder="Qty Minimum Warning" required name="limit">
                             </div>
 
 
@@ -360,13 +351,14 @@
     <script>
         $(document).ready(function () {
 
-        //     var table = $('#tb-master').DataTable({
-        //         responsive: true
-        //     })
-        //         .columns.adjust()
-        //         .responsive.recalc();
+            //     var table = $('#tb-master').DataTable({
+            //         responsive: true
+            //     })
+            //         .columns.adjust()
+            //         .responsive.recalc();
             tabel();
-            getSelect('selectUnit','{{route('unitjson')}}','name')
+            getSelect('selectCategory', '{{route('categoryjson')}}', 'name', null, 'Pilih Kategori Obat', true)
+            getSelect('selectUnit', '{{route('unitjson')}}', 'name', null, 'Pilih Satuan Obat', true)
         });
     </script>
 
@@ -394,9 +386,22 @@
         }
 
         $('.btn-tambahMaster').on('click', function (e) {
-
+            $('#selectUnit').val('').trigger('change');
+            $('#selectCategory').val('').trigger('change');
+            $('#medicineName').val('');
+            $('#medicineLimit').val('');
+            $('#medicineId').val('');
             modal_tambahm.show();
         });
+
+        $(document).on('click', '#editData', function () {
+            $('#selectUnit').val($(this).data('unit_id')).trigger('change');
+            $('#selectCategory').val($(this).data('category_id')).trigger('change');
+            $('#medicineName').val($(this).data('name'));
+            $('#medicineLimit').val($(this).data('limit'));
+            $('#medicineId').val($(this).data('id'));
+            modal_tambahm.show();
+        })
     </script>
 
 
@@ -458,17 +463,38 @@
                     searchable: false
                 },
                 {data: 'name', name: 'name'},
-                {data: 'category.name', name: 'category.name', },
-                {data: 'qty', name: 'qty', className:'text-center'},
-                {data: 'unit.name', name: 'unit.name',  className:'text-center'},
-                {data: 'limit', name: 'limit', className:'text-center'},
+                {data: 'category.name', name: 'category.name',},
+                {
+                    data: 'qty', name: 'qty', className: 'text-center'
+                },
+                {data: 'unit.name', name: 'unit.name', className: 'text-center'},
+                {data: 'limit', name: 'limit', className: 'text-center'},
                 {
                     className: "text-center",
                     data: 'action', name: 'action', orderable: false, searchable: false
                 },
-            ]
+            ];
+            let createdRow = function( row, data, dataIndex ) {
+                console.log(data)
+                if ( data.qty < data.limit ) {
+                    $(row).addClass( 'bg-red-100' );
+                }
+                console.log(row)
 
-            datatable('tb-master','{{route('masterdatatable')}}',colums)
+            };
+            datatable('tb-master', '{{route('masterdatatable')}}', colums, createdRow)
+        }
+
+        function saveMedicine() {
+            confirmSave('Simpan Data', 'Apa anda yakin ?', 'form-patch', '{{route('masterbarang')}}', responseMedicine)
+            return false;
+        }
+
+        function responseMedicine() {
+            modaltambahmHide();
+            $("#tb-master").DataTable().ajax.reload();
+            getSelect('selectCategory', '{{route('categoryjson')}}', 'name', null, 'Pilih Kategori Obat', true)
+            getSelect('selectUnit', '{{route('unitjson')}}', 'name', null, 'Pilih Satuan Obat', true)
         }
     </script>
 

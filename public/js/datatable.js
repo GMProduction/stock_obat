@@ -1,4 +1,4 @@
-function datatable(tb, url, columns) {
+function datatable(tb, url, columns, createdRow = null) {
     $('#' + tb).DataTable({
         processing: true,
         serverSide: true,
@@ -20,6 +20,7 @@ function datatable(tb, url, columns) {
             $("td:first", nRow).html(index);
             return nRow;
         },
+        createdRow: createdRow,
         columns: columns
     }).columns.adjust()
         .responsive.recalc();

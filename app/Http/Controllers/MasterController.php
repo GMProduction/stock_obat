@@ -18,6 +18,9 @@ class MasterController
 
     public function index()
     {
+        if (request()->method() == 'POST'){
+            return $this->repo->patchForm();
+        }
         return view('admin.master.master', ['page' => 'masterPage', 'subpage' => 'masterBarang']);
     }
 
