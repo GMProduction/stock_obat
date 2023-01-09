@@ -22,4 +22,8 @@ class UnitRepository extends BaseRepo
         return $this->datatabe(Unit::query());
     }
 
+    public function getAll(){
+        return Unit::all();
+    }
+
 }
