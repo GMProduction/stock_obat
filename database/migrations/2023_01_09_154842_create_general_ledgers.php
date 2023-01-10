@@ -16,7 +16,7 @@ class CreateGeneralLedgers extends Migration
         Schema::create('general_ledgers', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->bigInteger('medicine_in_id')->unsigned();
+            $table->bigInteger('medicine_in_id')->unsigned()->nullable();
             $table->integer('qty')->default(0);
             $table->smallInteger('type')->default(0)->comment('0: Debit, 1: Credit');
             $table->text('description')->default('-');
