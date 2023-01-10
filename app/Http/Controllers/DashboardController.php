@@ -10,11 +10,11 @@ class DashboardController
 
     public function index()
     {
-        return view('admin.dashboard.dashboard', ['page' => 'dashboardPage']);
+        return view('admin.dashboard.dashboard');
     }
 
      public function stockbarang()
     {
-        return view('admin.dashboard.stock', ['page' => 'dashboardPage']);
+        return view('admin.dashboard.stock');
     }
 }
