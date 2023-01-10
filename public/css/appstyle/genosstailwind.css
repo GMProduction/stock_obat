@@ -336,3 +336,27 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 .dataTables_length select {
   background-image: none;
 }
+
+.select2-container {
+  display: block !important;
+}
+
+.select2-container .select2-selection--single {
+  height: 40px !important;
+}
+
+.select2-container--default .select2-selection--single {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251/var(--tw-bg-opacity)) !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  height: 40px !important;
+  line-height: 40px !important;
+  font-size: 0.875rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 40px !important;
+  right: 5px !important;
+}/*# sourceMappingURL=genosstailwind.css.map */
