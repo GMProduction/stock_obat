@@ -173,13 +173,7 @@
                     <div class="border rounded-md p-3">
                         <p class="text-gray-500">Informasi penerimaan</p>
 
-                        <div class="mb-3 mt-5">
-                            <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor Batch
-                            </label>
-                            <input type="text" id="e-nama-info"
-                                class="bg-gray-200 border  w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
-                                placeholder="Nomor Batch" readonly name="nomor-batch">
-                        </div>
+
 
                         <div class="mb-3 mt-5">
                             <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
@@ -233,8 +227,17 @@
                                 Total Keseluruhan
                             </label>
                             <input type="text" id="total-keseluruhan"
-                                class="bg-gray-200 border  w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
+                                class="bg-gray-200 border  w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 rounded-md"
                                 placeholder="Total Keseluruhan" readonly name="total-keseluruhan">
+                        </div>
+
+                        <div class="mb-3 mt-5">
+                            <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
+                                Penerimaan
+                            </label>
+                            <textarea type="text" id="e-nama-info"
+                                class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4" placeholder="Catatan Penerimaan"
+                                name="Catatan Penerimaan"></textarea>
                         </div>
 
                     </div>
@@ -294,7 +297,8 @@
 
 
                             <div class="mb-3 mt-5">
-                                <label for="tanggal-kadaluarsa" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
+                                <label for="tanggal-kadaluarsa"
+                                    class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
                                     Kadaluarsa
                                 </label>
                                 <div class="relative">
@@ -306,8 +310,8 @@
                                                 clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
-                                    <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text" name="tanggal-kadaluarsa"
-                                        required
+                                    <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text"
+                                        name="tanggal-kadaluarsa" required
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
                                         placeholder="Pilih Tanggal">
                                 </div>
