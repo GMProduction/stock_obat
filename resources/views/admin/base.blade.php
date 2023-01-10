@@ -179,7 +179,7 @@
                     <p class="title-menu block menu-text">Penerimaan Barang</p>
                 </a>
 
-                <a class="menu nav-link" href="">
+                <a class="menu @if ($page == 'pengeluaranPage') bg-primarylight @endif nav-link" nav-link" href="{{ route('pengeluaran') }}">
                     <img src={{ asset('local/icons/out.svg') }}
                     class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Pengeluaran Barang</p>
