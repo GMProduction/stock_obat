@@ -1,0 +1,9 @@
+.stock-lower {
+    --tw-bg-opacity: 1;
+    background-color:  rgb(253 232 232 / var(--tw-bg-opacity)) !important;
+}
+
+.stock-middle {
+    --tw-bg-opacity: 1;
+    background-color:  rgb(253 246 178 / var(--tw-bg-opacity)) !important;
+}
