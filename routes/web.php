@@ -46,6 +46,12 @@ Route::prefix('penerimaan')->group(function (){
     Route::get('tambah', [\App\Http\Controllers\PenerimaanController::class, 'tambah'])->name('tambahbarang');
 });
 
+Route::prefix('pengeluaran')->group(function (){
+    Route::get('', [\App\Http\Controllers\PengeluaranController::class, 'index'])->name('pengeluaran');
+    Route::get('tambah', [\App\Http\Controllers\PengeluaranController::class, 'tambah'])->name('pengeluaranbarang');
+});
+
+
 Route::get('/stock/kodebarang', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
 
 

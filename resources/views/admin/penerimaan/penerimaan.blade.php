@@ -64,9 +64,9 @@
                             {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
                             <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
                             <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
-                            {{-- <th data-priority="3" class="text-center text-xs">Kadaluarsa</th>
-                            <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
-                            <th data-priority="3" class="text-center text-xs">Total Harga</th> --}}
+                            <th data-priority="3" class="text-center text-xs">Sumber Anggaran</th>
+                            {{-- <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
+                            <th data-priority="3" class="text-center text-xs">Total Harga</th>  --}}
                             <th data-priority="4" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
@@ -78,6 +78,7 @@
                             {{-- <td class="text-center text-xs">Paracetamol</td>
                             <td class="text-center text-xs">Tablet</td> --}}
                             <td class="text-center text-xs">Btch0122</td>
+                            <td class="text-center text-xs">APBN</td>
                             {{-- <td class="text-center text-xs">20 Desember 2024</td>
                             <td class="text-center text-xs">Rp 50.000</td>
                             <td class="text-center text-xs">Rp 80.000</td> --}}

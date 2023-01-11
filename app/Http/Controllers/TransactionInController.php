@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Helper\CustomController;
+use App\Models\GeneralLedger;
 use App\Models\Medicine;
 use App\Models\MedicineIn;
 use App\Models\TransactionIn;
@@ -23,7 +24,7 @@ class TransactionInController extends CustomController
         try {
             $medicine_id = $this->postField('medicine');
             $medicine = Medicine::find($medicine_id);
-            $cart_exist = MedicineIn::where('medicine_id', '=', $medicine_id)->first();
+            $cart_exist = MedicineIn::where('medicine_id', '=', $medicine_id)->whereNull('transaction_in_id')->first();
             $qty = (int)$this->postField('qty');
             $price = (int)$this->postField('price');
             $total = $qty * $price;
@@ -58,7 +59,6 @@ class TransactionInController extends CustomController
     {
         DB::beginTransaction();
         try {
-
             $data_request = [
                 'user_id' => 1,
                 'budget_source_id' => $this->postField('budget_source'),
@@ -69,7 +69,23 @@ class TransactionInController extends CustomController
             $transaction_in = TransactionIn::create($data_request);
             $medicine_ins = MedicineIn::whereNull('transaction_in_id')->get();
             foreach ($medicine_ins as $medicine_in) {
-
+                $medicine_in->update([
+                    'transaction_in_id' => $transaction_in->id
+                ]);
+                $qty_in = $medicine_in->qty;
+                $medicine = Medicine::find($medicine_in->medicine_id);
+                $current_qty = $medicine->qty;
+                $new_qty = $qty_in + $current_qty;
+                $medicine->update([
+                    'qty' => $new_qty
+                ]);
+                GeneralLedger::create([
+                    'date' => Carbon::now(),
+                    'medicine_in_id' => $medicine_in->id,
+                    'qty' => $qty_in,
+                    'type' => 0,
+                    'description' => $this->postField('description') ?? '-'
+                ]);
             }
             DB::commit();
             return $this->jsonResponse('success', 200);
