@@ -82,6 +82,7 @@ class TransactionInController extends CustomController
                 GeneralLedger::create([
                     'date' => Carbon::now(),
                     'medicine_in_id' => $medicine_in->id,
+                    'transaction_in_id' => $transaction_in->id,
                     'qty' => $qty_in,
                     'type' => 0,
                     'description' => $this->postField('description') ?? '-'
