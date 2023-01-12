@@ -25,3 +25,20 @@ function datatable(tb, url, columns, createdRow = null) {
     }).columns.adjust()
         .responsive.recalc();
 }
+
+function BasicDatatableGenerator(element, url = '/', col = [], colDef = [], data = function () {}, extConfig = {}) {
+    let baseConfig = {
+        scrollX: true,
+        processing: true,
+        ajax: {
+            type: 'GET',
+            url: url,
+            'data': data
+        },
+        columnDefs: colDef,
+        columns: col,
+        paging: true,
+    };
+    let config = {...baseConfig, ...extConfig};
+    return $(element).DataTable(config).columns.adjust().responsive.recalc();
+}

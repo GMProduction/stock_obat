@@ -18,16 +18,16 @@ class MedicineRepository extends BaseRepo
     {
         request()->validate(
             [
-                'name'        => 'required',
+                'name' => 'required',
                 'category_id' => 'required',
-                'unit_id'     => 'required',
-                'limit'       => 'required',
+                'unit_id' => 'required',
+                'limit' => 'required',
             ],
             [
-                'name.required'        => 'Nama obat harus di isi',
+                'name.required' => 'Nama obat harus di isi',
                 'category_id.required' => 'Kategori obat harus di isi',
-                'unit_id.required'     => 'Satuan obat harus di isi',
-                'limit.required'       => 'Limit obat harus di isi',
+                'unit_id.required' => 'Satuan obat harus di isi',
+                'limit.required' => 'Limit obat harus di isi',
             ]
         );
     }
@@ -67,12 +67,32 @@ class MedicineRepository extends BaseRepo
 
     public function showDatatable()
     {
-        $data             = Medicine::with(['category:id,name', 'unit:id,name'])->select();
+        $data = Medicine::with(['category:id,name', 'unit:id,name'])->select();
         $this->selectData = ['name', 'unit_id', 'limit', 'category_id'];
-        $this->button     = ['edit', 'delete'];
+        $this->button = ['edit', 'delete'];
 
         return $this->datatabe($data);
 
     }
 
+    public function findAll($preload = [])
+    {
+        return Medicine::with($preload)->get();
+    }
+
+    public function findById($id)
+    {
+        return Medicine::find($id);
+    }
+
+    public function addStock($medicine_id, $addedStock = 0)
+    {
+        /** @var Medicine $medicine */
+        $medicine = Medicine::find($medicine_id);
+        $qty = $medicine->qty;
+        $new_qty = $addedStock + $qty;
+        return $medicine->update([
+            'qty' => $new_qty
+        ]);
+    }
 }
