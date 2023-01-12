@@ -156,7 +156,8 @@
             </a>
 
             <div id="submenu" class="transition">
-                <a class="menu {{ request()->is('master') ? 'bg-primarylight' : '' }} nav-link" href="{{route('masterbarang')}}">
+                <a class="menu {{ request()->is('master') ? 'bg-primarylight' : '' }} nav-link"
+                   href="{{route('masterbarang')}}">
                     <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                          class=" mr-2 menu-icon text-sm w-6 object-scale-down"/>
                     <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
@@ -176,31 +177,37 @@
                 <p class="title-menu block menu-text">Penerimaan Barang</p>
             </a>
 
-                <a class="menu @if ($page == 'pengeluaranPage') bg-primarylight @endif nav-link" nav-link" href="{{ route('pengeluaran') }}">
-                    <img src={{ asset('local/icons/out.svg') }}
-                    class=" mr-2 menu-icon text-sm w-6 object-scale-down">
-                    <p class="title-menu block menu-text">Pengeluaran Barang</p>
-                </a>
-            </div>
+            <a class="menu nav-link" href="">
+                <img src="{{ asset('local/icons/out.svg') }}"
+                     class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                <p class="title-menu block menu-text">Pengeluaran Barang</p>
+            </a>
+        </div>
 
 
     </div>
+    <a class="menu bg-primarylight  nav-link" href="{{ route('pengeluaran') }}">
+        <img src="{{ asset('local/icons/out.svg') }}"
+             class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+        <p class="title-menu block menu-text">Pengeluaran Barang</p>
+    </a>
+</div>
 
-    {{-- CONTENT --}}
-    <div class="w-full">
-        <div class="h-[70px]">
+{{-- CONTENT --}}
+<div class="w-full">
+    <div class="h-[70px]">
+
+    </div>
+
+    <div class="flex " style="min-height: calc(100vh - 70px)">
+        <div class="side">
 
         </div>
-
-        <div class="flex " style="min-height: calc(100vh - 70px)">
-            <div class="side">
-
-            </div>
-            <div class="flex-1">
-                @yield('content')
-            </div>
+        <div class="flex-1">
+            @yield('content')
         </div>
     </div>
+</div>
 </div>
 
 <!-- jQuery -->
