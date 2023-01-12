@@ -73,7 +73,7 @@ function confirmSave(title,text, form, url, resposeSuccess) {
                     console.log(textStatus);
                     console.log(error.responseJSON.errors);
                     console.log('warning',error.responseJSON.errors ? error.responseJSON.errors[Object.keys(error.responseJSON.errors)[0]][0] : error.responseJSON['message'], "warning")
-                    Swal.fire('Error', error.responseJSON.errors ? error.responseJSON.errors[Object.keys(error.responseJSON.errors)[0]][0] : 'Terjadi kesalahan sistem', "error")
+                    Swal.fire('warning', error.responseJSON.errors ? error.responseJSON.errors[Object.keys(error.responseJSON.errors)[0]][0] : error.responseJSON['message'], "warning")
                 }
             })
         } else {

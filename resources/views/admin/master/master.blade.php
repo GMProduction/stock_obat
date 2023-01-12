@@ -174,7 +174,7 @@
                             <label for="countries"
                                    class="block mt-3 text-sm font-medium text-gray-900 dark:text-white">Kategori Obat</label>
                             <div class="flex flex-col">
-                                 <span id="tooltip-tambahsatuan" class="block mb-2 text-xs font-bold text-gray-900 dark:text-white">
+                                 <span id="tooltip-tambahsatuan" class="block mb-2 text-xs font-bold text-red-500 dark:text-white">
                                     Jika data kategori obat tidak ditemukan, ketik data satuan kemudian tekan "enter"
                                 </span>
                                 <select id="selectCategory" name="category_id"
@@ -476,14 +476,9 @@
                 },
             ];
             let createdRow = function( row, data, dataIndex ) {
-                console.log(data)
                 if ( data.qty <= data.limit ) {
                     $(row).addClass( 'stock-lower' );
                 }
-
-
-                console.log(row)
-
             };
             datatable('tb-master', '{{route('masterdatatable')}}', colums, createdRow)
         }

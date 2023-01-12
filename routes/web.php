@@ -22,7 +22,7 @@ Route::match(['post', 'get'],'/', [\App\Http\Controllers\AuthController::class, 
 
 Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::prefix('master')->group(function (){
-    Route::match(['POST','GET'],'', [\App\Http\Controllers\MasterController::class, 'index'])->name('masterbarang');
+    Route::match(['POST','GET'],'/', [\App\Http\Controllers\MasterController::class, 'index'])->name('masterbarang');
     Route::get('datatable', [\App\Http\Controllers\MasterController::class, 'datatable'])->name('masterdatatable');
     Route::prefix('lokasi')->group(function (){
         Route::match(['POST','GET'],'', [\App\Http\Controllers\MasterLokasiController::class, 'index'])->name('masterlokasi');
