@@ -9,14 +9,18 @@ use App\Models\GeneralLedger;
 use App\Models\Medicine;
 use App\Models\MedicineIn;
 use App\Models\TransactionIn;
+use App\Repository\MedicineInRepository;
+use App\Repository\TransactionInRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class TransactionInController extends CustomController
 {
-    public function __construct()
+    private $transactionInRepository;
+    public function __construct(TransactionInRepository $transactionInRepository)
     {
         parent::__construct();
+        $this->transactionInRepository = $transactionInRepository;
     }
 
     public function storeCart()
@@ -24,14 +28,14 @@ class TransactionInController extends CustomController
         try {
             $medicine_id = $this->postField('medicine');
             $medicine = Medicine::find($medicine_id);
-            $cart_exist = MedicineIn::where('medicine_id', '=', $medicine_id)->whereNull('transaction_in_id')->first();
+            $medicineOnCart = $this->transactionInRepository->medicineOnCart($medicine_id);
             $qty = (int)$this->postField('qty');
             $price = (int)$this->postField('price');
             $total = $qty * $price;
-            if ($cart_exist) {
-                $qty = $cart_exist->qty + $qty;
+            if ($medicineOnCart) {
+                $qty = $medicineOnCart->qty + $qty;
                 $total = $qty * $price;
-                $cart_exist->update([
+                $medicineOnCart->update([
                     'qty' => $qty,
                     'price' => $price,
                     'total' => $total
@@ -67,6 +71,9 @@ class TransactionInController extends CustomController
                 'description' => $this->postField('description')
             ];
             $transaction_in = TransactionIn::create($data_request);
+            $cart = $this->transactionInRepository->cart();
+
+
             $medicine_ins = MedicineIn::whereNull('transaction_in_id')->get();
             foreach ($medicine_ins as $medicine_in) {
                 $medicine_in->update([
