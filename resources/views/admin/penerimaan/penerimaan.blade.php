@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <table id="tb-master" class="stripe hover mt-10"
-                       style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                       style="width:100%; ">
                     <thead>
                     <tr>
                         <th data-priority="1" class="text-center text-xs">No</th>

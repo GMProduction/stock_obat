@@ -359,4 +359,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 40px !important;
   right: 5px !important;
-}/*# sourceMappingURL=genosstailwind.css.map */
+}
+
+.dataTables_processing {
+  z-index: 5;
+}
