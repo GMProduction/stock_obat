@@ -38,23 +38,10 @@
             </ol>
         </nav>
 
-        <div class="grid grid-cols-3 gap-4">
-            <div class="section relative">
+        <div class="grid grid-cols-5 gap-4">
+            <div class="section relative col-span-2">
                 <p class="title ">Penerimaan Barang </p>
-                <div class="absolute right-0 top-0 mt-3 mr-3">
-                    <div class="flex">
-                        <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
-                                class="material-symbols-outlined mr-2 menu-icon text-sm">
-                                filter_alt
-                            </span>Filter</button>
 
-                        <button onclick="location.href='{{ route('tambahbarang') }}'"
-                            class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm "><span
-                                class="material-symbols-outlined mr-2 menu-ico text-sm">
-                                add
-                            </span>Tambah</button>
-                    </div>
-                </div>
                 <table id="tb-master" class="stripe hover mt-10"
                     style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
@@ -84,9 +71,8 @@
                             <td class="text-center text-xs">Rp 80.000</td> --}}
                             <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">
                                 <button
-                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
-                                <button class="bg-red-500 rounded-full text-white px-3 py-2 text-xs"
-                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
+                                    class="bg-blue-500 rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Detail</button>
+
                             </td>
                         </tr>
 
@@ -96,62 +82,101 @@
                 </table>
             </div>
 
-            <div class="section col-span-2 relative">
-                <p class="title ">Penerimaan Barang </p>
-                <div class="absolute right-0 top-0 mt-3 mr-3">
-                    <div class="flex">
-                        <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
-                                class="material-symbols-outlined mr-2 menu-icon text-sm">
-                                filter_alt
-                            </span>Filter</button>
-
-                        <button onclick="location.href='{{ route('tambahbarang') }}'"
-                            class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm "><span
-                                class="material-symbols-outlined mr-2 menu-ico text-sm">
-                                add
-                            </span>Tambah</button>
+            <div class="section col-span-3 relative">
+                <div class="border rounded-md p-3">
+                    <div class="mb-3 ">
+                        <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor Batch
+                        </label>
+                        <input type="text" id="total"
+                            class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 " readonly
+                            name="total" />
                     </div>
+
+                    <div class="mb-3 ">
+                        <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal Datang
+                        </label>
+                        <input type="text" id="total"
+                            class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 " readonly
+                            name="total" />
+                    </div>
+
+                    <div class="mb-3 ">
+                        <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Sumber
+                            Anggarang
+                        </label>
+                        <input type="text" id="total"
+                            class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 " readonly
+                            name="total" />
+                    </div>
+
+                    <div class="mb-3 ">
+                        <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total
+                            Biaya
+                        </label>
+                        <input type="text" id="total"
+                            class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 " readonly
+                            name="total" />
+                    </div>
+
+
+
+
+                    <div class="mb-3 mt-5">
+                        <label for="description" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
+                            Penerimaan
+                        </label>
+                        <textarea type="text" id="description"
+                            class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4"
+                            placeholder="Catatan Penerimaan" name="description"></textarea>
+                    </div>
+
                 </div>
-                <table id="tb-master" class="stripe hover mt-10"
-                    style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                    <thead>
-                        <tr>
-                            <th data-priority="1" class="text-right text-xs">No</th>
-                            <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
-                            {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                            <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
-                            <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
-                            <th data-priority="3" class="text-center text-xs">Sumber Anggaran</th>
-                            {{-- <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
-                            <th data-priority="3" class="text-center text-xs">Total Harga</th>  --}}
-                            <th data-priority="4" class="text-center text-xs">Action</th>
-                        </tr>
-                    </thead>
+                
+                <div class="  ">
+                    <p class="title ">Daftar Barang </p>
 
-                    <tbody>
-                        <tr>
-                            <td class="text-right text-xs">1</td>
-                            <td class="text-center text-xs">12 Desember 2022</td>
-                            {{-- <td class="text-center text-xs">Paracetamol</td>
-                            <td class="text-center text-xs">Tablet</td> --}}
-                            <td class="text-center text-xs">Btch0122</td>
-                            <td class="text-center text-xs">APBN</td>
-                            {{-- <td class="text-center text-xs">20 Desember 2024</td>
-                            <td class="text-center text-xs">Rp 50.000</td>
-                            <td class="text-center text-xs">Rp 80.000</td> --}}
-                            <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">
-                                <button
-                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
-                                <button class="bg-red-500 rounded-full text-white px-3 py-2 text-xs"
-                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
-                            </td>
-                        </tr>
+                    <table id="tb-daftarbarang" class="stripe hover mt-10"
+                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                        <thead>
+                            <tr>
+                                <th data-priority="1" class="text-right text-xs">No</th>
+                                <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
+                                {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
+                                <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
+                                <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
+                                <th data-priority="3" class="text-center text-xs">Sumber Anggaran</th>
+                                {{-- <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
+                                <th data-priority="3" class="text-center text-xs">Total Harga</th>  --}}
+                                <th data-priority="4" class="text-center text-xs">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-right text-xs">1</td>
+                                <td class="text-center text-xs">12 Desember 2022</td>
+                                {{-- <td class="text-center text-xs">Paracetamol</td>
+                                <td class="text-center text-xs">Tablet</td> --}}
+                                <td class="text-center text-xs">Btch0122</td>
+                                <td class="text-center text-xs">APBN</td>
+                                {{-- <td class="text-center text-xs">20 Desember 2024</td>
+                                <td class="text-center text-xs">Rp 50.000</td>
+                                <td class="text-center text-xs">Rp 80.000</td> --}}
+                                <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">
+                                    <button
+                                        class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
+                                    <button class="bg-red-500 rounded-full text-white px-3 py-2 text-xs"
+                                        onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
+                                </td>
+                            </tr>
 
 
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
 
 
         </div>
@@ -168,7 +193,15 @@
         $(document).ready(function() {
 
             var table = $('#tb-master').DataTable({
-                    responsive: true
+                    responsive: true,
+                    "lengthChange": false
+                })
+                .columns.adjust()
+                .responsive.recalc();
+
+            var daftarbarang = $('#tb-daftarbarang').DataTable({
+                    responsive: true,
+                    "lengthChange": false
                 })
                 .columns.adjust()
                 .responsive.recalc();
