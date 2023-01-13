@@ -21,6 +21,7 @@
 
     {{-- ICON --}}
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('local/vendor/swal2/dist/sweetalert2.all.min.js') }}"></script>
     @yield('css')
 </head>
 
@@ -72,120 +73,148 @@
             <div class="p-3 py-5">
 
                 {{-- <a class="menu nav-link" onclick="dropdown()">
-                    <span class="material-symbols-outlined mr-2 menu-icon">
-                        settings
+                <span class="material-symbols-outlined mr-2 menu-icon">
+                    settings
+                </span>
+                <div class="flex justify-between w-full">
+                    <p class="title-menu block menu-text">Customize</p>
+                    <span id="arrow" class="material-symbols-outlined mr-2 menu-icon">
+                        expand_more
+
                     </span>
-                    <div class="flex justify-between w-full">
-                        <p class="title-menu block menu-text">Customize</p>
-                        <span id="arrow" class="material-symbols-outlined mr-2 menu-icon">
-                            expand_more
+                </div>
 
-                        </span>
-                    </div>
+            </a>
 
+            <div id="submenu" class="transition">
+                <a class="menu  nav-link ">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        fiber_manual_record
+                    </span>
+                    <p class="title-menu block nav-link menu-text text-sm">Slider </p>
                 </a>
+                <a class="menu  nav-link ">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        fiber_manual_record
+                    </span>
+                    <p class="title-menu block nav-link menu-text text-sm">Sejarah </p>
+                </a>
+                <a class="menu nav-link">
 
-                <div id="submenu" class="transition">
-                    <a class="menu  nav-link ">
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
-                        <p class="title-menu block nav-link menu-text text-sm">Slider </p>
-                    </a>
-                    <a class="menu  nav-link ">
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
-                        <p class="title-menu block nav-link menu-text text-sm">Sejarah </p>
-                    </a>
-                    <a class="menu nav-link">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        fiber_manual_record
+                    </span>
+                    <p class="title-menu block nav-link menu-text ext-sm">Profil </p>
+                </a>
+                <a class="menu">
 
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
-                        <p class="title-menu block nav-link menu-text ext-sm">Profil </p>
-                    </a>
-                    <a class="menu">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        fiber_manual_record
+                    </span>
+                    <p class="title-menu block nav-link menu-text ext-sm">Bidang </p>
+                </a>
+                <a class="menu">
 
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
-                        <p class="title-menu block nav-link menu-text ext-sm">Bidang </p>
-                    </a>
-                    <a class="menu">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        fiber_manual_record
+                    </span>
+                    <p class="title-menu block nav-link menu-text ext-sm">Aplikasi Online</p>
+                </a>
+                <a class="menu">
 
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
-                        <p class="title-menu block nav-link menu-text ext-sm">Aplikasi Online</p>
-                    </a>
-                    <a class="menu">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        fiber_manual_record
+                    </span>
+                    <p class="title-menu block nav-link menu-text ext-sm">Kontak Profil</p>
+                </a>
+                <a class="menu">
 
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
-                        <p class="title-menu block nav-link menu-text ext-sm">Kontak Profil</p>
-                    </a>
-                    <a class="menu">
+                    <span class="material-symbols-outlined mr-2 menu-icon">
+                        fiber_manual_record
+                    </span>
+                    <p class="title-menu block nav-link menu-text ext-sm">Video Yotube</p>
+                </a>
+            </div> --}}
 
-                        <span class="material-symbols-outlined mr-2 menu-icon">
-                            fiber_manual_record
-                        </span>
-                        <p class="title-menu block nav-link menu-text ext-sm">Video Yotube</p>
-                    </a>
-                </div> --}}
-
-                {{ $page }}
-                <a class="menu  @if ($page == 'dashboardPage') bg-primarylight @endif nav-link"
+                <a class="menu {{ request()->is('/') ? 'bg-primarylight' : '' }}  nav-link"
                     href="{{ route('dashboard') }}">
-                    <img src={{ asset('local/icons/dashboard.svg') }}
+
+                    <img src="{{ asset('local/icons/dashboard.svg') }}"
                         class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Dashboard</p>
                 </a>
 
-                <a class="menu  @if ($page == 'masterPage') bg-primarylight @endif nav-link" onclick="dropdown()">
-                    <img src={{ asset('local/icons/assignment.svg') }}
+                <a class="menu  {{ request()->is('master*') ? 'bg-primarylight' : '' }} nav-link" onclick="dropdown()">
+                    <img src="{{ asset('local/icons/assignment.svg') }}"
                         class=" mr-2 menu-icon text-sm w-6 object-scale-down">
-
                     <div class="flex justify-between w-full">
                         <p class="title-menu block menu-text">Master</p>
-                        <span id="arrow" class="material-symbols-outlined mr-2 menu-icon">
-                            expand_more
-
-                        </span>
+                        <img id="arrow" src="{{ asset('local/icons/arrowup.svg') }}"
+                            class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                     </div>
 
                 </a>
 
                 <div id="submenu" class="transition">
-                    <a class="menu nav-link" href="{{ route('masterbarang') }}">
-                        <img src={{ asset('local/icons/fiber_manual_record.svg') }}
-                            class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                    <a class="menu {{ request()->is('master') ? 'bg-primarylight' : '' }} nav-link"
+                        href="{{ route('masterbarang') }}">
+                        <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
+                            class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
                         <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
                     </a>
 
                     <a class="menu nav-link" href="{{ route('masterlokasi') }}">
-                        <img src={{ asset('local/icons/fiber_manual_record.svg') }}
+                        <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                         <p class="title-menu block nav-link menu-text text-sm">Master Lokasi </p>
                     </a>
 
                 </div>
 
-                <a class="menu  @if ($page == 'penerimaanPage') bg-primarylight @endif nav-link"
-                href="{{ route('penerimaanbarang') }}">
-                    <img src={{ asset('local/icons/in.svg') }}
-                    class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                <a class="menu  nav-link" href="{{ route('penerimaanbarang') }}">
+                    <img src="{{ asset('local/icons/in.svg') }}" class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Penerimaan Barang</p>
                 </a>
 
-                <a class="menu @if ($page == 'pengeluaranPage') bg-primarylight @endif nav-link" nav-link" href="{{ route('pengeluaran') }}">
-                    <img src={{ asset('local/icons/out.svg') }}
-                    class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                <a class="menu nav-link" href="{{ route('pengeluaran') }}">
+                    <img src="{{ asset('local/icons/out.svg') }}"
+                        class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Pengeluaran Barang</p>
                 </a>
-            </div>
 
+                <a class="menu  {{ request()->is('laporan*') ? 'bg-primarylight' : '' }} nav-link"
+                    onclick="dropdownlaporan()">
+                    <img src="{{ asset('local/icons/assignment.svg') }}"
+                        class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                    <div class="flex justify-between w-full">
+                        <p class="title-menu block menu-text">Laporan</p>
+                        <img id="arrowlaporan" src="{{ asset('local/icons/arrowup.svg') }}"
+                            class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
+
+                    </div>
+
+                </a>
+
+                <div id="submenulaporan" class="transition">
+
+                    <a class="menu nav-link" href="{{ route('laporanpenerimaan') }}">
+                        <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
+                            class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
+                        <p class="title-menu block menu-text text-xs">Laporan Penerimaan Barang</p>
+                    </a>
+
+                    <a class="menu nav-link" href="{{ route('laporanpengeluaran') }}">
+                        <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
+                            class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
+                        <p class="title-menu block menu-text text-xs">Laporan Pengeluaran Barang</p>
+                    </a>
+
+
+
+                </div>
+
+
+            </div>
 
         </div>
 
@@ -213,16 +242,27 @@
     <script type="text/javascript">
         function dropdown() {
             document.querySelector("#submenu").classList.toggle("hidden");
-            document.querySelector("#arrow").classList.toggle("rotate-0");
+            document.querySelector("#arrow").classList.toggle("rotate-180");
         }
 
         dropdown();
     </script>
+
+    <script type="text/javascript">
+        function dropdownlaporan() {
+            document.querySelector("#submenulaporan").classList.toggle("hidden");
+            document.querySelector("#arrowlaporan").classList.toggle("rotate-180");
+        }
+
+        dropdownlaporan();
+    </script>
+
     <script src="{{ asset('/js/flowbite.js') }}"></script>
-    <script src="{{ asset('local/vendor/swal2/dist/sweetalert2.all.min.js') }}"></script>
+
     <script src="{{ asset('/js/admin/nav.js') }}"></script>
     <script src="{{ asset('js/admin/admin.js') }}"></script>
     {{-- <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}
+    <script src="{{ asset('js/datatable.js') }}"></script>
 
     @yield('morejs')
 

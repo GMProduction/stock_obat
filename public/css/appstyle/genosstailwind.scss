@@ -421,7 +421,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 
 .select2-container .select2-selection--single {
   height: 40px !important;
-  
+
 }
 
 .select2-container--default .select2-selection--single {
@@ -438,4 +438,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
 height: 40px !important;
 right: 5px !important;
+}
+
+.dataTables_processing{
+    z-index: 5;
 }

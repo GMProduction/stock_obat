@@ -28,7 +28,7 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Pernerimaan Barang</a>
+                        <a href="rou" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Pengeluaran Barang</a>
                     </div>
                 </li>
                 <li>
@@ -56,7 +56,7 @@
 
 
                     <div class="border rounded-md col-span-2 p-3 relative">
-                        <p class="text-gray-500">Barang yang diterima</p>
+                        <p class="text-gray-500">Barang yang dikeluarkan</p>
                         <div class="absolute right-0 top-0 mt-3 mr-3">
                             <div class="flex">
 
@@ -171,19 +171,13 @@
                     </div>
 
                     <div class="border rounded-md p-3">
-                        <p class="text-gray-500">Informasi penerimaan</p>
+                        <p class="text-gray-500">Informasi pengeluaran</p>
 
-                        <div class="mb-3 mt-5">
-                            <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor Batch
-                            </label>
-                            <input type="text" id="e-nama-info"
-                                class="bg-gray-200 border  w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
-                                placeholder="Nomor Batch" readonly name="nomor-batch">
-                        </div>
+
 
                         <div class="mb-3 mt-5">
                             <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
-                                Diterima
+                                Dikeluarkan
                             </label>
                             <div class="relative">
                                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -201,32 +195,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 mt-5">
-                            <label for="countries"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Sumber
-                                Anggaran</label>
 
-                            <div class="flex">
-                                <select id="countries"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected>Pilih Sumber Anggaran</option>
-                                    <option value="US">APBD</option>
-                                    <option value="CA">APBN</option>
-                                </select>
-
-                                <button data-tooltip-target="tooltip-tambahsumber" type="button"
-                                    class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsumber"><span
-                                        class="material-symbols-outlined menu-ico text-sm">
-                                        add
-                                    </span></button>
-
-                                <div id="tooltip-tambahsumber" role="tooltip"
-                                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                    Tambah sumber anggaran "jika belum ada di dalam menu"
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="mb-3 mt-5">
                             <label for="total-keseluruhan" class="block mb-2 text-sm font-medium text-gray-700 mt-3">
@@ -235,6 +204,16 @@
                             <input type="text" id="total-keseluruhan"
                                 class="bg-gray-200 border  w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
                                 placeholder="Total Keseluruhan" readonly name="total-keseluruhan">
+                        </div>
+
+
+                        <div class="mb-3 mt-5">
+                            <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
+                                pengeluaran
+                            </label>
+                            <textarea type="text" id="e-nama-info"
+                                class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4" placeholder="Catatan Pengeluaran"
+                                name="Catatan Pengeluaran"></textarea>
                         </div>
 
                     </div>
@@ -246,7 +225,7 @@
                         class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             save
-                        </span>Simpan Data Penerimaan
+                        </span>Simpan Data Pengeluaran
                     </button>
                 </div>
             </div>
@@ -293,25 +272,7 @@
                             </select>
 
 
-                            <div class="mb-3 mt-5">
-                                <label for="tanggal-kadaluarsa" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
-                                    Kadaluarsa
-                                </label>
-                                <div class="relative">
-                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text" name="tanggal-kadaluarsa"
-                                        required
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
-                                        placeholder="Pilih Tanggal">
-                                </div>
-                            </div>
+
 
                             <div class="flex gap-4">
                                 <div class="mb-3">
@@ -319,7 +280,7 @@
                                     </label>
                                     <input type="number" id="qty" min="1"
                                         class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                        placeholder="Qty yang diterima" required name="qty">
+                                        placeholder="Qty yang dikeluarkan" required name="qty">
                                 </div>
 
                                 <div class="mb-3 grow">
@@ -337,8 +298,8 @@
                                         class="block mb-2 text-sm font-medium text-gray-700 mt-3">Harga Satuan
                                     </label>
                                     <input type="number" id="qty" min="0"
-                                        class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                        placeholder="harga Satuan" required name="harga-satuan">
+                                        class="bg-gray-200 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
+                                        placeholder="harga Satuan" readonly name="harga-satuan">
                                 </div>
 
                                 <div class="mb-3 grow">

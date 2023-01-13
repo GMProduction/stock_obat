@@ -1,4 +1,4 @@
-function datatable(tb, url, columns) {
+function datatable(tb, url, columns, createdRow = null) {
     $('#' + tb).DataTable({
         processing: true,
         serverSide: true,
@@ -20,6 +20,25 @@ function datatable(tb, url, columns) {
             $("td:first", nRow).html(index);
             return nRow;
         },
+        createdRow: createdRow,
         columns: columns
-    })
+    }).columns.adjust()
+        .responsive.recalc();
+}
+
+function BasicDatatableGenerator(element, url = '/', col = [], colDef = [], data = function () {}, extConfig = {}) {
+    let baseConfig = {
+        scrollX: true,
+        processing: true,
+        ajax: {
+            type: 'GET',
+            url: url,
+            'data': data
+        },
+        columnDefs: colDef,
+        columns: col,
+        paging: true,
+    };
+    let config = {...baseConfig, ...extConfig};
+    return $(element).DataTable(config).columns.adjust().responsive.recalc();
 }
