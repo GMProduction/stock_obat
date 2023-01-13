@@ -9,6 +9,7 @@ use App\Models\GeneralLedger;
 use App\Models\Medicine;
 use App\Models\MedicineIn;
 use App\Models\TransactionIn;
+use App\Repository\BudgetRepository;
 use App\Repository\MedicineInRepository;
 use App\Repository\MedicineRepository;
 use App\Repository\TransactionInRepository;
@@ -19,12 +20,14 @@ class TransactionInController extends CustomController
 {
     private $transactionInRepository;
     private $medicineRepository;
+    private $budgetSourceRepository;
 
-    public function __construct(TransactionInRepository $transactionInRepository, MedicineRepository $medicineRepository)
+    public function __construct(TransactionInRepository $transactionInRepository, MedicineRepository $medicineRepository, BudgetRepository $budgetSourceRepository)
     {
         parent::__construct();
         $this->transactionInRepository = $transactionInRepository;
         $this->medicineRepository = $medicineRepository;
+        $this->budgetSourceRepository = $budgetSourceRepository;
     }
 
     public function index()
@@ -38,12 +41,17 @@ class TransactionInController extends CustomController
 
     public function add()
     {
+        if ($this->request->method() === 'POST') {
+            return $this->store();
+        }
         if ($this->request->ajax()) {
             $data = $this->transactionInRepository->cart(['medicine', 'unit']);
             return $this->basicDataTables($data);
         }
         $medicines = $this->medicineRepository->findAll(['unit']);
-        return view('admin.penerimaan.tambahbarang')->with(['medicines' => $medicines]);
+        $budget_sources = $this->budgetSourceRepository->getAll();
+        $total = $this->transactionInRepository->cart()->sum('total');
+        return view('admin.penerimaan.tambahbarang')->with(['medicines' => $medicines, 'budget_sources' => $budget_sources, 'total' => $total]);
     }
 
     public function storeCart()
@@ -54,6 +62,7 @@ class TransactionInController extends CustomController
             $price = (int)$this->postField('price');
             $total = $qty * $price;
             $expired_date = $this->postField('expired_date');
+            $expired_date_value = Carbon::parse($expired_date)->format('Y-m-d');
             $medicine = $this->transactionInRepository->medicineById($medicine_id);
             $unit_id = $medicine->unit_id;
             $data_request = [
@@ -61,31 +70,32 @@ class TransactionInController extends CustomController
                 'transaction_in_id' => null,
                 'medicine_id' => $medicine_id,
                 'unit_id' => $unit_id,
-                'expired_date' => $expired_date,
+                'expired_date' => $expired_date_value,
                 'qty' => $qty,
                 'price' => $price,
                 'total' => $total,
             ];
             $this->transactionInRepository->addToCart($data_request);
-            return $this->jsonResponse('success', 200);
+            return redirect()->back()->with('success', 'Berhasil menambahkan data...');
         } catch (\Exception $e) {
-            return $this->jsonResponse($e->getMessage(), 500);
+            return redirect()->back()->with('failed', 'Terjadi kesalahan server...' . $e->getMessage());
         }
     }
 
-    public function store()
+    private function store()
     {
         DB::beginTransaction();
         try {
             $author = 1;
             $budget_source_id = $this->postField('budget_source');
-            $date = Carbon::now();
+            $date = $this->postField('date');
+            $date_value = Carbon::parse($date)->format('Y-m-d');
             $batch_id = 'TI-' . date('YmdHis');
             $description = $this->postField('description') ?? '-';
             $data_request = [
                 'user_id' => $author,
                 'budget_source_id' => $budget_source_id,
-                'date' => $date,
+                'date' => $date_value,
                 'batch_id' => $batch_id,
                 'description' => $description
             ];
@@ -98,7 +108,7 @@ class TransactionInController extends CustomController
                 $addedStock = $item->qty;
                 $this->transactionInRepository->patchStock($medicine_id, $addedStock);
                 $general_ledger_data = [
-                    'date' => $date,
+                    'date' => $date_value,
                     'medicine_in_id' => $medicine_in_id,
                     'transaction_in_id' => $transaction_in->id,
                     'qty' => $addedStock,
@@ -108,10 +118,10 @@ class TransactionInController extends CustomController
                 $this->transactionInRepository->saveToGeneralLedger($general_ledger_data);
             }
             DB::commit();
-            return $this->jsonResponse('success', 200);
+            return redirect()->route('penerimaanbarang')->with('success', 'Berhasil menambahkan data...');
         } catch (\Exception $e) {
             DB::rollBack();
-            return $this->jsonResponse($e->getMessage(), 500);
+            return redirect()->back()->with('failed', 'Terjadi kesalahan server...' . $e->getMessage());
         }
     }
 }

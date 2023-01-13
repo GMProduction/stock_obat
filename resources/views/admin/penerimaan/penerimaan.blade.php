@@ -7,6 +7,17 @@
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 @endsection
 @section('content')
+    @if (\Illuminate\Support\Facades\Session::has('success'))
+        <script>
+            Swal.fire("Berhasil!", '{{\Illuminate\Support\Facades\Session::get('success')}}', "success")
+        </script>
+    @endif
+
+    @if (\Illuminate\Support\Facades\Session::has('failed'))
+        <script>
+            Swal.fire("Gagal", '{{\Illuminate\Support\Facades\Session::get('failed')}}', "error")
+        </script>
+    @endif
     <div class="panel min-h-screen">
 
         <nav class="flex mb-6" aria-label="Breadcrumb">
