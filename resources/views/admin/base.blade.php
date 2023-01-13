@@ -21,6 +21,7 @@
 
     {{-- ICON --}}
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('local/vendor/swal2/dist/sweetalert2.all.min.js') }}"></script>
     @yield('css')
 </head>
 
@@ -257,7 +258,7 @@
     </script>
 
     <script src="{{ asset('/js/flowbite.js') }}"></script>
-    <script src="{{ asset('local/vendor/swal2/dist/sweetalert2.all.min.js') }}"></script>
+
     <script src="{{ asset('/js/admin/nav.js') }}"></script>
     <script src="{{ asset('js/admin/admin.js') }}"></script>
     {{-- <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}

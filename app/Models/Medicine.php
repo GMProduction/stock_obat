@@ -28,4 +28,9 @@ class Medicine extends Model
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }
+
+    public function medicine_ins()
+    {
+        return $this->hasMany(MedicineIn::class, 'medicine_in_id');
+    }
 }

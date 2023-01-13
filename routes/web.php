@@ -42,8 +42,9 @@ Route::prefix('master')->group(function (){
 });
 
 Route::prefix('penerimaan')->group(function (){
-    Route::get('', [\App\Http\Controllers\PenerimaanController::class, 'index'])->name('penerimaanbarang');
-    Route::get('tambah', [\App\Http\Controllers\PenerimaanController::class, 'tambah'])->name('tambahbarang');
+    Route::get('/', [\App\Http\Controllers\TransactionInController::class, 'index'])->name('penerimaanbarang');
+    Route::match(['get', 'post'],'/tambah', [\App\Http\Controllers\TransactionInController::class, 'add'])->name('tambahbarang');
+    Route::post('/tambah/cart', [\App\Http\Controllers\TransactionInController::class, 'storeCart'])->name('tambahbarang.cart');
 });
 
 Route::prefix('pengeluaran')->group(function (){
