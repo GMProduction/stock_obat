@@ -80,9 +80,9 @@ class MedicineRepository extends BaseRepo
         return Medicine::with($preload)->get();
     }
 
-    public function findById($id)
+    public function findById($id, $preload = [])
     {
-        return Medicine::find($id);
+        return Medicine::with($preload)->find($id);
     }
 
     public function addStock($medicine_id, $addedStock = 0)
@@ -105,7 +105,7 @@ class MedicineRepository extends BaseRepo
 
     public function real_stock($medicine_id)
     {
-        return Medicine::with('medicine_ins')
+        return Medicine::realStock()
             ->find($medicine_id);
     }
 }
