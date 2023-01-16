@@ -17,6 +17,7 @@ class MedicineIn extends Model
         'qty',
         'price',
         'total',
+        'used',
     ];
 
     public function transaction_in()

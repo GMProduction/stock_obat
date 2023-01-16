@@ -18,5 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/transaction-in', [\App\Http\Controllers\TransactionInController::class, 'store']);
-Route::post('/transaction-in/cart', [\App\Http\Controllers\TransactionInController::class, 'storeCart']);
+Route::post('/transaction-out', [\App\Http\Controllers\TransactionOutController::class, 'store']);
+Route::post('/transaction-out/cart', [\App\Http\Controllers\TransactionOutController::class, 'store_cart']);
