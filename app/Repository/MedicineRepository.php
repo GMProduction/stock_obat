@@ -95,4 +95,17 @@ class MedicineRepository extends BaseRepo
             'qty' => $new_qty
         ]);
     }
+
+    public function stock($medicine_id)
+    {
+        /** @var Medicine $medicine */
+        $medicine = Medicine::find($medicine_id);
+        return $medicine->qty;
+    }
+
+    public function real_stock($medicine_id)
+    {
+        return Medicine::with('medicine_ins')
+            ->find($medicine_id);
+    }
 }

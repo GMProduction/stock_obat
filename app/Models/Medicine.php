@@ -31,6 +31,6 @@ class Medicine extends Model
 
     public function medicine_ins()
     {
-        return $this->hasMany(MedicineIn::class, 'medicine_in_id');
+        return $this->hasMany(MedicineIn::class, 'medicine_id');
     }
 }

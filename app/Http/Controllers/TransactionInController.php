@@ -74,6 +74,7 @@ class TransactionInController extends CustomController
                 'qty' => $qty,
                 'price' => $price,
                 'total' => $total,
+                'rest' => $qty,
             ];
             $this->transactionInRepository->addToCart($data_request);
             return redirect()->back()->with('success', 'Berhasil menambahkan data...');
