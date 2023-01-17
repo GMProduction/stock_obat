@@ -20,4 +20,8 @@ class LocationRepository extends BaseRepo
         return $this->datatabe(Location::query());
     }
 
+    public function findAll($preload = [])
+    {
+        return Location::with($preload)->get();
+    }
 }

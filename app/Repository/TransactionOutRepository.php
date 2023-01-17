@@ -4,6 +4,8 @@
 namespace App\Repository;
 
 
+use App\Models\TransactionOut;
+
 class TransactionOutRepository
 {
     private $medicineRepository;
@@ -15,6 +17,13 @@ class TransactionOutRepository
         $this->medicineOutRepository = $medicineOutRepository;
         $this->medicineRepository = $medicineRepository;
         $this->medicineInRepository = $medicineInRepository;
+    }
+
+    public function getData($preload = [])
+    {
+        return TransactionOut::with($preload)
+            ->orderBy('date', 'DESC')
+            ->get();
     }
 
     public function findMedicineByID($medicine_id, $preload = [])
@@ -31,4 +40,15 @@ class TransactionOutRepository
     {
         return $this->medicineOutRepository->create($data);
     }
+
+    public function deleteCartItem($id)
+    {
+        return $this->medicineOutRepository->deleteByID($id);
+    }
+
+    public function cart($preload = [])
+    {
+        return $this->medicineOutRepository->cart($preload);
+    }
+
 }

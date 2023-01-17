@@ -48,8 +48,10 @@ Route::prefix('penerimaan')->group(function (){
 });
 
 Route::prefix('pengeluaran')->group(function (){
-    Route::get('', [\App\Http\Controllers\PengeluaranController::class, 'index'])->name('pengeluaran');
-    Route::get('tambah', [\App\Http\Controllers\PengeluaranController::class, 'tambah'])->name('pengeluaranbarang');
+    Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
+    Route::match(['get', 'post'],'/tambah', [\App\Http\Controllers\TransactionOutController::class, 'add'])->name('pengeluaranbarang');
+    Route::post('/tambah/cart', [\App\Http\Controllers\TransactionOutController::class, 'store_cart'])->name('pengeluaranbarang.cart');
+    Route::post('/destroy/cart', [\App\Http\Controllers\TransactionOutController::class, 'delete_cart'])->name('pengeluaranbarang.cart.destroy');
 });
 
 Route::prefix('laporan')->group(function (){

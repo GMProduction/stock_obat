@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 
 use App\Helper\CustomController;
+use App\Models\Location;
+use App\Repository\LocationRepository;
 use App\Repository\MedicineOutRepository;
 use App\Repository\MedicineRepository;
 use App\Repository\TransactionOutRepository;
@@ -15,11 +17,32 @@ use Illuminate\Support\Facades\DB;
 class TransactionOutController extends CustomController
 {
     private $transactionOutRepository;
+    private $medicineRepository;
+    private $locationRepository;
 
-    public function __construct(TransactionOutRepository $transactionOutRepository)
+    public function __construct(TransactionOutRepository $transactionOutRepository, MedicineRepository $medicineRepository, LocationRepository $locationRepository)
     {
         parent::__construct();
         $this->transactionOutRepository = $transactionOutRepository;
+        $this->medicineRepository = $medicineRepository;
+        $this->locationRepository = $locationRepository;
+    }
+
+    public function index()
+    {
+        if ($this->request->ajax()) {
+            $data = $this->transactionOutRepository->getData(['location']);
+            return $this->basicDataTables($data);
+        }
+        return view('admin.pengeluaran.pengeluaran');
+    }
+
+    public function add()
+    {
+        $locations = $this->locationRepository->findAll();
+        $medicines = $this->medicineRepository->findAll(['unit']);
+        $carts = $this->transactionOutRepository->cart(['medicine', 'unit']);
+        return view('admin.pengeluaran.keluaranbarang')->with(['locations' => $locations, 'medicines' => $medicines, 'carts' => $carts]);
     }
 
     public function store_cart()
@@ -31,7 +54,7 @@ class TransactionOutController extends CustomController
             $unit_id = $medicine->unit_id;
             $current_stock = $medicine->qty;
             if ($qty > $current_stock) {
-                return $this->jsonResponse('stock tidak mencukupi', 400);
+                return redirect()->back()->with('failed', 'stock tidak mencukupi...');
             }
 
             //validate general ledgers
@@ -39,7 +62,7 @@ class TransactionOutController extends CustomController
             $general_ledgers = $this->generateGeneralLedger($available_stocks, $qty);
             $avg_price = $general_ledgers['avg_price'];
             if ($general_ledgers['error']) {
-                return $this->jsonResponse('failed to create general ledger', 400);
+                return redirect()->back()->with('failed', 'failed to create general ledger');
             }
             $data_request = [
                 'medicine_id' => $medicine_id,
@@ -49,9 +72,20 @@ class TransactionOutController extends CustomController
                 'total' => ($qty * $avg_price)
             ];
             $this->transactionOutRepository->addToCart($data_request);
+            return redirect()->back()->with('success', 'Berhasil menambahkan data...');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('failed', 'internal server error...');
+        }
+    }
+
+    public function delete_cart()
+    {
+        try {
+            $id = $this->postField('id');
+            $this->transactionOutRepository->deleteCartItem($id);
             return $this->jsonResponse('success', 200);
         } catch (\Exception $e) {
-            return $this->jsonResponse($e->getMessage(), 500);
+            return $this->jsonResponse('internal server error', 500);
         }
     }
 
@@ -66,11 +100,12 @@ class TransactionOutController extends CustomController
             $batch_id = 'TI-' . date('YmdHis');
             $description = $this->postField('description') ?? '-';
             return $this->jsonResponse('success', 200);
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
             return $this->jsonResponse($e->getMessage(), 500);
         }
     }
+
     private function generateGeneralLedger($available_stocks, $qty)
     {
         $tmp_rest = $qty;
