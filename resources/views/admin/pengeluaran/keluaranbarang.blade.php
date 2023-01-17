@@ -88,8 +88,7 @@
                                     <td class="text-center text-xs">2</td>
                                     <td class="text-center text-xs">Tablet</td>
                                     <td class="text-center text-xs">20 Desember 2024</td>
-                                    <td class="text-center text-xs">Rp 50.000</td>
-                                    <td class="text-center text-xs">Rp 100.000</td>
+
                                     <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">
                                         <button
                                             class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
@@ -104,8 +103,7 @@
                                     <td class="text-center text-xs">2</td>
                                     <td class="text-center text-xs">Tablet</td>
                                     <td class="text-center text-xs">20 Desember 2024</td>
-                                    <td class="text-center text-xs">Rp 50.000</td>
-                                    <td class="text-center text-xs">Rp 100.000</td>
+
                                     <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">
                                         <button
                                             class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
@@ -120,8 +118,7 @@
                                     <td class="text-center text-xs">2</td>
                                     <td class="text-center text-xs">Tablet</td>
                                     <td class="text-center text-xs">20 Desember 2024</td>
-                                    <td class="text-center text-xs">Rp 50.000</td>
-                                    <td class="text-center text-xs">Rp 100.000</td>
+
                                     <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">
                                         <button
                                             class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
@@ -136,8 +133,7 @@
                                     <td class="text-center text-xs">2</td>
                                     <td class="text-center text-xs">Tablet</td>
                                     <td class="text-center text-xs">20 Desember 2024</td>
-                                    <td class="text-center text-xs">Rp 50.000</td>
-                                    <td class="text-center text-xs">Rp 100.000</td>
+
                                     <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">
                                         <button
                                             class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
@@ -152,8 +148,7 @@
                                     <td class="text-center text-xs">2</td>
                                     <td class="text-center text-xs">Tablet</td>
                                     <td class="text-center text-xs">20 Desember 2024</td>
-                                    <td class="text-center text-xs">Rp 50.000</td>
-                                    <td class="text-center text-xs">Rp 100.000</td>
+
                                     <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">
                                         <button
                                             class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
@@ -193,6 +188,30 @@
                             </div>
                         </div>
 
+                        <div class="mb-3 mt-5">
+                            <label for="unit_penerima"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Unit Penerima</label>
+
+                            <div class="flex">
+                                <select id="unit_penerima" name="unit_penerima"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Pilih Unit Penerima</option>
+                                        <option value="Unit Penerima"></option>
+                                </select>
+
+                                <button data-tooltip-target="tooltip-unit_penerima" type="button"
+                                    class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-unit_penerima"><span
+                                        class="material-symbols-outlined menu-ico text-sm">
+                                        add
+                                    </span></button>
+
+                                <div id="tooltip-unit_penerima" role="tooltip"
+                                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                    Tambah unit penerima "jika belum ada di dalam menu"
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -306,8 +325,8 @@
         </div>
 
 
-        <!-- Modal Tambah Sumber -->
-        <div id="modal_tambahSumber" tabindex="-1" aria-hidden="true"
+        <!-- Modal Tambah Penerima -->
+        <div id="modal_unit_penerima" tabindex="-1" aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
             <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                 <!-- Modal content -->
@@ -315,7 +334,7 @@
                     <!-- Modal header -->
                     <div class="flex justify-between items-start p-4 rounded-t border-b ">
                         <h3 class="text-xl font-semibold text-gray-900 ">
-                            Tambah Sumber Anggaran
+                            Tambah Unit Penerima
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
@@ -336,10 +355,10 @@
                         <div class="p-6 ">
                             <div class="mb-3">
                                 <label for="e-nama-info" class="block mb-2 text-sm font-medium text-gray-700 ">Nama
-                                    Sumber Anggaran</label>
+                                    Unit Penerima</label>
                                 <input type="text" id="e-nama-info"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                    placeholder="Masukan Nama Sumber Anggaran" required name="information-edit">
+                                    placeholder="Masukan Nama Unit Penerima" required name="information-edit">
                             </div>
 
 
@@ -399,11 +418,11 @@
     </script>
 
 
-    {{-- MODAL SUMBER ANGGARAN --}}
+    {{-- MODAL UNIT PENERIMA --}}
     <script>
-        const modal_tambahSumber = document.getElementById('modal_tambahSumber');
+        const modal_unit_penerima = document.getElementById('modal_unit_penerima');
 
-        let modal_tambahsm = new Modal(modal_tambahSumber, {
+        let modal_tambahsm = new Modal(modal_unit_penerima, {
             placement: 'bottom-right',
             backdrop: 'dynamic',
             onShow: () => {
@@ -414,7 +433,7 @@
             }
         });
 
-        $('.btn-tambahsumber').on('click', function(e) {
+        $('.btn-unit_penerima').on('click', function(e) {
 
             modal_tambahsm.show();
         });
