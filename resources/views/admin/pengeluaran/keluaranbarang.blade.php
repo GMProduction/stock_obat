@@ -77,8 +77,6 @@
                                     <th data-priority="2" class="text-center text-xs">Qty</th>
                                     <th data-priority="3" class="text-center text-xs">Satuan</th>
                                     <th data-priority="3" class="text-center text-xs">Kadaluarsa</th>
-                                    <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
-                                    <th data-priority="3" class="text-center text-xs">Total Harga</th>
                                     <th data-priority="4" class="text-center text-xs">Action</th>
                                 </tr>
                             </thead>
@@ -197,23 +195,14 @@
 
 
 
-                        <div class="mb-3 mt-5">
-                            <label for="total-keseluruhan" class="block mb-2 text-sm font-medium text-gray-700 mt-3">
-                                Total Keseluruhan
-                            </label>
-                            <input type="text" id="total-keseluruhan"
-                                class="bg-gray-200 border  w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
-                                placeholder="Total Keseluruhan" readonly name="total-keseluruhan">
-                        </div>
-
 
                         <div class="mb-3 mt-5">
                             <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
                                 pengeluaran
                             </label>
                             <textarea type="text" id="e-nama-info"
-                                class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4" placeholder="Catatan Pengeluaran"
-                                name="Catatan Pengeluaran"></textarea>
+                                class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4"
+                                placeholder="Catatan Pengeluaran" name="Catatan Pengeluaran"></textarea>
                         </div>
 
                     </div>
@@ -225,8 +214,16 @@
                         class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             save
-                        </span>Simpan Data Pengeluaran
+                        </span>Simpan Data
                     </button>
+
+                    <button type="submit" id="btn-patch"
+                        class="ml-3 flex items-center text-white bg-secondary hover:bg-orange-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
+                        <span class="material-symbols-outlined text-white mr-3">
+                            print
+                        </span>Simpan dan Cetak
+                    </button>
+
                 </div>
             </div>
 
@@ -292,24 +289,6 @@
                                 </div>
                             </div>
 
-                            <div class="flex gap-4">
-                                <div class="mb-3">
-                                    <label for="harga-satuan"
-                                        class="block mb-2 text-sm font-medium text-gray-700 mt-3">Harga Satuan
-                                    </label>
-                                    <input type="number" id="qty" min="0"
-                                        class="bg-gray-200 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                        placeholder="harga Satuan" readonly name="harga-satuan">
-                                </div>
-
-                                <div class="mb-3 grow">
-                                    <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total
-                                    </label>
-                                    <input type="number" id="qty"
-                                        class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                        placeholder="total" readonly name="total">
-                                </div>
-                            </div>
 
                         </div>
                         <!-- Modal footer -->
