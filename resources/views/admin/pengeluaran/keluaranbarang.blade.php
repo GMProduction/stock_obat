@@ -2,6 +2,30 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('local/vendor/select2/dist/css/select2.min.css') }}" type="text/css">
+    <style>
+        .backdrop-loader {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            cursor: pointer;
+        }
+
+        .backdrop-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: progress;
+        }
+    </style>
 @endsection
 @section('content')
     @if (\Illuminate\Support\Facades\Session::has('success'))
@@ -15,6 +39,16 @@
             Swal.fire("Gagal", '{{ \Illuminate\Support\Facades\Session::get('failed') }}', "error")
         </script>
     @endif
+    <div class="backdrop-loader">
+        <div class="backdrop-content">
+            <div class="section">
+                <div class="text-center">
+                    <img src="{{ asset('/assets/images/docor.svg') }}" height="250">
+                    <p style="color: gray; font-weight: bold;">Sedang menyimpan data...</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="panel min-h-screen">
 
         <nav class="flex mb-6" aria-label="Breadcrumb">
@@ -57,20 +91,14 @@
 
             </ol>
         </nav>
-
-
         <div class="grid grid-cols-1 gap-4">
             <div class="section relative min-h-[600px]">
                 <p class="title ">Tambah Barang </p>
                 <div class="grid grid-cols-3 gap-2 ">
-
-
                     <div class="border rounded-md col-span-2 p-3 relative">
                         <p class="text-gray-500">Barang yang dikeluarkan</p>
                         <div class="absolute right-0 top-0 mt-3 mr-3">
                             <div class="flex">
-
-
                                 <button
                                     class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm btn-tambahBarang"><span
                                         class="material-symbols-outlined mr-2 menu-ico text-sm">
@@ -79,37 +107,37 @@
                                 </button>
                             </div>
                         </div>
-                        <table id="tb-master" class="table table-auto stripe hover mt-10 "
-                               style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                            <thead class="bg-gray-50 ">
-                            <tr>
-                                <th data-priority="1" class="text-right text-xs py-3">No</th>
-                                <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                                <th data-priority="2" class="text-center text-xs">Qty</th>
-                                <th data-priority="3" class="text-center text-xs">Satuan</th>
-                                <th data-priority="4" class="text-center text-xs">Action</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            @foreach($carts as $cart)
-                                <tr class="border-b">
-                                    <td class="text-right text-xs py-3">{{ $loop->index + 1 }}</td>
-                                    <td class="text-center text-xs">{{ $cart->medicine->name }}</td>
-                                    <td class="text-center text-xs">{{ $cart->qty }}</td>
-                                    <td class="text-center text-xs">{{ $cart->unit->name }}</td>
-
-                                    <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">
-                                        <button class="btn-delete bg-red-500 rounded-full text-white px-3 py-2 text-xs" data-id="{{ $cart->id }}">
-                                            Hapus
-                                        </button>
-                                    </td>
+                        <div class="mt-5">
+                            <table id="tb-master" class="table display table-auto stripe hover"
+                                   style="width:100%;">
+                                <thead class="bg-gray-50 ">
+                                <tr>
+                                    <th data-priority="1" class="text-right text-xs py-3">No</th>
+                                    <th data-priority="2" class="text-center text-xs">Nama Barang</th>
+                                    <th data-priority="2" class="text-center text-xs">Qty</th>
+                                    <th data-priority="3" class="text-center text-xs">Satuan</th>
+                                    <th data-priority="4" class="text-center text-xs">Action</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
 
+                                <tbody>
+                                {{--                            @foreach($carts as $cart)--}}
+                                {{--                                <tr class="border-b">--}}
+                                {{--                                    <td class="text-right text-xs py-3">{{ $loop->index + 1 }}</td>--}}
+                                {{--                                    <td class="text-center text-xs">{{ $cart->medicine->name }}</td>--}}
+                                {{--                                    <td class="text-center text-xs">{{ $cart->qty }}</td>--}}
+                                {{--                                    <td class="text-center text-xs">{{ $cart->unit->name }}</td>--}}
 
+                                {{--                                    <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">--}}
+                                {{--                                        <button class="btn-delete bg-red-500 rounded-full text-white px-3 py-2 text-xs" data-id="{{ $cart->id }}">--}}
+                                {{--                                            Hapus--}}
+                                {{--                                        </button>--}}
+                                {{--                                    </td>--}}
+                                {{--                                </tr>--}}
+                                {{--                            @endforeach--}}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="border rounded-md p-3">
@@ -223,11 +251,7 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
-                    <form method="post" action="{{ route('pengeluaranbarang.cart') }}" id="form-cart">
-                        @csrf
-                        <input type="hidden" name="id" id="id-edit" value="">
-                        <!-- Modal body -->
-
+                    <form method="post" id="form-cart">
                         <div class="p-6 ">
                             <label for="medicine" class="block mb-2 text-sm font-medium text-gray-900 ">Pilih
                                 Barang</label>
@@ -241,8 +265,6 @@
                                     </option>
                                 @endforeach
                             </select>
-
-
                             <div class="flex gap-4">
                                 <div class="mb-3">
                                     <label for="qty" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Qty
@@ -251,7 +273,6 @@
                                            class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
                                            placeholder="Qty yang dikeluarkan" required name="qty" value="0">
                                 </div>
-
                                 <div class="mb-3 grow">
                                     <label for="satuan" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Satuan
                                     </label>
@@ -260,12 +281,10 @@
                                            placeholder="Satuan" readonly name="satuan">
                                 </div>
                             </div>
-
-
                         </div>
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end p-6 space-x-2 rounded-b border-t border-gray-200 ">
-                            <button type="submit" id="btn-add-cart"
+                            <button type="button" id="btn-add-cart"
                                     class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                 <span class="material-symbols-outlined text-white mr-3">
                                     save
@@ -337,6 +356,9 @@
     <!--Datatables -->
     <script src="{{ asset('js/datepicker.js') }}"></script>
     <script src="{{ asset('local/vendor/select2/dist/js/select2.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('js/datatable.js') }}"></script>
 
 
     {{-- MODAL MASTER --}}
@@ -408,8 +430,49 @@
             });
         });
 
-        $(document).ready(function () {
-            $('.js-example-basic-single').select2();
+        async function destroy(id) {
+            try {
+                $('.backdrop-loader').css('display', 'block');
+                let url = '{{ route('pengeluaranbarang.cart.destroy') }}';
+                let response = await $.post(url, {id});
+                if (response['status'] === 200) {
+                    reload();
+                    Swal.fire("Berhasil!", "Berhasil menghapus data..", "success");
+                }
+            } catch (e) {
+                console.log(e)
+            } finally {
+                $('.backdrop-loader').css('display', 'none');
+            }
+        }
+
+        async function storeCart() {
+            try {
+                $('.backdrop-loader').css('display', 'block');
+                let url = '{{ route('pengeluaranbarang.cart') }}';
+                let data = {
+                    medicine: $('#medicine').val(),
+                    qty: $('#qty').val()
+                };
+                let response = await $.post(url, data);
+                if (response['status'] === 200) {
+                    reload();
+                    Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function () {
+                        modaltambahmHide();
+                    });
+                }
+            } catch (e) {
+                console.log(e);
+            } finally {
+                $('.backdrop-loader').css('display', 'none');
+            }
+        }
+
+        function reload() {
+            table.ajax.reload();
+        }
+
+        function storeCartHandler() {
             $('#btn-add-cart').on('click', function (e) {
                 e.preventDefault();
                 Swal.fire({
@@ -423,13 +486,17 @@
                     cancelButtonText: 'Batal',
                 }).then((result) => {
                     if (result.value) {
-                        $('#form-cart').submit();
+                        // $('#form-cart').submit();
+                        storeCart();
                     }
                 });
             });
+        }
 
+        function destroyHandler() {
             $('.btn-delete').on('click', function (e) {
                 e.preventDefault();
+                let id = this.dataset.id;
                 Swal.fire({
                     title: "Konfirmasi!",
                     text: "Apakah anda yakin menghapus data?",
@@ -441,10 +508,56 @@
                     cancelButtonText: 'Batal',
                 }).then((result) => {
                     if (result.value) {
-                        // $('#form-cart').submit();
+                        destroy(id);
                     }
                 });
             });
+        }
+
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+            table = BasicDatatableGenerator('#tb-master', path, [{
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex',
+                searchable: false,
+                orderable: false,
+                className: 'text-center text-xs'
+            },
+                {
+                    data: 'medicine.name',
+                    name: 'medicine.name',
+                    className: 'text-left text-xs'
+                },
+                {
+                    data: 'qty',
+                    name: 'qty',
+                    className: 'text-center text-xs'
+                },
+                {
+                    data: 'unit.name',
+                    name: 'unit.name',
+                    className: 'text-center text-xs'
+                },
+                {
+                    className: 'text-center text-xs font-bold ',
+                    searchable: false,
+                    orderable: false,
+                    data: null,
+                    render: function (data) {
+                        return '<button data-id="' + data['id'] +
+                            '" class="btn-delete bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs my-1">Hapus</button>';
+                    }
+                },
+            ], [], function (d) {
+
+            }, {
+                dom: 't',
+                "fnDrawCallback": function (settings) {
+                    destroyHandler();
+                }
+            });
+            storeCartHandler();
+            destroyHandler();
         });
     </script>
     {{-- ACTION --}}

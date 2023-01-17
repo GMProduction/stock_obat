@@ -39,9 +39,13 @@ class TransactionOutController extends CustomController
 
     public function add()
     {
+        $carts = $this->transactionOutRepository->cart(['medicine', 'unit']);
+        if ($this->request->ajax()) {
+            return $this->basicDataTables($carts);
+        }
         $locations = $this->locationRepository->findAll();
         $medicines = $this->medicineRepository->findAll(['unit']);
-        $carts = $this->transactionOutRepository->cart(['medicine', 'unit']);
+
         return view('admin.pengeluaran.keluaranbarang')->with(['locations' => $locations, 'medicines' => $medicines, 'carts' => $carts]);
     }
 
@@ -54,7 +58,7 @@ class TransactionOutController extends CustomController
             $unit_id = $medicine->unit_id;
             $current_stock = $medicine->qty;
             if ($qty > $current_stock) {
-                return redirect()->back()->with('failed', 'stock tidak mencukupi...');
+                return $this->jsonResponse('stock tidak mencukupi', 500);
             }
 
             //validate general ledgers
@@ -62,7 +66,7 @@ class TransactionOutController extends CustomController
             $general_ledgers = $this->generateGeneralLedger($available_stocks, $qty);
             $avg_price = $general_ledgers['avg_price'];
             if ($general_ledgers['error']) {
-                return redirect()->back()->with('failed', 'failed to create general ledger');
+                return $this->jsonResponse('failed to create general ledger', 500);
             }
             $data_request = [
                 'medicine_id' => $medicine_id,
@@ -72,9 +76,9 @@ class TransactionOutController extends CustomController
                 'total' => ($qty * $avg_price)
             ];
             $this->transactionOutRepository->addToCart($data_request);
-            return redirect()->back()->with('success', 'Berhasil menambahkan data...');
+            return $this->jsonResponse('success', 200);
         } catch (\Exception $e) {
-            return redirect()->back()->with('failed', 'internal server error...');
+            return $this->jsonResponse('internal server error...', 500);
         }
     }
 
