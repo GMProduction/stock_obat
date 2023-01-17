@@ -60,7 +60,7 @@
                     <thead>
                         <tr>
                             <th data-priority="1" class="text-right text-xs">No</th>
-                            <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
+                            <th data-priority="2" class="text-center text-xs">Tanggal keluar</th>
                             {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
                             <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
                             <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
