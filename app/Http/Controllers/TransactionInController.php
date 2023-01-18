@@ -15,6 +15,7 @@ use App\Repository\MedicineRepository;
 use App\Repository\TransactionInRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 class TransactionInController extends CustomController
 {
@@ -124,5 +125,21 @@ class TransactionInController extends CustomController
             DB::rollBack();
             return redirect()->back()->with('failed', 'Terjadi kesalahan server...' . $e->getMessage());
         }
+    }
+
+    public function cetakSuratPenerimaan($id)
+    {
+//        return $this->dataTransaksi($id);
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->dataTransaksi($id))->setPaper('f4', 'potrait');
+
+        return $pdf->stream();
+    }
+
+    public function dataTransaksi($id)
+    {
+        $trans = ['id' => 'penerimaanPage'];
+//        return $trans;
+        return view('admin.penerimaan.suratpenerimaan',['data' => $id]);
     }
 }

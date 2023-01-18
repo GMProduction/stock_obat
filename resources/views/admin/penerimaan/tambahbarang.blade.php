@@ -157,7 +157,7 @@
                                     Total Keseluruhan
                                 </label>
                                 <input type="text" id="summary"
-                                    class="bg-gray-200 border text-right w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 rounded-md"
+                                    class="bg-gray-200 border  w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 rounded-md"
                                     placeholder="Total Keseluruhan" readonly name="total-keseluruhan"
                                     value="Rp. {{ number_format($total, 0, ',', '.') }}">
                             </div>

@@ -2,7 +2,8 @@
 
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\App;
+use Yajra\DataTables\Facades\DataTables;
 
 
 class PenerimaanController
@@ -17,5 +18,6 @@ class PenerimaanController
     {
         return view('admin.penerimaan.tambahbarang', ['page' => 'penerimaanPage']);
     }
+
 
 }

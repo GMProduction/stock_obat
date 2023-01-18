@@ -45,6 +45,7 @@ Route::prefix('penerimaan')->group(function (){
     Route::get('/', [\App\Http\Controllers\TransactionInController::class, 'index'])->name('penerimaanbarang');
     Route::match(['get', 'post'],'/tambah', [\App\Http\Controllers\TransactionInController::class, 'add'])->name('tambahbarang');
     Route::post('/tambah/cart', [\App\Http\Controllers\TransactionInController::class, 'storeCart'])->name('tambahbarang.cart');
+    Route::get('/cetaksuratpenerimaan/{id}', [\App\Http\Controllers\TransactionInController::class, 'cetakSuratPenerimaan'])->name('cetakSuratPenerimaan');
 });
 
 Route::prefix('pengeluaran')->group(function (){
