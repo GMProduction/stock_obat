@@ -69,9 +69,14 @@ class TransactionInRepository
      * @param int $addedStock
      * @return bool
      */
-    public function patchStock($medicine_id, $addedStock = 0)
+    public function addStock($medicine_id, $addedStock = 0)
     {
         return $this->medicineRepository->addStock($medicine_id, $addedStock);
+    }
+
+    public function reduceStock($medicine_id, $minusStock = 0)
+    {
+
     }
 
     public function saveToGeneralLedger($data)

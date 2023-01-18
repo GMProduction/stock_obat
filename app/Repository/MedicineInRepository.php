@@ -45,4 +45,23 @@ class MedicineInRepository
             'transaction_in_id' => $id
         ]);
     }
+
+    public function getAvailableStock($medicine_id, $preload = [])
+    {
+        return MedicineIn::with($preload)
+            ->where('medicine_id', '=', $medicine_id)
+            ->whereRaw('(qty - used) > ?', [0])
+            ->orderBy('expired_date', 'ASC')
+            ->get()
+            ->append('rest');
+    }
+
+    public function updateUsedStock($id, $qty = 0)
+    {
+        $medicine_in = MedicineIn::find($id);
+        $current_used = $medicine_in->used;
+        return $medicine_in->update([
+            'used' => $current_used + $qty
+        ]);
+    }
 }

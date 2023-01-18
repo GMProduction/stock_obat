@@ -14,6 +14,11 @@ class MedicineOutRepository
         return MedicineOut::create($data);
     }
 
+    public function deleteByID($id)
+    {
+        return MedicineOut::destroy($id);
+    }
+
     public function medicineOnCart($medicine_id, $preload = [])
     {
         return MedicineOut::with($preload)

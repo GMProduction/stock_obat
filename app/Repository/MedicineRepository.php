@@ -80,9 +80,9 @@ class MedicineRepository extends BaseRepo
         return Medicine::with($preload)->get();
     }
 
-    public function findById($id)
+    public function findById($id, $preload = [])
     {
-        return Medicine::find($id);
+        return Medicine::with($preload)->find($id);
     }
 
     public function addStock($medicine_id, $addedStock = 0)
@@ -91,6 +91,17 @@ class MedicineRepository extends BaseRepo
         $medicine = Medicine::find($medicine_id);
         $qty = $medicine->qty;
         $new_qty = $addedStock + $qty;
+        return $medicine->update([
+            'qty' => $new_qty
+        ]);
+    }
+
+    public function reduceStock($medicine_id, $minusStock = 0)
+    {
+        /** @var Medicine $medicine */
+        $medicine = Medicine::find($medicine_id);
+        $qty = $medicine->qty;
+        $new_qty = $qty - $minusStock;
         return $medicine->update([
             'qty' => $new_qty
         ]);
@@ -105,7 +116,7 @@ class MedicineRepository extends BaseRepo
 
     public function real_stock($medicine_id)
     {
-        return Medicine::with('medicine_ins')
+        return Medicine::realStock()
             ->find($medicine_id);
     }
 }

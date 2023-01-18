@@ -108,7 +108,7 @@ class TransactionInController extends CustomController
                 $medicine_in_id = $item->id;
                 $medicine_id = $item->medicine_id;
                 $addedStock = $item->qty;
-                $this->transactionInRepository->patchStock($medicine_id, $addedStock);
+                $this->transactionInRepository->addStock($medicine_id, $addedStock);
                 $general_ledger_data = [
                     'date' => $date_value,
                     'medicine_in_id' => $medicine_in_id,
