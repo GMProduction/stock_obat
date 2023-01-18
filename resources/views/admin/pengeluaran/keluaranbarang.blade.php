@@ -160,7 +160,7 @@
                                 <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text"
                                        required
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
-                                       placeholder="Pilih Tanggal" name="date"
+                                       placeholder="Pilih Tanggal" name="date" id="date"
                                        value="{{ \Carbon\Carbon::now()->format('d F Y') }}">
                             </div>
                         </div>
@@ -195,13 +195,13 @@
 
 
                         <div class="mb-3 mt-5">
-                            <label for="nomor-batch" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
+                            <label for="description" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
                                 pengeluaran
                             </label>
-                            <textarea type="text" id="e-nama-info"
+                            <textarea type="text" id="description"
                                       class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
                                       rows="4"
-                                      placeholder="Catatan Pengeluaran" name="Catatan Pengeluaran"></textarea>
+                                      placeholder="Catatan Pengeluaran" name="description"></textarea>
                         </div>
 
                     </div>
@@ -209,14 +209,14 @@
                 </div>
 
                 <div class="flex items-center justify-end pt-6 rounded-b border-t border-gray-200 ">
-                    <button type="submit" id="btn-patch"
+                    <button type="button" id="btn-save"
                             class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             save
                         </span>Simpan Data
                     </button>
 
-                    <button type="submit" id="btn-patch"
+                    <button type="button" id="btn-save-and-print"
                             class="ml-3 flex items-center text-white bg-secondary hover:bg-orange-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             print
@@ -430,6 +430,11 @@
             });
         });
 
+        function clear() {
+            $('#qty').val(0);
+            $('#medicine').val('');
+        }
+
         async function destroy(id) {
             try {
                 $('.backdrop-loader').css('display', 'block');
@@ -459,10 +464,35 @@
                     reload();
                     Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function () {
                         modaltambahmHide();
+                        clear();
                     });
                 }
             } catch (e) {
-                console.log(e);
+                let error_message = JSON.parse(e.responseText);
+                Swal.fire("Error!", error_message.message, "error");
+            } finally {
+                $('.backdrop-loader').css('display', 'none');
+            }
+        }
+
+        async function store() {
+            try {
+                $('.backdrop-loader').css('display', 'block');
+                let data = {
+                    date: $('#date').val(),
+                    location: $('#location').val(),
+                    description: $('#description').val(),
+                };
+                let response = await $.post(path, data);
+                if (response['status'] === 200) {
+                    reload();
+                    Swal.fire("Berhasil!", "Berhasil menyimpan data..", "success").then(function () {
+                        window.location.href = '/pengeluaran';
+                    });
+                }
+            } catch (e) {
+                let error_message = JSON.parse(e.responseText);
+                Swal.fire("Error!", error_message.message, "error");
             } finally {
                 $('.backdrop-loader').css('display', 'none');
             }
@@ -492,6 +522,28 @@
                 });
             });
         }
+
+        function storeHandler() {
+            $('#btn-save').on('click', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: "Konfirmasi!",
+                    text: "Apakah anda yakin menyimpan data?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.value) {
+                        // $('#form-cart').submit();
+                        store();
+                    }
+                });
+            });
+        }
+
 
         function destroyHandler() {
             $('.btn-delete').on('click', function (e) {
@@ -557,6 +609,7 @@
                 }
             });
             storeCartHandler();
+            storeHandler();
             destroyHandler();
         });
     </script>

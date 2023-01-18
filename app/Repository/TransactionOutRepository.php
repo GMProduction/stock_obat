@@ -11,12 +11,19 @@ class TransactionOutRepository
     private $medicineRepository;
     private $medicineInRepository;
     private $medicineOutRepository;
+    private $generalLedgerRepository;
 
-    public function __construct(MedicineOutRepository $medicineOutRepository, MedicineRepository $medicineRepository, MedicineInRepository $medicineInRepository)
+    public function __construct(MedicineOutRepository $medicineOutRepository, MedicineRepository $medicineRepository, MedicineInRepository $medicineInRepository, GeneralLedgerRepository $generalLedgerRepository)
     {
         $this->medicineOutRepository = $medicineOutRepository;
         $this->medicineRepository = $medicineRepository;
         $this->medicineInRepository = $medicineInRepository;
+        $this->generalLedgerRepository = $generalLedgerRepository;
+    }
+
+    public function create($data)
+    {
+        return TransactionOut::create($data);
     }
 
     public function getData($preload = [])
@@ -51,4 +58,23 @@ class TransactionOutRepository
         return $this->medicineOutRepository->cart($preload);
     }
 
+    public function setTransactionIdToCart($id)
+    {
+        return $this->medicineOutRepository->setTransactionIdToCart($id);
+    }
+
+    public function saveToGeneralLedger($data)
+    {
+        return $this->generalLedgerRepository->create($data);
+    }
+
+    public function updateUsedStock($id, $qty = 0)
+    {
+        return $this->medicineInRepository->updateUsedStock($id, $qty);
+    }
+
+    public function reduceStock($medicine_id, $minusStock)
+    {
+        return $this->medicineRepository->reduceStock($medicine_id, $minusStock);
+    }
 }

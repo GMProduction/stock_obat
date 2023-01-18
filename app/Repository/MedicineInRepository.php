@@ -55,4 +55,13 @@ class MedicineInRepository
             ->get()
             ->append('rest');
     }
+
+    public function updateUsedStock($id, $qty = 0)
+    {
+        $medicine_in = MedicineIn::find($id);
+        $current_used = $medicine_in->used;
+        return $medicine_in->update([
+            'used' => $current_used + $qty
+        ]);
+    }
 }

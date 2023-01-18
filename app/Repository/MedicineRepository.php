@@ -96,6 +96,17 @@ class MedicineRepository extends BaseRepo
         ]);
     }
 
+    public function reduceStock($medicine_id, $minusStock = 0)
+    {
+        /** @var Medicine $medicine */
+        $medicine = Medicine::find($medicine_id);
+        $qty = $medicine->qty;
+        $new_qty = $qty - $minusStock;
+        return $medicine->update([
+            'qty' => $new_qty
+        ]);
+    }
+
     public function stock($medicine_id)
     {
         /** @var Medicine $medicine */
