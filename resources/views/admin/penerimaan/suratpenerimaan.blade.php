@@ -56,6 +56,11 @@
         .text-left {
             text-align: left !important;
         }
+
+        .text-ontable {
+            font-size: 0.8rem;
+        }
+
     </style>
 
     <br>
@@ -110,7 +115,7 @@
                             </tr>
                             <tr style="border: 0; margin-top: 0;">
                                 <td class="text-left" style="font-size: 11px">
-                                    Tanggal Pesanan
+                                    Tanggal Penerimaan
                                 </td>
                                 <td class="text-left" style="width: 10px !important;font-size: 11px">
                                     :

@@ -45,7 +45,8 @@ Route::prefix('penerimaan')->group(function (){
     Route::get('/', [\App\Http\Controllers\TransactionInController::class, 'index'])->name('penerimaanbarang');
     Route::match(['get', 'post'],'/tambah', [\App\Http\Controllers\TransactionInController::class, 'add'])->name('tambahbarang');
     Route::post('/tambah/cart', [\App\Http\Controllers\TransactionInController::class, 'storeCart'])->name('tambahbarang.cart');
-    Route::get('/cetaksuratpenerimaan/{id}', [\App\Http\Controllers\TransactionInController::class, 'cetakSuratPenerimaan'])->name('cetakSuratPenerimaan');
+    Route::get('/detail/{id}', [\App\Http\Controllers\TransactionInController::class, 'detailpenerimaan'])->name('detailpenerimaan');
+    Route::get('/cetaksuratpenerimaan/{id}', [\App\Http\Controllers\TransactionInController::class, 'cetakSuratPenerimaan'])->name('cetakSuratPenerimaan/{id}');
 });
 
 Route::prefix('pengeluaran')->group(function (){
@@ -53,6 +54,7 @@ Route::prefix('pengeluaran')->group(function (){
     Route::match(['get', 'post'],'/tambah', [\App\Http\Controllers\TransactionOutController::class, 'add'])->name('pengeluaranbarang');
     Route::post('/tambah/cart', [\App\Http\Controllers\TransactionOutController::class, 'store_cart'])->name('pengeluaranbarang.cart');
     Route::post('/destroy/cart', [\App\Http\Controllers\TransactionOutController::class, 'delete_cart'])->name('pengeluaranbarang.cart.destroy');
+    Route::get('/detail/{id}', [\App\Http\Controllers\TransactionOutController::class, 'detailpengeluaran'])->name('detailpengeluaran');
 });
 
 Route::prefix('laporan')->group(function (){
