@@ -55,7 +55,7 @@
                     <a class="block py-2 px-4 text-xs   text-black/30 ">Username</a>
                     <div class="divide-y-2"></div>
                     <li>
-                        <a class="block py-2 px-4 hover:bg-gray-100  text-red-600 cursor-pointer">Sign
+                        <a href="/logout" class="block py-2 px-4 hover:bg-gray-100  text-red-600 cursor-pointer">Sign
                             out</a>
                     </li>
                 </ul>
