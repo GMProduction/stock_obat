@@ -14,16 +14,16 @@ class MedicineRepository extends BaseRepo
     {
         request()->validate(
             [
-                'name'        => 'required',
+                'name' => 'required',
                 'category_id' => 'required',
-                'unit_id'     => 'required',
-                'limit'       => 'required',
+                'unit_id' => 'required',
+                'limit' => 'required',
             ],
             [
-                'name.required'        => 'Nama obat harus di isi',
+                'name.required' => 'Nama obat harus di isi',
                 'category_id.required' => 'Kategori obat harus di isi',
-                'unit_id.required'     => 'Satuan obat harus di isi',
-                'limit.required'       => 'Limit obat harus di isi',
+                'unit_id.required' => 'Satuan obat harus di isi',
+                'limit.required' => 'Limit obat harus di isi',
             ]
         );
     }
@@ -65,7 +65,7 @@ class MedicineRepository extends BaseRepo
     {
         $data             = Medicine::with(['category:id,name', 'unit:id,name']);
         $this->selectData = ['name', 'unit_id', 'limit', 'category_id'];
-        $this->button     = ['edit', 'delete'];
+        $this->button = ['edit', 'delete'];
 
         return $this->datatabe($data);
 
@@ -90,4 +90,48 @@ class MedicineRepository extends BaseRepo
 
 
 
+    public function findAll($preload = [])
+    {
+        return Medicine::with($preload)->get();
+    }
+
+    public function findById($id, $preload = [])
+    {
+        return Medicine::with($preload)->find($id);
+    }
+
+    public function addStock($medicine_id, $addedStock = 0)
+    {
+        /** @var Medicine $medicine */
+        $medicine = Medicine::find($medicine_id);
+        $qty = $medicine->qty;
+        $new_qty = $addedStock + $qty;
+        return $medicine->update([
+            'qty' => $new_qty
+        ]);
+    }
+
+    public function reduceStock($medicine_id, $minusStock = 0)
+    {
+        /** @var Medicine $medicine */
+        $medicine = Medicine::find($medicine_id);
+        $qty = $medicine->qty;
+        $new_qty = $qty - $minusStock;
+        return $medicine->update([
+            'qty' => $new_qty
+        ]);
+    }
+
+    public function stock($medicine_id)
+    {
+        /** @var Medicine $medicine */
+        $medicine = Medicine::find($medicine_id);
+        return $medicine->qty;
+    }
+
+    public function real_stock($medicine_id)
+    {
+        return Medicine::realStock()
+            ->find($medicine_id);
+    }
 }

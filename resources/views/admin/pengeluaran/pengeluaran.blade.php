@@ -43,54 +43,27 @@
                 <p class="title ">Pengeluaran Barang </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
-                        <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
-                                class="material-symbols-outlined mr-2 menu-icon text-sm">
-                                filter_alt
-                            </span>Filter</button>
+
 
                         <button onclick="location.href='{{ route('pengeluaranbarang') }}'"
                             class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm "><span
                                 class="material-symbols-outlined mr-2 menu-ico text-sm">
                                 add
-                            </span>Tambah</button>
+                            </span>Tambah
+                        </button>
                     </div>
                 </div>
-                <table id="tb-master" class="stripe hover mt-10"
-                    style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <table id="tb-master" class="stripe hover mt-10" style="width:100%;">
                     <thead>
                         <tr>
-                            <th data-priority="1" class="text-right text-xs">No</th>
-                            <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
-                            {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                            <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
+                            <th data-priority="1" class="text-right text-xs w-5">No</th>
+                            <th data-priority="2" class="text-center text-xs">Tanggal</th>
                             <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
-                            {{-- <th data-priority="3" class="text-center text-xs">Kadaluarsa</th>
-                            <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
-                            <th data-priority="3" class="text-center text-xs">Total Harga</th> --}}
+                            <th data-priority="3" class="text-left text-xs">Unit Penerima</th>
                             <th data-priority="4" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        <tr>
-                            <td class="text-right text-xs">1</td>
-                            <td class="text-center text-xs">12 Desember 2022</td>
-                            {{-- <td class="text-center text-xs">Paracetamol</td>
-                            <td class="text-center text-xs">Tablet</td> --}}
-                            <td class="text-center text-xs">Btch0122</td>
-                            {{-- <td class="text-center text-xs">20 Desember 2024</td>
-                            <td class="text-center text-xs">Rp 50.000</td>
-                            <td class="text-center text-xs">Rp 80.000</td> --}}
-                            <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">
-                                <button
-                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster text-xs">Ubah</button>
-                                <button class="bg-red-500 rounded-full text-white px-3 py-2 text-xs"
-                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>
-                            </td>
-                        </tr>
-
-
-
                     </tbody>
                 </table>
             </div>
@@ -104,17 +77,53 @@
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-
+    <script src="{{ asset('js/datatable.js') }}"></script>
     <script>
+        var table;
+        var path = '/{{ request()->path() }}';
+
         $(document).ready(function() {
-
-            var table = $('#tb-master').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-
-
+            table = BasicDatatableGenerator('#tb-master', path, [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    searchable: false,
+                    orderable: false,
+                    className: 'text-right text-xs'
+                },
+                {
+                    data: 'date',
+                    name: 'date',
+                    className: 'text-center text-xs',
+                    render: function(data) {
+                        let date = new Date(data);
+                        return date.toLocaleString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                    }
+                },
+                {
+                    data: 'batch_id',
+                    name: 'batch_id',
+                    className: 'text-center text-xs'
+                },
+                {
+                    data: 'location.name',
+                    name: 'location.name',
+                    className: 'text-left text-xs'
+                },
+                {
+                    className: 'text-center text-xs font-bold flex flex-nowrap gap-1 justify-center',
+                    searchable: false,
+                    orderable: false,
+                    data: null,
+                    render: function(data) {
+                        return '<button data-id="' + data['id'] +
+                            '" onclick="location.href=\'pengeluaran/detail/1\'" class="bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs">Detail</button>';
+                    }
+                },
+            ]);
         });
     </script>
 

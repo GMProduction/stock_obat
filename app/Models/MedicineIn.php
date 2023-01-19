@@ -17,6 +17,7 @@ class MedicineIn extends Model
         'qty',
         'price',
         'total',
+        'used',
     ];
 
     public function transaction_in()
@@ -32,5 +33,10 @@ class MedicineIn extends Model
     public function unit()
     {
         return $this->belongsTo(Unit::class, 'unit_id');
+    }
+
+    public function getRestAttribute()
+    {
+        return $this->qty - $this->used;
     }
 }

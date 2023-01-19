@@ -248,6 +248,7 @@ body::-webkit-scrollbar {
   padding-top: 0.5rem;
   /*pl-2*/
   padding-bottom: 0.5rem;
+  margin-bottom: 10px;
   /*pl-2*/
   line-height: 1.25;
   /*leading-tight*/
@@ -318,8 +319,6 @@ table.dataTable.display tbody tr:hover {
 table.dataTable.no-footer {
   border-bottom: 1px solid #e2e8f0;
   /*border-b-1 border-gray-300*/
-  margin-top: 0.75em;
-  margin-bottom: 0.75em;
 }
 
 /*Change colour of responsive icon*/
@@ -359,4 +358,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 40px !important;
   right: 5px !important;
-}/*# sourceMappingURL=genosstailwind.css.map */
+}
+
+.dataTables_processing {
+  z-index: 5;
+}
