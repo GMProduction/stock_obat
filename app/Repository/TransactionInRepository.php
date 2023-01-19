@@ -19,11 +19,11 @@ class TransactionInRepository
         $this->generalLedgerRepository = $generalLedgerRepository;
     }
 
-    public function getData()
+    public function getData($preload = ['user', 'budget_source'])
     {
-        return TransactionIn::with(['user', 'budget_source'])
+        return TransactionIn::with($preload)
             ->orderBy('date', 'DESC')
-            ->get();
+            ->get()->append('total');
     }
 
     public function create($data)
@@ -39,6 +39,11 @@ class TransactionInRepository
     public function addToCart($data)
     {
         return $this->medicineInRepository->create($data);
+    }
+
+    public function deleteCartItem($id)
+    {
+        return $this->medicineInRepository->deleteByID($id);
     }
 
     public function setTransactionIdToCart($id)

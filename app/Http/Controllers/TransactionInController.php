@@ -33,7 +33,7 @@ class TransactionInController extends CustomController
     public function index()
     {
         if ($this->request->ajax()) {
-            $data = $this->transactionInRepository->getData();
+            $data = $this->transactionInRepository->getData(['user', 'budget_source', 'medicine_ins']);
             return $this->basicDataTables($data);
         }
         return view('admin.penerimaan.penerimaan');
@@ -77,9 +77,9 @@ class TransactionInController extends CustomController
                 'rest' => $qty,
             ];
             $this->transactionInRepository->addToCart($data_request);
-            return redirect()->back()->with('success', 'Berhasil menambahkan data...');
+            return $this->jsonResponse('success', 200);
         } catch (\Exception $e) {
-            return redirect()->back()->with('failed', 'Terjadi kesalahan server...' . $e->getMessage());
+            return $this->jsonResponse('internal server error...', 500);
         }
     }
 
@@ -123,6 +123,17 @@ class TransactionInController extends CustomController
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('failed', 'Terjadi kesalahan server...' . $e->getMessage());
+        }
+    }
+
+    public function delete_cart()
+    {
+        try {
+            $id = $this->postField('id');
+            $this->transactionInRepository->deleteCartItem($id);
+            return $this->jsonResponse('success', 200);
+        } catch (\Exception $e) {
+            return $this->jsonResponse('internal server error', 500);
         }
     }
 }

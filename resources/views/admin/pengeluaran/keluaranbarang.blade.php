@@ -445,7 +445,8 @@
                     Swal.fire("Berhasil!", "Berhasil menghapus data..", "success");
                 }
             } catch (e) {
-                console.log(e)
+                let error_message = JSON.parse(e.responseText);
+                Swal.fire("Error!", error_message.message, "error");
             } finally {
                 $('.backdrop-loader').css('display', 'none');
             }

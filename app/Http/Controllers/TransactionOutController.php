@@ -150,7 +150,7 @@ class TransactionOutController extends CustomController
             return $this->jsonResponse('success', 200);
         } catch (\Exception $e) {
             DB::rollBack();
-            return $this->jsonResponse($e->getMessage(), 500);
+            return $this->jsonResponse('internal server error...', 500);
         }
     }
 

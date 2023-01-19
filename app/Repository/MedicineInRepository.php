@@ -19,6 +19,10 @@ class MedicineInRepository
         return MedicineIn::create($data);
     }
 
+    public function deleteByID($id)
+    {
+        return MedicineIn::destroy($id);
+    }
     /**
      * @param $medicine_id
      * @return MedicineIn | null

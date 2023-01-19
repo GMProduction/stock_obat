@@ -26,4 +26,16 @@ class TransactionIn extends Model
     {
         return $this->belongsTo(BudgetSource::class, 'budget_source_id');
     }
+
+    public function medicine_ins()
+    {
+        return $this->hasMany(MedicineIn::class, 'transaction_in_id');
+    }
+
+    public function getTotalAttribute()
+    {
+        $medicine_ins = $this->medicine_ins()->get();
+        return $medicine_ins->sum('total');
+
+    }
 }
