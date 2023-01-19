@@ -62,23 +62,23 @@ Route::middleware('auth')->group(
 //                Route::get('datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
 //                Route::get('unit-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllUnit'])->name('unitjson');
 //                Route::get('budget-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllBudget'])->name('budgetjson');
+            }
+        );
+        Route::prefix('penerimaan')->group(function () {
+            Route::get('/', [\App\Http\Controllers\TransactionInController::class, 'index'])->name('penerimaanbarang');
+            Route::get('/{id}/detail', [\App\Http\Controllers\TransactionInController::class, 'detail'])->name('penerimaanbarang.detail');
+            Route::match(['get', 'post'], '/tambah', [\App\Http\Controllers\TransactionInController::class, 'add'])->name('tambahbarang');
+            Route::post('/tambah/cart', [\App\Http\Controllers\TransactionInController::class, 'storeCart'])->name('tambahbarang.cart');
+            Route::post('/destroy/cart', [\App\Http\Controllers\TransactionInController::class, 'delete_cart'])->name('tambahbarang.cart.destroy');
+        });
 
-                Route::prefix('penerimaan')->group(function () {
-                    Route::get('/', [\App\Http\Controllers\TransactionInController::class, 'index'])->name('penerimaanbarang');
-                    Route::match(['get', 'post'], '/tambah', [\App\Http\Controllers\TransactionInController::class, 'add'])->name('tambahbarang');
-                    Route::post('/tambah/cart', [\App\Http\Controllers\TransactionInController::class, 'storeCart'])->name('tambahbarang.cart');
-                    Route::post('/destroy/cart', [\App\Http\Controllers\TransactionInController::class, 'delete_cart'])->name('tambahbarang.cart.destroy');
-                });
-
-                Route::prefix('pengeluaran')->group(
-                    function () {
-                        Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
-                        Route::match(['get', 'post'], '/tambah', [\App\Http\Controllers\TransactionOutController::class, 'add'])->name('pengeluaranbarang');
-                        Route::post('/tambah/cart', [\App\Http\Controllers\TransactionOutController::class, 'store_cart'])->name('pengeluaranbarang.cart');
-                        Route::post('/destroy/cart', [\App\Http\Controllers\TransactionOutController::class, 'delete_cart'])->name('pengeluaranbarang.cart.destroy');
-                        Route::get('/detail/{id}', [\App\Http\Controllers\TransactionOutController::class, 'detailpengeluaran'])->name('detailpengeluaran');
-                    }
-                );
+        Route::prefix('pengeluaran')->group(
+            function () {
+                Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
+                Route::match(['get', 'post'], '/tambah', [\App\Http\Controllers\TransactionOutController::class, 'add'])->name('pengeluaranbarang');
+                Route::post('/tambah/cart', [\App\Http\Controllers\TransactionOutController::class, 'store_cart'])->name('pengeluaranbarang.cart');
+                Route::post('/destroy/cart', [\App\Http\Controllers\TransactionOutController::class, 'delete_cart'])->name('pengeluaranbarang.cart.destroy');
+                Route::get('/detail/{id}', [\App\Http\Controllers\TransactionOutController::class, 'detailpengeluaran'])->name('detailpengeluaran');
             }
         );
     }

@@ -152,8 +152,9 @@ class TransactionInController extends CustomController
         return view('admin.penerimaan.suratpenerimaan', ['data' => $id]);
     }
 
-    public function detailpenerimaan($id)
+    public function detail($id)
     {
-        return view('admin.penerimaan.detailpenerimaan');
+        $data = TransactionIn::with(['medicine_ins.medicine', 'budget_source', 'medicine_ins.unit'])->findOrFail($id)->append('total');
+        return view('admin.penerimaan.detailpenerimaan')->with(['data' => $data]);
     }
 }

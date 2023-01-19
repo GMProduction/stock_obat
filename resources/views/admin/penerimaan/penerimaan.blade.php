@@ -5,6 +5,11 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <style>
+        table.dataTable tbody tr {
+            height: 50px;
+        }
+    </style>
 @endsection
 @section('content')
     @if (\Illuminate\Support\Facades\Session::has('success'))
@@ -65,10 +70,11 @@
                 <table id="tb-master" class="stripe hover mt-10" style="width:100%; ">
                     <thead>
                     <tr>
-                        <th data-priority="1" class="text-center text-xs">No</th>
-                        <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
-                        <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
+                        <th width="15" data-priority="1" class="text-center text-xs">No</th>
+                        <th width="200" data-priority="3" class="text-center text-xs">Nomor Batch</th>
+                        <th width="150" data-priority="2" class="text-center text-xs">Tanggal Datang</th>
                         <th data-priority="3" class="text-left text-xs">Sumber Anggaran</th>
+                        <th data-priority="3" class="text-left text-xs">Total</th>
                         <th data-priority="4" class="text-center text-xs">Action</th>
                     </tr>
                     </thead>
@@ -149,8 +155,8 @@
                     orderable: false,
                     data: null,
                     render: function (data) {
-                        return '<button data-id="' + data['id'] +
-                            '" onclick="location.href=\'penerimaan/detail/1\'" class="bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs">Detail</button>';
+                        let redirect = '/penerimaan/' + data['id'] + '/detail';
+                        return '<a href="' + redirect + '" data-id="' + data['id'] + '" class="bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs">Detail</a>';
                     }
                 },
             ]);

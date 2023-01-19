@@ -197,13 +197,13 @@
 
                 <div id="submenulaporan" class="transition">
 
-                    <a class="menu nav-link" href="{{ route('laporanpenerimaan') }}">
+                    <a class="menu nav-link" href="#">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Penerimaan Barang</p>
                     </a>
 
-                    <a class="menu nav-link" href="{{ route('laporanpengeluaran') }}">
+                    <a class="menu nav-link" href="#">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Pengeluaran Barang</p>
