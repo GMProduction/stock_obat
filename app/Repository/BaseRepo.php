@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Helper\CustomController;
 use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Unit;
@@ -64,6 +65,12 @@ abstract class BaseRepo
 
         $id       = $this->data->id;
         return '<a role="button" class="text-xs font-bold bg-red-500 rounded-full text-white px-3 py-2 btn-editsatuan"  id="deleteData" data-id="'.$id.'">Hapus</a>';
+    }
+
+    public function detail(){
+        $id       = $this->data->id;
+        return '<a href="" id="detailData" data-id="'.$id.'"
+                                    class="text-xs bg-secondary rounded-full text-white px-3 py-2">Detail</a></td>';
     }
 
     public function validation(){

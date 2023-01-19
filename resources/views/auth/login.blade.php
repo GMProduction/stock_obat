@@ -69,16 +69,26 @@
                                 <label for="text"
                                     class="block mb-2 text-sm font-medium text-gray-900 ">Username</label>
                                 <input type="text" name="username" id="text"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5    "
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  {{ $errors->has('username')?'border-red-500':'' }}   "
                                     placeholder="username" required>
+                                @if ($errors->has('username'))
+                                    <p class="text-red-500" style="font-size: 0.8em">
+                                        {{ $errors->first('username') }}
+                                    </p>
+                                @endif
                             </div>
 
                             <div class="mt-3">
                                 <label for="password"
                                     class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   "
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   {{ $errors->has('password')?'border-red-500':'' }} "
                                     required>
+                                @if ($errors->has('password'))
+                                    <p class="text-red-500" style="font-size: 0.8em">
+                                        {{ $errors->first('password') }}
+                                    </p>
+                                @endif
                             </div>
 
                             <button type="submit"

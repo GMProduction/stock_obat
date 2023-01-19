@@ -121,9 +121,9 @@
                                 <thead class="bg-gray-50 ">
                                 <th class="text-right text-xs py-3">No</th>
                                 <th class="text-left text-xs">Nama Barang</th>
+                                <th class="text-center text-xs">Qty</th>
                                 <th class="text-center text-xs">Satuan</th>
                                 <th class="text-center text-xs">Kadaluarsa</th>
-                                <th class="text-center text-xs">Qty</th>
                                 <th class="text-right text-xs">Harga Satuan</th>
                                 <th class="text-right text-xs">Total Harga</th>
                                 <th class="text-center text-xs">Action</th>
@@ -196,7 +196,8 @@
                                     Total Keseluruhan
                                 </label>
                                 <input type="text" id="summary"
-                                       class="bg-gray-200 border text-right w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 rounded-md"
+                                       class="bg-gray-200 border text-right w-full border-gray-300 text-gray-900 text-sm block
+                                p-2.5 rounded-md"
                                        placeholder="Total Keseluruhan" readonly name="total-keseluruhan"
                                        value="Rp. {{ number_format($total, 0, ',', '.') }}">
                             </div>
@@ -222,9 +223,11 @@
                         </span>Simpan
                     </button>
 
-                    <button type="submit" id="btn-save" form="form-save"
+
+                    <button type="button" id="btn-save" form="form-save"
+                            onclick="location.href='/penerimaan/cetaksuratpenerimaan/1'"
                             class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
-                        <span class="material-symbols-outlined text-white mr-3">
+                            <span class="material-symbols-outlined text-white mr-3">
                             print
                         </span>Simpan & Cetak
                     </button>
@@ -605,7 +608,11 @@
                     name: 'medicine.name',
                     className: 'text-left text-xs'
                 },
-
+                {
+                    data: 'qty',
+                    name: 'qty',
+                    className: 'text-center text-xs'
+                },
                 {
                     data: 'unit.name',
                     name: 'unit.name',
@@ -624,11 +631,7 @@
                         });
                     }
                 },
-                {
-                    data: 'qty',
-                    name: 'qty',
-                    className: 'text-center text-xs'
-                },
+
                 {
                     data: 'price',
                     name: 'price',

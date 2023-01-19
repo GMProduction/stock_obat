@@ -1,4 +1,4 @@
-function datatable(tb, url, columns, createdRow = null) {
+function datatable(tb, url, columns, createdRow = null, order = []) {
     $('#' + tb).DataTable({
         processing: true,
         serverSide: true,
@@ -20,6 +20,7 @@ function datatable(tb, url, columns, createdRow = null) {
             $("td:first", nRow).html(index);
             return nRow;
         },
+        order: order,
         createdRow: createdRow,
         columns: columns
     }).columns.adjust()

@@ -9,10 +9,6 @@ use Illuminate\Support\Arr;
 
 class MedicineRepository extends BaseRepo
 {
-    public function __construct()
-    {
-
-    }
 
     public function validation()
     {
@@ -35,7 +31,7 @@ class MedicineRepository extends BaseRepo
     public function fieldData()
     {
         $formData = request()->all();
-        $category = Category::where('id', '=', request('category_id'))->orWhere('name', '=', request('category_id'))->first();
+        $category = Category::where('id', '=', $this->postField('category_id'))->orWhere('name', '=', $this->postField('category_id'))->first();
         if ($category == null) {
             $category = new Category();
             $category = $category->create(
@@ -67,13 +63,32 @@ class MedicineRepository extends BaseRepo
 
     public function showDatatable()
     {
-        $data = Medicine::with(['category:id,name', 'unit:id,name'])->select();
+        $data             = Medicine::with(['category:id,name', 'unit:id,name']);
         $this->selectData = ['name', 'unit_id', 'limit', 'category_id'];
         $this->button = ['edit', 'delete'];
 
         return $this->datatabe($data);
 
     }
+
+    public function showDatatableStock(){
+        $this->button = ['tambahStok'];
+        return $this->datatabe(Medicine::query());
+    }
+
+    public function showDatatableStockDetail($id){
+        $data = Medicine::find($id);
+        $this->button = ['detail'];
+        return $this->datatabe($data);
+    }
+
+    public function tambahStok(){
+        $id       = $this->data->id;
+        return '<a href="'.route('stockbarang',['id' => $id]).'"
+                                    class="text-xs bg-secondary rounded-full text-white px-3 py-2">Tambah Stock</a></td>';
+    }
+
+
 
     public function findAll($preload = [])
     {

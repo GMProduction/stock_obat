@@ -87,7 +87,7 @@
                         </button>
                     </div>
                 </div>
-                <table id="tb-master" class="hover mt-10"
+                <table id="tb-master-obat" class="hover mt-10"
                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                     <tr>
@@ -100,35 +100,6 @@
                         <th class="text-center text-sm">Action</th>
                     </tr>
                     </thead>
-                    {{--                    <tbody>--}}
-                    {{--                        <tr>--}}
-                    {{--                            <td class="text-right text-sm">1</td>--}}
-                    {{--                            <td class="text-center text-sm">Paracetamol</td>--}}
-                    {{--                            <td class="text-center text-sm">APBD</td>--}}
-                    {{--                            <td class="text-center text-sm">Tablet</td>--}}
-                    {{--                            <td class="text-center text-sm">3</td>--}}
-                    {{--                            <td class="text-center text-xs font-bold">--}}
-                    {{--                                <button--}}
-                    {{--                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster">Ubah</button>--}}
-                    {{--                                <button class="bg-red-500 rounded-full text-white px-3 py-2"--}}
-                    {{--                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>--}}
-                    {{--                            </td>--}}
-                    {{--                        </tr>--}}
-
-                    {{--                        <tr>--}}
-                    {{--                            <td class="text-right text-sm">2</td>--}}
-                    {{--                            <td class="text-center text-sm">Obat Mencret</td>--}}
-                    {{--                            <td class="text-center text-sm">APBD</td>--}}
-                    {{--                            <td class="text-center text-sm">Tablet</td>--}}
-                    {{--                            <td class="text-center text-sm">5</td>--}}
-                    {{--                            <td class="text-center text-xs font-bold">--}}
-                    {{--                                <button--}}
-                    {{--                                    class="bg-secondary rounded-full text-white px-3 py-2 btn-tambahMaster">Ubah</button>--}}
-                    {{--                                <button class="bg-red-500 rounded-full text-white px-3 py-2"--}}
-                    {{--                                    onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})">Hapus</button>--}}
-                    {{--                        </tr>--}}
-
-                    {{--                    </tbody>--}}
                 </table>
             </div>
 
@@ -352,12 +323,8 @@
     <script>
         $(document).ready(function () {
 
-            //     var table = $('#tb-master').DataTable({
-            //         responsive: true
-            //     })
-            //         .columns.adjust()
-            //         .responsive.recalc();
             tabel();
+            // $('#tb-master-obat').DataTable();
             getSelect('selectCategory', '{{route('categoryjson')}}', 'name', null, 'Pilih Kategori Obat', true)
             getSelect('selectUnit', '{{route('unitjson')}}', 'name', null, 'Pilih Satuan Obat', true)
         });
@@ -480,7 +447,7 @@
                     $(row).addClass( 'stock-lower' );
                 }
             };
-            datatable('tb-master', '{{route('masterdatatable')}}', colums, createdRow)
+            datatable('tb-master-obat', '{{route('masterdatatable')}}', colums, createdRow)
         }
 
         function saveMedicine() {
@@ -490,7 +457,7 @@
 
         function responseMedicine() {
             modaltambahmHide();
-            $("#tb-master").DataTable().ajax.reload();
+            $("#tb-master-obat").DataTable().ajax.reload();
             getSelect('selectCategory', '{{route('categoryjson')}}', 'name', null, 'Pilih Kategori Obat', true)
             getSelect('selectUnit', '{{route('unitjson')}}', 'name', null, 'Pilih Satuan Obat', true)
         }

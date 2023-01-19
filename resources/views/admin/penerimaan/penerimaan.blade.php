@@ -54,13 +54,6 @@
                 <p class="title ">Penerimaan Barang </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
-                        <button
-                            class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
-                                class="material-symbols-outlined mr-2 menu-icon text-sm">
-                                filter_alt
-                            </span>Filter
-                        </button>
-
                         <button onclick="location.href='{{ route('tambahbarang') }}'"
                                 class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm "><span
                                 class="material-symbols-outlined mr-2 menu-ico text-sm">
@@ -72,12 +65,11 @@
                 <table id="tb-master" class="stripe hover mt-10" style="width:100%; ">
                     <thead>
                     <tr>
-                        <th width="10" data-priority="1" class="text-center text-xs">No</th>
-                        <th width="150" data-priority="2" class="text-center text-xs">Tanggal Datang</th>
-                        <th width="200" data-priority="3" class="text-center text-xs">Nomor Batch</th>
+                        <th data-priority="1" class="text-center text-xs">No</th>
+                        <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
+                        <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
                         <th data-priority="3" class="text-left text-xs">Sumber Anggaran</th>
-                        <th width="200" data-priority="3" class="text-right text-xs">Total</th>
-                        <th width="75" data-priority="4" class="text-center text-xs">Action</th>
+                        <th data-priority="4" class="text-center text-xs">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -121,6 +113,11 @@
                 className: 'text-center text-xs'
             },
                 {
+                    data: 'batch_id',
+                    name: 'batch_id',
+                    className: 'text-center text-xs'
+                },
+                {
                     data: 'date',
                     name: 'date',
                     className: 'text-center text-xs',
@@ -133,11 +130,7 @@
                         });
                     }
                 },
-                {
-                    data: 'batch_id',
-                    name: 'batch_id',
-                    className: 'text-center text-xs'
-                },
+
                 {
                     data: 'budget_source.name',
                     name: 'budget_source.name',
@@ -157,7 +150,7 @@
                     data: null,
                     render: function (data) {
                         return '<button data-id="' + data['id'] +
-                            '" class="bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs">Detail</button>';
+                            '" onclick="location.href=\'penerimaan/detail/1\'" class="bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs">Detail</button>';
                     }
                 },
             ]);

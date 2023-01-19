@@ -15,6 +15,7 @@ use App\Repository\MedicineRepository;
 use App\Repository\TransactionInRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 class TransactionInController extends CustomController
 {
@@ -135,5 +136,24 @@ class TransactionInController extends CustomController
         } catch (\Exception $e) {
             return $this->jsonResponse('internal server error', 500);
         }
+    }
+
+    public function cetakSuratPenerimaan($id)
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->dataTransaksi($id))->setPaper('f4', 'potrait');
+
+        return $pdf->stream();
+    }
+
+    public function dataTransaksi($id)
+    {
+        $trans = ['id' => 'penerimaanPage'];
+        return view('admin.penerimaan.suratpenerimaan', ['data' => $id]);
+    }
+
+    public function detailpenerimaan($id)
+    {
+        return view('admin.penerimaan.detailpenerimaan');
     }
 }

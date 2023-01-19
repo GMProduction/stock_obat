@@ -154,6 +154,7 @@ class TransactionOutController extends CustomController
         }
     }
 
+
     private function generateGeneralLedger($available_stocks, $qty)
     {
         $tmp_rest = $qty;
@@ -205,5 +206,9 @@ class TransactionOutController extends CustomController
             'data' => $tmp_general_ledgers,
             'avg_price' => $avg_price
         ];
+    }
+
+    public function detailpengeluaran($id){
+        return view('admin.pengeluaran.detailpengeluaran');
     }
 }
