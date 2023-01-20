@@ -146,12 +146,6 @@ class TransactionInController extends CustomController
         return $pdf->stream();
     }
 
-    public function dataTransaksi($id)
-    {
-        $trans = ['id' => 'penerimaanPage'];
-        return view('admin.penerimaan.suratpenerimaan', ['data' => $id]);
-    }
-
     public function detail($id)
     {
         $data = TransactionIn::with(['medicine_ins.medicine', 'budget_source', 'medicine_ins.unit'])->findOrFail($id)->append('total');

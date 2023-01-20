@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Surat Penerimaan || (Nomor Batch)</title>
+    <title>Surat Barang Keluar || (Nomor Surat)</title>
     <!-- Fonts -->
 
     <!-- Styles -->
@@ -130,7 +130,8 @@
         <div style="width: 100%; border-bottom: 2px solid black; margin-bottom: 10px">
 
         </div>
-        <p style="font-weight: bold; font-size: 0.9rem;" class="text-center">Surat Penerimaan Barang</p>
+
+        <p style="font-weight: bold; font-size: 0.9rem;" class="text-center">Surat Pengiriman Barang</p>
         <table style="border: 0; ">
             <tr style="border: none">
                 <td>
@@ -140,18 +141,18 @@
 
                             <tr style="border: 0;  ">
                                 <td class="text-left" style="width: 100px; margin-bottom: 0; font-size: 11px ">
-                                    No. Surat Penerimaan
+                                    No. Surat Pengiriman
                                 </td>
                                 <td class="text-left" style="width: 10px !important; margin-bottom: 0; font-size: 11px">
                                     :
                                 </td>
                                 <td class="text-left" style="margin-bottom: 0; font-size: 11px">
-                                    "Nomor Batch"
+                                    "Nomor Surat"
                                 </td>
                             </tr>
                             <tr style="border: 0; margin-top: 0;">
                                 <td class="text-left" style="font-size: 11px">
-                                    Tanggal Penerimaan
+                                    Tanggal Pengiriman
                                 </td>
                                 <td class="text-left" style="width: 10px !important;font-size: 11px">
                                     :
@@ -163,13 +164,13 @@
                             </tr>
                             <tr style="border: 0; ">
                                 <td class="text-left " style="font-size: 11px">
-                                    Sumber Anggaran
+                                    Tujuan Pengiriman
                                 </td>
                                 <td class="text-left" style="width: 10px !important; font-size: 11px">
                                     :
                                 </td>
                                 <td class="text-left" style="width: 200px; font-size: 11px">
-                                    APBN
+                                    "Lokasi Pengiriman"
                                 </td>
 
                             </tr>
@@ -184,7 +185,7 @@
     <br>
 
     {{-- BARANG DITERIMA --}}
-    <p style="font-size: 0.9rem">Daftar Barang yang diterima</p>
+    <p style="font-size: 0.9rem">Daftar Barang yang dikirim</p>
     <div class="panel">
 
 
@@ -195,9 +196,6 @@
                     <th class="text-left text-ontable">Nama Barang</th>
                     <th class="text-right text-ontable" style="width: 20px">Qty</th>
                     <th class="text-left text-ontable">Satuan</th>
-                    <th class="text-center text-ontable " style="width: 200px">Tanggal Kadaluarsa</th>
-                    <th class="text-right text-ontable">Harga Satuan</th>
-                    <th class="text-right text-ontable">Total Harga</th>
                     {{-- <th class="text-center">Total Harga</th> --}}
                 </tr>
 
@@ -216,15 +214,7 @@
                     <td class="text-left text-ontable">
                         Tablet
                     </td>
-                    <td class="text-center text-ontable" style="width: 200px">
-                        12 Desember 2023
-                    </td>
-                    <td class="text-right text-ontable">
-                        Rp 20.000
-                    </td>
-                    <td class="text-right text-ontable">
-                        Rp 40.000
-                    </td>
+
                 </tr>
                 <tr>
                     <td style="width: 10px !important" class="text-center text-ontable">
@@ -239,15 +229,7 @@
                     <td class="text-left text-ontable">
                         Tablet
                     </td>
-                    <td class="text-center text-ontable" style="width: 200px">
-                        12 Desember 2023
-                    </td>
-                    <td class="text-right text-ontable">
-                        Rp 20.000
-                    </td>
-                    <td class="text-right text-ontable">
-                        Rp 40.000
-                    </td>
+
                 </tr>
                 <tr>
                     <td style="width: 10px !important" class="text-center text-ontable">
@@ -262,15 +244,7 @@
                     <td class="text-left text-ontable">
                         Tablet
                     </td>
-                    <td class="text-center text-ontable" style="width: 200px">
-                        12 Desember 2023
-                    </td>
-                    <td class="text-right text-ontable">
-                        Rp 20.000
-                    </td>
-                    <td class="text-right text-ontable">
-                        Rp 140.000
-                    </td>
+
                 </tr>
             </tbody>
         </table>

@@ -13,6 +13,7 @@ use App\Repository\TransactionOutRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 class TransactionOutController extends CustomController
 {
@@ -208,7 +209,26 @@ class TransactionOutController extends CustomController
         ];
     }
 
-    public function detailpengeluaran($id){
+    public function detailpengeluaran($id)
+    {
         return view('admin.pengeluaran.detailpengeluaran');
     }
+
+    public function cetakSuratKeluar($id)
+    {
+        //        return $this->dataTransaksi($id);
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->dataTransaksi($id))->setPaper('f4', 'potrait');
+
+        return $pdf->stream();
+    }
+
+    public function dataTransaksi($id)
+    {
+        $trans = ['id' => 'penerimaanPage'];
+        //        return $trans;
+        return view('admin.pengeluaran.suratbarangkeluar');
+    }
+
+
 }

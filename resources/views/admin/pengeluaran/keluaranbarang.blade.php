@@ -216,7 +216,7 @@
                         </span>Simpan Data
                     </button>
 
-                    <button type="button" id="btn-save-and-print"
+                    <button type="button" id="btn-save-and-print" onclick="location.href='/pengeluaran/suratbarangkeluar/1'"
                             class="ml-3 flex items-center text-white bg-secondary hover:bg-orange-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             print

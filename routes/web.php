@@ -15,14 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::match(['post', 'get'], '/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 
-//Route::get('/login', function () {
-//    return view('auth/login');
-//});
 
 Route::middleware('auth')->group(
     function () {
         Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
-
+        Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
         Route::prefix('/')->group(
             function () {
                 Route::get('', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
@@ -55,13 +52,6 @@ Route::middleware('auth')->group(
                         Route::get('json', [\App\Http\Controllers\CategoryController::class, 'getAll'])->name('categoryjson');
                     }
                 );
-
-//                Route::get('', [\App\Http\Controllers\MasterOtherController::class, 'index'])->name('masterother');
-//                Route::post('patch/{type}', [\App\Http\Controllers\MasterOtherController::class, 'patch'])->name('patchOther');
-//                Route::get('datatable-unit', [\App\Http\Controllers\MasterOtherController::class, 'datatableUnit'])->name('datatableUnit');
-//                Route::get('datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
-//                Route::get('unit-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllUnit'])->name('unitjson');
-//                Route::get('budget-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllBudget'])->name('budgetjson');
             }
         );
         Route::prefix('penerimaan')->group(function () {
