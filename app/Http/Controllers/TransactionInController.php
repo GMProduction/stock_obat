@@ -138,9 +138,8 @@ class TransactionInController extends CustomController
 
     public function dataTransaksi($id)
     {
-        $trans = ['id' => 'penerimaanPage'];
 //        return $trans;
-        return view('admin.penerimaan.suratpenerimaan',['data' => $id]);
+        return view('admin.penerimaan.suratpenerimaan');
     }
 
     public function detailpenerimaan($id){
