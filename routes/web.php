@@ -71,6 +71,14 @@ Route::middleware('auth')->group(
                 Route::get('/detail/{id}', [\App\Http\Controllers\TransactionOutController::class, 'detailpengeluaran'])->name('detailpengeluaran');
             }
         );
+
+        Route::prefix('laporan')->group(
+            function () {
+                // Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
+                Route::get('/penerimaan', [\App\Http\Controllers\LaporanController::class, 'penerimaan'])->name('laporanpenerimaan');
+
+            }
+        );
     }
 );
 

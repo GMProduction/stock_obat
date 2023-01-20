@@ -41,7 +41,21 @@
         <div class="grid grid-cols-5 gap-4">
             <div class="section relative col-span-2">
                 <p class="title ">Penerimaan Barang </p>
+                <div class="absolute right-0 top-0 mt-3 mr-3">
+                    <div class="flex">
+                        <button class="bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
+                                class="material-symbols-outlined mr-2 menu-icon text-sm">
+                                filter_alt
+                            </span>Filter
+                        </button>
+                        <button class="bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
+                            class="material-symbols-outlined mr-2 menu-icon text-sm">
+                            print
+                        </span>Filter
+                    </button>
 
+                    </div>
+                </div>
                 <table id="tb-master" class="stripe hover mt-10"
                     style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
@@ -185,7 +199,6 @@
 
             var table = $('#tb-master').DataTable({
                     responsive: true,
-                    "lengthChange": false
                 })
                 .columns.adjust()
                 .responsive.recalc();
