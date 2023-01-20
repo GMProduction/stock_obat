@@ -57,6 +57,7 @@ Route::middleware('auth')->group(
         Route::prefix('penerimaan')->group(function () {
             Route::get('/', [\App\Http\Controllers\TransactionInController::class, 'index'])->name('penerimaanbarang');
             Route::get('/{id}/detail', [\App\Http\Controllers\TransactionInController::class, 'detail'])->name('penerimaanbarang.detail');
+            Route::get('/{id}/cetak', [\App\Http\Controllers\TransactionInController::class, 'print_transaction_in'])->name('penerimaanbarang.cetak');
             Route::match(['get', 'post'], '/tambah', [\App\Http\Controllers\TransactionInController::class, 'add'])->name('tambahbarang');
             Route::post('/tambah/cart', [\App\Http\Controllers\TransactionInController::class, 'storeCart'])->name('tambahbarang.cart');
             Route::post('/destroy/cart', [\App\Http\Controllers\TransactionInController::class, 'delete_cart'])->name('tambahbarang.cart.destroy');
@@ -65,10 +66,11 @@ Route::middleware('auth')->group(
         Route::prefix('pengeluaran')->group(
             function () {
                 Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
+                Route::get('/{id}/detail', [\App\Http\Controllers\TransactionOutController::class, 'detail'])->name('pengeluaran.detail');
+                Route::get('/{id}/cetak', [\App\Http\Controllers\TransactionOutController::class, 'print_transaction_out'])->name('pengeluaran.cetak');
                 Route::match(['get', 'post'], '/tambah', [\App\Http\Controllers\TransactionOutController::class, 'add'])->name('pengeluaranbarang');
                 Route::post('/tambah/cart', [\App\Http\Controllers\TransactionOutController::class, 'store_cart'])->name('pengeluaranbarang.cart');
                 Route::post('/destroy/cart', [\App\Http\Controllers\TransactionOutController::class, 'delete_cart'])->name('pengeluaranbarang.cart.destroy');
-                Route::get('/detail/{id}', [\App\Http\Controllers\TransactionOutController::class, 'detailpengeluaran'])->name('detailpengeluaran');
             }
         );
     }

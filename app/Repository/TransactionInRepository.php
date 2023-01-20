@@ -31,6 +31,11 @@ class TransactionInRepository
         return TransactionIn::create($data);
     }
 
+    public function getTransactionInById($id, $preload = [])
+    {
+        return TransactionIn::with($preload)->find($id)->append('total');
+    }
+
     public function medicineById($id)
     {
         return $this->medicineRepository->findById($id);

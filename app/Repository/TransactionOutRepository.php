@@ -33,6 +33,11 @@ class TransactionOutRepository
             ->get();
     }
 
+    public function getTransactionOutById($id, $preload = [])
+    {
+        return TransactionOut::with($preload)->find($id)->append('total');
+    }
+
     public function findMedicineByID($medicine_id, $preload = [])
     {
         return $this->medicineRepository->findById($medicine_id);
