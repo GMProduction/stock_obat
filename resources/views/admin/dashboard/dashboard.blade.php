@@ -57,34 +57,13 @@
                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                     <tr>
-                        <th data-priority="1" class="text-right text-sm">No</th>
-                        <th data-priority="3" class="text-left text-sm">Nama Barang</th>
-                        <th data-priority="4" class="text-right text-sm">Qty</th>
+                        <th data-priority="1" class="text-center text-sm">No</th>
+                        <th data-priority="3" class="text-center text-sm">Nama Barang</th>
+                        <th data-priority="4" class="text-center text-sm">Qty</th>
                         <th data-priority="4" class="text-center text-sm">Action</th>
                     </tr>
                     </thead>
-                    {{--                    <tbody>--}}
-                    {{--                        <tr>--}}
-                    {{--                            <td class="text-right text-sm">1</td>--}}
-                    {{--                            <td class="text-left text-sm">A0001</td>--}}
-                    {{--                            <td class="text-left text-sm">Paracetamol</td>--}}
-                    {{--                            <td class="text-right text-sm">61</td>--}}
-                    {{--                            <td class="text-center text-xs font-bold">--}}
-                    {{--                                <a href="{{route('stockbarang',['id' => 1])}}"--}}
-                    {{--                                    class="bg-secondary rounded-full text-white px-3 py-2">Tambah Stock</a></td>--}}
-                    {{--                        </tr>--}}
 
-                    {{--                        <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->--}}
-
-                    {{--                        <tr>--}}
-                    {{--                            <td class="text-right text-sm">2</td>--}}
-                    {{--                            <td class="text-left text-sm">B0145</td>--}}
-                    {{--                            <td class="text-left text-sm">Salep 88</td>--}}
-                    {{--                            <td class="text-right text-sm">27</td>--}}
-                    {{--                            <td class="text-center text-xs font-bold"><a href="{{route('stockbarang',['id' => 1])}}"--}}
-                    {{--                                    class="bg-secondary rounded-full text-white px-3 py-2">Tambah Stock</a></td>--}}
-                    {{--                        </tr>--}}
-                    {{--                    </tbody>--}}
                 </table>
             </div>
 
@@ -94,40 +73,13 @@
                        style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                     <tr>
-                        <th data-priority="1" class="text-right text-sm">No</th>
-                        <th data-priority="2" class="text-left text-sm">Kode Barang</th>
-                        <th data-priority="3" class="text-left text-sm">Nama Barang</th>
-                        <th data-priority="4" class="text-right text-sm">Qty</th>
+                        <th data-priority="1" class="text-center text-sm">No</th>
+                        <th data-priority="3" class="text-center text-sm">Nama Barang</th>
+                        <th data-priority="4" class="text-center text-sm">Qty</th>
+                        <th data-priority="4" class="text-center text-sm">Tanggal Kadaluarsa</th>
                         <th data-priority="4" class="text-center text-sm">Action</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td class="text-right text-sm">1</td>
-                        <td class="text-left text-sm">A0001</td>
-                        <td class="text-left text-sm">Paracetamol</td>
-                        <td class="text-right text-sm">61</td>
-                        <td class="text-center text-xs font-bold">
-                            <button onclick="location.href='/admin/stock/kodebarang'"
-                                    class="bg-secondary rounded-full text-white px-3 py-2">Check Stock
-                            </button>
-                        </td>
-                    </tr>
-
-                    <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
-
-                    <tr>
-                        <td class="text-right text-sm">2</td>
-                        <td class="text-left text-sm">B0145</td>
-                        <td class="text-left text-sm">Salep 88</td>
-                        <td class="text-right text-sm">27</td>
-                        <td class="text-center text-xs font-bold">
-                            <button onclick="location.href='/admin/stock/kodebarang'"
-                                    class="bg-secondary rounded-full text-white px-3 py-2">Check Stock
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -140,6 +92,7 @@
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('js/moment.min.js')}}"></script>
 
     <script>
         $(document).ready(function () {
@@ -149,13 +102,15 @@
             //     })
             //     .columns.adjust()
             //     .responsive.recalc();
+            moment.locale('id');
 
             datatableStok();
-            var table = $('#tb-expired').DataTable({
-                responsive: true
-            })
-                .columns.adjust()
-                .responsive.recalc();
+            datatableExpired();
+            // var table = $('#tb-expired').DataTable({
+            //     responsive: true
+            // })
+            //     .columns.adjust()
+            //     .responsive.recalc();
         });
 
         function datatableStok() {
@@ -176,6 +131,32 @@
                 },
             ];
             datatable('tb-min-stock', '{{route('dashboardstock')}}', colums, null, [[2,'asc']])
+
+        }
+
+        function datatableExpired() {
+            let colums = [
+                {
+                    className: "text-center",
+                    orderable: false,
+                    defaultContent: "",
+                    searchable: false
+                },
+                {data: 'name', name: 'name'},
+                {
+                    data: 'qty', name: 'qty', className: 'text-center'
+                },
+                {
+                    data: 'medicine_ins_expired.expired_date', name: 'medicine_ins_expired.expired_date', className: 'text-center', render: function (data) {
+                        return data ? moment(data).locale('id').format('LL') : '-'
+                    }
+                },
+                {
+                    className: "text-center",
+                    data: 'action', name: 'action', orderable: false, searchable: false
+                },
+            ];
+            datatable('tb-expired', '{{route('dashboardexpired')}}', colums, null)
 
         }
     </script>

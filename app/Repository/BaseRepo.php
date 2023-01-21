@@ -17,82 +17,118 @@ abstract class BaseRepo
     protected $selectData = [];
     protected $data;
     protected $class;
+    protected $addColumn = [];
 
     /** @var Unit $model */
     protected function datatabe($model)
     {
-//        $data = ;
-        return DataTables::of($model)
-                         ->removeColumn('id')
-                         ->addColumn(
-                             'action',
-                             function ($data) {
-                                 $this->data = $data;
-                                 return $this->dataButton();
-                             }
-                         )
-                         ->make(true);
+        $tabel = DataTables::of($model)
+                           ->removeColumn('id');
+
+        if ($this->button) {
+            $tabel = $tabel->addColumn(
+                'action',
+                function ($data) {
+                    $this->data = $data;
+
+                    return $this->dataButton();
+                }
+            );
+        }
+
+        foreach ($this->addColumn as $d) {
+            $tabel = $tabel->addColumn(
+                $d['name'],
+                function ($data) use ($d) {
+                    $string = isset($d['value']) ? explode('.', $d['value']) : [];
+                    $dd     = $data;
+                    foreach ($string as $s) {
+                        if ($dd) {
+                            $dd = $dd->{$s};
+                        } else {
+                            $dd = null;
+                        }
+                    }
+                    if ($d['string_value']) {
+                        $dd = $d['string_value'];
+                    }
+
+                    return $dd;
+                }
+            );
+        }
+        $tabel = $tabel->make(true);
+        return $tabel;
     }
 
     public function dataButton()
     {
-
+        $buttonInject = [];
         if ($this->button) {
             foreach ($this->button as $button) {
                 $buttonInject[] = $this::$button();
             }
         }
         $dd = '<div class="flex justify-center gap-2">';
-        foreach ($buttonInject as $b){
+        foreach ($buttonInject as $b) {
             $dd .= $b;
         }
         $dd .= '</div>';
+
         return $dd;
     }
 
-    public function edit(){
+    public function edit()
+    {
         $id       = $this->data->id;
         $dataAttr = '';
-        $clas = $this->class;
+        $clas     = $this->class;
         foreach ($this->selectData as $key => $d) {
             $dataAttr .= ' data-'.$d.'="'.$this->data[$d].'"';
         }
+
         return '<a role="button" id="editData" class="text-xs font-bold bg-secondary rounded-full text-white px-3 py-2 btn-editsatuan" data-id="'.$id.'" '.$dataAttr.'>Edit</a>';
     }
 
-    public function delete(){
+    public function delete()
+    {
         $clas = $this->class;
 
-        $id       = $this->data->id;
+        $id = $this->data->id;
+
         return '<a role="button" class="text-xs font-bold bg-red-500 rounded-full text-white px-3 py-2 btn-editsatuan"  id="deleteData" data-id="'.$id.'">Hapus</a>';
     }
 
-    public function detail(){
-        $id       = $this->data->id;
+    public function detail()
+    {
+        $id = $this->data->id;
+
         return '<a href="" id="detailData" data-id="'.$id.'"
                                     class="text-xs bg-secondary rounded-full text-white px-3 py-2">Detail</a></td>';
     }
 
-    public function validation(){
+    public function validation()
+    {
         return true;
     }
 
-
-    public function fieldData(){
+    public function fieldData()
+    {
         return request()->all();
     }
 
-
     /** @var Unit $model */
-    public function patchData($model){
+    public function patchData($model)
+    {
         $this->validation();
-        if (request('id')){
+        if (request('id')) {
             $data = $model::find(request('id'));
             $data->update($this->fieldData());
-        }else{
+        } else {
             $data = new $model();
             $data->create($this->fieldData());
         }
+
         return 'sucess';
     }
 

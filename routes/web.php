@@ -27,7 +27,9 @@ Route::middleware('auth')->group(
             function () {
                 Route::get('', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
                 Route::get('stock/{id}', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
+                Route::get('stock/{id}/datatable', [\App\Http\Controllers\DashboardController::class, 'datatableStockDetail'])->name('stockbarang.datatable');
                 Route::get('datatable-stock', [\App\Http\Controllers\DashboardController::class, 'datatableStock'])->name('dashboardstock');
+                Route::get('datatable-expired', [\App\Http\Controllers\DashboardController::class, 'datatableExpired'])->name('dashboardexpired');
             }
         );
         Route::prefix('master')->group(
@@ -55,15 +57,6 @@ Route::middleware('auth')->group(
                         Route::get('json', [\App\Http\Controllers\CategoryController::class, 'getAll'])->name('categoryjson');
                     }
                 );
-
-//                Route::get('', [\App\Http\Controllers\MasterOtherController::class, 'index'])->name('masterother');
-//                Route::post('patch/{type}', [\App\Http\Controllers\MasterOtherController::class, 'patch'])->name('patchOther');
-//                Route::get('datatable-unit', [\App\Http\Controllers\MasterOtherController::class, 'datatableUnit'])->name('datatableUnit');
-//                Route::get('datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
-//                Route::get('unit-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllUnit'])->name('unitjson');
-//                Route::get('budget-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllBudget'])->name('budgetjson');
-
-//
             }
         );
 
