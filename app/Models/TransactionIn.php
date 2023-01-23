@@ -36,6 +36,5 @@ class TransactionIn extends Model
     {
         $medicine_ins = $this->medicine_ins()->get();
         return $medicine_ins->sum('total');
-
     }
 }

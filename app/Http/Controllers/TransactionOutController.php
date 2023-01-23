@@ -209,26 +209,15 @@ class TransactionOutController extends CustomController
         ];
     }
 
-    public function detailpengeluaran($id)
+    public function detail($id)
     {
-        return view('admin.pengeluaran.detailpengeluaran');
+        $data = $this->transactionOutRepository->getTransactionOutById($id, ['medicine_outs.medicine', 'location', 'medicine_outs.unit']);
+        return view('admin.pengeluaran.detailpengeluaran')->with(['data' => $data]);
     }
 
-    public function cetakSuratKeluar($id)
+    public function print_transaction_out($id)
     {
-        //        return $this->dataTransaksi($id);
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->dataTransaksi($id))->setPaper('f4', 'potrait');
-
-        return $pdf->stream();
+        $data = $this->transactionOutRepository->getTransactionOutById($id, ['medicine_outs.medicine', 'location', 'medicine_outs.unit']);
+        return $this->convertToPdf('admin.pengeluaran.suratbarangkeluar', ['data' => $data]);
     }
-
-    public function dataTransaksi($id)
-    {
-        $trans = ['id' => 'penerimaanPage'];
-        //        return $trans;
-        return view('admin.pengeluaran.suratbarangkeluar');
-    }
-
-
 }

@@ -148,7 +148,13 @@ class TransactionInController extends CustomController
 
     public function detail($id)
     {
-        $data = TransactionIn::with(['medicine_ins.medicine', 'budget_source', 'medicine_ins.unit'])->findOrFail($id)->append('total');
+        $data = $this->transactionInRepository->getTransactionInById($id, ['medicine_ins.medicine', 'budget_source', 'medicine_ins.unit']);
         return view('admin.penerimaan.detailpenerimaan')->with(['data' => $data]);
+    }
+
+    public function print_transaction_in($id)
+    {
+        $data = $this->transactionInRepository->getTransactionInById($id, ['medicine_ins.medicine', 'budget_source', 'medicine_ins.unit']);
+        return $this->convertToPdf('admin.penerimaan.suratpenerimaan', ['data' => $data]);
     }
 }

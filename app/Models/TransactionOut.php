@@ -27,5 +27,14 @@ class TransactionOut extends Model
         return $this->belongsTo(Location::class, 'location_id');
     }
 
+    public function medicine_outs()
+    {
+        return $this->hasMany(MedicineOut::class, 'transaction_out_id');
+    }
 
+    public function getTotalAttribute()
+    {
+        $medicine_outs = $this->medicine_outs()->get();
+        return $medicine_outs->sum('total');
+    }
 }
