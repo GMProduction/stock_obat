@@ -44,11 +44,11 @@
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
 
-                        <button  onclick="window.open('{{ route('cetakLaporanPenerimaan', ['id' => 1]) }}');"
-                            class="bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
-                                class="material-symbols-outlined mr-2 menu-icon text-sm">
-                                print
-                            </span>Export Excel
+                        <button onclick="window.open('{{ route('cetakLaporanPenerimaan', ['id' => 1]) }}');"
+                            class="bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
+                            <img src="{{ asset('local/icons/draft.svg') }}"
+                                class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
+                            Export Excel
                         </button>
 
                     </div>
@@ -162,28 +162,20 @@
                     <thead>
                         <tr>
                             <th data-priority="1" class="text-right text-xs">No</th>
-                            <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
-                            {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                            <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
-                            <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
-                            <th data-priority="3" class="text-center text-xs">Sumber Anggaran</th>
-                            {{-- <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
-                            <th data-priority="3" class="text-center text-xs">Total Harga</th>  --}}
-                            <th data-priority="4" class="text-center text-xs">Action</th>
+                            <th data-priority="2" class="text-center text-xs">Nama Barang</th>
+                            <th data-priority="2" class="text-center text-xs">Kategori</th>
+                            <th data-priority="2" class="text-center text-xs">Stock</th>
+                            <th data-priority="2" class="text-center text-xs">Satuan</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
                             <td class="text-right text-xs">1</td>
-                            <td class="text-center text-xs">12 Desember 2022</td>
-                            {{-- <td class="text-center text-xs">Paracetamol</td>
-                            <td class="text-center text-xs">Tablet</td> --}}
-                            <td class="text-center text-xs">Btch0122</td>
-                            <td class="text-center text-xs">APBN</td>
-                            {{-- <td class="text-center text-xs">20 Desember 2024</td>
-                            <td class="text-center text-xs">Rp 50.000</td>
-                            <td class="text-center text-xs">Rp 80.000</td> --}}
+                            <th data-priority="2" class="text-center text-xs">Nama Barang</th>
+                            <th data-priority="2" class="text-center text-xs">Kategori</th>
+                            <th data-priority="2" class="text-center text-xs">Stock</th>
+                            <th data-priority="2" class="text-center text-xs">Satuan</th>
                             <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">
                                 <button
                                     class="bg-blue-500 flex rounded-full justify-center items-center text-white px-3 py-2 btn-tambahMaster text-xs">Detail

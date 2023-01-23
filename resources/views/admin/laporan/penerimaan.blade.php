@@ -57,7 +57,7 @@
                 {{-- FILTER --}}
                 <div class="mb-2">
                     <a class="chip mr-3 btn-tambahBarang">
-                        Periode: <span>01 Januari 2023 - 23 Januari 2023</span>
+                        Periode: <span id="date-range-value">{{ \Carbon\Carbon::now()->startOfMonth()->format('d F Y') }} - {{ \Carbon\Carbon::now()->format('d F Y') }}</span>
                     </a>
                     <a class="chip" id="btndropdownsumberanggaran">
                         Sumber Anggaran: <span id="textsumber"> Semua</span>
@@ -67,7 +67,7 @@
                 {{-- MENU  PERIODE --}}
                 <div id="modal_periode" tabindex="-1" aria-hidden="true"
                      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
-                    <div class="relative w-full max-w-2xl h-full md:h-auto">
+                    <div class="relative w-full max-w-lg h-full md:h-auto">
                         <!-- Modal content -->
                         <div class="relative bg-white rounded-lg shadow p-4 ">
                             <!-- Modal header -->
@@ -77,7 +77,7 @@
                                 </h3>
                                 <button type="button"
                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                                        onclick="modaltambahmHide()">
+                                        onclick="modalPeriodeHide()">
                                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -89,7 +89,7 @@
                             </div>
 
                             {{-- MODAL ISI --}}
-                            <div date-rangepicker datepicker-format="dd MM yyyy" class="flex items-center mt-3 mb-3">
+                            <div date-rangepicker datepicker-format="dd MM yyyy" datepicker-autohide class="flex items-center mt-3 mb-3" id="date-range-element">
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -99,9 +99,10 @@
                                                   clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
-                                    <input datepicker datepicker-autohide  name="date_start" type="text"
+                                    <input name="date_start" type="text"
                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                           placeholder="Tanggal Awal" id="date_start" value="{{ \Carbon\Carbon::now()->startOfMonth()->format('d F Y') }}">
+                                           placeholder="Tanggal Awal" id="date_start"
+                                           value="{{ \Carbon\Carbon::now()->startOfMonth()->format('d F Y') }}">
                                 </div>
                                 <span class="mx-4 text-gray-500">sampai</span>
                                 <div class="relative">
@@ -113,15 +114,16 @@
                                                   clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
-                                    <input datepicker datepicker-autohide name="date_end" type="text"
+                                    <input name="date_end" type="text"
                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                           placeholder="Tanggal Akhir" id="date_end" value="{{ \Carbon\Carbon::now()->format('d F Y') }}">
+                                           placeholder="Tanggal Akhir" id="date_end"
+                                           value="{{ \Carbon\Carbon::now()->format('d F Y') }}">
                                 </div>
                             </div>
 
                             {{-- MODAL FOOTER --}}
                             <div class="block items-center justify-end   rounded-b  border-gray-200 ">
-                                <button type="button" id="btn-add-cart"
+                                <button type="button" id="btn-submit-date-range"
                                         class="w-full flex justify-center items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                     <span class="material-symbols-outlined text-white mr-3">
                                         save
@@ -170,26 +172,26 @@
                     </thead>
 
                     <tbody>
-{{--                    <tr>--}}
-{{--                        <td class="text-right text-xs">1</td>--}}
-{{--                        <td class="text-center text-xs">12 Desember 2022</td>--}}
-{{--                        --}}{{-- <td class="text-center text-xs">Paracetamol</td>--}}
-{{--                        <td class="text-center text-xs">Tablet</td> --}}
-{{--                        <td class="text-center text-xs">Btch0122</td>--}}
-{{--                        <td class="text-center text-xs">APBN</td>--}}
-{{--                        <td class="text-center text-xs">APBN</td>--}}
-{{--                        --}}{{-- <td class="text-center text-xs">20 Desember 2024</td>--}}
-{{--                        <td class="text-center text-xs">Rp 50.000</td>--}}
-{{--                        <td class="text-center text-xs">Rp 80.000</td> --}}
-{{--                        <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">--}}
-{{--                            <button--}}
-{{--                                class="bg-blue-500 flex rounded-full justify-center items-center text-white px-3 py-2 btn-tambahMaster text-xs">--}}
-{{--                                Detail--}}
-{{--                                <img src="{{ asset('local/icons/arrowright.svg') }}"--}}
-{{--                                     class="menu-icon text-xs w-6 object-scale-down"/></button>--}}
+                    {{--                    <tr>--}}
+                    {{--                        <td class="text-right text-xs">1</td>--}}
+                    {{--                        <td class="text-center text-xs">12 Desember 2022</td>--}}
+                    {{--                        --}}{{-- <td class="text-center text-xs">Paracetamol</td>--}}
+                    {{--                        <td class="text-center text-xs">Tablet</td> --}}
+                    {{--                        <td class="text-center text-xs">Btch0122</td>--}}
+                    {{--                        <td class="text-center text-xs">APBN</td>--}}
+                    {{--                        <td class="text-center text-xs">APBN</td>--}}
+                    {{--                        --}}{{-- <td class="text-center text-xs">20 Desember 2024</td>--}}
+                    {{--                        <td class="text-center text-xs">Rp 50.000</td>--}}
+                    {{--                        <td class="text-center text-xs">Rp 80.000</td> --}}
+                    {{--                        <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">--}}
+                    {{--                            <button--}}
+                    {{--                                class="bg-blue-500 flex rounded-full justify-center items-center text-white px-3 py-2 btn-tambahMaster text-xs">--}}
+                    {{--                                Detail--}}
+                    {{--                                <img src="{{ asset('local/icons/arrowright.svg') }}"--}}
+                    {{--                                     class="menu-icon text-xs w-6 object-scale-down"/></button>--}}
 
-{{--                        </td>--}}
-{{--                    </tr>--}}
+                    {{--                        </td>--}}
+                    {{--                    </tr>--}}
 
 
                     </tbody>
@@ -362,7 +364,7 @@
         });
 
 
-        function modaltambahmHide() {
+        function modalPeriodeHide() {
             modal_tambahb.hide();
         }
 
@@ -380,6 +382,14 @@
         var table;
         var _bs = '';
         var path = '/{{ request()->path() }}';
+
+        function dateChangeHandler() {
+            let date_start = $('#date_start').val();
+            let date_end = $('#date_end').val();
+            let text = date_start + ' - ' + date_end;
+            $('#date-range-value').html(text);
+        }
+
         $(document).ready(function () {
 
             table = BasicDatatableGenerator('#tb-master', path, [{
@@ -452,7 +462,19 @@
                 let text = this.innerHTML;
                 sumberanggaranclose(text);
                 console.log(id);
-            })
+            });
+
+            $('#date_start').on('changeDate', function (e) {
+                dateChangeHandler();
+            });
+            $('#date_end').on('changeDate', function (e) {
+                dateChangeHandler();
+            });
+            $('#btn-submit-date-range').on('click', function (e) {
+                e.preventDefault();
+                dateChangeHandler();
+                modalPeriodeHide();
+            });
         });
     </script>
 @endsection
