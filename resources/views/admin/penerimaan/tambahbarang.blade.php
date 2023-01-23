@@ -426,6 +426,7 @@
         let modal_tambahb = new Modal(modal_tambahBarang, {
             placement: 'bottom-right',
             backdrop: 'dynamic',
+
             onShow: () => {
 
             },

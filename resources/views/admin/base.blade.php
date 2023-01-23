@@ -182,7 +182,7 @@
                     <p class="title-menu block menu-text">Pengeluaran Barang</p>
                 </a>
 
-                <a class="menu  {{ request()->is('laporan*') ? 'bg-primarylight' : '' }} nav-link"
+                <a class="menu  nav-link"
                     onclick="dropdownlaporan()">
                     <img src="{{ asset('local/icons/assignment.svg') }}"
                         class=" mr-2 menu-icon text-sm w-6 object-scale-down">
@@ -197,16 +197,22 @@
 
                 <div id="submenulaporan" class="transition">
 
-                    <a class="menu nav-link" href="#">
+                    <a class="menu nav-link" href="{{ route('laporanstock') }}">
+                        <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
+                            class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
+                        <p class="title-menu block menu-text text-xs">Laporan Stock</p>
+                    </a>
+
+                    <a class="menu nav-link" href="{{ route('laporanpenerimaan') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Penerimaan Barang</p>
                     </a>
 
-                    <a class="menu nav-link" href="#">
+                    <a class="menu nav-link"  href="{{ route('laporanbarangkeluar') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
-                        <p class="title-menu block menu-text text-xs">Laporan Pengeluaran Barang</p>
+                        <p class="title-menu block menu-text text-xs">Laporan Barang Keluar</p>
                     </a>
 
 

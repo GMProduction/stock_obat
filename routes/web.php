@@ -77,11 +77,12 @@ Route::middleware('auth')->group(
         Route::prefix('laporan')->group(
             function () {
                 // Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
+                Route::get('/stock', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstock');
                 Route::get('/penerimaan', [\App\Http\Controllers\LaporanController::class, 'penerimaan'])->name('laporanpenerimaan');
-
+                Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');
+                Route::get('/barangkeluar', [\App\Http\Controllers\LaporanController::class, 'barangkeluar'])->name('laporanbarangkeluar');
+                Route::get('/laporanbarangkeluar/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanBarangKeluar'])->name('cetakLaporanBarangKeluar');
             }
         );
     }
 );
-
-

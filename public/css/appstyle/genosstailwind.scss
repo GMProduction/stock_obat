@@ -12,6 +12,25 @@ body::-webkit-scrollbar {
   padding: 10px 5px;
 }
 
+.chip{
+    font-size: 0.8rem;
+    background-color: #29bac711;
+    color: #29bac7;
+    font-weight: bold;
+    padding: 2px 10px 2px 10px;
+    border-radius: 50px;
+    transition: all;
+    transition-duration: 300ms;
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover{
+        scale: 1.05;
+        background-color: #29bac7;
+        color: white;
+    }
+}
+
 .sidebar {
   width: 255px;
   // border-right: solid 1px $font-grey7;

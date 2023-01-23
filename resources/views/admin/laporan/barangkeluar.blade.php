@@ -31,7 +31,7 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Laporan Pernerimaan</a>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Laporan Barang Keluar</a>
                     </div>
                 </li>
 
@@ -40,11 +40,11 @@
 
         <div class="grid grid-cols-5 gap-4">
             <div class="section relative col-span-2">
-                <p class="title ">Penerimaan Barang </p>
+                <p class="title ">Barang Keluar</p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
 
-                        <button  onclick="window.open('{{ route('cetakLaporanPenerimaan', ['id' => 1]) }}');"
+                        <button  onclick="window.open('{{ route('cetakLaporanBarangKeluar', ['id' => 1]) }}');"
                             class="bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 print
@@ -60,7 +60,7 @@
                         Periode: <span>01 Januari 2023 - 23 Januari 2023</span>
                     </a>
                     <button class="chip" id="btndropdownsumberanggaran">
-                        Sumber Anggaran: <span id="textsumber"> Semua</span>
+                        Unit Penerima Barang Keluar: <span id="textsumber"> Semua</span>
                         </a>
                 </div>
 
@@ -145,13 +145,13 @@
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="sumberanggaranclose('APBN')">APBN</a>
+                                onclick="sumberanggaranclose('APBN')">Gudang</a>
                         </li>
 
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="sumberanggaranclose('APBD')">APBD</a>
+                                onclick="sumberanggaranclose('APBD')">Apotek</a>
                         </li>
 
                     </ul>
@@ -162,11 +162,11 @@
                     <thead>
                         <tr>
                             <th data-priority="1" class="text-right text-xs">No</th>
-                            <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
+                            <th data-priority="2" class="text-center text-xs">Tanggal Barang Keluar</th>
                             {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
                             <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
                             <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
-                            <th data-priority="3" class="text-center text-xs">Sumber Anggaran</th>
+                            <th data-priority="3" class="text-center text-xs">Unit Penerima</th>
                             {{-- <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
                             <th data-priority="3" class="text-center text-xs">Total Harga</th>  --}}
                             <th data-priority="4" class="text-center text-xs">Action</th>
@@ -180,7 +180,7 @@
                             {{-- <td class="text-center text-xs">Paracetamol</td>
                             <td class="text-center text-xs">Tablet</td> --}}
                             <td class="text-center text-xs">Btch0122</td>
-                            <td class="text-center text-xs">APBN</td>
+                            <td class="text-center text-xs">Gudang</td>
                             {{-- <td class="text-center text-xs">20 Desember 2024</td>
                             <td class="text-center text-xs">Rp 50.000</td>
                             <td class="text-center text-xs">Rp 80.000</td> --}}
@@ -209,7 +209,7 @@
                         </span>Cetak Penerimaan
                     </button>
 
-                    <div class="grid grid-cols-4 gap-2">
+                    <div class="grid grid-cols-3 gap-2">
                         <div class="mb-3 ">
                             <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor Batch
                             </label>
@@ -219,7 +219,7 @@
                         </div>
 
                         <div class="mb-3 ">
-                            <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal Datang
+                            <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal Barang Keluar
                             </label>
                             <input type="text" id="total"
                                 class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block"
@@ -227,33 +227,25 @@
                         </div>
 
                         <div class="mb-3 ">
-                            <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Sumber
-                                Anggaran
+                            <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Unit Penerima
                             </label>
                             <input type="text" id="total"
                                 class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block "
                                 readonly name="total" />
                         </div>
 
-                        <div class="mb-3 ">
-                            <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total
-                                Biaya
-                            </label>
-                            <input type="text" id="total"
-                                class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block "
-                                readonly name="total" />
-                        </div>
+
                     </div>
 
 
 
                     <div class="mb-3 ">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
-                            Penerimaan
+                            Barang Keluar
                         </label>
                         <textarea type="text" id="description"
                             class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4"
-                            placeholder="Catatan Penerimaan" name="description"></textarea>
+                            placeholder="Catatan Barang Keluar" name="description"></textarea>
                     </div>
 
                 </div>
@@ -267,10 +259,9 @@
                             <tr>
                                 <th data-priority="1" class="text-right text-xs">No</th>
                                 <th data-priority="2" class="text-center text-xs">Nama Barang</th>
+                                <th data-priority="2" class="text-center text-xs">Qty/th>
                                 <th data-priority="3" class="text-center text-xs">Satuan</th>
                                 <th data-priority="2" class="text-center text-xs">Tanggal Expired</th>
-                                <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
-                                <th data-priority="3" class="text-center text-xs">Total Harga</th>
                             </tr>
                         </thead>
 
@@ -278,10 +269,9 @@
                             <tr>
                                 <td class="text-right text-xs">1</td>
                                 <td class="text-center text-xs">Paracetamol</td>
+                                <td class="text-center text-xs">10</td>
                                 <td class="text-center text-xs">Tablet</td>
                                 <td class="text-center text-xs">20 Desember 2024</td>
-                                <td class="text-center text-xs">Rp 50.000</td>
-                                <td class="text-center text-xs">Rp 80.000</td>
 
                             </tr>
 
