@@ -67,7 +67,7 @@
                 {{-- MENU  PERIODE --}}
                 <div id="modal_periode" tabindex="-1" aria-hidden="true"
                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
-                    <div class="relative w-full max-w-md h-full md:h-auto">
+                    <div class="relative w-full max-w-lg h-full md:h-auto">
                         <!-- Modal content -->
                         <div class="relative bg-white rounded-lg shadow p-4 ">
                             <!-- Modal header -->
