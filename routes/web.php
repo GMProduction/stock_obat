@@ -78,6 +78,7 @@ Route::middleware('auth')->group(
             function () {
                 // Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
                 Route::get('/stock', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstock');
+                Route::get('/stock/{id}', [\App\Http\Controllers\LaporanController::class, 'detailstock'])->name('laporandetailstock');
                 Route::get('/penerimaan', [\App\Http\Controllers\ReportController::class, 'transaction_ins_index'])->name('laporanpenerimaan');
                 Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');
                 Route::get('/barangkeluar', [\App\Http\Controllers\LaporanController::class, 'barangkeluar'])->name('laporanbarangkeluar');

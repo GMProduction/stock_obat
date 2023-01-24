@@ -9,11 +9,16 @@ use Illuminate\Support\Facades\App;
 class LaporanController
 {
 
-      // STOCK
-      public function stock()
-      {
-          return view('admin.laporan.stock');
-      }
+    // STOCK
+    public function stock()
+    {
+        return view('admin.laporan.stock');
+    }
+
+    public function detailstock()
+    {
+        return view('admin.laporan.detailstock');
+    }
 
 
     // PENERIMAAN BARANG
