@@ -24,7 +24,9 @@ Route::middleware('auth')->group(
             function () {
                 Route::get('', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
                 Route::get('stock/{id}', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
+                Route::get('stock/{id}/datatable', [\App\Http\Controllers\DashboardController::class, 'datatableStockDetail'])->name('stockbarang.datatable');
                 Route::get('datatable-stock', [\App\Http\Controllers\DashboardController::class, 'datatableStock'])->name('dashboardstock');
+                Route::get('datatable-expired', [\App\Http\Controllers\DashboardController::class, 'datatableExpired'])->name('dashboardexpired');
             }
         );
         Route::prefix('master')->group(

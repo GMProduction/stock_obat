@@ -1515,6 +1515,18 @@ input:checked + .toggle-bg {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
+.\!bg-red-500 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(240 82 82 / var(--tw-bg-opacity)) !important;
+}
+.\!bg-yellow-300 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(250 202 21 / var(--tw-bg-opacity)) !important;
+}
+.\!bg-green-500 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(14 159 110 / var(--tw-bg-opacity)) !important;
+}
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
