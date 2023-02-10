@@ -12,13 +12,15 @@ class TransactionOutRepository
     private $medicineInRepository;
     private $medicineOutRepository;
     private $generalLedgerRepository;
+    private $locationStockRepository;
 
-    public function __construct(MedicineOutRepository $medicineOutRepository, MedicineRepository $medicineRepository, MedicineInRepository $medicineInRepository, GeneralLedgerRepository $generalLedgerRepository)
+    public function __construct(MedicineOutRepository $medicineOutRepository, MedicineRepository $medicineRepository, MedicineInRepository $medicineInRepository, GeneralLedgerRepository $generalLedgerRepository, LocationStockRepository $locationStockRepository)
     {
         $this->medicineOutRepository = $medicineOutRepository;
         $this->medicineRepository = $medicineRepository;
         $this->medicineInRepository = $medicineInRepository;
         $this->generalLedgerRepository = $generalLedgerRepository;
+        $this->locationStockRepository = $locationStockRepository;
     }
 
     public function create($data)
@@ -81,5 +83,15 @@ class TransactionOutRepository
     public function reduceStock($medicine_id, $minusStock)
     {
         return $this->medicineRepository->reduceStock($medicine_id, $minusStock);
+    }
+
+    public function addOrUpdateToLocationStock($locationID, $medicineID, $qty = 0)
+    {
+        return $this->locationStockRepository->addOrUpdateToLocationStock($locationID, $medicineID, $qty);
+    }
+
+    public function getStockByLocationIDAndMedicineID($locationID, $medicineID)
+    {
+        return $this->locationStockRepository->getStockByLocationIDAndMedicineID($locationID, $medicineID);
     }
 }
