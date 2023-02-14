@@ -13,4 +13,13 @@ class GeneralLedgerRepository
     {
         return GeneralLedger::create($data);
     }
+
+    public function getDataByPeriodic($startDate = '', $endDate = '', $preload = [])
+    {
+        $data = GeneralLedger::with($preload);
+        if ($startDate !== '' && $endDate !== '') {
+            $data->whereBetween('date', [$startDate, $endDate]);
+        }
+        return $data->orderBy('date', 'ASC')->get();
+    }
 }
