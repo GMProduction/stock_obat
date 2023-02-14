@@ -145,6 +145,7 @@ class TransactionOutController extends CustomController
                     $this->transactionOutRepository->saveToGeneralLedger($g_l_data);
                     $this->transactionOutRepository->updateUsedStock($medicine_in_id, $g_l_qty);
                 }
+                $this->transactionOutRepository->addOrUpdateToLocationStock($location_id, $medicine_id, $qty);
                 $this->transactionOutRepository->reduceStock($medicine_id, $qty);
             }
             DB::commit();

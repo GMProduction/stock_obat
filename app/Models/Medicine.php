@@ -100,4 +100,13 @@ class Medicine extends Model
 //        return '';
 //    }
 
+    public function stock()
+    {
+        return $this->hasOne(LocationStock::class, 'medicine_id');
+    }
+
+    public function stocks()
+    {
+        return $this->hasMany(LocationStock::class, 'medicine_id');
+    }
 }
