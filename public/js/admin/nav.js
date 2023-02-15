@@ -1,15 +1,24 @@
 var sideelm = document.querySelector(".side");
 var side = 1;
 
-function openNav() {
+if (localStorage.getItem("sidemenu") == 1) {
+  document.getElementById("sidebar").classList.add("ciut");
+  sideelm.classList.add("ciut");
+} else {
+  document.getElementById("sidebar").classList.remove("ciut");
+  sideelm.classList.remove("ciut");
+}
 
-  if (side == 1) {
-      document.getElementById("sidebar").classList.add("ciut");
-      sideelm.classList.add("ciut");
-      side = 0;
+function openNav() {
+  // Set Item
+
+  if (localStorage.getItem("sidemenu") == 1) {
+    localStorage.setItem("sidemenu", 0);
+    document.getElementById("sidebar").classList.add("ciut");
+    sideelm.classList.add("ciut");
   } else {
-      document.getElementById("sidebar").classList.remove("ciut");
-      sideelm.classList.remove("ciut");
-      side = 1;
+    localStorage.setItem("sidemenu", 1);
+    document.getElementById("sidebar").classList.remove("ciut");
+    sideelm.classList.remove("ciut");
   }
 }

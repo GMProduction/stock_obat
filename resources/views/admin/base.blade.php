@@ -163,7 +163,8 @@
                         <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
                     </a>
 
-                    <a class="menu nav-link" href="{{ route('masterlokasi') }}">
+                    <a class="menu nav-link {{ request()->is('master/lokasi') ? 'bg-primarylight' : '' }}"
+                        href="{{ route('masterlokasi') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                         <p class="title-menu block nav-link menu-text text-sm">Master Lokasi </p>
@@ -171,18 +172,20 @@
 
                 </div>
 
-                <a class="menu  nav-link" href="{{ route('penerimaanbarang') }}">
+                <a class="menu  nav-link {{ request()->is('penerimaan') ? 'bg-primarylight' : '' }}"
+                    href="{{ route('penerimaanbarang') }}">
                     <img src="{{ asset('local/icons/in.svg') }}" class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Penerimaan Barang</p>
                 </a>
 
-                <a class="menu nav-link" href="{{ route('pengeluaran') }}">
+                <a class="menu nav-link {{ request()->is('pengeluaran') ? 'bg-primarylight' : '' }}"
+                    href="{{ route('pengeluaran') }}">
                     <img src="{{ asset('local/icons/out.svg') }}"
                         class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Pengeluaran Barang</p>
                 </a>
 
-                <a class="menu  nav-link"
+                <a class="menu  nav-link {{ request()->is('laporan*') ? 'bg-primarylight' : '' }}"
                     onclick="dropdownlaporan()">
                     <img src="{{ asset('local/icons/assignment.svg') }}"
                         class=" mr-2 menu-icon text-sm w-6 object-scale-down">
@@ -197,19 +200,22 @@
 
                 <div id="submenulaporan" class="transition">
 
-                    <a class="menu nav-link" href="{{ route('laporanstock') }}">
+                    <a class="menu nav-link {{ request()->is('laporan/stock') ? 'bg-primarylight' : '' }}"
+                        href="{{ route('laporanstock') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Stock</p>
                     </a>
 
-                    <a class="menu nav-link" href="{{ route('laporanpenerimaan') }}">
+                    <a class="menu nav-link {{ request()->is('laporan/penerimaan') ? 'bg-primarylight' : '' }}"
+                        href="{{ route('laporanpenerimaan') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Penerimaan Barang</p>
                     </a>
 
-                    <a class="menu nav-link"  href="{{ route('laporanbarangkeluar') }}">
+                    <a class="menu nav-link {{ request()->is('laporan/barangkeluar') ? 'bg-primarylight' : '' }}"
+                        href="{{ route('laporanbarangkeluar') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Barang Keluar</p>
@@ -244,6 +250,25 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+
+    <script>
+        $(document).ready(function() {
+            var first = $(location).attr('pathname');
+
+            first.indexOf(1);
+
+            first.toLowerCase();
+
+            first = first.split("/")[1];
+
+            if (first == "master") {
+                dropdown();
+            } else if (first == "laporan") {
+                dropdownlaporan();
+            }
+
+        });
+    </script>
 
     <script type="text/javascript">
         function dropdown() {
