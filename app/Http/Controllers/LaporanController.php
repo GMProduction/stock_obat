@@ -20,10 +20,17 @@ class LaporanController extends CustomController
     // STOCK
     public function stock()
     {
-        return $this->getStock();
+        $this->getStock();
         return view('admin.laporan.stock');
     }
 
+
+    // JURNAL BARANG
+    public function jurnalbarang()
+    {
+        $this->getStock();
+        return view('admin.laporan.jurnalbarang');
+    }
 
     // PENERIMAAN BARANG
     public function penerimaan()
@@ -72,7 +79,7 @@ class LaporanController extends CustomController
     {
         try {
             $data = Medicine::with(['stocks' => function ($q) {
-//                return $q->where('location_id', '=', 2);
+                //                return $q->where('location_id', '=', 2);
             }])
                 ->get();
 

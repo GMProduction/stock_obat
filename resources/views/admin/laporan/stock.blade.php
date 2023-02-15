@@ -58,7 +58,7 @@
                 <div class="mb-2">
 
                     <button class="chip" id="btndropdownkategori">
-                        Kategori: <span id="textsumber"> Semua</span>
+                        Lokasi: <span id="textsumber"> Semua</span>
                         </a>
                 </div>
 
@@ -74,13 +74,13 @@
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="kategoriclose('Oral')">Oral</a>
+                                onclick="kategoriclose('Oral')">Gudang</a>
                         </li>
 
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="kategoriclose('Salep')">Salep</a>
+                                onclick="kategoriclose('Salep')">Toko</a>
                         </li>
 
                     </ul>

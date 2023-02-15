@@ -31,7 +31,8 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Laporan Barang Keluar</a>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Laporan Barang
+                            Keluar</a>
                     </div>
                 </li>
 
@@ -44,7 +45,7 @@
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
 
-                        <button  onclick="window.open('{{ route('cetakLaporanBarangKeluar', ['id' => 1]) }}');"
+                        <button onclick="window.open('{{ route('cetakLaporanBarangKeluar', ['id' => 1]) }}');"
                             class="bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 print
@@ -59,9 +60,9 @@
                     <a class="chip mr-3 btn-tambahBarang">
                         Periode: <span>01 Januari 2023 - 23 Januari 2023</span>
                     </a>
-                    <button class="chip" id="btndropdownsumberanggaran">
+                    <a class="chip" id="btndropdownsumberanggaran">
                         Unit Penerima Barang Keluar: <span id="textsumber"> Semua</span>
-                        </a>
+                    </a>
                 </div>
 
                 {{-- MENU  PERIODE --}}
@@ -219,7 +220,8 @@
                         </div>
 
                         <div class="mb-3 ">
-                            <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal Barang Keluar
+                            <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal Barang
+                                Keluar
                             </label>
                             <input type="text" id="total"
                                 class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block"
@@ -357,7 +359,7 @@
     </script>
 
 
-    {{-- MODAL MASTER --}}
+    {{-- MODAL PERIODE --}}
     <script>
         const modal_periode = document.getElementById('modal_periode');
 

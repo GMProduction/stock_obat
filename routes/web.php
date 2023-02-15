@@ -85,6 +85,7 @@ Route::middleware('auth')->group(
                 Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');
                 Route::get('/barangkeluar', [\App\Http\Controllers\LaporanController::class, 'barangkeluar'])->name('laporanbarangkeluar');
                 Route::get('/laporanbarangkeluar/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanBarangKeluar'])->name('cetakLaporanBarangKeluar');
+                Route::get('/jurnalbarang', [\App\Http\Controllers\LaporanController::class, 'jurnalbarang'])->name('jurnalbarang');
             }
         );
     }
