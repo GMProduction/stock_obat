@@ -24,7 +24,9 @@ Route::middleware('auth')->group(
             function () {
                 Route::get('', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
                 Route::get('stock/{id}', [\App\Http\Controllers\DashboardController::class, 'stockbarang'])->name('stockbarang');
+                Route::get('stock/{id}/datatable', [\App\Http\Controllers\DashboardController::class, 'datatableStockDetail'])->name('stockbarang.datatable');
                 Route::get('datatable-stock', [\App\Http\Controllers\DashboardController::class, 'datatableStock'])->name('dashboardstock');
+                Route::get('datatable-expired', [\App\Http\Controllers\DashboardController::class, 'datatableExpired'])->name('dashboardexpired');
             }
         );
         Route::prefix('master')->group(
@@ -78,12 +80,14 @@ Route::middleware('auth')->group(
             function () {
                 // Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
                 Route::get('/stock', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstock');
+                Route::get('/stock/{id}', [\App\Http\Controllers\LaporanController::class, 'detailstock'])->name('laporandetailstock');
                 Route::get('/penerimaan', [\App\Http\Controllers\ReportController::class, 'transaction_ins_index'])->name('laporanpenerimaan');
                 Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');
                 Route::get('/barangkeluar', [\App\Http\Controllers\LaporanController::class, 'barangkeluar'])->name('laporanbarangkeluar');
                 Route::get('/laporanbarangkeluar/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanBarangKeluar'])->name('cetakLaporanBarangKeluar');
                 Route::get('/laporanjurnal', [\App\Http\Controllers\LaporanController::class, 'laporanJurnalUmum'])->name('laporanjurnal');
                 Route::get('/laporanjurnal/excel', [\App\Http\Controllers\LaporanController::class, 'laporanjurnalExcel'])->name('laporanjurnal.excel');
+                Route::get('/jurnalbarang', [\App\Http\Controllers\LaporanController::class, 'jurnalbarang'])->name('jurnalbarang');
             }
         );
     }

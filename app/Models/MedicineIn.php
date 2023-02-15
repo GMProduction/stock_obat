@@ -22,7 +22,7 @@ class MedicineIn extends Model
 
     public function transaction_in()
     {
-        return $this->belongsTo(TransactionIn::class, 'transaction_in');
+        return $this->belongsTo(TransactionIn::class, 'transaction_in_id');
     }
 
     public function medicine()
@@ -38,5 +38,12 @@ class MedicineIn extends Model
     public function getRestAttribute()
     {
         return $this->qty - $this->used;
+    }
+
+    public function getIsExpiredAttribute(){
+        $now = new \DateTime();
+        $expired = date_create($this->expired_date);
+        $diff=date_diff($now,$expired);
+        return $diff->format("%R%m");
     }
 }

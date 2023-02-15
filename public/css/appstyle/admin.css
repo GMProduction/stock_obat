@@ -5,5 +5,15 @@
 
 .stock-middle {
     --tw-bg-opacity: 1;
+    background-color: rgb(252 233 106 / var(--tw-bg-opacity)) !important;
+}
+
+.stock-upper {
+    --tw-bg-opacity: 1;
+    background-color: rgb(49 196 141 / var(--tw-bg-opacity)) !important;
+}
+
+.stock-middle {
+    --tw-bg-opacity: 1;
     background-color:  rgb(253 246 178 / var(--tw-bg-opacity)) !important;
 }

@@ -444,7 +444,7 @@
             ];
             let createdRow = function( row, data, dataIndex ) {
                 if ( data.qty <= data.limit ) {
-                    $(row).addClass( 'stock-lower' );
+                    $(row.childNodes[3]).addClass( '!bg-red-500 text-white' );
                 }
             };
             datatable('tb-master-obat', '{{route('masterdatatable')}}', colums, createdRow)
@@ -464,4 +464,6 @@
     </script>
 
     {{-- ACTION --}}
+
+
 @endsection

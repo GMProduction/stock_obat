@@ -40,15 +40,15 @@
 
         <div class="">
             <div class="section relative">
-                <p class="title ">Stock Barang </p>
+                <p class="title ">Stock Saat Ini </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
 
                         <button onclick="window.open('{{ route('cetakLaporanPenerimaan', ['id' => 1]) }}');"
                             class="bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
-                            <img src="{{ asset('local/icons/draft.svg') }}"
+                            <img src="{{ asset('local/icons/tutupbuku.svg') }}"
                                 class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
-                            Export Excel
+                            Tutup Buku
                         </button>
 
                     </div>
@@ -56,102 +56,31 @@
 
                 {{-- FILTER --}}
                 <div class="mb-2">
-                    <a class="chip mr-3 btn-tambahBarang">
-                        Periode: <span>01 Januari 2023 - 23 Januari 2023</span>
-                    </a>
-                    <button class="chip" id="btndropdownsumberanggaran">
-                        Sumber Anggaran: <span id="textsumber"> Semua</span>
+
+                    <button class="chip" id="btndropdownkategori">
+                        Lokasi: <span id="textsumber"> Semua</span>
                         </a>
                 </div>
 
-                {{-- MENU  PERIODE --}}
-                <div id="modal_periode" tabindex="-1" aria-hidden="true"
-                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
-                    <div class="relative w-full max-w-md h-full md:h-auto">
-                        <!-- Modal content -->
-                        <div class="relative bg-white rounded-lg shadow p-4 ">
-                            <!-- Modal header -->
-                            <div class="flex justify-between items-start p-4 rounded-t border-b ">
-                                <h3 class="text-xl font-semibold text-gray-900 ">
-                                    Pilih Periode
-                                </h3>
-                                <button type="button"
-                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                                    onclick="modaltambahmHide()">
-                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="sr-only">Close modal</span>
-                                </button>
-                            </div>
-
-                            {{-- MODAL ISI --}}
-                            <div date-rangepicker class="flex items-center mt-3 mb-3">
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <input name="start" type="text"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Tanggal Awal">
-                                </div>
-                                <span class="mx-4 text-gray-500">sampai</span>
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <input name="end" type="text"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Tanggal Akhir">
-                                </div>
-                            </div>
-
-                            {{-- MODAL FOOTER --}}
-                            <div class="block items-center justify-end   rounded-b  border-gray-200 ">
-                                <button type="button" id="btn-add-cart"
-                                    class="w-full flex justify-center items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
-                                    <span class="material-symbols-outlined text-white mr-3">
-                                        save
-                                    </span>Terapkan
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 {{-- MENU SUMBER ANGGARAN --}}
-                <div id="dropdownsumberanggaran"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="btndropdownsumberanggaran">
+                <div id="dropdownkategori" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="btndropdownkategori">
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="sumberanggaranclose('Semua')">Semua</a>
+                                onclick="kategoriclose('Semua')">Semua</a>
                         </li>
 
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="sumberanggaranclose('APBN')">APBN</a>
+                                onclick="kategoriclose('Oral')">Gudang</a>
                         </li>
 
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                onclick="sumberanggaranclose('APBD')">APBD</a>
+                                onclick="kategoriclose('Salep')">Toko</a>
                         </li>
 
                     </ul>
@@ -166,21 +95,21 @@
                             <th data-priority="2" class="text-center text-xs">Kategori</th>
                             <th data-priority="2" class="text-center text-xs">Stock</th>
                             <th data-priority="2" class="text-center text-xs">Satuan</th>
+                            <th data-priority="2" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
                             <td class="text-right text-xs">1</td>
-                            <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                            <th data-priority="2" class="text-center text-xs">Kategori</th>
-                            <th data-priority="2" class="text-center text-xs">Stock</th>
-                            <th data-priority="2" class="text-center text-xs">Satuan</th>
+                            <td class="text-center text-xs">Nama Barang</td>
+                            <td class="text-center text-xs">Kategori</td>
+                            <td class="text-center text-xs">Stock</td>
+                            <td class="text-center text-xs">Satuan</td>
                             <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center">
-                                <button
+                                <button onclick="location.href='{{ route('laporandetailstock', ['id' => 1]) }}'"
                                     class="bg-blue-500 flex rounded-full justify-center items-center text-white px-3 py-2 btn-tambahMaster text-xs">Detail
-                                    <img src="{{ asset('local/icons/arrowright.svg') }}"
-                                        class="menu-icon text-xs w-6 object-scale-down" /> </button>
+                                </button>
 
                             </td>
                         </tr>
@@ -227,10 +156,10 @@
     {{-- DROPDOWN --}}
     <script>
         // set the dropdown menu element
-        const $targetEl = document.getElementById('dropdownsumberanggaran');
+        const $targetEl = document.getElementById('dropdownkategori');
 
         // set the element that trigger the dropdown menu on click
-        const $triggerEl = document.getElementById('btndropdownsumberanggaran');
+        const $triggerEl = document.getElementById('btndropdownkategori');
 
         // options with default values
         const options = {
@@ -250,48 +179,16 @@
                 console.log('dropdown has been toggled');
             }
         };
-        const dropdownsumberanggaran = new Dropdown($targetEl, $triggerEl, options);
+        const dropdownkategori = new Dropdown($targetEl, $triggerEl, options);
 
-        function sumberanggaranclose(sumber) {
+        function kategoriclose(sumber) {
             const $textSumber = document.getElementById('textsumber');
             $textSumber.innerHTML = sumber;
-            dropdownsumberanggaran.hide();
+            dropdownkategori.hide();
         }
 
-        function sumberanggaranshow() {
-            dropdownsumberanggaran.toggle();
+        function kategorishow() {
+            dropdownkategori.toggle();
         }
-    </script>
-
-
-    {{-- MODAL MASTER --}}
-    <script>
-        const modal_periode = document.getElementById('modal_periode');
-
-        let modal_tambahb = new Modal(modal_periode, {
-            placement: 'bottom-right',
-            backdrop: 'dynamic',
-
-            onShow: () => {
-
-            },
-            onHide: () => {
-
-            }
-        });
-
-
-        function modaltambahmHide() {
-            modal_tambahb.hide();
-        }
-
-        function modaleditmHide() {
-            modal_tambahb.hide();
-        }
-
-        $('.btn-tambahBarang').on('click', function(e) {
-
-            modal_tambahb.show();
-        });
     </script>
 @endsection
