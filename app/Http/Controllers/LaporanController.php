@@ -25,7 +25,7 @@ class LaporanController extends CustomController
     // STOCK
     public function stock()
     {
-        $this->getStock();
+        return $this->getStock();
         return view('admin.laporan.stock');
     }
 
@@ -84,10 +84,10 @@ class LaporanController extends CustomController
     {
         try {
             $data = Medicine::with(['stocks' => function ($q) {
-                //                return $q->where('location_id', '=', 2);
+//                                return $q->where('location_id', '=', 1);
             }])
                 ->get();
-
+            return $data->toArray();
             $results = [];
             $locations = Location::all();
             foreach ($data as $value) {
