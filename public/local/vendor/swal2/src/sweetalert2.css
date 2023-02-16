@@ -2,7 +2,6 @@
   box-sizing: border-box;
   grid-column: 1/4 !important;
   grid-row: 1/4 !important;
-  grid-template-columns: -webkit-min-content auto -webkit-min-content;
   grid-template-columns: min-content auto min-content;
   padding: 1em;
   overflow-y: hidden;
@@ -150,20 +149,16 @@
   width: 1.375em;
 }
 .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip {
-  -webkit-animation: swal2-toast-animate-success-line-tip 0.75s;
-          animation: swal2-toast-animate-success-line-tip 0.75s;
+  animation: swal2-toast-animate-success-line-tip 0.75s;
 }
 .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long {
-  -webkit-animation: swal2-toast-animate-success-line-long 0.75s;
-          animation: swal2-toast-animate-success-line-long 0.75s;
+  animation: swal2-toast-animate-success-line-long 0.75s;
 }
 .swal2-popup.swal2-toast.swal2-show {
-  -webkit-animation: swal2-toast-show 0.5s;
-          animation: swal2-toast-show 0.5s;
+  animation: swal2-toast-show 0.5s;
 }
 .swal2-popup.swal2-toast.swal2-hide {
-  -webkit-animation: swal2-toast-hide 0.1s forwards;
-          animation: swal2-toast-hide 0.1s forwards;
+  animation: swal2-toast-hide 0.1s forwards;
 }
 
 .swal2-container {
@@ -176,7 +171,6 @@
   left: 0;
   box-sizing: border-box;
   grid-template-areas: "top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";
-  grid-template-rows: minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto);
   grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
   height: 100%;
   padding: 0.625em;
@@ -320,8 +314,7 @@
   width: 2.2em;
   height: 2.2em;
   margin: 0 1.875em;
-  -webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-          animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+  animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
   border-width: 0.25em;
   border-style: solid;
   border-radius: 100%;
@@ -500,9 +493,6 @@
 .swal2-input::-moz-placeholder, .swal2-file::-moz-placeholder, .swal2-textarea::-moz-placeholder {
   color: #ccc;
 }
-.swal2-input:-ms-input-placeholder, .swal2-file:-ms-input-placeholder, .swal2-textarea:-ms-input-placeholder {
-  color: #ccc;
-}
 .swal2-input::placeholder,
 .swal2-file::placeholder,
 .swal2-textarea::placeholder {
@@ -622,7 +612,6 @@
   cursor: default;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .swal2-icon .swal2-icon-content {
@@ -656,48 +645,40 @@
   transform: rotate(-45deg);
 }
 .swal2-icon.swal2-error.swal2-icon-show {
-  -webkit-animation: swal2-animate-error-icon 0.5s;
-          animation: swal2-animate-error-icon 0.5s;
+  animation: swal2-animate-error-icon 0.5s;
 }
 .swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark {
-  -webkit-animation: swal2-animate-error-x-mark 0.5s;
-          animation: swal2-animate-error-x-mark 0.5s;
+  animation: swal2-animate-error-x-mark 0.5s;
 }
 .swal2-icon.swal2-warning {
   border-color: #facea8;
   color: #f8bb86;
 }
 .swal2-icon.swal2-warning.swal2-icon-show {
-  -webkit-animation: swal2-animate-error-icon 0.5s;
-          animation: swal2-animate-error-icon 0.5s;
+  animation: swal2-animate-error-icon 0.5s;
 }
 .swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content {
-  -webkit-animation: swal2-animate-i-mark 0.5s;
-          animation: swal2-animate-i-mark 0.5s;
+  animation: swal2-animate-i-mark 0.5s;
 }
 .swal2-icon.swal2-info {
   border-color: #9de0f6;
   color: #3fc3ee;
 }
 .swal2-icon.swal2-info.swal2-icon-show {
-  -webkit-animation: swal2-animate-error-icon 0.5s;
-          animation: swal2-animate-error-icon 0.5s;
+  animation: swal2-animate-error-icon 0.5s;
 }
 .swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content {
-  -webkit-animation: swal2-animate-i-mark 0.8s;
-          animation: swal2-animate-i-mark 0.8s;
+  animation: swal2-animate-i-mark 0.8s;
 }
 .swal2-icon.swal2-question {
   border-color: #c9dae1;
   color: #87adbd;
 }
 .swal2-icon.swal2-question.swal2-icon-show {
-  -webkit-animation: swal2-animate-error-icon 0.5s;
-          animation: swal2-animate-error-icon 0.5s;
+  animation: swal2-animate-error-icon 0.5s;
 }
 .swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content {
-  -webkit-animation: swal2-animate-question-mark 0.8s;
-          animation: swal2-animate-question-mark 0.8s;
+  animation: swal2-animate-question-mark 0.8s;
 }
 .swal2-icon.swal2-success {
   border-color: #a5dc86;
@@ -765,16 +746,13 @@
   transform: rotate(-45deg);
 }
 .swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip {
-  -webkit-animation: swal2-animate-success-line-tip 0.75s;
-          animation: swal2-animate-success-line-tip 0.75s;
+  animation: swal2-animate-success-line-tip 0.75s;
 }
 .swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long {
-  -webkit-animation: swal2-animate-success-line-long 0.75s;
-          animation: swal2-animate-success-line-long 0.75s;
+  animation: swal2-animate-success-line-long 0.75s;
 }
 .swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right {
-  -webkit-animation: swal2-rotate-success-circular-line 4.25s ease-in;
-          animation: swal2-rotate-success-circular-line 4.25s ease-in;
+  animation: swal2-rotate-success-circular-line 4.25s ease-in;
 }
 
 .swal2-progress-steps {
@@ -825,13 +803,11 @@
 }
 
 .swal2-show {
-  -webkit-animation: swal2-show 0.3s;
-          animation: swal2-show 0.3s;
+  animation: swal2-show 0.3s;
 }
 
 .swal2-hide {
-  -webkit-animation: swal2-hide 0.15s forwards;
-          animation: swal2-hide 0.15s forwards;
+  animation: swal2-hide 0.15s forwards;
 }
 
 .swal2-noanimation {
@@ -855,21 +831,6 @@
   left: auto;
 }
 
-@-webkit-keyframes swal2-toast-show {
-  0% {
-    transform: translateY(-0.625em) rotateZ(2deg);
-  }
-  33% {
-    transform: translateY(0) rotateZ(-2deg);
-  }
-  66% {
-    transform: translateY(0.3125em) rotateZ(2deg);
-  }
-  100% {
-    transform: translateY(0) rotateZ(0deg);
-  }
-}
-
 @keyframes swal2-toast-show {
   0% {
     transform: translateY(-0.625em) rotateZ(2deg);
@@ -884,43 +845,10 @@
     transform: translateY(0) rotateZ(0deg);
   }
 }
-@-webkit-keyframes swal2-toast-hide {
-  100% {
-    transform: rotateZ(1deg);
-    opacity: 0;
-  }
-}
 @keyframes swal2-toast-hide {
   100% {
     transform: rotateZ(1deg);
     opacity: 0;
-  }
-}
-@-webkit-keyframes swal2-toast-animate-success-line-tip {
-  0% {
-    top: 0.5625em;
-    left: 0.0625em;
-    width: 0;
-  }
-  54% {
-    top: 0.125em;
-    left: 0.125em;
-    width: 0;
-  }
-  70% {
-    top: 0.625em;
-    left: -0.25em;
-    width: 1.625em;
-  }
-  84% {
-    top: 1.0625em;
-    left: 0.75em;
-    width: 0.5em;
-  }
-  100% {
-    top: 1.125em;
-    left: 0.1875em;
-    width: 0.75em;
   }
 }
 @keyframes swal2-toast-animate-success-line-tip {
@@ -950,28 +878,6 @@
     width: 0.75em;
   }
 }
-@-webkit-keyframes swal2-toast-animate-success-line-long {
-  0% {
-    top: 1.625em;
-    right: 1.375em;
-    width: 0;
-  }
-  65% {
-    top: 1.25em;
-    right: 0.9375em;
-    width: 0;
-  }
-  84% {
-    top: 0.9375em;
-    right: 0;
-    width: 1.125em;
-  }
-  100% {
-    top: 0.9375em;
-    right: 0.1875em;
-    width: 1.375em;
-  }
-}
 @keyframes swal2-toast-animate-success-line-long {
   0% {
     top: 1.625em;
@@ -994,20 +900,6 @@
     width: 1.375em;
   }
 }
-@-webkit-keyframes swal2-show {
-  0% {
-    transform: scale(0.7);
-  }
-  45% {
-    transform: scale(1.05);
-  }
-  80% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 @keyframes swal2-show {
   0% {
     transform: scale(0.7);
@@ -1022,16 +914,6 @@
     transform: scale(1);
   }
 }
-@-webkit-keyframes swal2-hide {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-}
 @keyframes swal2-hide {
   0% {
     transform: scale(1);
@@ -1040,33 +922,6 @@
   100% {
     transform: scale(0.5);
     opacity: 0;
-  }
-}
-@-webkit-keyframes swal2-animate-success-line-tip {
-  0% {
-    top: 1.1875em;
-    left: 0.0625em;
-    width: 0;
-  }
-  54% {
-    top: 1.0625em;
-    left: 0.125em;
-    width: 0;
-  }
-  70% {
-    top: 2.1875em;
-    left: -0.375em;
-    width: 3.125em;
-  }
-  84% {
-    top: 3em;
-    left: 1.3125em;
-    width: 1.0625em;
-  }
-  100% {
-    top: 2.8125em;
-    left: 0.8125em;
-    width: 1.5625em;
   }
 }
 @keyframes swal2-animate-success-line-tip {
@@ -1096,28 +951,6 @@
     width: 1.5625em;
   }
 }
-@-webkit-keyframes swal2-animate-success-line-long {
-  0% {
-    top: 3.375em;
-    right: 2.875em;
-    width: 0;
-  }
-  65% {
-    top: 3.375em;
-    right: 2.875em;
-    width: 0;
-  }
-  84% {
-    top: 2.1875em;
-    right: 0;
-    width: 3.4375em;
-  }
-  100% {
-    top: 2.375em;
-    right: 0.5em;
-    width: 2.9375em;
-  }
-}
 @keyframes swal2-animate-success-line-long {
   0% {
     top: 3.375em;
@@ -1140,20 +973,6 @@
     width: 2.9375em;
   }
 }
-@-webkit-keyframes swal2-rotate-success-circular-line {
-  0% {
-    transform: rotate(-45deg);
-  }
-  5% {
-    transform: rotate(-45deg);
-  }
-  12% {
-    transform: rotate(-405deg);
-  }
-  100% {
-    transform: rotate(-405deg);
-  }
-}
 @keyframes swal2-rotate-success-circular-line {
   0% {
     transform: rotate(-45deg);
@@ -1166,27 +985,6 @@
   }
   100% {
     transform: rotate(-405deg);
-  }
-}
-@-webkit-keyframes swal2-animate-error-x-mark {
-  0% {
-    margin-top: 1.625em;
-    transform: scale(0.4);
-    opacity: 0;
-  }
-  50% {
-    margin-top: 1.625em;
-    transform: scale(0.4);
-    opacity: 0;
-  }
-  80% {
-    margin-top: -0.375em;
-    transform: scale(1.15);
-  }
-  100% {
-    margin-top: 0;
-    transform: scale(1);
-    opacity: 1;
   }
 }
 @keyframes swal2-animate-error-x-mark {
@@ -1210,16 +1008,6 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes swal2-animate-error-icon {
-  0% {
-    transform: rotateX(100deg);
-    opacity: 0;
-  }
-  100% {
-    transform: rotateX(0deg);
-    opacity: 1;
-  }
-}
 @keyframes swal2-animate-error-icon {
   0% {
     transform: rotateX(100deg);
@@ -1230,14 +1018,6 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes swal2-rotate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 @keyframes swal2-rotate-loading {
   0% {
     transform: rotate(0deg);
@@ -1246,42 +1026,12 @@
     transform: rotate(360deg);
   }
 }
-@-webkit-keyframes swal2-animate-question-mark {
-  0% {
-    transform: rotateY(-360deg);
-  }
-  100% {
-    transform: rotateY(0);
-  }
-}
 @keyframes swal2-animate-question-mark {
   0% {
     transform: rotateY(-360deg);
   }
   100% {
     transform: rotateY(0);
-  }
-}
-@-webkit-keyframes swal2-animate-i-mark {
-  0% {
-    transform: rotateZ(45deg);
-    opacity: 0;
-  }
-  25% {
-    transform: rotateZ(-25deg);
-    opacity: 0.4;
-  }
-  50% {
-    transform: rotateZ(15deg);
-    opacity: 0.8;
-  }
-  75% {
-    transform: rotateZ(-5deg);
-    opacity: 1;
-  }
-  100% {
-    transform: rotateX(0);
-    opacity: 1;
   }
 }
 @keyframes swal2-animate-i-mark {

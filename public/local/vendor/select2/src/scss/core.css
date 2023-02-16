@@ -11,7 +11,6 @@
   display: block;
   height: 28px;
   -moz-user-select: none;
-   -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
 }
@@ -36,7 +35,6 @@
   display: block;
   min-height: 32px;
   -moz-user-select: none;
-   -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
 }
@@ -86,7 +84,6 @@
 .select2-results__option {
   padding: 6px;
   -moz-user-select: none;
-   -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
 }

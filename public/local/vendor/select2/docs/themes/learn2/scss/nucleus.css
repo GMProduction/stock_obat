@@ -9,9 +9,6 @@
 @-moz-viewport {
   width: device-width;
 }
-@-ms-viewport {
-  width: device-width;
-}
 @-o-viewport {
   width: device-width;
 }
@@ -600,7 +597,6 @@ input[type=submit] {
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   vertical-align: middle;
   white-space: nowrap;
