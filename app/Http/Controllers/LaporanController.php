@@ -37,6 +37,12 @@ class LaporanController extends CustomController
         return view('admin.laporan.jurnalbarang');
     }
 
+    // PENYESUAIAN
+    public function penyesuaian()
+    {
+        return view('admin.laporan.penyesuaian');
+    }
+
     // PENERIMAAN BARANG
     public function penerimaan()
     {
@@ -84,7 +90,7 @@ class LaporanController extends CustomController
     {
         try {
             $data = Medicine::with(['stocks' => function ($q) {
-//                                return $q->where('location_id', '=', 1);
+                //                                return $q->where('location_id', '=', 1);
             }])
                 ->get();
             return $data->toArray();
@@ -123,7 +129,7 @@ class LaporanController extends CustomController
             $preload = ['medicine_in.medicine', 'medicine_out.medicine', 'transaction_in', 'transaction_out'];
             $data = $this->generalLedgerRepository->getDataByPeriodic($startDate, $endDate, $preload);
             return $this->basicDataTables($data);
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             return $this->basicDataTables([]);
         }
     }

@@ -31,7 +31,7 @@
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Laporan Stock</a>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Penyesuaian Stock</a>
                     </div>
                 </li>
 
@@ -40,7 +40,7 @@
 
         <div class="">
             <div class="section relative">
-                <p class="title ">Stock Saat Ini </p>
+                <p class="title ">Penyesuain Stock </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex gap-1">
 
@@ -48,14 +48,7 @@
                             class="btn-excel bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
                             <img src="{{ asset('local/icons/tutupbuku.svg') }}"
                                 class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
-                            Export To Excel
-                        </a>
-
-                        <a href="{{ route('penyesuaian') }}"
-                            class=" bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
-                            <img src="{{ asset('local/icons/tutupbuku.svg') }}"
-                                class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
-                            Penyesuaian
+                            Riwayat Penyesuaian
                         </a>
 
                     </div>
@@ -64,32 +57,28 @@
                 {{-- FILTER --}}
                 <div class="mb-2">
                     <button class="chip" id="btndropdownkategori">
-                        Lokasi: <span id="textsumber">SEMUA</span>
+                        Lokasi: <span id="textsumber">GUDANG</span>
                     </button>
                 </div>
 
                 {{-- MENU SUMBER ANGGARAN --}}
                 <div id="dropdownkategori" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="btndropdownkategori">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white btn-storage"
-                                data-id="all" data-text="SEMUA">SEMUA</a>
-                        </li>
 
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white btn-storage"
                                 data-id="main" data-text="GUDANG">GUDANG</a>
                         </li>
-                        @foreach ($locations as $location)
+
+                        {{-- @foreach ($locations as $location)
                             <li>
                                 <a href="#"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white btn-storage"
                                     data-id="{{ $location->id }}"
                                     data-text="{{ $location->name }}">{{ $location->name }}</a>
                             </li>
-                        @endforeach
+                        @endforeach --}}
                     </ul>
                 </div>
 
@@ -102,9 +91,32 @@
                             <th data-priority="2" class="text-left text-xs">Nama Barang</th>
                             <th data-priority="2" class="text-center text-xs">Satuan</th>
                             <th data-priority="2" class="text-center text-xs">Stock</th>
+                            <th data-priority="2" class="text-center text-xs">Stock Sebenarnya</th>
+                            <th data-priority="2" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td data-priority="1" class="text-center text-xs">No</td>
+                            <td data-priority="2" class="text-center text-xs">Kategori</td>
+                            <td data-priority="2" class="text-left text-xs">Nama Barang</td>
+                            <td data-priority="2" class="text-center text-xs">Satuan</td>
+                            <td data-priority="2" class="text-center text-xs">Stock</td>
+                            <td data-priority="2" class="text-center text-xs">
+                                <input type="text" id="first_name" type="number"
+                                    class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg "
+                                    required>
+                            </td>
+                            <td class="text-center">
+                                <a href="#"
+                                    class=" bg-blue-500 hover:bg-blue-300 transition-all duration-300 rounded-md   text-white px-3 py-2 text-sm ">
+
+                                    Simpan
+                                </a>
+                            </td>
+                        </tr>
+
+
                     </tbody>
                 </table>
             </div>
@@ -165,37 +177,11 @@
 
         $(document).ready(function() {
 
-            table = BasicDatatableGenerator('#tb-master', path, [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex',
-                    searchable: false,
-                    orderable: false,
-                    className: 'text-center text-xs'
-                },
-                {
-                    data: 'category',
-                    name: 'category',
-                    className: 'text-center text-xs'
-                },
-                {
-                    data: 'name',
-                    name: 'name',
-                    className: 'text-left text-xs'
-                },
-                {
-                    data: 'unit',
-                    name: 'unit',
-                    className: 'text-center text-xs'
-                },
-                {
-                    data: 'qty',
-                    name: 'qty',
-                    className: 'text-center text-xs'
-                },
-            ], [], function(d) {
-                d.location = _location;
-            });
-
+            var table = $('#tb-master').DataTable({
+                    responsive: true,
+                })
+                .columns.adjust()
+                .responsive.recalc();
 
             $('.btn-storage').on('click', function(e) {
                 e.preventDefault();
