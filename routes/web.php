@@ -79,12 +79,16 @@ Route::middleware('auth')->group(
         Route::prefix('laporan')->group(
             function () {
                 // Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
-                Route::get('/stock', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstock');
-                Route::get('/stock/{id}', [\App\Http\Controllers\LaporanController::class, 'detailstock'])->name('laporandetailstock');
+                Route::get('/stock', [\App\Http\Controllers\StockReportController::class, 'index'])->name('laporanstock');
+                Route::get('/stock/excel', [\App\Http\Controllers\StockReportController::class, 'exportToExcel'])->name('laporanstock.excel');
+                Route::get('/stock-data', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstockdata');
+                Route::get('/stock/{id}/detail', [\App\Http\Controllers\LaporanController::class, 'detailstock'])->name('laporandetailstock');
                 Route::get('/penerimaan', [\App\Http\Controllers\ReportController::class, 'transaction_ins_index'])->name('laporanpenerimaan');
                 Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');
                 Route::get('/barangkeluar', [\App\Http\Controllers\LaporanController::class, 'barangkeluar'])->name('laporanbarangkeluar');
                 Route::get('/laporanbarangkeluar/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanBarangKeluar'])->name('cetakLaporanBarangKeluar');
+                Route::get('/laporanjurnal', [\App\Http\Controllers\LaporanController::class, 'laporanJurnalUmum'])->name('laporanjurnal');
+                Route::get('/laporanjurnal/excel', [\App\Http\Controllers\LaporanController::class, 'laporanjurnalExcel'])->name('laporanjurnal.excel');
                 Route::get('/jurnalbarang', [\App\Http\Controllers\LaporanController::class, 'jurnalbarang'])->name('jurnalbarang');
             }
         );

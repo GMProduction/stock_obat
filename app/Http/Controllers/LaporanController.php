@@ -3,24 +3,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\GeneralLedgerExport;
 use App\Helper\CustomController;
 use App\Models\Location;
 use App\Models\Medicine;
+use App\Repository\GeneralLedgerRepository;
 use Illuminate\Support\Facades\App;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class LaporanController extends CustomController
 {
 
-    public function __construct()
+    private $generalLedgerRepository;
+    public function __construct(GeneralLedgerRepository $generalLedgerRepository)
     {
         parent::__construct();
+        $this->generalLedgerRepository = $generalLedgerRepository;
     }
 
     // STOCK
     public function stock()
     {
-        $this->getStock();
+        return $this->getStock();
         return view('admin.laporan.stock');
     }
 
@@ -79,10 +84,10 @@ class LaporanController extends CustomController
     {
         try {
             $data = Medicine::with(['stocks' => function ($q) {
-                //                return $q->where('location_id', '=', 2);
+//                                return $q->where('location_id', '=', 1);
             }])
                 ->get();
-
+            return $data->toArray();
             $results = [];
             $locations = Location::all();
             foreach ($data as $value) {
@@ -108,5 +113,25 @@ class LaporanController extends CustomController
         } catch (\Exception $e) {
             return $this->basicDataTables([]);
         }
+    }
+
+    public function laporanJurnalUmum()
+    {
+        try {
+            $startDate = $this->field('start_date');
+            $endDate = $this->field('end_date');
+            $preload = ['medicine_in.medicine', 'medicine_out.medicine', 'transaction_in', 'transaction_out'];
+            $data = $this->generalLedgerRepository->getDataByPeriodic($startDate, $endDate, $preload);
+            return $this->basicDataTables($data);
+        }catch (\Exception $e) {
+            return $this->basicDataTables([]);
+        }
+    }
+
+    public function laporanjurnalExcel()
+    {
+        $preload = ['medicine_in.medicine', 'medicine_out.medicine', 'transaction_in', 'transaction_out'];
+        $data = $this->generalLedgerRepository->getDataByPeriodic('', '', $preload);
+        return Excel::download(new GeneralLedgerExport($data), 'jurnal-umum.xlsx');
     }
 }
