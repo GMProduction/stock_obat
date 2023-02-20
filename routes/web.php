@@ -91,6 +91,8 @@ Route::middleware('auth')->group(
                 Route::get('/laporanjurnal/excel', [\App\Http\Controllers\LaporanController::class, 'laporanjurnalExcel'])->name('laporanjurnal.excel');
                 Route::get('/jurnalbarang', [\App\Http\Controllers\LaporanController::class, 'jurnalbarang'])->name('jurnalbarang');
                 Route::get('/penyesuaian', [\App\Http\Controllers\LaporanController::class, 'penyesuaian'])->name('penyesuaian');
+                Route::get('/jurnal', [\App\Http\Controllers\GeneralLedgerReportController::class, 'index'])->name('jurnal');
+
             }
         );
     }

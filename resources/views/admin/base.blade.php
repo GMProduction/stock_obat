@@ -222,8 +222,8 @@
                     </a>
 
 
-                    <a class="menu nav-link {{ request()->is('laporan/jurnalbarang') ? 'bg-primarylight' : '' }}"
-                        href="{{ route('jurnalbarang') }}">
+                    <a class="menu nav-link {{ request()->is('laporan/jurnal') ? 'bg-primarylight' : '' }}"
+                        href="{{ route('jurnal') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Jurnal Barang</p>

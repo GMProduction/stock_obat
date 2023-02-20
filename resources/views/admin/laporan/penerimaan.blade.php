@@ -89,7 +89,8 @@
                             </div>
 
                             {{-- MODAL ISI --}}
-                            <div date-rangepicker datepicker-format="dd MM yyyy" datepicker-autohide class="flex items-center mt-3 mb-3" id="date-range-element">
+                            <div date-rangepicker datepicker-format="dd MM yyyy" datepicker-autohide
+                                 class="flex items-center mt-3 mb-3" id="date-range-element">
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -388,6 +389,11 @@
             let date_end = $('#date_end').val();
             let text = date_start + ' - ' + date_end;
             $('#date-range-value').html(text);
+            reload();
+        }
+
+        function reload() {
+            table.ajax.reload();
         }
 
         $(document).ready(function () {
