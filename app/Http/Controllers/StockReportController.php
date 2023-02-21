@@ -41,6 +41,14 @@ class StockReportController extends CustomController
     {
         $locationID = strtolower($this->field('location'));
         $data = $this->medicineRepository->getMedicinesReportStockByLocation($locationID);
-        return Excel::download(new StockExport($data), 'stock.xlsx');
+        $name = 'stock-' . date('YmdHis') . '.xlsx';
+        return Excel::download(new StockExport($data), $name);
+    }
+
+    public function printToPDF()
+    {
+        $locationID = strtolower($this->field('location'));
+        $data = $this->medicineRepository->getMedicinesReportStockByLocation($locationID);
+        return $this->convertToPdf('admin.laporan.cetak-stock', ['data' => $data]);
     }
 }

@@ -51,18 +51,19 @@
                             Export To Excel
                         </a>
 
-                        <a href="{{ route('penyesuaian') }}"
+                        <a href="#" target="_blank" id="btn-print"
                             class=" bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
-                            <img src="{{ asset('local/icons/tutupbuku.svg') }}"
-                                class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
-                            Penyesuaian
+                            <span
+                                class="material-symbols-outlined mr-2 menu-icon text-sm">
+                                print
+                            </span>Print
                         </a>
 
                     </div>
                 </div>
 
                 {{-- FILTER --}}
-                <div class="mb-2">
+                <div class="mb-2 hidden">
                     <button class="chip" id="btndropdownkategori">
                         Lokasi: <span id="textsumber">SEMUA</span>
                     </button>
@@ -121,7 +122,8 @@
     <script src="{{ asset('js/datepicker.js') }}"></script>
 
     <script>
-        var _location = 'all';
+        // var _location = 'all';
+        var _location = 'main';
         var table;
         var path = '/{{ request()->path() }}';
         const $targetEl = document.getElementById('dropdownkategori');
@@ -211,6 +213,12 @@
                 e.preventDefault();
                 let url = '{{ route('laporanstock.excel') }}?location=' + _location;
                 window.open(url);
+            });
+
+            $('#btn-print').on('click', function(e) {
+                e.preventDefault();
+                let url = '{{ route('laporanstock.pdf') }}?location=' + _location;
+                window.open(url, '_blank');
             });
         });
     </script>

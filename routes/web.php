@@ -81,6 +81,7 @@ Route::middleware('auth')->group(
                 // Route::get('/', [\App\Http\Controllers\TransactionOutController::class, 'index'])->name('pengeluaran');
                 Route::get('/stock', [\App\Http\Controllers\StockReportController::class, 'index'])->name('laporanstock');
                 Route::get('/stock/excel', [\App\Http\Controllers\StockReportController::class, 'exportToExcel'])->name('laporanstock.excel');
+                Route::get('/stock/pdf', [\App\Http\Controllers\StockReportController::class, 'printToPDF'])->name('laporanstock.pdf');
                 Route::get('/stock-data', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstockdata');
                 Route::get('/stock/{id}/detail', [\App\Http\Controllers\LaporanController::class, 'detailstock'])->name('laporandetailstock');
                 Route::get('/penerimaan', [\App\Http\Controllers\ReportController::class, 'transaction_ins_index'])->name('laporanpenerimaan');
@@ -92,6 +93,8 @@ Route::middleware('auth')->group(
                 Route::get('/jurnalbarang', [\App\Http\Controllers\LaporanController::class, 'jurnalbarang'])->name('jurnalbarang');
                 Route::get('/penyesuaian', [\App\Http\Controllers\LaporanController::class, 'penyesuaian'])->name('penyesuaian');
                 Route::get('/jurnal', [\App\Http\Controllers\GeneralLedgerReportController::class, 'index'])->name('jurnal');
+                Route::get('/jurnal/excel', [\App\Http\Controllers\GeneralLedgerReportController::class, 'excel'])->name('jurnal.excel');
+                Route::get('/jurnal/pdf', [\App\Http\Controllers\GeneralLedgerReportController::class, 'printToPDF'])->name('jurnal.pdf');
 
             }
         );

@@ -42,15 +42,22 @@
             <div class="section relative">
                 <p class="title ">Jurnal Barang </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
-                    <div class="flex">
+                    <div class="flex gap-1">
 
-                        <button onclick="window.open('{{ route('cetakLaporanPenerimaan', ['id' => 1]) }}');"
+                        <button id="btn-export-excel"
                                 class="bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
                             <img src="{{ asset('local/icons/tutupbuku.svg') }}"
                                  class=" mr-2 menu-icon text-sm w-6 object-scale-down"/>
                             Export to Excel
                         </button>
 
+                        <a href="#" target="_blank" id="btn-print"
+                           class=" bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
+                            <span
+                                class="material-symbols-outlined mr-2 menu-icon text-sm">
+                                print
+                            </span>Print
+                        </a>
                     </div>
                 </div>
 
@@ -276,6 +283,7 @@
             const $textSumber = document.getElementById('textsumber');
             $textSumber.innerHTML = sumber;
             dropdownkategori.hide();
+            reload();
         }
 
         function kategorishow() {
@@ -374,6 +382,21 @@
                 modal_tambahb.hide();
             });
 
+            $('#btn-export-excel').on('click', function (e) {
+                e.preventDefault();
+                let date_start = $('#date_start').val();
+                let date_end = $('#date_end').val();
+                let url = '{{ route('jurnal.excel') }}?type=' + _type + '&date_start=' + date_start + '&date_end=' + date_end;
+                window.open(url);
+            });
+
+            $('#btn-print').on('click', function (e) {
+                e.preventDefault();
+                let date_start = $('#date_start').val();
+                let date_end = $('#date_end').val();
+                let url = '{{ route('jurnal.pdf') }}?type=' + _type + '&date_start=' + date_start + '&date_end=' + date_end;
+                window.open(url, '_blank');
+            });
         });
     </script>
 
