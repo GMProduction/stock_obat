@@ -84,7 +84,8 @@ Route::middleware('auth')->group(
                 Route::get('/stock/pdf', [\App\Http\Controllers\StockReportController::class, 'printToPDF'])->name('laporanstock.pdf');
                 Route::get('/stock-data', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstockdata');
                 Route::get('/stock/{id}/detail', [\App\Http\Controllers\LaporanController::class, 'detailstock'])->name('laporandetailstock');
-                Route::get('/penerimaan', [\App\Http\Controllers\ReportController::class, 'transaction_ins_index'])->name('laporanpenerimaan');
+                Route::get('/penerimaan', [\App\Http\Controllers\ReportTransactionInController::class, 'index'])->name('laporanpenerimaan');
+                Route::get('/penerimaan/excel', [\App\Http\Controllers\ReportTransactionInController::class, 'exportToExcel'])->name('laporanpenerimaan.excel');
                 Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');
                 Route::get('/barangkeluar', [\App\Http\Controllers\LaporanController::class, 'barangkeluar'])->name('laporanbarangkeluar');
                 Route::get('/laporanbarangkeluar/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanBarangKeluar'])->name('cetakLaporanBarangKeluar');

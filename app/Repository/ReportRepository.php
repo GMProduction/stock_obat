@@ -22,7 +22,7 @@ class ReportRepository
         if ($budget_source_id !== '') {
             $query->where('budget_source_id', '=', $budget_source_id);
         }
-        return $query->get();
+        return $query->get()->append(['total']);
 
     }
 

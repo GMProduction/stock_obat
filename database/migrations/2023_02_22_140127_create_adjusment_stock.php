@@ -13,8 +13,11 @@ class CreateAdjusmentStock extends Migration
      */
     public function up()
     {
-        Schema::create('stock_adjusments', function (Blueprint $table) {
+        Schema::create('stock_adjustments', function (Blueprint $table) {
             $table->id();
+            $table->string('batch_id');
+            $table->date('date');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateAdjusmentStock extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stock_adjusments');
+        Schema::dropIfExists('stock_adjustments');
     }
 }

@@ -42,8 +42,13 @@
             <div class="section relative col-span-2">
                 <p class="title ">Penerimaan Barang </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
-                    <div class="flex">
-
+                    <div class="flex gap-1">
+                        <button id="btn-export-excel"
+                                class="bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
+                            <img src="{{ asset('local/icons/tutupbuku.svg') }}"
+                                 class=" mr-2 menu-icon text-sm w-6 object-scale-down"/>
+                            Export to Excel
+                        </button>
                         <button onclick="window.open('{{ route('cetakLaporanPenerimaan', ['id' => 1]) }}');"
                                 class="bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
@@ -310,41 +315,7 @@
 
     {{-- DROPDOWN --}}
     <script>
-        // set the dropdown menu element
-        const $targetEl = document.getElementById('dropdownsumberanggaran');
 
-        // set the element that trigger the dropdown menu on click
-        const $triggerEl = document.getElementById('btndropdownsumberanggaran');
-
-        // options with default values
-        const options = {
-            placement: 'bottom',
-            triggerType: 'click',
-            offsetSkidding: 0,
-            offsetDistance: 10,
-            delay: 300,
-            backdrop: 'static',
-            onHide: () => {
-                console.log('dropdown has been hidden');
-            },
-            onShow: () => {
-                console.log('dropdown has been shown');
-            },
-            onToggle: () => {
-                console.log('dropdown has been toggled');
-            }
-        };
-        const dropdownsumberanggaran = new Dropdown($targetEl, $triggerEl, options);
-
-        function sumberanggaranclose(sumber) {
-            const $textSumber = document.getElementById('textsumber');
-            $textSumber.innerHTML = sumber;
-            dropdownsumberanggaran.hide();
-        }
-
-        function sumberanggaranshow() {
-            dropdownsumberanggaran.toggle();
-        }
     </script>
 
 
@@ -384,6 +355,43 @@
         var _bs = '';
         var path = '/{{ request()->path() }}';
 
+        // set the dropdown menu element
+        const $targetEl = document.getElementById('dropdownsumberanggaran');
+
+        // set the element that trigger the dropdown menu on click
+        const $triggerEl = document.getElementById('btndropdownsumberanggaran');
+
+        // options with default values
+        const options = {
+            placement: 'bottom',
+            triggerType: 'click',
+            offsetSkidding: 0,
+            offsetDistance: 10,
+            delay: 300,
+            backdrop: 'static',
+            onHide: () => {
+                console.log('dropdown has been hidden');
+            },
+            onShow: () => {
+                console.log('dropdown has been shown');
+            },
+            onToggle: () => {
+                console.log('dropdown has been toggled');
+            }
+        };
+        const dropdownsumberanggaran = new Dropdown($targetEl, $triggerEl, options);
+
+        function sumberanggaranclose(sumber) {
+            const $textSumber = document.getElementById('textsumber');
+            $textSumber.innerHTML = sumber;
+            dropdownsumberanggaran.hide();
+            reload();
+        }
+
+        function sumberanggaranshow() {
+            dropdownsumberanggaran.toggle();
+        }
+
         function dateChangeHandler() {
             let date_start = $('#date_start').val();
             let date_end = $('#date_end').val();
@@ -406,11 +414,6 @@
                 className: 'text-center text-xs'
             },
                 {
-                    data: 'batch_id',
-                    name: 'batch_id',
-                    className: 'text-center text-xs'
-                },
-                {
                     data: 'date',
                     name: 'date',
                     className: 'text-center text-xs',
@@ -423,11 +426,15 @@
                         });
                     }
                 },
-
+                {
+                    data: 'batch_id',
+                    name: 'batch_id',
+                    className: 'text-center text-xs'
+                },
                 {
                     data: 'budget_source.name',
                     name: 'budget_source.name',
-                    className: 'text-left text-xs'
+                    className: 'text-center text-xs'
                 },
                 {
                     data: 'total',
@@ -449,6 +456,7 @@
             ], [], function (d) {
                 d.date_start = $('#date_start').val();
                 d.date_end = $('#date_end').val();
+                d.budget_source = _bs;
             }, {
                 responsive: true
             });
@@ -480,6 +488,14 @@
                 e.preventDefault();
                 dateChangeHandler();
                 modalPeriodeHide();
+            });
+
+            $('#btn-export-excel').on('click', function(e) {
+                e.preventDefault();
+                let date_start = $('#date_start').val();
+                let date_end = $('#date_end').val();
+                let url = '{{ route('laporanpenerimaan.excel') }}?budget_source=' + _bs + '&date_start=' + date_start + '&date_end=' + date_end;
+                window.open(url);
             });
         });
     </script>
