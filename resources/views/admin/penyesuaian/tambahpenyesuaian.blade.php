@@ -89,6 +89,7 @@
                             <th data-priority="2" class="text-center text-xs">Kategori</th>
                             <th data-priority="2" class="text-left text-xs">Nama Barang (Satuan)</th>
                             <th data-priority="2" class="text-center text-xs">Lokasi</th>
+                            <th data-priority="2" class="text-center text-xs">Tanggal Kadaluarsa</th>
                             <th data-priority="2" class="text-center text-xs">Stock</th>
                             <th data-priority="2" class="text-center text-xs">Stock Sebenarnya</th>
                         </tr>
@@ -97,8 +98,9 @@
                         <tr>
                             <td data-priority="1" class="text-center text-xs">No</td>
                             <td data-priority="2" class="text-center text-xs">Kategori</td>
-                            <td data-priority="2" class="text-center text-xs">Gudang</td>
                             <td data-priority="2" class="text-left text-xs">Obat tidur (tablet)</td>
+                            <td data-priority="2" class="text-center text-xs">Gudang</td>
+                            <td data-priority="2" class="text-center text-xs">28 Februari 2023</td>
                             <td data-priority="2" class="text-center text-xs">12</td>
                             <td data-priority="2" class="text-center text-xs">
                                 <input type="text" id="first_name" type="number"
