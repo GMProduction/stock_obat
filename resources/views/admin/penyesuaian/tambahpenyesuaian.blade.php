@@ -51,18 +51,7 @@
         <div class="">
             <div class="section relative">
                 <p class="title ">Penyesuaian Stock </p>
-                <div class="absolute right-0 top-0 mt-3 mr-3">
-                    <div class="flex gap-1">
 
-                        <a href="#"
-                            class="btn-excel bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
-                            <img src="{{ asset('local/icons/tutupbuku.svg') }}"
-                                class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
-                            Riwayat Penyesuaian
-                        </a>
-
-                    </div>
-                </div>
 
                 {{-- FILTER --}}
                 <div class="mb-2">
@@ -98,41 +87,43 @@
                         <tr>
                             <th data-priority="1" class="text-center text-xs">No</th>
                             <th data-priority="2" class="text-center text-xs">Kategori</th>
-                            <th data-priority="2" class="text-left text-xs">Nama Barang</th>
-                            <th data-priority="2" class="text-center text-xs">Satuan</th>
+                            <th data-priority="2" class="text-left text-xs">Nama Barang (Satuan)</th>
+                            <th data-priority="2" class="text-center text-xs">Lokasi</th>
+                            <th data-priority="2" class="text-center text-xs">Tanggal Kadaluarsa</th>
                             <th data-priority="2" class="text-center text-xs">Stock</th>
                             <th data-priority="2" class="text-center text-xs">Stock Sebenarnya</th>
-                            <th data-priority="2" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td data-priority="1" class="text-center text-xs">No</td>
                             <td data-priority="2" class="text-center text-xs">Kategori</td>
-                            <td data-priority="2" class="text-left text-xs">Nama Barang</td>
-                            <td data-priority="2" class="text-center text-xs">Satuan</td>
-                            <td data-priority="2" class="text-center text-xs">Stock</td>
+                            <td data-priority="2" class="text-left text-xs">Obat tidur (tablet)</td>
+                            <td data-priority="2" class="text-center text-xs">Gudang</td>
+                            <td data-priority="2" class="text-center text-xs">28 Februari 2023</td>
+                            <td data-priority="2" class="text-center text-xs">12</td>
                             <td data-priority="2" class="text-center text-xs">
                                 <input type="text" id="first_name" type="number"
                                     class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg "
                                     required>
                             </td>
-                            <td class="text-center">
-                                <a href="#"
-                                    class=" bg-blue-500 hover:bg-blue-300 transition-all duration-300 rounded-md   text-white px-3 py-2 text-sm ">
-
-                                    Simpan
-                                </a>
-                            </td>
                         </tr>
-
-
                     </tbody>
                 </table>
+
+                <label for="keterangan" class="block mb-2 mt-10 text-sm font-medium text-gray-900 ">Keterangan</label>
+                <textarea id="keterangan" rows="4"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukan Keterangan"></textarea>
+
+                <div class="mt-5 mb-5 flex justify-end">
+                    <a href="#"
+                        class="inline-block bg-blue-500 hover:bg-blue-300 transition-all duration-300 rounded-md   text-white px-7 py-4 text-md ">
+                        Simpan
+                    </a>
+                </div>
             </div>
-
         </div>
-
     </div>
 @endsection
 
@@ -213,6 +204,7 @@
             });
         });
     </script>
+
 
 
 

@@ -156,14 +156,14 @@
                 </a>
 
                 <div id="submenu" class="transition">
-                    <a class="menu {{ request()->is('master') ? 'bg-primarylight' : '' }} nav-link"
+                    <a class="menu {{ request()->is('master') ? 'bg-primarylight2' : '' }} nav-link"
                         href="{{ route('masterbarang') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
                         <p class="title-menu block nav-link menu-text text-sm">Master Barang </p>
                     </a>
 
-                    <a class="menu nav-link {{ request()->is('master/lokasi') ? 'bg-primarylight' : '' }}"
+                    <a class="menu nav-link {{ request()->is('master/lokasi') ? 'bg-primarylight2' : '' }}"
                         href="{{ route('masterlokasi') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-sm w-6 object-scale-down">
@@ -185,9 +185,9 @@
                     <p class="title-menu block menu-text">Pengeluaran Barang</p>
                 </a>
 
-                <a class="menu nav-link {{ request()->is('penyesuaian') ? 'bg-primarylight' : '' }}"
+                <a class="menu nav-link {{ request()->is('penyesuaian*') ? 'bg-primarylight' : '' }}"
                     href="{{ route('penyesuaian') }}">
-                    <img src="{{ asset('local/icons/out.svg') }}"
+                    <img src="{{ asset('local/icons/sync.svg') }}"
                         class=" mr-2 menu-icon text-sm w-6 object-scale-down">
                     <p class="title-menu block menu-text">Penyesuaian Stock</p>
                 </a>
@@ -208,21 +208,21 @@
 
                 <div id="submenulaporan" class="transition">
 
-                    <a class="menu nav-link {{ request()->is('laporan/stock') ? 'bg-primarylight' : '' }}"
+                    <a class="menu nav-link {{ request()->is('laporan/stock') ? 'bg-primarylight2' : '' }}"
                         href="{{ route('laporanstock') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Stock</p>
                     </a>
 
-                    <a class="menu nav-link {{ request()->is('laporan/penerimaan') ? 'bg-primarylight' : '' }}"
+                    <a class="menu nav-link {{ request()->is('laporan/penerimaan') ? 'bg-primarylight2' : '' }}"
                         href="{{ route('laporanpenerimaan') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Laporan Penerimaan Barang</p>
                     </a>
 
-                    <a class="menu nav-link {{ request()->is('laporan/barangkeluar') ? 'bg-primarylight' : '' }}"
+                    <a class="menu nav-link {{ request()->is('laporan/barangkeluar') ? 'bg-primarylight2' : '' }}"
                         href="{{ route('laporanbarangkeluar') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
@@ -230,7 +230,7 @@
                     </a>
 
 
-                    <a class="menu nav-link {{ request()->is('laporan/jurnal') ? 'bg-primarylight' : '' }}"
+                    <a class="menu nav-link {{ request()->is('laporan/jurnal') ? 'bg-primarylight2' : '' }}"
                         href="{{ route('jurnal') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />

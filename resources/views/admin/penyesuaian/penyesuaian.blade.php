@@ -54,10 +54,10 @@
                 </div>
 
                 {{-- FILTER --}}
-                <input id="NoIconDemo" type="text" />
+
                 <div class="mb-2">
                     <button class="chip btn-modalperiode">
-                        Bulan: <span id="textsumber">Januari 2023</span>
+                        Periode: <span id="textsumber">Februari</span>
                     </button>
                 </div>
 
@@ -302,12 +302,13 @@
                             </div>
 
                             {{-- MODAL ISI --}}
-                            <div class="mt-10 w-full">
+                            <div class="mt-10 w-full relative">
 
-                                <table id="tabel-barang" class=" w-full text-sm text-left text-gray-500 ">
+                                <table id="tabel-barang" class=" w-full text-sm text-left text-gray-500 "
+                                    style="width: 100%">
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                                         <tr>
-                                            <th class="px-6 py-3 text-center">
+                                            <th class="px-6 py-3 text-left">
                                                 Nama Barang (Satuan)
                                             </th>
 
@@ -318,13 +319,13 @@
                                     </thead>
                                     <tbody>
                                         <tr class="bg-white border-b ">
-                                            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
+                                            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-left">
                                                 Obat Kuat (tablet)
                                             </th>
 
-                                            <td class="px-6 py-4">
+                                            <td class="px-6 py-4 text-right">
                                                 <a href="{{ route('tambahpenyesuaian') }}"
-                                                    class="font-medium text-blue-600  hover:underline">Sesuaikan</a>
+                                                    class="font-medium rounded-lg  text-white px-2 py-1 transition-all duration-300 bg-secondary hover:bg-secondarylight1">Sesuaikan</a>
                                             </td>
                                         </tr>
 
@@ -484,4 +485,12 @@
             modal_brg.hide();
         }
     </script>
+
+    {{-- MONTHPICKER --}}
+    {{-- <script>
+        const datepickerEl = document.getElementById('monthpicker');
+        new Datepicker(datepickerEl, {
+
+        });
+    </script> --}}
 @endsection
