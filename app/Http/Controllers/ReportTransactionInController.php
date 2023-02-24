@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\TransactionInDetailExport;
 use App\Exports\TransactionInExport;
+use App\Exports\TransactionInMainExport;
 use App\Helper\CustomController;
 use App\Repository\ReportRepository;
 use Carbon\Carbon;
@@ -46,7 +47,7 @@ class ReportTransactionInController extends CustomController
         $data = $this->reportRepository->getTransactionInsData($date_start, $date_end, $budget_source_id, $preload);
 //        dd($data->toArray());
         $name = 'Transaksi-Penerimaan-' . date('YmdHis') . '.xlsx';
-        return Excel::download(new TransactionInDetailExport($data, $date_start, $date_end), $name);
+        return Excel::download(new TransactionInMainExport($data, $date_start, $date_end), $name);
     }
 
 }

@@ -39,7 +39,7 @@
         </nav>
 
         <div class="grid grid-cols-5 gap-4">
-            <div class="section relative col-span-2">
+            <div class="section relative col-span-3">
                 <p class="title ">Penerimaan Barang </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex gap-1">
@@ -166,45 +166,18 @@
                         <tr>
                             <th data-priority="1" class="text-right text-xs">No</th>
                             <th data-priority="2" class="text-center text-xs">Tanggal Datang</th>
-                            {{-- <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                        <th data-priority="3" class="text-center text-xs">Satuan</th> --}}
                             <th data-priority="3" class="text-center text-xs">Nomor Batch</th>
                             <th data-priority="3" class="text-center text-xs">Sumber Anggaran</th>
                             <th data-priority="3" class="text-center text-xs">Total</th>
-                            {{-- <th data-priority="3" class="text-center text-xs">Harga Satuan</th>
-                        <th data-priority="3" class="text-center text-xs">Total Harga</th>  --}}
                             <th data-priority="4" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        {{--                    <tr> --}}
-                        {{--                        <td class="text-right text-xs">1</td> --}}
-                        {{--                        <td class="text-center text-xs">12 Desember 2022</td> --}}
-                        {{--                        --}}{{-- <td class="text-center text-xs">Paracetamol</td> --}}
-                        {{--                        <td class="text-center text-xs">Tablet</td> --}}
-                        {{--                        <td class="text-center text-xs">Btch0122</td> --}}
-                        {{--                        <td class="text-center text-xs">APBN</td> --}}
-                        {{--                        <td class="text-center text-xs">APBN</td> --}}
-                        {{--                        --}}{{-- <td class="text-center text-xs">20 Desember 2024</td> --}}
-                        {{--                        <td class="text-center text-xs">Rp 50.000</td> --}}
-                        {{--                        <td class="text-center text-xs">Rp 80.000</td> --}}
-                        {{--                        <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center"> --}}
-                        {{--                            <button --}}
-                        {{--                                class="bg-blue-500 flex rounded-full justify-center items-center text-white px-3 py-2 btn-tambahMaster text-xs"> --}}
-                        {{--                                Detail --}}
-                        {{--                                <img src="{{ asset('local/icons/arrowright.svg') }}" --}}
-                        {{--                                     class="menu-icon text-xs w-6 object-scale-down"/></button> --}}
-
-                        {{--                        </td> --}}
-                        {{--                    </tr> --}}
-
-
                     </tbody>
                 </table>
             </div>
 
-            <div class="section col-span-3 relative">
+            <div class="section col-span-3 relative hidden">
 
                 <div class="border rounded-md p-3">
                     <button

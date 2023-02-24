@@ -66,25 +66,25 @@ class TransactionInDetailExport implements FromCollection, WithHeadings, ShouldA
     private function getRowData()
     {
         $results = [];
-
+        $loop = 1;
         foreach ($this->data as $key => $value) {
             $details = $value->medicine_ins;
             foreach ($details as $keyDetails => $valueDetails) {
                 $batchId = $value->batch_id;
                 $date = Carbon::parse($value->date)->format('d/m/Y');
                 $tmp = [
-                    ($keyDetails + 1),
-                    $keyDetails !== 0 ? '' : $date,
-                    $keyDetails !== 0 ? '' : $batchId,
+                    $loop,
+                    $date,
+                    $batchId,
                     $valueDetails->medicine->name,
                     $valueDetails->unit->name,
                     $valueDetails->qty,
                     $valueDetails->price,
                     $valueDetails->total,
-                    $valueDetails->expired_date,
+                    Carbon::parse($valueDetails->expired_date)->format('d/m/Y'),
                 ];
+                $loop += 1;
                 array_push($results, $tmp);
-
             }
             array_push($results, []);
         }
@@ -95,7 +95,7 @@ class TransactionInDetailExport implements FromCollection, WithHeadings, ShouldA
     public function styles(Worksheet $sheet)
     {
         // TODO: Implement styles() method.
-        $sheet->mergeCells('A1:G1');
+        $sheet->mergeCells('A1:I1');
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A1')->getFont()->setBold(true);
     }
