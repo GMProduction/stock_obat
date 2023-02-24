@@ -185,6 +185,14 @@
                     <p class="title-menu block menu-text">Pengeluaran Barang</p>
                 </a>
 
+                <a class="menu nav-link {{ request()->is('penyesuaian') ? 'bg-primarylight' : '' }}"
+                    href="{{ route('penyesuaian') }}">
+                    <img src="{{ asset('local/icons/out.svg') }}"
+                        class=" mr-2 menu-icon text-sm w-6 object-scale-down">
+                    <p class="title-menu block menu-text">Penyesuaian Stock</p>
+                </a>
+
+
                 <a class="menu  nav-link {{ request()->is('laporan*') ? 'bg-primarylight' : '' }}"
                     onclick="dropdownlaporan()">
                     <img src="{{ asset('local/icons/assignment.svg') }}"
@@ -228,14 +236,8 @@
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
                         <p class="title-menu block menu-text text-xs">Jurnal Barang</p>
                     </a>
-
-
-
                 </div>
-
-
             </div>
-
         </div>
 
         {{-- CONTENT --}}

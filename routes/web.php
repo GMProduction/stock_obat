@@ -56,6 +56,13 @@ Route::middleware('auth')->group(
                 );
             }
         );
+        Route::get('/penyesuaian', [\App\Http\Controllers\LaporanController::class, 'penyesuaian'])->name('penyesuaian');
+
+        Route::prefix('penyesuaian')->group(function () {
+            Route::get('/', [\App\Http\Controllers\PenyesuaianController::class, 'penyesuaian'])->name('penyesuaian');
+            Route::get('/tambah', [\App\Http\Controllers\PenyesuaianController::class, 'tambahpenyesuaian'])->name('tambahpenyesuaian');
+        });
+
         Route::prefix('penerimaan')->group(function () {
             Route::get('/', [\App\Http\Controllers\TransactionInController::class, 'index'])->name('penerimaanbarang');
             Route::get('/{id}/detail', [\App\Http\Controllers\TransactionInController::class, 'detail'])->name('penerimaanbarang.detail');
@@ -92,11 +99,9 @@ Route::middleware('auth')->group(
                 Route::get('/laporanjurnal', [\App\Http\Controllers\LaporanController::class, 'laporanJurnalUmum'])->name('laporanjurnal');
                 Route::get('/laporanjurnal/excel', [\App\Http\Controllers\LaporanController::class, 'laporanjurnalExcel'])->name('laporanjurnal.excel');
                 Route::get('/jurnalbarang', [\App\Http\Controllers\LaporanController::class, 'jurnalbarang'])->name('jurnalbarang');
-                Route::get('/penyesuaian', [\App\Http\Controllers\LaporanController::class, 'penyesuaian'])->name('penyesuaian');
                 Route::get('/jurnal', [\App\Http\Controllers\GeneralLedgerReportController::class, 'index'])->name('jurnal');
                 Route::get('/jurnal/excel', [\App\Http\Controllers\GeneralLedgerReportController::class, 'excel'])->name('jurnal.excel');
                 Route::get('/jurnal/pdf', [\App\Http\Controllers\GeneralLedgerReportController::class, 'printToPDF'])->name('jurnal.pdf');
-
             }
         );
     }
