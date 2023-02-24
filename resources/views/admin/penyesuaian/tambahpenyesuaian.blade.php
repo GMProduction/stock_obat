@@ -13,9 +13,9 @@
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
                     <a href="{{ route('dashboard') }}"
-                       class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-secondary ">
+                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-secondary ">
                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                             </path>
@@ -26,28 +26,38 @@
                 <li>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
                         </svg>
                         <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Penyesuaian Stock</a>
                     </div>
                 </li>
-
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Tambah Penyesuaian</a>
+                    </div>
+                </li>
             </ol>
         </nav>
 
         <div class="">
             <div class="section relative">
-                <p class="title ">Penyesuain Stock </p>
+                <p class="title ">Penyesuaian Stock </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex gap-1">
 
                         <a href="#"
-                           class="btn-excel bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
+                            class="btn-excel bg-green-500 hover:bg-green-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3">
                             <img src="{{ asset('local/icons/tutupbuku.svg') }}"
-                                 class=" mr-2 menu-icon text-sm w-6 object-scale-down"/>
+                                class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
                             Riwayat Penyesuaian
                         </a>
 
@@ -62,14 +72,13 @@
                 </div>
 
                 {{-- MENU SUMBER ANGGARAN --}}
-                <div id="dropdownkategori"
-                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+                <div id="dropdownkategori" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="btndropdownkategori">
 
                         <li>
                             <a href="#"
-                               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white btn-storage"
-                               data-id="main" data-text="GUDANG">GUDANG</a>
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white btn-storage"
+                                data-id="main" data-text="GUDANG">GUDANG</a>
                         </li>
 
                         {{-- @foreach ($locations as $location)
@@ -84,38 +93,38 @@
                 </div>
 
                 <table id="tb-master" class="stripe hover mt-10"
-                       style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
-                    <tr>
-                        <th data-priority="1" class="text-center text-xs">No</th>
-                        <th data-priority="2" class="text-center text-xs">Kategori</th>
-                        <th data-priority="2" class="text-left text-xs">Nama Barang</th>
-                        <th data-priority="2" class="text-center text-xs">Satuan</th>
-                        <th data-priority="2" class="text-center text-xs">Stock</th>
-                        <th data-priority="2" class="text-center text-xs">Stock Sebenarnya</th>
-                        <th data-priority="2" class="text-center text-xs">Action</th>
-                    </tr>
+                        <tr>
+                            <th data-priority="1" class="text-center text-xs">No</th>
+                            <th data-priority="2" class="text-center text-xs">Kategori</th>
+                            <th data-priority="2" class="text-left text-xs">Nama Barang</th>
+                            <th data-priority="2" class="text-center text-xs">Satuan</th>
+                            <th data-priority="2" class="text-center text-xs">Stock</th>
+                            <th data-priority="2" class="text-center text-xs">Stock Sebenarnya</th>
+                            <th data-priority="2" class="text-center text-xs">Action</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td data-priority="1" class="text-center text-xs">No</td>
-                        <td data-priority="2" class="text-center text-xs">Kategori</td>
-                        <td data-priority="2" class="text-left text-xs">Nama Barang</td>
-                        <td data-priority="2" class="text-center text-xs">Satuan</td>
-                        <td data-priority="2" class="text-center text-xs">Stock</td>
-                        <td data-priority="2" class="text-center text-xs">
-                            <input type="text" id="first_name" type="number"
-                                   class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg "
-                                   required>
-                        </td>
-                        <td class="text-center">
-                            <a href="#"
-                               class=" bg-blue-500 hover:bg-blue-300 transition-all duration-300 rounded-md   text-white px-3 py-2 text-sm ">
+                        <tr>
+                            <td data-priority="1" class="text-center text-xs">No</td>
+                            <td data-priority="2" class="text-center text-xs">Kategori</td>
+                            <td data-priority="2" class="text-left text-xs">Nama Barang</td>
+                            <td data-priority="2" class="text-center text-xs">Satuan</td>
+                            <td data-priority="2" class="text-center text-xs">Stock</td>
+                            <td data-priority="2" class="text-center text-xs">
+                                <input type="text" id="first_name" type="number"
+                                    class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg "
+                                    required>
+                            </td>
+                            <td class="text-center">
+                                <a href="#"
+                                    class=" bg-blue-500 hover:bg-blue-300 transition-all duration-300 rounded-md   text-white px-3 py-2 text-sm ">
 
-                                Simpan
-                            </a>
-                        </td>
-                    </tr>
+                                    Simpan
+                                </a>
+                            </td>
+                        </tr>
 
 
                     </tbody>
@@ -176,18 +185,18 @@
             table.ajax.reload();
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#tb-master').DataTable({
-                responsive: true,
-                paging: false,
-                ordering: false,
-                info: false,
-            })
+                    responsive: true,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                })
                 .columns.adjust()
                 .responsive.recalc();
 
-            $('.btn-storage').on('click', function (e) {
+            $('.btn-storage').on('click', function(e) {
                 e.preventDefault();
                 let id = this.dataset.id;
                 let text = this.dataset.text;
@@ -197,7 +206,7 @@
                 reload();
             });
 
-            $('.btn-excel').on('click', function (e) {
+            $('.btn-excel').on('click', function(e) {
                 e.preventDefault();
                 let url = '{{ route('laporanstock.excel') }}?location=' + _location;
                 window.open(url);

@@ -60,7 +60,7 @@ Route::middleware('auth')->group(
 
         Route::prefix('penyesuaian')->group(function () {
             Route::get('/', [\App\Http\Controllers\PenyesuaianController::class, 'penyesuaian'])->name('penyesuaian');
-            Route::post('/tambah', [\App\Http\Controllers\PenyesuaianController::class, 'tambahpenyesuaian'])->name('tambahpenyesuaian');
+            Route::get('/tambah', [\App\Http\Controllers\PenyesuaianController::class, 'tambahpenyesuaian'])->name('tambahpenyesuaian');
         });
 
         Route::prefix('penerimaan')->group(function () {

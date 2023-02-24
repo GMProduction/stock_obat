@@ -12,23 +12,23 @@ body::-webkit-scrollbar {
   padding: 10px 5px;
 }
 
-.chip{
-    font-size: 0.8rem;
-    background-color: #29bac711;
-    color: #29bac7;
-    font-weight: bold;
-    padding: 2px 10px 2px 10px;
-    border-radius: 50px;
-    transition: all;
-    transition-duration: 300ms;
-    cursor: pointer;
-    display: inline-block;
+.chip {
+  font-size: 0.8rem;
+  background-color: #29bac711;
+  color: #29bac7;
+  font-weight: bold;
+  padding: 2px 10px 2px 10px;
+  border-radius: 50px;
+  transition: all;
+  transition-duration: 300ms;
+  cursor: pointer;
+  display: inline-block;
 
-    &:hover{
-        scale: 1.05;
-        background-color: #29bac7;
-        color: white;
-    }
+  &:hover {
+    scale: 1.05;
+    background-color: #29bac7;
+    color: white;
+  }
 }
 
 .sidebar {
@@ -330,8 +330,8 @@ body::-webkit-scrollbar {
 }
 // DATA TABLES
 
-.dataTables_filter{
-    font-size: 0.8rem;
+.dataTables_filter {
+  font-size: 0.8rem;
 }
 
 /*Form fields*/
@@ -364,7 +364,7 @@ body::-webkit-scrollbar {
   float: left;
   margin-bottom: 10px;
   font-size: 0.8rem;
-  padding: 3px ;
+  padding: 3px;
 }
 
 /*Row Hover*/
@@ -420,8 +420,8 @@ table.dataTable.display tbody tr:hover {
 table.dataTable.no-footer {
   border-bottom: 1px solid #e2e8f0;
   /*border-b-1 border-gray-300*/
-//   margin-top: 0.75em;
-//   margin-bottom: 0.75em;
+  //   margin-top: 0.75em;
+  //   margin-bottom: 0.75em;
 }
 
 /*Change colour of responsive icon*/
@@ -443,12 +443,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 // SELECT2
 .select2-container {
   display: block !important;
-
 }
 
 .select2-container .select2-selection--single {
   height: 40px !important;
-
 }
 
 .select2-container--default .select2-selection--single {
@@ -462,11 +460,58 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
   font-size: 0.875rem;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-height: 40px !important;
-right: 5px !important;
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  height: 40px !important;
+  right: 5px !important;
 }
 
-.dataTables_processing{
-    z-index: 5;
+.dataTables_processing {
+  z-index: 5;
+}
+
+.ocean {
+  height: 15%;
+  width: 100%;
+  z-index: -10;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #015871;
+}
+
+.wave {
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite,
+    swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%,
+  100% {
+    transform: translate3d(0, -25px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
 }

@@ -25,19 +25,18 @@
     @yield('css')
 </head>
 
-<body class="relative bg-slate-100" style="min-height: 100vh" >
+<body class="relative bg-slate-100" style="min-height: 100vh">
+
 
     {{-- BACKGROUND --}}
-    <div class="absolute bottom-0 w-full z-[-1]">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#1D9FAC" fill-opacity="1"
-                d="M0,32L30,32C60,32,120,32,180,69.3C240,107,300,181,360,176C420,171,480,85,540,74.7C600,64,660,128,720,154.7C780,181,840,171,900,160C960,149,1020,139,1080,144C1140,149,1200,171,1260,170.7C1320,171,1380,149,1410,138.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-            </path>
-        </svg>
-        <div class="h-36" style="background-color: #1D9FAC">
-
+    <div class="ocean">
+        <div class="wave" style=" background: url({{ asset('local/images/wave.svg') }})
+        repeat-x;">
         </div>
+        <div class="wave" style=" background: url({{ asset('local/images/wave.svg') }})
+        repeat-x;"></div>
     </div>
+
     <section class="">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
             @if (\Illuminate\Support\Facades\Session::has('failed'))
@@ -55,7 +54,7 @@
                         <a href="#"
                             class="flex items-center mb-6 text-2xl font-semibold text-gray-900 justify-center ">
 
-                           PUSKESMAS --------
+                            PUSKESMAS --------
                         </a>
 
                         <div class="border w-full text-black bg-black"></div>
@@ -69,7 +68,7 @@
                                 <label for="text"
                                     class="block mb-2 text-sm font-medium text-gray-900 ">Username</label>
                                 <input type="text" name="username" id="text"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  {{ $errors->has('username')?'border-red-500':'' }}   "
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  {{ $errors->has('username') ? 'border-red-500' : '' }}   "
                                     placeholder="username" required>
                                 @if ($errors->has('username'))
                                     <p class="text-red-500" style="font-size: 0.8em">
@@ -82,7 +81,7 @@
                                 <label for="password"
                                     class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   {{ $errors->has('password')?'border-red-500':'' }} "
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   {{ $errors->has('password') ? 'border-red-500' : '' }} "
                                     required>
                                 @if ($errors->has('password'))
                                     <p class="text-red-500" style="font-size: 0.8em">
@@ -96,16 +95,18 @@
                                 Sign
                                 in
                             </button>
-                            <p class="text-xs mt-3 text-black/60">Jika terjadi kesalahan sistem mohon hubungi administrator.</p>
+                            <p class="text-xs mt-3 text-black/60">Jika terjadi kesalahan sistem mohon hubungi
+                                administrator.</p>
 
                         </form>
                     </div>
 
-                    <div class="mt-0 rounded-r-lg bg-primary hidden md:block" >
+                    <div class="mt-0 rounded-r-lg bg-primary hidden md:block">
 
-                        <img src="{{asset('/local/images/boxmedic.png')}}" class="mx-auto mt-0"/>
+                        <img src="{{ asset('/local/images/boxmedic.png') }}" class="mx-auto mt-0" />
                         <p class="text-center pt-4 text-2xl text-white p-0 m-0 font-bold">Aplikasi stock obat</p>
-                        <p class="text-center text-sm text-white/80 p-0 m-0">Aplikasi managemen stock obat di puskesmas ---------------</p>
+                        <p class="text-center text-sm text-white/80 p-0 m-0">Aplikasi managemen stock obat di puskesmas
+                            ---------------</p>
                     </div>
                 </div>
             </div>
@@ -117,4 +118,5 @@
 
     @yield('morejs')
 </body>
+
 </html>
