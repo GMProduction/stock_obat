@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStockAdjusmentDetails extends Migration
+class CreateMedicineStocks extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateStockAdjusmentDetails extends Migration
      */
     public function up()
     {
-        Schema::create('stock_adjustment_details', function (Blueprint $table) {
+        Schema::create('medicine_stocks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('stock_adjustment_id')->unsigned();
             $table->bigInteger('medicine_id')->unsigned();
             $table->date('expired_date');
-            $table->integer('current_qty')->default(0);
-            $table->integer('real_qty')->default(0);
+            $table->integer('qty')->default(0);
             $table->timestamps();
-            $table->foreign('stock_adjustment_id')->references('id')->on('stock_adjustments');
             $table->foreign('medicine_id')->references('id')->on('medicines');
         });
     }
@@ -33,6 +30,6 @@ class CreateStockAdjusmentDetails extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stock_adjustment_details');
+        Schema::dropIfExists('medicine_stocks');
     }
 }
