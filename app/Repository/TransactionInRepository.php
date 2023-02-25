@@ -11,12 +11,15 @@ class TransactionInRepository
     private $medicineRepository;
     private $medicineInRepository;
     private $generalLedgerRepository;
+    private $medicineStockRepository;
 
-    public function __construct(MedicineRepository $medicineRepository, MedicineInRepository $medicineInRepository, GeneralLedgerRepository $generalLedgerRepository)
+
+    public function __construct(MedicineRepository $medicineRepository, MedicineInRepository $medicineInRepository, GeneralLedgerRepository $generalLedgerRepository, MedicineStockRepository $medicineStockRepository)
     {
         $this->medicineRepository = $medicineRepository;
         $this->medicineInRepository = $medicineInRepository;
         $this->generalLedgerRepository = $generalLedgerRepository;
+        $this->medicineStockRepository = $medicineStockRepository;
     }
 
     public function getData($preload = ['user', 'budget_source'])
@@ -92,5 +95,10 @@ class TransactionInRepository
     public function saveToGeneralLedger($data)
     {
         return $this->generalLedgerRepository->create($data);
+    }
+
+    public function addMedicineStock($medicine_id, $expired_date, $qty)
+    {
+        return $this->medicineStockRepository->addMedicineStock($medicine_id, $expired_date, $qty);
     }
 }

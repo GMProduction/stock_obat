@@ -1,6 +1,10 @@
 @extends('admin.base')
 
 @section('css')
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('local/vendor/select2/dist/css/select2.min.css') }}" type="text/css">
     <style>
         .backdrop-loader {
@@ -24,6 +28,10 @@
             align-items: center;
             justify-content: center;
             cursor: progress;
+        }
+
+        .dataTables_empty {
+            text-align: center !important;
         }
     </style>
 @endsection
@@ -116,6 +124,7 @@
                                     <th data-priority="2" class="text-center text-xs">Nama Barang</th>
                                     <th data-priority="2" class="text-center text-xs">Qty</th>
                                     <th data-priority="3" class="text-center text-xs">Satuan</th>
+                                    <th data-priority="3" class="text-center text-xs">Tanggal Kadaluarsa</th>
                                     <th data-priority="4" class="text-center text-xs">Action</th>
                                 </tr>
                                 </thead>
@@ -216,7 +225,8 @@
                         </span>Simpan Data
                     </button>
 
-                    <button type="button" id="btn-save-and-print" onclick="location.href='/pengeluaran/suratbarangkeluar/1'"
+                    <button type="button" id="btn-save-and-print"
+                            onclick="location.href='/pengeluaran/suratbarangkeluar/1'"
                             class="ml-3 flex items-center text-white bg-secondary hover:bg-orange-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             print
@@ -589,6 +599,11 @@
                 {
                     data: 'unit.name',
                     name: 'unit.name',
+                    className: 'text-center text-xs'
+                },
+                {
+                    data: 'expired_data',
+                    name: 'expired_data',
                     className: 'text-center text-xs'
                 },
                 {

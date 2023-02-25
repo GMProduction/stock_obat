@@ -15,7 +15,8 @@ class MedicineOut extends Model
         'unit_id',
         'qty',
         'price',
-        'total'
+        'total',
+        'expired_date',
     ];
 
     public function transaction_out()

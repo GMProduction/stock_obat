@@ -105,19 +105,21 @@ class TransactionInController extends CustomController
             $cart = $this->transactionInRepository->cart();
             $this->transactionInRepository->setTransactionIdToCart($transaction_in->id);
             foreach ($cart as $item) {
-                $medicine_in_id = $item->id;
+//                $medicine_in_id = $item->id;
                 $medicine_id = $item->medicine_id;
                 $addedStock = $item->qty;
-                $this->transactionInRepository->addStock($medicine_id, $addedStock);
-                $general_ledger_data = [
-                    'date' => $date_value,
-                    'medicine_in_id' => $medicine_in_id,
-                    'transaction_in_id' => $transaction_in->id,
-                    'qty' => $addedStock,
-                    'type' => 0,
-                    'description' => $description
-                ];
-                $this->transactionInRepository->saveToGeneralLedger($general_ledger_data);
+                $expiredDate = $item->expired_date;
+                $this->transactionInRepository->addMedicineStock($medicine_id, $expiredDate, $addedStock);
+//                $this->transactionInRepository->addStock($medicine_id, $addedStock);
+//                $general_ledger_data = [
+//                    'date' => $date_value,
+//                    'medicine_in_id' => $medicine_in_id,
+//                    'transaction_in_id' => $transaction_in->id,
+//                    'qty' => $addedStock,
+//                    'type' => 0,
+//                    'description' => $description
+//                ];
+//                $this->transactionInRepository->saveToGeneralLedger($general_ledger_data);
             }
             DB::commit();
             return redirect()->route('penerimaanbarang')->with('success', 'Berhasil menambahkan data...');

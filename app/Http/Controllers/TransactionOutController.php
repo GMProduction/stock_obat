@@ -66,20 +66,36 @@ class TransactionOutController extends CustomController
             }
 
             //validate general ledgers
-            $available_stocks = $this->transactionOutRepository->getAvailableStock($medicine_id);
-            $general_ledgers = $this->generateGeneralLedger($available_stocks, $qty);
-            $avg_price = $general_ledgers['avg_price'];
-            if ($general_ledgers['error']) {
-                return $this->jsonResponse('failed to create general ledger', 500);
+//            $available_stocks = $this->transactionOutRepository->getAvailableStock($medicine_id);
+//            $general_ledgers = $this->generateGeneralLedger($available_stocks, $qty);
+//            $avg_price = $general_ledgers['avg_price'];
+//            if ($general_ledgers['error']) {
+//                return $this->jsonResponse('failed to create general ledger', 500);
+//            }
+//            $data_request = [
+//                'medicine_id' => $medicine_id,
+//                'unit_id' => $unit_id,
+//                'qty' => $qty,
+//                'price' => $avg_price,
+//                'total' => ($qty * $avg_price)
+//            ];
+//            $this->transactionOutRepository->addToCart($data_request);
+            $medicine_stocks = $this->transactionOutRepository->getMedicineStocks($medicine_id);
+
+            $restQty = $qty;
+            foreach ($medicine_stocks as $medicine_stock) {
+                $qtyMedicine = $medicine_stock->qty;
+                if ($restQty )
+                $data_request = [
+                    'medicine_id' => $medicine_id,
+                    'unit_id' => $unit_id,
+                    'qty' => $qty,
+                    'price' => 0,
+                    'total' => 0
+                ];
             }
-            $data_request = [
-                'medicine_id' => $medicine_id,
-                'unit_id' => $unit_id,
-                'qty' => $qty,
-                'price' => $avg_price,
-                'total' => ($qty * $avg_price)
-            ];
-            $this->transactionOutRepository->addToCart($data_request);
+
+
             return $this->jsonResponse('success', 200);
         } catch (\Exception $e) {
             return $this->jsonResponse('internal server error...', 500);

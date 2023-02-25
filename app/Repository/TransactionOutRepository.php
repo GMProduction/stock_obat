@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Models\MedicineStock;
 use App\Models\TransactionOut;
 
 class TransactionOutRepository
@@ -93,5 +94,13 @@ class TransactionOutRepository
     public function getStockByLocationIDAndMedicineID($locationID, $medicineID)
     {
         return $this->locationStockRepository->getStockByLocationIDAndMedicineID($locationID, $medicineID);
+    }
+
+    public function getMedicineStocks($medicine_id, $preload = [])
+    {
+        return MedicineStock::with($preload)
+            ->where('medicine_id', '=', $medicine_id)
+            ->orderBy('expired_date', 'ASC')
+            ->get();
     }
 }
