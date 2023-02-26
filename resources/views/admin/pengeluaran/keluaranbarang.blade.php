@@ -602,9 +602,17 @@
                     className: 'text-center text-xs'
                 },
                 {
-                    data: 'expired_data',
-                    name: 'expired_data',
-                    className: 'text-center text-xs'
+                    data: 'expired_date',
+                    name: 'expired_date',
+                    className: 'text-center text-xs',
+                    render: function (data) {
+                        let date = new Date(data);
+                        return date.toLocaleString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                    }
                 },
                 {
                     className: 'text-center text-xs font-bold ',

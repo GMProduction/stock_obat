@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Models\MedicineOut;
 use App\Models\MedicineStock;
 use App\Models\TransactionOut;
 
@@ -100,7 +101,31 @@ class TransactionOutRepository
     {
         return MedicineStock::with($preload)
             ->where('medicine_id', '=', $medicine_id)
+            ->where('qty', '>', 0)
             ->orderBy('expired_date', 'ASC')
             ->get();
+    }
+
+    public function restoreMedicineStockFromCart($id)
+    {
+        $cart = MedicineOut::find($id);
+        $expired_date = $cart->expired_date;
+        $medicine_id = $cart->medicine_id;
+        $restoredQty = $cart->qty;
+        $medicine_stock = MedicineStock::where('medicine_id', '=', $medicine_id)
+            ->where('expired_date', '=', $expired_date)
+            ->first();
+        if ($medicine_stock) {
+            $currentQty = $medicine_stock->qty;
+            $newQty = $currentQty + $restoredQty;
+            return $medicine_stock->update([
+                'qty' => $newQty
+            ]);
+        }
+        return MedicineStock::create([
+            'medicine_id' => $medicine_id,
+            'expired_date' => $expired_date,
+            'qty' => $restoredQty
+        ]);
     }
 }
