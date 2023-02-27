@@ -76,7 +76,7 @@
                             class="bg-teal-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 feed
-                            </span>Master Satuan / Asal Obat / Lokasi
+                            </span>Master Satuan & Sumber Anggaran
                         </button>
                         <button
                             class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm btn-tambahMaster"><span

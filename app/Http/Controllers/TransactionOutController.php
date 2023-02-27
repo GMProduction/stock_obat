@@ -105,7 +105,7 @@ class TransactionOutController extends CustomController
             $date = $this->postField('date');
             $location_id = $this->postField('location');
             $date_value = Carbon::parse($date)->format('Y-m-d');
-            $batch_id = 'TI-' . date('YmdHis');
+            $batch_id = 'TO-' . date('YmdHis');
             $description = $this->postField('description') ?? '-';
             $data_request = [
                 'user_id' => $author,
