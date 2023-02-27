@@ -119,7 +119,6 @@
                         <div class="mt-5">
                             <table id="tb-master" class="table display table-auto stripe hover" style="width:100%;">
                                 <thead class="bg-gray-50 ">
-                                <<<<<<< HEAD
                                 <tr>
                                     <th data-priority="1" class="text-right text-xs py-3">No</th>
                                     <th data-priority="2" class="text-center text-xs">Nama Barang</th>
@@ -128,32 +127,9 @@
                                     <th data-priority="3" class="text-center text-xs">Tanggal Kadaluarsa</th>
                                     <th data-priority="4" class="text-center text-xs">Action</th>
                                 </tr>
-                                =======
-                                <tr>
-                                    <th data-priority="1" class="text-right text-xs py-3">No</th>
-                                    <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                                    <th data-priority="2" class="text-center text-xs">Qty</th>
-                                    <th data-priority="3" class="text-center text-xs">Satuan</th>
-                                    <th data-priority="4" class="text-center text-xs">Action</th>
-                                </tr>
-                                >>>>>>> 876714ca76eb65e8ce8cfdbad6bd7a43abcc2fab
                                 </thead>
 
                                 <tbody>
-                                {{--                            @foreach ($carts as $cart) --}}
-                                {{--                                <tr class="border-b"> --}}
-                                {{--                                    <td class="text-right text-xs py-3">{{ $loop->index + 1 }}</td> --}}
-                                {{--                                    <td class="text-center text-xs">{{ $cart->medicine->name }}</td> --}}
-                                {{--                                    <td class="text-center text-xs">{{ $cart->qty }}</td> --}}
-                                {{--                                    <td class="text-center text-xs">{{ $cart->unit->name }}</td> --}}
-
-                                {{--                                    <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3"> --}}
-                                {{--                                        <button class="btn-delete bg-red-500 rounded-full text-white px-3 py-2 text-xs" data-id="{{ $cart->id }}"> --}}
-                                {{--                                            Hapus --}}
-                                {{--                                        </button> --}}
-                                {{--                                    </td> --}}
-                                {{--                                </tr> --}}
-                                {{--                            @endforeach --}}
                                 </tbody>
                             </table>
                         </div>
