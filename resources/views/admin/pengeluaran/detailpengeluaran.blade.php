@@ -124,6 +124,7 @@
                                     <th class="text-left text-xs">Nama Barang</th>
                                     <th class="text-center text-xs">Qty</th>
                                     <th class="text-center text-xs">Satuan</th>
+                                    <th class="text-center text-xs">Tanggal Kadaluarsa</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -133,6 +134,7 @@
                                         <td class="text-left text-xs">{{ $medicine_out->medicine->name }}</td>
                                         <td class="text-center text-xs">{{ $medicine_out->unit->name }}</td>
                                         <td class="text-center text-xs">{{ $medicine_out->qty }}</td>
+                                        <td class="text-center text-xs">{{ \Carbon\Carbon::parse($medicine_out->expired_date)->format('d F Y') }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

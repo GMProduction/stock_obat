@@ -128,4 +128,11 @@ class TransactionOutRepository
             'qty' => $restoredQty
         ]);
     }
+
+    public function cleanZeroStock()
+    {
+        return MedicineStock::with([])
+            ->where('qty', '<=', 0)
+            ->delete();
+    }
 }

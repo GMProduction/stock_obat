@@ -197,7 +197,7 @@
             <th class="text-left text-ontable">Nama Barang</th>
             <th class="text-right text-ontable" style="width: 20px">Qty</th>
             <th class="text-left text-ontable">Satuan</th>
-            {{-- <th class="text-center">Total Harga</th> --}}
+             <th class="text-center text-ontable">Tanggal Kadaluarsa</th>
         </tr>
 
         </thead>
@@ -215,6 +215,9 @@
                 </td>
                 <td class="text-left text-ontable">
                     {{ $medicine_out->unit->name }}
+                </td>
+                <td class="text-center text-ontable">
+                    {{ \Carbon\Carbon::parse($medicine_out->expired_date)->format('d F Y') }}
                 </td>
             </tr>
         @endforeach

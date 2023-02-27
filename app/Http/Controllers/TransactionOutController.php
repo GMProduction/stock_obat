@@ -179,6 +179,7 @@ class TransactionOutController extends CustomController
             $transaction_out = $this->transactionOutRepository->create($data_request);
 //            $carts = $this->transactionOutRepository->cart();
             $this->transactionOutRepository->setTransactionIdToCart($transaction_out->id);
+            $this->transactionOutRepository->cleanZeroStock();
 //            foreach ($carts as $cart) {
 //                $medicine_id = $cart->medicine_id;
 //                $medicine_out_id = $cart->id;
