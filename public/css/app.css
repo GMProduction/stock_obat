@@ -1105,14 +1105,11 @@ input:checked + .toggle-bg {
 .ml-5 {
   margin-left: 1.25rem;
 }
-.mb-1 {
-  margin-bottom: 0.25rem;
-}
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+.mb-1 {
+  margin-bottom: 0.25rem;
 }
 .block {
   display: block;
@@ -1465,6 +1462,9 @@ input:checked + .toggle-bg {
 .bg-primarylight {
   background-color: #29bac777;
 }
+.bg-primarylight2 {
+  background-color: #29bac722;
+}
 .bg-red-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(253 232 232 / var(--tw-bg-opacity));
@@ -1538,9 +1538,6 @@ input:checked + .toggle-bg {
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-}
-.bg-primarylight2 {
-  background-color: #29bac722;
 }
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -1627,10 +1624,6 @@ input:checked + .toggle-bg {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 .px-7 {
   padding-left: 1.75rem;
@@ -1880,6 +1873,9 @@ input:checked + .toggle-bg {
   --tw-bg-opacity: 1;
   background-color: rgb(255 90 31 / var(--tw-bg-opacity));
 }
+.hover\:bg-secondarylight1:hover {
+  background-color: #FF5A1F77;
+}
 .hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
@@ -1887,9 +1883,6 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-.hover\:bg-secondarylight1:hover {
-  background-color: #FF5A1F77;
 }
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
