@@ -8,11 +8,12 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Style;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class GeneralLedgerExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles
+class GeneralLedgerExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithTitle
 {
     private $data;
     private $dateStart;
@@ -46,16 +47,17 @@ class GeneralLedgerExport implements FromCollection, WithHeadings, ShouldAutoSiz
     {
 
         return [
-            ['Laporan Jurnal Umum Barang Periode ' . Carbon::parse($this->dateStart)->format('d F Y') . ' - ' . Carbon::parse($this->dateEnd)->format('d F Y')],
+            ['Laporan Jurnal Obat Periode ' . Carbon::parse($this->dateStart)->format('d F Y') . ' - ' . Carbon::parse($this->dateEnd)->format('d F Y')],
             [],
             ['No.',
                 'Tanggal',
                 'Masuk / Keluar',
                 'Nama Obat',
-                'Batch Masuk',
-                'Batch Keluar',
+                'Satuan',
                 'Jumlah',
-                'Keterangan',]
+                'Tanggal Kadaluarsa',
+                'Keterangan',
+            ]
         ];
     }
 
@@ -65,28 +67,20 @@ class GeneralLedgerExport implements FromCollection, WithHeadings, ShouldAutoSiz
         foreach ($this->data as $key => $value) {
             $date = $value->date;
             $type = $value->type === 0 ? 'Masuk' : 'Keluar';
-            $medicineName = '-';
-            if ($value->type === 0) {
-                $medicineName = $value->medicine_in->medicine->name;
-            } else {
-                $medicineName = $value->medicine_out->medicine->name;
-            }
-
-            $batchIn = $value->transaction_in->batch_id;
-
-            $batchOut = '-';
-            if ($value->type === 1) {
-                $batchOut = $value->transaction_out->batch_id;
-            }
+            $medicineName = $value->medicine_name;
+            $unit = $value->unit;
+            $qty = $value->qty;
+            $expiredDate = $value->expired_date;
+            $description = $value->description;
             $tmp = [
                 ($key + 1),
-                $date,
+                Carbon::parse($date)->format('d/m/Y'),
                 $type,
                 $medicineName,
-                $batchIn,
-                $batchOut,
-                $value->qty,
-                strtoupper($value->description),
+                $unit,
+                $qty,
+                Carbon::parse($expiredDate)->format('d/m/Y'),
+                strtoupper($description),
             ];
             array_push($results, $tmp);
         }
@@ -99,5 +93,14 @@ class GeneralLedgerExport implements FromCollection, WithHeadings, ShouldAutoSiz
         $sheet->mergeCells('A1:H1');
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A1')->getFont()->setBold(true);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function title(): string
+    {
+        // TODO: Implement title() method.
+        return 'Laporan Jurnal Obat';
     }
 }

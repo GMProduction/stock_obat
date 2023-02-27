@@ -131,7 +131,7 @@
     <div style="width: 100%; border-bottom: 2px solid black; margin-bottom: 10px">
 
     </div>
-    <p style="font-weight: bold; font-size: 0.9rem;" class="text-center">Laporan Jurnal Umum</p>
+    <p style="font-weight: bold; font-size: 0.9rem;" class="text-center">Laporan Jurnal Obat</p>
     <table style="border: 0; ">
         <tr style="border: none">
             <td>
@@ -189,30 +189,22 @@
             <th class="text-center text-ontable">Tanggal</th>
             <th class="text-center text-ontable">Masuk / Keluar</th>
             <th class="text-left text-ontable">Nama Obat</th>
-            <th class="text-center text-ontable">Batch Masuk</th>
-            <th class="text-center text-ontable">Batch Keluar</th>
+            <th class="text-center text-ontable">Unit</th>
             <th class="text-center text-ontable">Jumlah</th>
+            <th class="text-center text-ontable">Tanggal Kadaluarsa</th>
             <th class="text-left text-ontable">Keterangan</th>
         </tr>
         </thead>
         <tbody>
         @foreach($data as $value)
             <tr style="border-bottom: 1px solid #ccc">
-                <td style="width: 10px !important" class="text-center text-ontable">#</td>
-                <td class="text-center text-ontable">{{ $value->date }}</td>
+                <td style="width: 10px !important" class="text-center text-ontable">{{ $loop->index + 1 }}</td>
+                <td class="text-center text-ontable">{{ \Carbon\Carbon::parse($value->date)->format('d/m/Y') }}</td>
                 <td class="text-center text-ontable">{{ $value->type === 0 ? 'Masuk' : 'Keluar' }}</td>
-                <td class="text-left text-ontable">{{ $value->medicine_in->medicine->name }}</td>
-                <td class="text-center text-ontable">{{ $value->transaction_in->batch_id }}</td>
-                <td class="text-center text-ontable">
-                    @if($value->type === 0)
-                        -
-                    @elseif($value->type === 1)
-                        {{ $value->transaction_out->batch_id }}
-                    @else
-                        -
-                    @endif
-                </td>
+                <td class="text-left text-ontable">{{ $value->medicine_name }}</td>
+                <td class="text-center text-ontable">{{ $value->unit }}</td>
                 <td class="text-center text-ontable">{{ $value->qty }}</td>
+                <td class="text-center text-ontable">{{ \Carbon\Carbon::parse($value->expired_date)->format('d/m/Y') }}</td>
                 <td class="text-left text-ontable">{{ strtoupper($value->description) }}</td>
             </tr>
         @endforeach

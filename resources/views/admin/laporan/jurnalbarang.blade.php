@@ -182,9 +182,11 @@
                         <th data-priority="2" class="text-center text-xs">Tanggal</th>
                         <th data-priority="2" class="text-center text-xs">Masuk / Keluar</th>
                         <th data-priority="2" class="text-left text-xs">Nama Obat</th>
-                        <th data-priority="2" class="text-center text-xs">Batch Masuk</th>
-                        <th data-priority="2" class="text-center text-xs">Batch Keluar</th>
+                        <th data-priority="2" class="text-left text-xs">Satuan</th>
+{{--                        <th data-priority="2" class="text-center text-xs">Batch Masuk</th>--}}
+{{--                        <th data-priority="2" class="text-center text-xs">Batch Keluar</th>--}}
                         <th data-priority="2" class="text-center text-xs">Jumlah</th>
+                        <th data-priority="2" class="text-center text-xs">Tanggal Kadaluarsa</th>
                         <th data-priority="3" class="text-left text-xs">Keterangan</th>
                     </tr>
                     </thead>
@@ -295,7 +297,6 @@
             let date_end = $('#date_end').val();
             let text = date_start + ' - ' + date_end;
             $('#date-range-value').html(text);
-            console.log(date_end);
             reload();
         }
 
@@ -316,7 +317,15 @@
                 {
                     data: 'date',
                     name: 'date',
-                    className: 'text-center text-xs'
+                    className: 'text-center text-xs',
+                    render: function(data) {
+                        let date = new Date(data);
+                        return date.toLocaleString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                    }
                 },
                 {
                     data: 'type',
@@ -327,26 +336,31 @@
                     className: 'text-center text-xs'
                 },
                 {
-                    data: 'medicine_in.medicine.name',
-                    name: 'medicine_in.medicine.name',
+                    data: 'medicine_name',
+                    name: 'medicine_name',
                     className: 'text-left text-xs'
                 },
+                // {
+                //     data: 'transaction_in.batch_id',
+                //     name: 'transaction_in.batch_id',
+                //     className: 'text-center text-xs'
+                // },
+                // {
+                //     data: null,
+                //     name: null,
+                //     render: function (data) {
+                //         let type = data['type'];
+                //         let value = '-';
+                //         if (type === 1) {
+                //             value = data['transaction_out']['batch_id'];
+                //         }
+                //         return value;
+                //     },
+                //     className: 'text-center text-xs'
+                // },
                 {
-                    data: 'transaction_in.batch_id',
-                    name: 'transaction_in.batch_id',
-                    className: 'text-center text-xs'
-                },
-                {
-                    data: null,
-                    name: null,
-                    render: function (data) {
-                        let type = data['type'];
-                        let value = '-';
-                        if (type === 1) {
-                            value = data['transaction_out']['batch_id'];
-                        }
-                        return value;
-                    },
+                    data: 'unit',
+                    name: 'unit',
                     className: 'text-center text-xs'
                 },
                 {
@@ -354,6 +368,20 @@
                     name: 'qty',
                     className: 'text-center text-xs'
                 },
+                {
+                    data: 'expired_date',
+                    name: 'expired_date',
+                    className: 'text-center text-xs',
+                    render: function(data) {
+                        let date = new Date(data);
+                        return date.toLocaleString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                    }
+                },
+
                 {
                     data: 'description',
                     name: 'description',
@@ -367,7 +395,8 @@
                 d.date_start = $('#date_start').val();
                 d.date_end = $('#date_end').val();
             }, {
-                responsive: true
+                responsive: true,
+                dom: 'ltrip'
             });
 
             $('#date_start').on('changeDate', function (e) {
@@ -378,7 +407,7 @@
             });
             $('#btn-submit-date-range').on('click', function (e) {
                 e.preventDefault();
-                dateChangeHandler();
+                // dateChangeHandler();
                 modal_tambahb.hide();
             });
 
@@ -397,6 +426,11 @@
                 let url = '{{ route('jurnal.pdf') }}?type=' + _type + '&date_start=' + date_start + '&date_end=' + date_end;
                 window.open(url, '_blank');
             });
+
+            let date_start = $('#date_start').val();
+            let date_end = $('#date_end').val();
+            let text = date_start + ' - ' + date_end;
+            $('#date-range-value').html(text);
         });
     </script>
 

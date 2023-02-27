@@ -29,41 +29,6 @@ class GeneralLedgerReportController extends CustomController
             $data = $this->getGeneralLedgerData();
             return $this->basicDataTables($data);
         }
-
-        $medicine_outs = DB::table('medicine_outs')
-            ->join('medicines', 'medicine_outs.medicine_id', '=', 'medicines.id')
-            ->join('transaction_outs', 'medicine_outs.transaction_out_id', '=', 'transaction_outs.id')
-            ->select([
-                'medicine_outs.id as id',
-                'transaction_outs.date as date',
-                'medicine_outs.medicine_id as medicine_id',
-                'medicines.name as medicine_name',
-                'medicine_outs.expired_date as expired_date',
-                'medicine_outs.qty as qty',
-                DB::raw("1 as type")
-            ])
-            ->whereNotNull('transaction_out_id');
-
-
-        $medicine_ins = DB::table('medicine_ins')
-            ->join('medicines', 'medicine_ins.medicine_id', '=', 'medicines.id')
-            ->join('transaction_ins', 'medicine_ins.transaction_in_id', '=', 'transaction_ins.id')
-            ->select([
-                'medicine_ins.id as id',
-                'transaction_ins.date as date',
-                'medicine_ins.medicine_id as medicine_id',
-                'medicines.name as medicine_name',
-                'medicine_ins.expired_date as expired_date',
-                'medicine_ins.qty as qty',
-                DB::raw("0 as type")
-            ])
-            ->whereNotNull('transaction_in_id')
-            ->union($medicine_outs)
-//            ->whereBetween('date', ['2023-02-28', '2023-02-28'])
-            ->orderBy('date', 'ASC')
-
-            ->get();
-        return $medicine_ins->toArray();
         return view('admin.laporan.jurnalbarang');
     }
 
@@ -93,7 +58,8 @@ class GeneralLedgerReportController extends CustomController
         $startDate = Carbon::parse($this->field('date_start'))->format('Y-m-d');
         $endDate = Carbon::parse($this->field('date_end'))->format('Y-m-d');
         $type = $this->field('type');
-        $preload = ['medicine_in.medicine', 'medicine_out.medicine', 'transaction_in', 'transaction_out'];
-        return $this->generalLedgerRepository->getDataByPeriodic($startDate, $endDate, $preload, $type);
+//        $preload = ['medicine_in.medicine', 'medicine_out.medicine', 'transaction_in', 'transaction_out'];
+//        return $this->generalLedgerRepository->getDataByPeriodic($startDate, $endDate, $preload, $type);
+        return $this->generalLedgerRepository->getDataGeneralLedgerByPeriodic($startDate, $endDate, $type);
     }
 }

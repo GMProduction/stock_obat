@@ -24,6 +24,7 @@ class StockReportController extends CustomController
 
     public function index()
     {
+//        return $this->medicineRepository->getMedicinesReportStockByLocation('')->toArray();
         if ($this->request->ajax()) {
             $locationID = strtolower($this->field('location'));
             try {
