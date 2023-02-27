@@ -36,7 +36,8 @@
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"></path>
                         </svg>
-                        <a href="{{ route('pengeluaran') }}" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Pengeluaran
+                        <a href="{{ route('pengeluaran') }}"
+                           class="ml-1 text-sm font-medium text-gray-700  md:ml-2  hover:text-secondary">Pengeluaran
                             Barang</a>
                     </div>
                 </li>
@@ -89,8 +90,8 @@
                                 <input type="text" readonly
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
                                        placeholder="Pilih Tanggal"
-                                       value="{{ \Carbon\Carbon::parse($data->date)->format('d F Y') }}"
-                                       id="date" name="date">
+                                       value="{{ \Carbon\Carbon::parse($data->date)->format('d F Y') }}" id="date"
+                                       name="date">
                             </div>
                         </div>
                         <div class="mb-3 ">

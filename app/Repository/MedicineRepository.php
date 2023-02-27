@@ -71,7 +71,6 @@ class MedicineRepository extends BaseRepo
         $this->button     = ['edit', 'delete'];
 
         return $this->datatabe($data);
-
     }
 
     public function showDatatableStock()
@@ -84,7 +83,7 @@ class MedicineRepository extends BaseRepo
 
     public function showDatatableStockDetail()
     {
-        $data         = MedicineIn::with(['transaction_in.budget_source','unit'])->where('medicine_id', request('id'));
+        $data         = MedicineIn::with(['transaction_in.budget_source', 'unit'])->where('medicine_id', request('id'));
 
         $this->addColumn = [
             [
@@ -93,7 +92,7 @@ class MedicineRepository extends BaseRepo
             ]
         ];
 
-//        $this->button = ['detail'];
+        //        $this->button = ['detail'];
 
         return $this->datatabe($data);
     }
@@ -101,8 +100,8 @@ class MedicineRepository extends BaseRepo
     public function showDatatableStockExpired()
     {
         $data = Medicine::with('medicine_ins_expired')
-                        ->get()
-                        ->append('is_expired');
+            ->get()
+            ->append('is_expired');
 
         $sort  = $data->sortBy('is_expired', SORT_REGULAR, false);
         $value = $sort->values()->all();
@@ -114,9 +113,10 @@ class MedicineRepository extends BaseRepo
         return $this->datatabe($value);
     }
 
-    public function detail(){
+    public function detail()
+    {
         $id       = $this->data->id;
-        return '<a href="'.route('stockbarang',['id' => $id]).'" target="_blank" id="detailData" data-id="'.$id.'"
+        return '<a href="' . route('stockbarang', ['id' => $id]) . '"  id="detailData" data-id="' . $id . '"
                                     class="text-xs bg-secondary rounded-full text-white px-3 py-2">Detail</a></td>';
     }
 
@@ -124,7 +124,7 @@ class MedicineRepository extends BaseRepo
     {
         $id = $this->data->id;
 
-        return '<a href="'.route('stockbarang', ['id' => $id]).'"
+        return '<a href="' . route('stockbarang', ['id' => $id]) . '"
                                     class="text-xs bg-secondary rounded-full text-white px-3 py-2">Tambah Stock</a></td>';
     }
 
@@ -177,7 +177,7 @@ class MedicineRepository extends BaseRepo
     public function real_stock($medicine_id)
     {
         return Medicine::realStock()
-                       ->find($medicine_id);
+            ->find($medicine_id);
     }
 
     public function getMedicinesReportStockByLocation($locationID)

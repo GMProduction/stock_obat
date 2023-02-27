@@ -81,7 +81,8 @@
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"></path>
                         </svg>
-                        <a href="{{ route('pengeluaran') }}" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Pengeluaran
+                        <a href="{{ route('pengeluaran') }}"
+                           class="ml-1 text-sm font-medium text-gray-700  md:ml-2  hover:text-secondary">Pengeluaran
                             Barang</a>
                     </div>
                 </li>
@@ -116,9 +117,9 @@
                             </div>
                         </div>
                         <div class="mt-5">
-                            <table id="tb-master" class="table display table-auto stripe hover"
-                                   style="width:100%;">
+                            <table id="tb-master" class="table display table-auto stripe hover" style="width:100%;">
                                 <thead class="bg-gray-50 ">
+                                <<<<<<< HEAD
                                 <tr>
                                     <th data-priority="1" class="text-right text-xs py-3">No</th>
                                     <th data-priority="2" class="text-center text-xs">Nama Barang</th>
@@ -127,23 +128,32 @@
                                     <th data-priority="3" class="text-center text-xs">Tanggal Kadaluarsa</th>
                                     <th data-priority="4" class="text-center text-xs">Action</th>
                                 </tr>
+                                =======
+                                <tr>
+                                    <th data-priority="1" class="text-right text-xs py-3">No</th>
+                                    <th data-priority="2" class="text-center text-xs">Nama Barang</th>
+                                    <th data-priority="2" class="text-center text-xs">Qty</th>
+                                    <th data-priority="3" class="text-center text-xs">Satuan</th>
+                                    <th data-priority="4" class="text-center text-xs">Action</th>
+                                </tr>
+                                >>>>>>> 876714ca76eb65e8ce8cfdbad6bd7a43abcc2fab
                                 </thead>
 
                                 <tbody>
-                                {{--                            @foreach($carts as $cart)--}}
-                                {{--                                <tr class="border-b">--}}
-                                {{--                                    <td class="text-right text-xs py-3">{{ $loop->index + 1 }}</td>--}}
-                                {{--                                    <td class="text-center text-xs">{{ $cart->medicine->name }}</td>--}}
-                                {{--                                    <td class="text-center text-xs">{{ $cart->qty }}</td>--}}
-                                {{--                                    <td class="text-center text-xs">{{ $cart->unit->name }}</td>--}}
+                                {{--                            @foreach ($carts as $cart) --}}
+                                {{--                                <tr class="border-b"> --}}
+                                {{--                                    <td class="text-right text-xs py-3">{{ $loop->index + 1 }}</td> --}}
+                                {{--                                    <td class="text-center text-xs">{{ $cart->medicine->name }}</td> --}}
+                                {{--                                    <td class="text-center text-xs">{{ $cart->qty }}</td> --}}
+                                {{--                                    <td class="text-center text-xs">{{ $cart->unit->name }}</td> --}}
 
-                                {{--                                    <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3">--}}
-                                {{--                                        <button class="btn-delete bg-red-500 rounded-full text-white px-3 py-2 text-xs" data-id="{{ $cart->id }}">--}}
-                                {{--                                            Hapus--}}
-                                {{--                                        </button>--}}
-                                {{--                                    </td>--}}
-                                {{--                                </tr>--}}
-                                {{--                            @endforeach--}}
+                                {{--                                    <td class="text-center text-xs font-bold flex flex-nowrap gap-1 justify-center py-3"> --}}
+                                {{--                                        <button class="btn-delete bg-red-500 rounded-full text-white px-3 py-2 text-xs" data-id="{{ $cart->id }}"> --}}
+                                {{--                                            Hapus --}}
+                                {{--                                        </button> --}}
+                                {{--                                    </td> --}}
+                                {{--                                </tr> --}}
+                                {{--                            @endforeach --}}
                                 </tbody>
                             </table>
                         </div>
@@ -175,15 +185,15 @@
                         </div>
 
                         <div class="mb-3 mt-5">
-                            <label for="location"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Unit
+                            <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Unit
                                 Penerima</label>
 
                             <div class="flex">
                                 <select id="location" name="location"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected>Pilih Unit Penerima</option>
-                                    @foreach($locations as $location)
+                                    @foreach ($locations as $location)
                                         <option value="{{ $location->id }}">{{ $location->name }}</option>
                                     @endforeach
                                 </select>
@@ -283,13 +293,7 @@
                                            class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
                                            placeholder="Qty yang dikeluarkan" required name="qty" value="0">
                                 </div>
-                                <div class="mb-3 grow">
-                                    <label for="satuan" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Satuan
-                                    </label>
-                                    <input type="number" id="qty"
-                                           class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                           placeholder="Satuan" readonly name="satuan">
-                                </div>
+
                             </div>
                         </div>
                         <!-- Modal footer -->
@@ -449,7 +453,9 @@
             try {
                 $('.backdrop-loader').css('display', 'block');
                 let url = '{{ route('pengeluaranbarang.cart.destroy') }}';
-                let response = await $.post(url, {id});
+                let response = await $.post(url, {
+                    id
+                });
                 if (response['status'] === 200) {
                     reload();
                     Swal.fire("Berhasil!", "Berhasil menghapus data..", "success");
