@@ -43,7 +43,7 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
     {
         $currentDate = Carbon::now()->format('d F Y');
         return [
-            ['Laporan Stock Apotik Per Tanggal ' . $currentDate],
+            ['Laporan Stock Obat Per Tanggal ' . $currentDate],
             [],
             [
                 'No.',
@@ -51,6 +51,8 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
                 'Nama Barang',
                 'Satuan',
                 'Jumlah',
+                'Indikator Kadaluarsa (bulan)',
+                'Indikator Peringatan Jumlah',
             ]
         ];
     }
@@ -61,10 +63,12 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
         foreach ($this->data as $key => $value) {
             $tmp = [
                 ($key + 1),
-                $value['category'],
-                $value['name'],
-                $value['unit'],
-                $value['qty'],
+                $value->category->name,
+                $value->name,
+                $value->unit->name,
+                $value->stock,
+                $value->expiration,
+                $value->stock <= $value->limit ? '!' : '',
             ];
             array_push($results, $tmp);
         }
@@ -74,7 +78,7 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
     public function styles(Worksheet $sheet)
     {
         // TODO: Implement styles() method.
-        $sheet->mergeCells('A1:E1');
+        $sheet->mergeCells('A1:G1');
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A1')->getFont()->setBold(true);
     }

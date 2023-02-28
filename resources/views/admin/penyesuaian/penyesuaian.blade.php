@@ -341,22 +341,22 @@
                     <thead>
                         <tr>
                             <th data-priority="1" class="text-center text-xs">No</th>
-                            <th data-priority="2" class="text-center text-xs">Nomor Penyesuaian</th>
-                            <th data-priority="2" class="text-center text-xs">Nama Barang (Satuan)</th>
                             <th data-priority="2" class="text-center text-xs">Tanggal</th>
-                            <th data-priority="2" class="text-right text-xs">Qty Sistem</th>
-                            <th data-priority="2" class="text-right text-xs">Qty Sebenarnya</th>
+                            <th data-priority="2" class="text-center text-xs">Nomor Penyesuaian</th>
+                            {{--                            <th data-priority="2" class="text-center text-xs">Nama Barang (Satuan)</th>--}}
+{{--                            <th data-priority="2" class="text-right text-xs">Qty Sistem</th>--}}
+                            <th data-priority="2" class="text-left text-xs">Deskripsi</th>
                             <th data-priority="2" class="text-center text-xs">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td data-priority="1" class="text-center text-xs">1</td>
-                            <td data-priority="2" class="text-center text-xs">pny000123</td>
-                            <td data-priority="2" class="text-center text-xs">Panadol (plek)</td>
                             <td data-priority="2" class="text-center text-xs">12 Desember 2023</td>
-                            <td data-priority="2" class="text-right text-xs">20</td>
-                            <td data-priority="2" class="text-right text-xs">100</td>
+                            <td data-priority="2" class="text-center text-xs">PN-19283741285</td>
+{{--                            <td data-priority="2" class="text-center text-xs">Panadol (plek)</td>--}}
+{{--                            <td data-priority="2" class="text-right text-xs">20</td>--}}
+                            <td data-priority="2" class="text-left text-xs">Penyesuaian Bulan Januari</td>
 
                             <td class="text-center">
                                 <a href="#" onclick="modalPenyesuaianShow()"

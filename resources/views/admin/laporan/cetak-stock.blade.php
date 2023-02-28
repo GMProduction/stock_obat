@@ -170,16 +170,20 @@
             <th class="text-left text-ontable">Nama Obat</th>
             <th class="text-center text-ontable">Satuan</th>
             <th class="text-center text-ontable">Jumlah</th>
+            <th class="text-center text-ontable">Indikator Kadaluarsa</th>
+            <th class="text-center text-ontable">Indikator Jumlah</th>
         </tr>
         </thead>
         <tbody>
         @foreach($data as $value)
             <tr style="border-bottom: 1px solid #ccc">
                 <td style="width: 10px !important" class="text-center text-ontable">{{ $loop->index + 1 }}</td>
-                <td class="text-center text-ontable">{{ $value['category']}}</td>
-                <td class="text-left text-ontable">{{ $value['name']}}</td>
-                <td class="text-center text-ontable">{{ $value['unit']}}</td>
-                <td class="text-center text-ontable">{{ $value['qty']}}</td>
+                <td class="text-center text-ontable">{{ $value->category->name}}</td>
+                <td class="text-left text-ontable">{{ $value->name}}</td>
+                <td class="text-center text-ontable">{{ $value->unit->name}}</td>
+                <td class="text-center text-ontable">{{ $value->stock}}</td>
+                <td class="text-center text-ontable">{{ $value->expiration}} Bulan</td>
+                <td class="text-center text-ontable">{{ $value->stock <= $value->limit ? '!' : ''}}</td>
             </tr>
         @endforeach
         </tbody>

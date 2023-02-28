@@ -25,6 +25,6 @@ class PenyesuaianController extends CustomController
     // PENYESUAIAN
     public function tambahpenyesuaian()
     {
-        return view('admin.penyesuaian.tambahpenyesuaian');
+        return view('admin.penyesuaian.add');
     }
 }
