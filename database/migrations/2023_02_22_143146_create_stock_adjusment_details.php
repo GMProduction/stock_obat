@@ -15,7 +15,7 @@ class CreateStockAdjusmentDetails extends Migration
     {
         Schema::create('stock_adjustment_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('stock_adjustment_id')->unsigned();
+            $table->bigInteger('stock_adjustment_id')->unsigned()->nullable();
             $table->bigInteger('medicine_id')->unsigned();
             $table->date('expired_date');
             $table->integer('current_qty')->default(0);

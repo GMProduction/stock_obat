@@ -60,8 +60,8 @@ Route::middleware('auth')->group(
 
         Route::prefix('penyesuaian')->group(function () {
             Route::get('/', [\App\Http\Controllers\StockAdjustmentController::class, 'index'])->name('penyesuaian');
-            Route::get('/tambah', [\App\Http\Controllers\StockAdjustmentController::class, 'add'])->name('tambahpenyesuaian');
-            Route::get('/stock', [\App\Http\Controllers\StockAdjustmentController::class, 'stock'])->name('penyesuaian.stock');
+            Route::match(['post', 'get'],'/tambah', [\App\Http\Controllers\StockAdjustmentController::class, 'add'])->name('tambahpenyesuaian');
+            Route::match(['post', 'get'],'/stock', [\App\Http\Controllers\StockAdjustmentController::class, 'stock'])->name('penyesuaian.stock');
         });
 
         Route::prefix('penerimaan')->group(function () {

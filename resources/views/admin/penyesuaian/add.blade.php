@@ -167,46 +167,6 @@
                                            id="date" name="date">
                                 </div>
                             </div>
-
-                            {{--                            <div class="mb-3 mt-5">--}}
-                            {{--                                <label for="budget_source"--}}
-                            {{--                                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Sumber--}}
-                            {{--                                    Anggaran</label>--}}
-
-                            {{--                                <div class="flex">--}}
-                            {{--                                    <select id="budget_source" name="budget_source"--}}
-                            {{--                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">--}}
-                            {{--                                        <option selected>Pilih Sumber Anggaran</option>--}}
-                            {{--                                        @foreach ($budget_sources as $budget_source)--}}
-                            {{--                                            <option value="{{ $budget_source->id }}">{{ $budget_source->name }}</option>--}}
-                            {{--                                        @endforeach--}}
-                            {{--                                    </select>--}}
-
-                            {{--                                    <button data-tooltip-target="tooltip-tambahsumber" type="button"--}}
-                            {{--                                            class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsumber"><span--}}
-                            {{--                                            class="material-symbols-outlined menu-ico text-sm">--}}
-                            {{--                                            add--}}
-                            {{--                                        </span></button>--}}
-
-                            {{--                                    <div id="tooltip-tambahsumber" role="tooltip"--}}
-                            {{--                                         class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">--}}
-                            {{--                                        Tambah sumber anggaran "jika belum ada di dalam menu"--}}
-                            {{--                                        <div class="tooltip-arrow" data-popper-arrow></div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-
-                            {{--                            <div class="mb-3 mt-5">--}}
-                            {{--                                <label for="summary" class="block mb-2 text-sm font-medium text-gray-700 mt-3">--}}
-                            {{--                                    Total Keseluruhan--}}
-                            {{--                                </label>--}}
-                            {{--                                <input type="text" id="summary"--}}
-                            {{--                                       class="bg-gray-200 border text-right w-full border-gray-300 text-gray-900 text-sm block--}}
-                            {{--                                p-2.5 rounded-md"--}}
-                            {{--                                       placeholder="Total Keseluruhan" readonly name="total-keseluruhan"--}}
-                            {{--                                       value="Rp. {{ number_format($total, 0, ',', '.') }}">--}}
-                            {{--                            </div>--}}
-
                             <div class="mb-3 mt-5">
                                 <label for="description" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
                                     Penerimaan
@@ -229,7 +189,7 @@
                     </button>
 
 
-                    <button type="button" id="btn-save" form="form-save"
+                    <button type="button" form="form-save"
                             {{-- onclick="location.href={{ route('penerimaanbarang.cetak', ['id' => $data->id]) }}" --}}
                             class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
@@ -504,8 +464,101 @@
             }
         }
 
+        async function storeAdjustment() {
+            try {
+                $('.backdrop-loader').css('display', 'block');
+                let tmpData = [];
+                tbStock.rows().every(function () {
+                    let e = tbStock.cell(this.index(), 0).nodes().to$().find('input').val();
+                    let c = tbStock.cell(this.index(), 1).data();
+                    let r = tbStock.cell(this.index(), 2).nodes().to$().find('input').val();
+                    let d = tbStock.cell(this.index(), 3).nodes().to$().find('input').val();
+                    if (c !== parseInt(r) && e !== '') {
+                        tmpData.push([e, c, parseInt(r), d]);
+                    }
+                });
+                let medicineId = $('#medicine').val();
+                let post_data = {
+                    medicine_id: medicineId,
+                    adjustment: tmpData
+                };
+                let data = JSON.stringify(post_data);
+                let url = '{{ route('penyesuaian.stock') }}';
+                let response = await $.post(url, {data});
+                if (response['status'] === 200) {
+                    reload();
+                    Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function() {
+                        // modaltambahmHide();
+                    });
+                }
+                console.log(response);
+            }catch (e) {
+                let error_message = JSON.parse(e.responseText);
+                Swal.fire("Error!", error_message.message, "error");
+            } finally {
+                $('.backdrop-loader').css('display', 'none');
+            }
+        }
+
         $(document).ready(function () {
             $('.js-example-basic-single').select2();
+
+            table = BasicDatatableGenerator('#tb-master', path, [{
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex',
+                searchable: false,
+                orderable: false,
+                className: 'text-center text-xs'
+            },
+                {
+                    data: 'medicine.name',
+                    name: 'medicine.name',
+                    className: 'text-left text-xs'
+                },
+                {
+                    data: 'medicine.unit.name',
+                    name: 'medicine.unit.name',
+                    className: 'text-center text-xs'
+                },
+                {
+                    data: 'expired_date',
+                    name: 'expired_date',
+                    className: 'text-center text-xs',
+                    render: function(data) {
+                        let date = new Date(data);
+                        return date.toLocaleString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                    }
+                },
+                {
+                    data: 'current_qty',
+                    name: 'current_qty',
+                    className: 'text-right text-xs',
+                },
+                {
+                    data: 'real_qty',
+                    name: 'real_qty',
+                    className: 'text-right text-xs',
+                },
+                {
+                    className: 'text-center text-xs font-bold ',
+                    searchable: false,
+                    orderable: false,
+                    data: null,
+                    render: function(data) {
+                        return '<button data-id="' + data['id'] +
+                            '" class="btn-delete bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs my-1">Hapus</button>';
+                    }
+                },
+            ], [], function(d) {
+
+            }, {
+                dom: 't'
+            });
+
             tbStock = $('#tb-stock').DataTable({
                 data: dataSet,
                 columnDefs: [
@@ -521,6 +574,7 @@
 
             $('#btn-add-adjustment').on('click', function (e) {
                 e.preventDefault();
+                let baseIndex = dataSet.length;
                 let tmpData = [];
                 tbStock.rows().every(function () {
                     let e = tbStock.cell(this.index(), 0).nodes().to$().find('input').val();
@@ -528,8 +582,13 @@
                     let r = tbStock.cell(this.index(), 2).nodes().to$().find('input').val();
                     let d = tbStock.cell(this.index(), 3).nodes().to$().find('input').val();
                     let elDate = '<div class="relative mx-auto inline-block">\n' +
-                        '  <input readonly type="date" value="' + e + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                        '  <input type="date" value="' + e + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
                         '</div>';
+                    if (this.index() <= (baseIndex -1)) {
+                        elDate = '<div class="relative mx-auto inline-block">\n' +
+                            '  <input readonly type="date" value="' + e + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                            '</div>';
+                    }
                     let elStock = '<input type="text" type="number" value="' + r + '" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
                     let elDescription = '<input type="text" type="text" value="' + d + '" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
                     tmpData.push([elDate, c, elStock, elDescription]);
@@ -556,16 +615,41 @@
 
             $('#btn-add-adjustment-detail').on('click', function (e) {
                 e.preventDefault();
-                let tmpData = [];
-                tbStock.rows().every(function () {
-                    let e = tbStock.cell(this.index(), 0).nodes().to$().find('input').val();
-                    let c = tbStock.cell(this.index(), 1).data();
-                    let r = tbStock.cell(this.index(), 2).nodes().to$().find('input').val();
-                    let d = tbStock.cell(this.index(), 3).nodes().to$().find('input').val();
-                    tmpData.push([e, c, parseInt(r), d]);
+                Swal.fire({
+                    title: "Konfirmasi!",
+                    text: "Apakah anda yakin menambah data penyesuaian?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.value) {
+                        storeAdjustment();
+                    }
                 });
-                console.log(tmpData);
             });
+
+            $('#btn-save').on('click', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: "Konfirmasi!",
+                    text: "Apakah anda yakin menyimpan data penyesuaian?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.value) {
+                        $('#form-save').submit();
+                    }
+                });
+            });
+
+
         });
     </script>
     {{-- ACTION --}}
