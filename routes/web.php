@@ -59,8 +59,9 @@ Route::middleware('auth')->group(
         Route::get('/penyesuaian', [\App\Http\Controllers\LaporanController::class, 'penyesuaian'])->name('penyesuaian');
 
         Route::prefix('penyesuaian')->group(function () {
-            Route::get('/', [\App\Http\Controllers\PenyesuaianController::class, 'penyesuaian'])->name('penyesuaian');
-            Route::get('/tambah', [\App\Http\Controllers\PenyesuaianController::class, 'tambahpenyesuaian'])->name('tambahpenyesuaian');
+            Route::get('/', [\App\Http\Controllers\StockAdjustmentController::class, 'index'])->name('penyesuaian');
+            Route::get('/tambah', [\App\Http\Controllers\StockAdjustmentController::class, 'add'])->name('tambahpenyesuaian');
+            Route::get('/stock', [\App\Http\Controllers\StockAdjustmentController::class, 'stock'])->name('penyesuaian.stock');
         });
 
         Route::prefix('penerimaan')->group(function () {

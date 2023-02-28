@@ -28,4 +28,11 @@ class MedicineStockRepository
             'qty' => ($current_qty + $qty)
         ]);
     }
+
+    public function getMedicineStockByMedicine($medicineId, $preload = [])
+    {
+        return MedicineStock::with($preload)
+            ->where('medicine_id', '=', $medicineId)
+            ->get();
+    }
 }

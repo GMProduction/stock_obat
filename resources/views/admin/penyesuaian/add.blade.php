@@ -273,14 +273,14 @@
                             <select
                                 class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="medicine" id="medicine">
-                                <option selected>Pilih Barang</option>
-                                {{--                                @foreach ($medicines as $medicine)--}}
-                                {{--                                    <option value="{{ $medicine->id }}">{{ $medicine->name }}--}}
-                                {{--                                        ({{ $medicine->unit->name }})--}}
-                                {{--                                    </option>--}}
-                                {{--                                @endforeach--}}
+                                <option value="" selected>Pilih Barang</option>
+                                @foreach ($medicines as $medicine)
+                                    <option value="{{ $medicine->id }}">{{ $medicine->name }}
+                                        ({{ $medicine->unit->name }})
+                                    </option>
+                                @endforeach
                             </select>
-                            <div class="absolute right-0 top-0 mt-3 mr-3" style="margin-bottom: 10px;">
+                            <div class="mt-3 mr-3" style="margin-bottom: 10px;">
                                 <div class="flex">
                                     <a href="#" id="btn-add-adjustment"
                                        class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm">
@@ -295,82 +295,19 @@
                                 <table id="tb-stock" class="table display table-auto stripe hover  "
                                        style="width:100%;">
                                     <thead class="bg-gray-50 ">
-                                    {{--                                    <th class="text-right text-xs py-3">No</th>--}}
-                                    {{--                                    <th class="text-left text-xs">Nama Barang</th>--}}
-                                    {{--                                    <th class="text-center text-xs">Satuan</th>--}}
                                     <th class="text-center text-xs">Kadaluarsa</th>
                                     <th class="text-center text-xs">Jumlah Sistem</th>
-                                    <th class="text-right text-xs">Jumlah Sebenarnya</th>
-                                    {{--                                    <th class="text-center text-xs">Action</th>--}}
+                                    <th class="text-center text-xs">Jumlah Sebenarnya</th>
+                                    <th class="text-center text-xs">Keterangan</th>
                                     </thead>
                                     <tbody>
                                     </tbody>
                                 </table>
                             </div>
-
-                            {{--                            <div class="mb-3 mt-5">--}}
-                            {{--                                <label for="expired_date"--}}
-                            {{--                                       class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal--}}
-                            {{--                                    Kadaluarsa--}}
-                            {{--                                </label>--}}
-                            {{--                                <div class="relative">--}}
-                            {{--                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">--}}
-                            {{--                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"--}}
-                            {{--                                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">--}}
-                            {{--                                            <path fill-rule="evenodd"--}}
-                            {{--                                                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"--}}
-                            {{--                                                  clip-rule="evenodd"></path>--}}
-                            {{--                                        </svg>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text"--}}
-                            {{--                                           name="expired_date" required--}}
-                            {{--                                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "--}}
-                            {{--                                           placeholder="Pilih Tanggal" id="expired_date"--}}
-                            {{--                                           value="{{ \Carbon\Carbon::now()->format('d F Y') }}">--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-
-                            {{--                            <div class="flex gap-4">--}}
-                            {{--                                <div class="mb-3">--}}
-                            {{--                                    <label for="qty" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Qty--}}
-                            {{--                                    </label>--}}
-                            {{--                                    <input type="number" id="qty" min="1"--}}
-                            {{--                                           class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "--}}
-                            {{--                                           placeholder="Qty yang diterima" required name="qty" value="0">--}}
-                            {{--                                </div>--}}
-
-                            {{--                                <div class="mb-3 grow">--}}
-                            {{--                                                                        <label for="satuan" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Satuan --}}
-                            {{--                                                                        </label> --}}
-                            {{--                                                                        <input type="number" id="qty" --}}
-                            {{--                                                                               class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 " --}}
-                            {{--                                                                               placeholder="Satuan" readonly name="satuan"> --}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-
-                            {{--                            <div class="flex gap-4">--}}
-                            {{--                                <div class="mb-3">--}}
-                            {{--                                    <label for="price" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Harga--}}
-                            {{--                                        Satuan--}}
-                            {{--                                    </label>--}}
-                            {{--                                    <input type="number" id="price" min="0"--}}
-                            {{--                                           class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "--}}
-                            {{--                                           placeholder="harga Satuan" required name="price" value="0">--}}
-                            {{--                                </div>--}}
-
-                            {{--                                <div class="mb-3 grow">--}}
-                            {{--                                    <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total--}}
-                            {{--                                    </label>--}}
-                            {{--                                    <input type="number" id="total"--}}
-                            {{--                                           class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "--}}
-                            {{--                                           placeholder="price" readonly name="total" value="0">--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-
                         </div>
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end p-6 space-x-2 rounded-b border-t border-gray-200 ">
-                            <button type="button" id="btn-add-cart"
+                            <button type="button" id="btn-add-adjustment-detail"
                                     class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                 <span class="material-symbols-outlined text-white mr-3">
                                     save
@@ -445,36 +382,12 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('js/datatable.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/datepicker.min.js"></script>
 
     {{-- MODAL MASTER --}}
     <script>
-        const modal_tambahBarang = document.getElementById('modal_tambahBarang');
-
-        let modal_tambahb = new Modal(modal_tambahBarang, {
-            placement: 'bottom-right',
-            backdrop: 'dynamic',
-
-            onShow: () => {
-
-            },
-            onHide: () => {
-
-            }
-        });
 
 
-        function modaltambahmHide() {
-            modal_tambahb.hide();
-        }
-
-        function modaleditmHide() {
-            modal_tambahb.hide();
-        }
-
-        $('.btn-tambahBarang').on('click', function (e) {
-
-            modal_tambahb.show();
-        });
     </script>
 
 
@@ -508,6 +421,37 @@
         var table;
         var path = '/{{ request()->path() }}';
 
+        const modal_tambahBarang = document.getElementById('modal_tambahBarang');
+
+        let modal_tambahb = new Modal(modal_tambahBarang, {
+            placement: 'bottom-right',
+            backdrop: 'dynamic',
+
+            onShow: () => {
+                $('#medicine').val('');
+                $('.js-example-basic-single').select2();
+                dataSet = [];
+                tbStock.clear().draw();
+            },
+            onHide: () => {
+
+            }
+        });
+
+
+        function modaltambahmHide() {
+            modal_tambahb.hide();
+        }
+
+        function modaleditmHide() {
+            modal_tambahb.hide();
+        }
+
+        $('.btn-tambahBarang').on('click', function (e) {
+
+            modal_tambahb.show();
+        });
+
         $(function () {
             $.ajaxSetup({
                 headers: {
@@ -528,238 +472,100 @@
             $('#expired_date').val(now);
         }
 
-        async function storeCart() {
+
+        var dataSet = [];
+        var tbStock;
+
+        async function getDataStockByMedicine(medicineID) {
             try {
-                $('.backdrop-loader').css('display', 'block');
-                let url = '{{ route('tambahbarang.cart') }}';
-                let data = {
-                    medicine: $('#medicine').val(),
-                    qty: $('#qty').val(),
-                    price: $('#price').val(),
-                    expired_date: $('#expired_date').val(),
-                };
-                let response = await $.post(url, data);
-                if (response['status'] === 200) {
-                    reload();
-                    Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function () {
-                        modaltambahmHide();
-                        clear();
-                    });
-                }
+                let url = '{{ route('penyesuaian.stock') }}?medicine=' + medicineID;
+                let response = await $.get(url);
+                let payload = response['payload'];
+                let tmpDataSet = [];
+                $.each(payload, function (k, v) {
+                    let date = new Date(v['expired_date']);
+                    let vDate = date.toISOString().substring(0, 10);
+                    let elDate = '<div class="relative mx-auto inline-block">\n' +
+                        '  <input readonly type="date" value="' + vDate + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                        '</div>';
+                    let qty = v['qty'];
+                    let elStock = '<input type="text" type="number" value="' + qty + '" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    let elDescription = '<input type="text" type="text" value="" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    tmpDataSet.push([elDate, qty, elStock, elDescription]);
+                });
+
+                dataSet = tmpDataSet;
+                tbStock.clear().draw();
+                tbStock.rows.add(dataSet).draw();
+                console.log(response);
             } catch (e) {
-                let error_message = JSON.parse(e.responseText);
-                Swal.fire("Error!", error_message.message, "error");
-            } finally {
-                $('.backdrop-loader').css('display', 'none');
+                console.log(e);
+                alert('terjadi kesalahan server...')
             }
         }
 
-        async function destroy(id) {
-            try {
-                $('.backdrop-loader').css('display', 'block');
-                let url = '{{ route('tambahbarang.cart.destroy') }}';
-                let response = await $.post(url, {
-                    id
-                });
-                if (response['status'] === 200) {
-                    reload();
-                    Swal.fire("Berhasil!", "Berhasil menghapus data..", "success");
-                }
-            } catch (e) {
-                let error_message = JSON.parse(e.responseText);
-                Swal.fire("Error!", error_message.message, "error");
-            } finally {
-                $('.backdrop-loader').css('display', 'none');
-            }
-        }
-
-        function calculateTotal() {
-            let qty = isNaN(parseInt($('#qty').val())) ? 0 : parseInt($('#qty').val());
-            let price = isNaN(parseInt($('#price').val())) ? 0 : parseInt($('#price').val());
-            let total = qty * price;
-            $('#total').val(total);
-        }
-
-        function clear() {
-            $('#expired_date').val();
-            $('#qty').val(0);
-            $('#price').val(0);
-            $('#total').val(0);
-        }
-
-        function storeCartHandler() {
-            $('#btn-add-cart').on('click', function (e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: "Konfirmasi!",
-                    text: "Apakah anda yakin menambah data?",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.value) {
-                        storeCart();
-                    }
-                });
-            });
-        }
-
-        function destroyHandler() {
-            $('.btn-delete').on('click', function (e) {
-                e.preventDefault();
-                let id = this.dataset.id;
-                Swal.fire({
-                    title: "Konfirmasi!",
-                    text: "Apakah anda yakin menghapus data?",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.value) {
-                        destroy(id);
-                    }
-                });
-            });
-        }
-
-        var dataSet = [
-            ['<input type="date" value="2023-02-20" disabled>', 5, '<input type="number" value="0">'],
-            ['<input type="date" value="2023-02-15" disabled>', 2, '<input type="number" value="0">']
-        ];
         $(document).ready(function () {
             $('.js-example-basic-single').select2();
-            var tbStock = $('#tb-stock').DataTable({
+            tbStock = $('#tb-stock').DataTable({
                 data: dataSet,
-                ordering: false
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2],
+                        className: 'text-center'
+                    }
+                ],
+                ordering: false,
+                dom: 't',
+                pagination: false
             });
 
             $('#btn-add-adjustment').on('click', function (e) {
                 e.preventDefault();
                 let tmpData = [];
                 tbStock.rows().every(function () {
-                    let e = tbStock.cell(this.index(), 0).data();
+                    let e = tbStock.cell(this.index(), 0).nodes().to$().find('input').val();
                     let c = tbStock.cell(this.index(), 1).data();
                     let r = tbStock.cell(this.index(), 2).nodes().to$().find('input').val();
-                    tmpData.push([e, c, '<input type="number" value="' + r + '">']);
+                    let d = tbStock.cell(this.index(), 3).nodes().to$().find('input').val();
+                    let elDate = '<div class="relative mx-auto inline-block">\n' +
+                        '  <input readonly type="date" value="' + e + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                        '</div>';
+                    let elStock = '<input type="text" type="number" value="' + r + '" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    let elDescription = '<input type="text" type="text" value="' + d + '" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    tmpData.push([elDate, c, elStock, elDescription]);
                 });
+                let elTmpDate = '<div class="relative mx-auto inline-block">\n' +
+                    '  <input type="date" value="" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                    '</div>';
+                let elTmpStock = '<input type="text" type="number" value="0" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                let elTmpDescription = '<input type="text" type="text" value="" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
                 tmpData.push([
-                    '<input type="date" value="">',
+                    elTmpDate,
                     0,
-                    '<input type="number" value="0">'
+                    elTmpStock,
+                    elTmpDescription,
                 ]);
-                console.log(tmpData);
-                // dataSet = tmpData;
                 tbStock.clear().draw();
                 tbStock.rows.add(tmpData).draw();
-
             });
-            // table = BasicDatatableGenerator('#tb-master', path, [{
-            //     data: 'DT_RowIndex',
-            //     name: 'DT_RowIndex',
-            //     searchable: false,
-            //     orderable: false,
-            //     className: 'text-center text-xs'
-            // },
-            //     {
-            //         data: 'medicine.name',
-            //         name: 'medicine.name',
-            //         className: 'text-left text-xs'
-            //     },
-            //     {
-            //         data: 'qty',
-            //         name: 'qty',
-            //         className: 'text-center text-xs'
-            //     },
-            //     {
-            //         data: 'unit.name',
-            //         name: 'unit.name',
-            //         className: 'text-center text-xs'
-            //     },
-            //     {
-            //         data: 'expired_date',
-            //         name: 'expired_date',
-            //         className: 'text-center text-xs',
-            //         render: function(data) {
-            //             let date = new Date(data);
-            //             return date.toLocaleString('id-ID', {
-            //                 day: 'numeric',
-            //                 month: 'long',
-            //                 year: 'numeric'
-            //             });
-            //         }
-            //     },
-            //
-            //     {
-            //         data: 'price',
-            //         name: 'price',
-            //         className: 'text-right text-xs',
-            //         render: function(data) {
-            //             return 'Rp. ' + data.toLocaleString('id-ID');
-            //         }
-            //     },
-            //     {
-            //         data: 'total',
-            //         name: 'total',
-            //         className: 'text-right text-xs',
-            //         render: function(data) {
-            //             return 'Rp. ' + data.toLocaleString('id-ID');
-            //         }
-            //     },
-            //     {
-            //         className: 'text-center text-xs font-bold ',
-            //         searchable: false,
-            //         orderable: false,
-            //         data: null,
-            //         render: function(data) {
-            //             return '<button data-id="' + data['id'] +
-            //                 '" class="btn-delete bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs my-1">Hapus</button>';
-            //         }
-            //     },
-            // ], [], function(d) {
-            //
-            // }, {
-            //     "fnDrawCallback": function(setting) {
-            //         let data = this.fnGetData();
-            //         let total = data.map(item => item['total']).reduce((prev, next) => prev + next, 0);
-            //         $('#summary').val('Rp. ' + total.toLocaleString('id-ID'));
-            //         destroyHandler();
-            //     },
-            //     dom: 't'
-            // });
-            //
-            // $('#qty').on('input', function() {
-            //     calculateTotal();
-            // });
-            //
-            // $('#price').on('input', function() {
-            //     calculateTotal();
-            // });
-            // storeCartHandler();
-            // destroyHandler();
-            // $('#btn-save').on('click', function(e) {
-            //     e.preventDefault();
-            //     Swal.fire({
-            //         title: "Konfirmasi!",
-            //         text: "Apakah anda yakin menyimpan data?",
-            //         icon: 'question',
-            //         showCancelButton: true,
-            //         confirmButtonColor: '#3085d6',
-            //         cancelButtonColor: '#d33',
-            //         confirmButtonText: 'Ya',
-            //         cancelButtonText: 'Batal',
-            //     }).then((result) => {
-            //         if (result.value) {
-            //             $('#form-save').submit();
-            //         }
-            //     });
-            // });
 
+            $('#medicine').on('change', function () {
+                let val = this.value;
+                getDataStockByMedicine(val);
+            });
+
+            $('#btn-add-adjustment-detail').on('click', function (e) {
+                e.preventDefault();
+                let tmpData = [];
+                tbStock.rows().every(function () {
+                    let e = tbStock.cell(this.index(), 0).nodes().to$().find('input').val();
+                    let c = tbStock.cell(this.index(), 1).data();
+                    let r = tbStock.cell(this.index(), 2).nodes().to$().find('input').val();
+                    let d = tbStock.cell(this.index(), 3).nodes().to$().find('input').val();
+                    tmpData.push([e, c, parseInt(r), d]);
+                });
+                console.log(tmpData);
+            });
         });
     </script>
     {{-- ACTION --}}
