@@ -83,7 +83,8 @@ class Medicine extends Model
             $expired = date_create($this->medicine_ins_expired->expired_date);
             $diff = date_diff($now, $expired);
             if ($diff->format('%R') == '+') {
-                return $diff->format("%m");
+//                return $diff->format("%m");
+                return ($diff->invert ? -1 : 1) * ($diff->m + (12 * $diff->y));
             }
             return $diff->format("0");
         }
