@@ -57,7 +57,7 @@
                             </span>Print
                         </button>
 
-                        <a class="btndetail">asw</a>
+
                     </div>
                 </div>
 
@@ -487,7 +487,7 @@
 
         $('.btn-tambahBarang').on('click', function(e) {
 
-            alert("asw");
+
             modal_tambahb.show();
         });
 
