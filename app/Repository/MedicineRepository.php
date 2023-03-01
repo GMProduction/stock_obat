@@ -180,7 +180,7 @@ class MedicineRepository extends BaseRepo
             ->find($medicine_id);
     }
 
-    public function getMedicinesReportStockByLocation($locationID)
+    public function getMedicinesReportStockByLocation($locationID, $preload = [])
     {
 //        $preload = 'stock';
 //        if ($locationID === 'all') {
@@ -192,7 +192,7 @@ class MedicineRepository extends BaseRepo
 //            }
 //        }])
 //            ->get();
-        $data = Medicine::with(['category', 'unit'])
+        $data = Medicine::with($preload)
             ->get()->append(['stock', 'expiration']);
 //        $results = [];
 //

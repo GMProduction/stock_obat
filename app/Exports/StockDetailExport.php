@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStrictNullComparison, WithStyles, WithTitle
+class StockDetailExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStrictNullComparison, WithStyles, WithTitle
 {
     private $data;
 
@@ -23,8 +23,8 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
     }
 
     /**
-     * @return \Illuminate\Support\Collection
-     */
+    * @return \Illuminate\Support\Collection
+    */
     public function collection()
     {
         //
@@ -44,7 +44,7 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
     {
         $currentDate = Carbon::now()->format('d F Y');
         return [
-            ['Laporan Stock Obat Per Tanggal ' . $currentDate],
+            ['Laporan Stock Obat Detail Per Tanggal ' . $currentDate],
             [],
             [
                 'No.',
@@ -52,8 +52,7 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
                 'Nama Barang',
                 'Satuan',
                 'Jumlah',
-                'Indikator Kadaluarsa',
-                'Indikator Peringatan Jumlah',
+                'Kadaluarsa',
             ]
         ];
     }
@@ -61,25 +60,29 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
     public function getRowData()
     {
         $results = [];
+        $loop = 1;
         foreach ($this->data as $key => $value) {
-            $tmp = [
-                ($key + 1),
-                $value->category->name,
-                $value->name,
-                $value->unit->name,
-                $value->stock,
-                $value->expiration.' bulan',
-                $value->stock <= $value->limit ? '!' : '',
-            ];
-            array_push($results, $tmp);
+            $details = $value->stocks;
+            foreach ($details as $detail) {
+                $tmp = [
+                    $loop,
+                    $value->category->name,
+                    $value->name,
+                    $value->unit->name,
+                    $detail->qty,
+                    Carbon::parse($detail->expired_date)->format('d/m/Y'),
+                ];
+                $loop += 1;
+                array_push($results, $tmp);
+            }
+
         }
         return $results;
     }
-
     public function styles(Worksheet $sheet)
     {
         // TODO: Implement styles() method.
-        $sheet->mergeCells('A1:G1');
+        $sheet->mergeCells('A1:F1');
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A1')->getFont()->setBold(true);
     }
@@ -90,6 +93,6 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
     public function title(): string
     {
         // TODO: Implement title() method.
-        return 'Stock Obat';
+        return 'Stock Obat Detail';
     }
 }

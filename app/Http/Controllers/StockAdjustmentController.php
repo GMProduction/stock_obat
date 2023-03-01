@@ -90,7 +90,7 @@ class StockAdjustmentController extends CustomController
             return $this->jsonResponse('success', 200);
         } catch (\Exception $e) {
             DB::rollBack();
-            return $this->jsonResponse('internal server error...', 500);
+            return $this->jsonResponse('internal server error...' . $e->getMessage(), 500);
         }
     }
 

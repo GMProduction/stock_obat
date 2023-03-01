@@ -91,6 +91,10 @@
     .text-sm {
         font-size: 0.8rem;
     }
+
+    .page-break {
+        page-break-after: always;
+    }
 </style>
 
 <br>
@@ -203,7 +207,62 @@
     <p class="text-center">( ........................... )</p>
 </div>
 
+<div class="page-break"></div>
+<table style="border: 0; ">
+    <tr style="border: none">
+        <td>
+            <div>
+                <table style=" table-layout: auto; border: none; width: 400px">
+                    <tr style="border: 0;  ">
+                        <td class="text-left" style="width: 100px; margin-bottom: 0; font-size: 11px ">
+                            Lampiran
+                        </td>
+                        <td class="text-left" style="width: 10px !important; margin-bottom: 0; font-size: 11px">
+                            :
+                        </td>
+                        <td class="text-left" style="margin-bottom: 0; font-size: 11px">
+                            Detail Stock Obat Berdasarkan Tanggal Kadaluarsa
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
 
+<table style="margin-bottom: 10px" class="stripe-table">
+    <thead>
+    <tr style="border-bottom: 1px solid #ccc">
+        <th style="width: 10px !important" class="text-center text-ontable">#</th>
+        <th class="text-center text-ontable">Kategori</th>
+        <th class="text-left text-ontable">Nama Obat</th>
+        <th class="text-center text-ontable">Satuan</th>
+        <th class="text-center text-ontable">Jumlah</th>
+        <th class="text-center text-ontable">Kadaluarsa</th>
+    </tr>
+    </thead>
+    <tbody>
+    @php
+        $idx = 1;
+    @endphp
+    @foreach($data as $value)
+        @foreach($value->stocks as $detail)
+            <tr style="border-bottom: 1px solid #ccc">
+                <td style="width: 10px !important" class="text-center text-ontable">{{ $idx }}</td>
+                <td class="text-center text-ontable">{{ $value->category->name}}</td>
+                <td class="text-left text-ontable">{{ $value->name}}</td>
+                <td class="text-center text-ontable">{{ $value->unit->name}}</td>
+                <td class="text-center text-ontable">{{ $detail->qty}}</td>
+                <td class="text-center text-ontable">{{ \Carbon\Carbon::parse($detail->expired_date)->format('d/m/Y') }}</td>
+            </tr>
+            @php
+                $idx += 1;
+            @endphp
+        @endforeach
+    @endforeach
+    </tbody>
+</table>
+<p></p>
 <footer class="footer">
     @php $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') ); @endphp
     <p class="text-right nogap text-sm"> di cetak oleh :
