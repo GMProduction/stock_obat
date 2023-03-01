@@ -31,6 +31,11 @@ class StockAdjustmentController extends CustomController
 
     public function index()
     {
+        if ($this->request->ajax()) {
+            $preload = [];
+            $data = $this->stockAdjustmentRepository->getAdjustmentData($preload);
+            return $this->basicDataTables($data);
+        }
         return view('admin.penyesuaian.penyesuaian');
     }
 
@@ -100,7 +105,7 @@ class StockAdjustmentController extends CustomController
             $preload = ['medicine.unit'];
             $adjustmentDetailData = $this->stockAdjustmentRepository->getAdjustmentDetailData($preload);
             $filteredAdjustmentDetailData = array_map(function ($value) {
-                $arr['id'] = $value['id'];
+                $arr['identifier'] = $value['medicine_id'] . '-' . $value['expired_date'];
                 $arr['medicine_id'] = $value['medicine_id'];
                 $arr['expired_date'] = $value['expired_date'];
                 $arr['qty'] = $value['real_qty'];
@@ -119,14 +124,9 @@ class StockAdjustmentController extends CustomController
                 ->update([
                     'stock_adjustment_id' => $stockAdjustment->id
                 ]);
-            foreach ($filteredAdjustmentDetailData as $v) {
-                MedicineStock::updateOrCreate(
-                  ['medicine_id' => $v['medicine_id'], 'expired_date' => $v['expired_date']],
-                  ['qty' => $v['qty']]
-                );
-            }
+            MedicineStock::upsert($filteredAdjustmentDetailData, ['identifier'], ['qty']);
             DB::commit();
-            return redirect()->route('tambahpenyesuaian')->with('success', 'Berhasil menambahkan data...');
+            return redirect()->route('penyesuaian')->with('success', 'Berhasil menambahkan data...');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('failed', 'Terjadi kesalahan server...' . $e->getMessage());

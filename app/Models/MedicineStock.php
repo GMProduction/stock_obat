@@ -10,6 +10,7 @@ class MedicineStock extends Model
     use HasFactory;
 
     protected $fillable = [
+        'identifier',
         'medicine_id',
         'expired_date',
         'qty'

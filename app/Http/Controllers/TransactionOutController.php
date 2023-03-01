@@ -106,6 +106,7 @@ class TransactionOutController extends CustomController
                         'medicine_id' => $medicine_id,
                         'expired_date' => $expired_date,
                         'unit_id' => $unit_id,
+                        'identifier' => $medicine_id . '-' . $expired_date,
                     ];
                     array_push($medicineOuts, $tmpMedicineOuts);
                     break;
@@ -118,6 +119,7 @@ class TransactionOutController extends CustomController
                         'medicine_id' => $medicine_id,
                         'expired_date' => $expired_date,
                         'unit_id' => $unit_id,
+                        'identifier' => $medicine_id . '-' . $expired_date,
                     ];
                     $requestedQty = $requestedQty - $availableQty;
                     array_push($medicineOuts, $tmpMedicineOuts);
@@ -127,14 +129,14 @@ class TransactionOutController extends CustomController
                 return Arr::except($value, ['unit_id', 'qty_out']);
             }, $medicineOuts);
             $filteredMedicineOutsData = array_map(function ($value) {
-                $arr = Arr::except($value, ['id', 'qty']);
+                $arr = Arr::except($value, ['id', 'qty', 'identifier']);
                 $arr['qty'] = $arr['qty_out'];
                 $arr['created_at'] = Carbon::now();
                 $arr['updated_at'] = Carbon::now();
                 unset($arr['qty_out']);
                 return $arr;
             }, $medicineOuts);
-            MedicineStock::upsert($filteredMedicineStockData, ['id'], ['qty']);
+            MedicineStock::upsert($filteredMedicineStockData, ['id'], ['qty', 'identifier']);
             MedicineOut::insert($filteredMedicineOutsData);
             DB::commit();
             return $this->jsonResponse('success', 200);

@@ -4,10 +4,18 @@
 namespace App\Repository;
 
 
+use App\Models\StockAdjustment;
 use App\Models\StockAdjustmentDetail;
 
 class StockAdjustmentRepository
 {
+
+    public function getAdjustmentData($preload = [])
+    {
+        return StockAdjustment::with($preload)
+            ->orderBy('date', 'DESC')
+            ->get();
+    }
 
     public function storeAdjustmentDetail($data)
     {

@@ -17,6 +17,7 @@ class MedicineStockRepository
             ->first();
         if (!$medicine_stock) {
             $data = [
+                'identifier' => $medicine_id . '-' . $expired_date,
                 'medicine_id' => $medicine_id,
                 'expired_date' => $expired_date,
                 'qty' => $qty
