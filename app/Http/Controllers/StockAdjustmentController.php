@@ -54,6 +54,12 @@ class StockAdjustmentController extends CustomController
         return view('admin.penyesuaian.add')->with(['medicines' => $medicines]);
     }
 
+    public function detail($id)
+    {
+        $data = StockAdjustment::with(['details.medicine.unit'])->findOrFail($id);
+        return view('admin.penyesuaian.detail')->with(['data' => $data]);
+    }
+
     public function stock()
     {
         if ($this->request->method() === 'POST') {
@@ -98,7 +104,7 @@ class StockAdjustmentController extends CustomController
     {
         DB::beginTransaction();
         try {
-            $batch_id = 'TI-' . date('YmdHis');
+            $batch_id = 'PN-' . date('YmdHis');
             $date = $this->postField('date');
             $date_value = Carbon::parse($date)->format('Y-m-d');
             $description = $this->postField('description') ?? '-';

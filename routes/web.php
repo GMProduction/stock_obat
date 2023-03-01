@@ -62,6 +62,7 @@ Route::middleware('auth')->group(
             Route::get('/', [\App\Http\Controllers\StockAdjustmentController::class, 'index'])->name('penyesuaian');
             Route::match(['post', 'get'],'/tambah', [\App\Http\Controllers\StockAdjustmentController::class, 'add'])->name('tambahpenyesuaian');
             Route::match(['post', 'get'],'/stock', [\App\Http\Controllers\StockAdjustmentController::class, 'stock'])->name('penyesuaian.stock');
+            Route::get('/{id}/detail', [\App\Http\Controllers\StockAdjustmentController::class, 'detail'])->name('penyesuaian.detail');
         });
 
         Route::prefix('penerimaan')->group(function () {

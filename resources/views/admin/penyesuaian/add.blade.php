@@ -81,9 +81,8 @@
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"></path>
                         </svg>
-                        <a href="{{ route('penerimaanbarang') }}"
-                           class="ml-1 text-sm font-medium text-gray-700  hover:text-secondary md:ml-2  ">Penerimaan
-                            Barang</a>
+                        <a href="{{ route('penyesuaian') }}"
+                           class="ml-1 text-sm font-medium text-gray-700  hover:text-secondary md:ml-2  ">Penyesuaian</a>
                     </div>
                 </li>
                 <li>
@@ -94,7 +93,7 @@
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Tambah Barang</a>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Tambah</a>
                     </div>
                 </li>
 
@@ -104,16 +103,14 @@
 
         <div class="grid grid-cols-1 gap-4">
             <div class="section relative min-h-[600px]">
-                <p class="title ">Tambah Barang </p>
+                <p class="title ">Tambah penyesuaian</p>
                 <div class="grid grid-cols-3 gap-2 ">
 
 
                     <div class="border rounded-md col-span-2 p-3 relative">
-                        <p class="text-gray-500">Barang yang diterima</p>
+                        <p class="text-gray-500">Barang yang disesuaikan</p>
                         <div class="absolute right-0 top-0 mt-3 mr-3" style="margin-bottom: 10px;">
                             <div class="flex">
-
-
                                 <button
                                     class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm btn-tambahBarang"><span
                                         class="material-symbols-outlined mr-2 menu-ico text-sm">
@@ -137,13 +134,10 @@
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
 
                     <div class="border rounded-md p-3">
                         <p class="text-gray-500">Informasi penerimaan</p>
-
                         <form method="post" id="form-save">
                             @csrf
                             <div class="mb-3 mt-5">
@@ -187,8 +181,6 @@
                             save
                         </span>Simpan
                     </button>
-
-
                     <button type="button" form="form-save"
                             {{-- onclick="location.href={{ route('penerimaanbarang.cetak', ['id' => $data->id]) }}" --}}
                             class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
@@ -196,11 +188,8 @@
                             print
                         </span>Simpan & Cetak
                     </button>
-
                 </div>
-
             </div>
-
         </div>
 
         <!-- Modal Tambah Master -->
@@ -212,7 +201,7 @@
                     <!-- Modal header -->
                     <div class="flex justify-between items-start p-4 rounded-t border-b ">
                         <h3 class="text-xl font-semibold text-gray-900 ">
-                            Tambah Barang
+                            Tambah Obat
                         </h3>
                         <button type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
@@ -229,11 +218,11 @@
                     <form method="post">
                         <div class="p-6 ">
                             <label for="medicine" class="block mb-2 text-sm font-medium text-gray-900 ">Pilih
-                                Barang</label>
+                                Obat</label>
                             <select
                                 class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="medicine" id="medicine">
-                                <option value="" selected>Pilih Barang</option>
+                                <option value="" selected>Pilih Obat</option>
                                 @foreach ($medicines as $medicine)
                                     <option value="{{ $medicine->id }}">{{ $medicine->name }}
                                         ({{ $medicine->unit->name }})
@@ -241,7 +230,7 @@
                                 @endforeach
                             </select>
                             <div class="mt-3 mr-3" style="margin-bottom: 10px;">
-                                <div class="flex">
+                                <div class="flex items-center justify-end">
                                     <a href="#" id="btn-add-adjustment"
                                        class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm">
                                         <span
@@ -488,7 +477,7 @@
                 if (response['status'] === 200) {
                     reload();
                     Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function() {
-                        // modaltambahmHide();
+                        modaltambahmHide();
                     });
                 }
                 console.log(response);
@@ -536,12 +525,12 @@
                 {
                     data: 'current_qty',
                     name: 'current_qty',
-                    className: 'text-right text-xs',
+                    className: 'text-center text-xs',
                 },
                 {
                     data: 'real_qty',
                     name: 'real_qty',
-                    className: 'text-right text-xs',
+                    className: 'text-center text-xs',
                 },
                 {
                     className: 'text-center text-xs font-bold ',

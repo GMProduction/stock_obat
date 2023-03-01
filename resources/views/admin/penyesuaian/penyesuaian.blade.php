@@ -5,8 +5,24 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <style>
+        table.dataTable tbody tr {
+            height: 50px;
+        }
+    </style>
 @endsection
 @section('content')
+    @if (\Illuminate\Support\Facades\Session::has('success'))
+        <script>
+            Swal.fire("Berhasil!", '{{ \Illuminate\Support\Facades\Session::get('success') }}', "success")
+        </script>
+    @endif
+
+    @if (\Illuminate\Support\Facades\Session::has('failed'))
+        <script>
+            Swal.fire("Gagal", '{{ \Illuminate\Support\Facades\Session::get('failed') }}', "error")
+        </script>
+    @endif
     <div class="panel min-h-screen">
 
         <nav class="flex mb-6" aria-label="Breadcrumb">
@@ -31,16 +47,15 @@
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Penyesuaian Stock</a>
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Penyesuaian</a>
                     </div>
                 </li>
-
             </ol>
         </nav>
 
         <div class="">
             <div class="section relative">
-                <p class="title ">Penyesuain Stock </p>
+                <p class="title ">Penyesuain Stock Obat</p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex gap-1">
 
@@ -400,7 +415,8 @@
                 orderable: false,
                 data: null,
                 render: function (data) {
-                    return '<a href="#" data-id="' + data['id'] +
+                    let url = '/penyesuaian/' + data['id'] + '/detail';
+                    return '<a href="' + url + '" data-id="' + data['id'] +
                         '" class="bg-blue-500 hover:bg-blue-300 transition-all duration-300 rounded-md   text-white px-3 py-2 text-sm">Detail</a>';
                 }
             },

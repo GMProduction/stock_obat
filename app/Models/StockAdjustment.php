@@ -15,4 +15,9 @@ class StockAdjustment extends Model
         'description',
     ];
 
+    public function details()
+    {
+        return $this->hasMany(StockAdjustmentDetail::class, 'stock_adjustment_id');
+    }
+
 }
