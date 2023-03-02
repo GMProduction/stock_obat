@@ -57,6 +57,7 @@ class TransactionOutDetailExport implements FromCollection, WithHeadings, Should
                 'Nama Obat',
                 'Satuan',
                 'Jumlah',
+                'Kadaluarsa',
             ],
         ];
     }
@@ -79,6 +80,7 @@ class TransactionOutDetailExport implements FromCollection, WithHeadings, Should
                     $valueDetails->medicine->name,
                     $valueDetails->unit->name,
                     $valueDetails->qty,
+                    Carbon::parse($valueDetails->expired_date)->format('d/m/Y'),
                 ];
                 $loop += 1;
                 array_push($results, $tmp);
@@ -91,7 +93,7 @@ class TransactionOutDetailExport implements FromCollection, WithHeadings, Should
     public function styles(Worksheet $sheet)
     {
         // TODO: Implement styles() method.
-        $sheet->mergeCells('A1:F1');
+        $sheet->mergeCells('A1:H1');
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A1')->getFont()->setBold(true);
     }

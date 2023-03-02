@@ -8,6 +8,7 @@ use App\Exports\TransactionInDetailExport;
 use App\Exports\TransactionInExport;
 use App\Exports\TransactionInMainExport;
 use App\Helper\CustomController;
+use App\Models\BudgetSource;
 use App\Repository\ReportRepository;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -45,9 +46,23 @@ class ReportTransactionInController extends CustomController
         $budget_source_id = $this->field('budget_source');
         $preload = ['budget_source', 'medicine_ins.medicine', 'medicine_ins.unit'];
         $data = $this->reportRepository->getTransactionInsData($date_start, $date_end, $budget_source_id, $preload);
-//        dd($data->toArray());
         $name = 'Transaksi-Penerimaan-' . date('YmdHis') . '.xlsx';
         return Excel::download(new TransactionInMainExport($data, $date_start, $date_end), $name);
+    }
+
+    public function printToPDF()
+    {
+        $date_start = Carbon::parse($this->field('date_start'))->format('Y-m-d');
+        $date_end = Carbon::parse($this->field('date_end'))->format('Y-m-d');
+        $budget_source_id = $this->field('budget_source');
+        $preload = ['budget_source', 'medicine_ins.medicine', 'medicine_ins.unit'];
+        $budget_source = 'Semua';
+        if ($budget_source_id !== '') {
+            $tmp_budget_source = BudgetSource::find($budget_source_id);
+            $budget_source = $tmp_budget_source->name;
+        }
+        $data = $this->reportRepository->getTransactionInsData($date_start, $date_end, $budget_source_id, $preload);
+        return $this->convertToPdf('admin.laporan.cetakpenerimaan', ['data' => $data, 'date_start' => $date_start, 'date_end' => $date_end, 'budget_source' => $budget_source, 'idx' => 1]);
     }
 
 }

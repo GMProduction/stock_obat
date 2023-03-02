@@ -5,6 +5,11 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <style>
+        table.dataTable tbody tr {
+            height: 40px;
+        }
+    </style>
 @endsection
 @section('content')
     <div class="panel min-h-screen">
@@ -50,7 +55,7 @@
                                  class=" mr-2 menu-icon text-sm w-6 object-scale-down"/>
                             Export to Excel
                         </button>
-                        <button onclick="window.open('{{ route('cetakLaporanBarangKeluar', ['id' => 1]) }}');"
+                        <button id="btn-print"
                                 class="bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 print
@@ -440,6 +445,19 @@
                 let date_end = $('#date_end').val();
                 let url = '{{ route('laporanbarangkeluar.excel') }}?location=' + _loc + '&date_start=' + date_start + '&date_end=' + date_end;
                 window.open(url);
+            });
+
+            let date_start = $('#date_start').val();
+            let date_end = $('#date_end').val();
+            let text = date_start + ' - ' + date_end;
+            $('#date-range-value').html(text);
+
+            $('#btn-print').on('click', function (e) {
+                e.preventDefault();
+                let date_start = $('#date_start').val();
+                let date_end = $('#date_end').val();
+                let url = '{{ route('laporanbarangkeluar.pdf') }}?location=' + _loc + '&date_start=' + date_start + '&date_end=' + date_end;
+                window.open(url, '_blank');
             });
         });
     </script>

@@ -60,6 +60,12 @@ class StockAdjustmentController extends CustomController
         return view('admin.penyesuaian.detail')->with(['data' => $data]);
     }
 
+    public function print_detail($id)
+    {
+        $data = StockAdjustment::with(['details.medicine.unit'])->findOrFail($id);
+        return $this->convertToPdf('admin.penyesuaian.cetak', ['data' => $data]);
+    }
+
     public function stock()
     {
         if ($this->request->method() === 'POST') {

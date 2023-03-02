@@ -8,6 +8,7 @@ use App\Exports\TransactionInMainExport;
 use App\Exports\TransactionOutExport;
 use App\Exports\TransactionOutMainExport;
 use App\Helper\CustomController;
+use App\Models\Location;
 use App\Repository\ReportRepository;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -45,5 +46,20 @@ class ReportTransactionOutController extends CustomController
         $data = $this->reportRepository->getTransactionOutsData($date_start, $date_end, $location_id, $preload);
         $name = 'Transaksi-Distribusi-obat-' . date('YmdHis') . '.xlsx';
         return Excel::download(new TransactionOutMainExport($data, $date_start, $date_end), $name);
+    }
+
+    public function printToPDF()
+    {
+        $date_start = Carbon::parse($this->field('date_start'))->format('Y-m-d');
+        $date_end = Carbon::parse($this->field('date_end'))->format('Y-m-d');
+        $location_id = $this->field('location');
+        $location = 'Semua';
+        if ($location_id !== '') {
+            $tmp_location = Location::find($location_id);
+            $location = $tmp_location->name;
+        }
+        $preload = ['location', 'medicine_outs.medicine', 'medicine_outs.unit'];
+        $data = $this->reportRepository->getTransactionOutsData($date_start, $date_end, $location_id, $preload);
+        return $this->convertToPdf('admin.laporan.cetakbarangkeluar', ['data' => $data, 'date_start' => $date_start, 'date_end' => $date_end, 'location' => $location, 'idx' => 1]);
     }
 }
