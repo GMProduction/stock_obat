@@ -34,7 +34,7 @@ class MedicineRepository extends BaseRepo
     public function fieldData()
     {
         $formData = request()->all();
-        $category = Category::where('id', '=', $this->postField('category_id'))->orWhere('name', '=', $this->postField('category_id'))->first();
+        $category = Category::where('id', '=', request('category_id'))->orWhere('name', '=', request('category_id'))->first();
         if ($category == null) {
             $category = new Category();
             $category = $category->create(
