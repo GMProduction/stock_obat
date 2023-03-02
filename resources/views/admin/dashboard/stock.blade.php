@@ -44,11 +44,11 @@
                 <p class="title ">{{ $data->name }}</p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
-                        <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
+                        {{-- <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 filter_alt
                             </span>Filter
-                        </button>
+                        </button> --}}
                         <a class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm"
                             href="{{ route('penerimaanbarang') }}"><span
                                 class="material-symbols-outlined mr-2 menu-ico text-sm">
