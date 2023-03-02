@@ -6,8 +6,11 @@ namespace App\Http\Controllers;
 
 use App\Exports\GeneralLedgerExport;
 use App\Helper\CustomController;
+use App\Models\MedicineIn;
+use App\Models\MedicineOut;
 use App\Repository\GeneralLedgerRepository;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class GeneralLedgerReportController extends CustomController
@@ -55,7 +58,8 @@ class GeneralLedgerReportController extends CustomController
         $startDate = Carbon::parse($this->field('date_start'))->format('Y-m-d');
         $endDate = Carbon::parse($this->field('date_end'))->format('Y-m-d');
         $type = $this->field('type');
-        $preload = ['medicine_in.medicine', 'medicine_out.medicine', 'transaction_in', 'transaction_out'];
-        return $this->generalLedgerRepository->getDataByPeriodic($startDate, $endDate, $preload, $type);
+//        $preload = ['medicine_in.medicine', 'medicine_out.medicine', 'transaction_in', 'transaction_out'];
+//        return $this->generalLedgerRepository->getDataByPeriodic($startDate, $endDate, $preload, $type);
+        return $this->generalLedgerRepository->getDataGeneralLedgerByPeriodic($startDate, $endDate, $type);
     }
 }

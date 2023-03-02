@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,11 +36,13 @@ class Medicine extends Model
         return $this->hasMany(MedicineIn::class, 'medicine_id');
     }
 
-    public function medicine_ins_expired(){
+    public function medicine_ins_expired()
+    {
         return $this->hasOne(MedicineIn::class, 'medicine_id')->orderBy('expired_date', 'ASC');
     }
 
-    public function medicine_ins_expired_all(){
+    public function medicine_ins_expired_all()
+    {
         return $this->hasMany(MedicineIn::class, 'medicine_id')->orderBy('expired_date', 'ASC');
     }
 
@@ -55,7 +58,7 @@ class Medicine extends Model
             [
                 'medicine_ins' => function ($q) {
                     return $q->whereRaw('(qty - used) > ?', [0])
-                             ->orderBy('expired_date', 'ASC');
+                        ->orderBy('expired_date', 'ASC');
                 },
             ]
         );
@@ -73,15 +76,15 @@ class Medicine extends Model
     }
 
 
-
     public function getIsExpiredAttribute()
     {
-        if ($this->medicine_ins_expired){
+        if ($this->medicine_ins_expired) {
             $now = new \DateTime();
             $expired = date_create($this->medicine_ins_expired->expired_date);
-            $diff    = date_diff($now, $expired);
-            if ($diff->format('%R') == '+'){
-                return $diff->format("%m");
+            $diff = date_diff($now, $expired);
+            if ($diff->format('%R') == '+') {
+//                return $diff->format("%m");
+                return ($diff->invert ? -1 : 1) * ($diff->m + (12 * $diff->y));
             }
             return $diff->format("0");
         }
@@ -100,13 +103,37 @@ class Medicine extends Model
 //        return '';
 //    }
 
-    public function stock()
-    {
-        return $this->hasOne(LocationStock::class, 'medicine_id');
-    }
+//    public function stock()
+//    {
+//        return $this->hasOne(LocationStock::class, 'medicine_id');
+//    }
 
     public function stocks()
     {
-        return $this->hasMany(LocationStock::class, 'medicine_id');
+//        return $this->hasMany(LocationStock::class, 'medicine_id');
+        return $this->hasMany(MedicineStock::class, 'medicine_id')->orderBy('expired_date', 'ASC');
+    }
+
+    public function getStockAttribute()
+    {
+        return $this->stocks()->get()->sum('qty');
+    }
+
+    public function getExpirationAttribute()
+    {
+        $stocks = $this->stocks()->get();
+        if (count($stocks) > 0) {
+            $first = $stocks[0];
+            $now = Carbon::now();
+            $expired = date_create($first->expired_date);
+            $interval = $now->diff($expired);
+            if ($interval->format('%R') == '+') {
+                $diff = $interval->format("%m");
+                return ($interval->invert ? -1 : 1) * ($interval->m + (12 * $interval->y));
+            } else {
+                return 0;
+            }
+        }
+        return 0;
     }
 }

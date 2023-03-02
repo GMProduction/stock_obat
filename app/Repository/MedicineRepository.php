@@ -180,43 +180,46 @@ class MedicineRepository extends BaseRepo
             ->find($medicine_id);
     }
 
-    public function getMedicinesReportStockByLocation($locationID)
+    public function getMedicinesReportStockByLocation($locationID, $preload = [])
     {
-        $preload = 'stock';
-        if ($locationID === 'all') {
-            $preload = 'stocks';
-        }
-        $data = Medicine::with(['category', 'unit', $preload => function ($q) use ($locationID) {
-            if ($locationID !== 'all' && $locationID !== 'main') {
-                return $q->where('location_id', '=', $locationID);
-            }
-        }])
-            ->get();
-        $results = [];
-
-        foreach ($data as $value) {
-            $qty = $value->qty;
-            if ($locationID !== 'all' && $locationID !== 'main') {
-                $qty = 0;
-                if ($value->stock !== null) {
-                    $qty = $value->stock->qty;
-                }
-            }
-
-            if ($locationID === 'all') {
-                $qtyNonMain = 0;
-                foreach ($value->stocks as $stock) {
-                    $qtyNonMain += $stock->qty;
-                }
-                $qty += $qtyNonMain;
-            }
-            $tmp['id'] = $value->id;
-            $tmp['name'] = $value->name;
-            $tmp['category'] = $value->category->name;
-            $tmp['unit'] = $value->unit->name;
-            $tmp['qty'] = $qty;
-            array_push($results, $tmp);
-        }
-        return $results;
+//        $preload = 'stock';
+//        if ($locationID === 'all') {
+//            $preload = 'stocks';
+//        }
+//        $data = Medicine::with(['category', 'unit', $preload => function ($q) use ($locationID) {
+//            if ($locationID !== 'all' && $locationID !== 'main') {
+//                return $q->where('location_id', '=', $locationID);
+//            }
+//        }])
+//            ->get();
+        $data = Medicine::with($preload)
+            ->get()->append(['stock', 'expiration']);
+//        $results = [];
+//
+//        foreach ($data as $value) {
+//            $qty = $value->qty;
+//            if ($locationID !== 'all' && $locationID !== 'main') {
+//                $qty = 0;
+//                if ($value->stock !== null) {
+//                    $qty = $value->stock->qty;
+//                }
+//            }
+//
+//            if ($locationID === 'all') {
+//                $qtyNonMain = 0;
+//                foreach ($value->stocks as $stock) {
+//                    $qtyNonMain += $stock->qty;
+//                }
+//                $qty += $qtyNonMain;
+//            }
+//            $tmp['id'] = $value->id;
+//            $tmp['name'] = $value->name;
+//            $tmp['category'] = $value->category->name;
+//            $tmp['unit'] = $value->unit->name;
+//            $tmp['qty'] = $qty;
+//            array_push($results, $tmp);
+//        }
+//        return $results;
+        return $data;
     }
 }

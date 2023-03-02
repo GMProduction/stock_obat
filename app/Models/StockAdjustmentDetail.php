@@ -5,32 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MedicineOut extends Model
+class StockAdjustmentDetail extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'transaction_out_id',
+        'stock_adjustment_id',
         'medicine_id',
-        'unit_id',
-        'qty',
-        'price',
-        'total',
         'expired_date',
+        'current_qty',
+        'real_qty',
+        'description',
     ];
 
-    public function transaction_out()
+    public function stock_adjustment()
     {
-        return $this->belongsTo(TransactionOut::class, 'transaction_out_id');
+        return $this->belongsTo(StockAdjustment::class, 'stock_adjustment_id');
     }
 
     public function medicine()
     {
         return $this->belongsTo(Medicine::class, 'medicine_id');
-    }
-
-    public function unit()
-    {
-        return $this->belongsTo(Unit::class, 'unit_id');
     }
 }
