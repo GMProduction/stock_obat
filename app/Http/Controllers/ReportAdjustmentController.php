@@ -47,7 +47,7 @@ class ReportAdjustmentController extends CustomController
         $endDate = Carbon::parse($this->field('date_end'))->format('Y-m-d');
         $preload = ['details.medicine.unit'];
         $data = $this->stockAdjustmentRepository->getAdjustmentDataByPeriodic($startDate, $endDate, $preload);
-        return $this->convertToPdf('admin.laporan.cetak-adjustment', ['data' => $data]);
+        return $this->convertToPdf('admin.laporan.cetak-adjustment', ['data' => $data, 'date_start' => $startDate, 'date_end' => $endDate,]);
     }
 
     private function getStockAdjustmentData()

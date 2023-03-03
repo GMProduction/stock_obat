@@ -31,6 +31,13 @@ class ReportRepository
 
     }
 
+    public function getTransactionInsDataByID($transactionInID, $preload = [])
+    {
+        return TransactionIn::with($preload)
+            ->where('id', '=', $transactionInID)
+            ->first()->append(['total']);
+    }
+
     public function getAllBudgetSource()
     {
         return $this->budgetSourceRepository->getAll();

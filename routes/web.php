@@ -95,6 +95,7 @@ Route::middleware('auth')->group(
                 Route::get('/stock-data', [\App\Http\Controllers\LaporanController::class, 'stock'])->name('laporanstockdata');
                 Route::get('/stock/{id}/detail', [\App\Http\Controllers\LaporanController::class, 'detailstock'])->name('laporandetailstock');
                 Route::get('/penerimaan', [\App\Http\Controllers\ReportTransactionInController::class, 'index'])->name('laporanpenerimaan');
+                Route::get('/penerimaan/{id}/detail', [\App\Http\Controllers\ReportTransactionInController::class, 'detail'])->name('laporanpenerimaan.detail');
                 Route::get('/penerimaan/excel', [\App\Http\Controllers\ReportTransactionInController::class, 'exportToExcel'])->name('laporanpenerimaan.excel');
                 Route::get('/penerimaan/pdf', [\App\Http\Controllers\ReportTransactionInController::class, 'printToPDF'])->name('laporanpenerimaan.pdf');
                 Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');

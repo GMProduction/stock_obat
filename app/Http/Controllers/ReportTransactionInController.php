@@ -39,6 +39,17 @@ class ReportTransactionInController extends CustomController
         ]);
     }
 
+    public function detail($id)
+    {
+        try {
+            $preload = ['budget_source', 'medicine_ins.medicine', 'medicine_ins.unit'];
+            $data = $this->reportRepository->getTransactionInsDataByID($id, $preload);
+            return $this->jsonResponse('success', 200, $data);
+        } catch (\Exception $e) {
+            return $this->jsonResponse('terjadi kesalahan server...', 500);
+        }
+    }
+
     public function exportToExcel()
     {
         $date_start = Carbon::parse($this->field('date_start'))->format('Y-m-d');

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Surat Penerimaan || (Nomor Batch)</title>
+    <title>Laporan Penyesuaian</title>
     <!-- Fonts -->
 
     <!-- Styles -->
@@ -140,6 +140,30 @@
 
     </div>
     <p style="font-weight: bold; font-size: 0.9rem;" class="text-center">Laporan Penyesuaian Obat</p>
+    <table style="border: 0; ">
+        <tr style="border: none">
+            <td>
+                <div>
+
+                    <table style=" table-layout: auto; border: none; width: 400px">
+
+                        <tr style="border: 0;  ">
+                            <td class="text-left" style="width: 100px; margin-bottom: 0; font-size: 11px ">
+                                Periode
+                            </td>
+                            <td class="text-left" style="width: 10px !important; margin-bottom: 0; font-size: 11px">
+                                :
+                            </td>
+                            <td class="text-left" style="margin-bottom: 0; font-size: 11px">
+                                {{ \Carbon\Carbon::parse($date_start)->format('d F Y') }} - {{ \Carbon\Carbon::parse($date_end)->format('d F Y') }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+
+        </tr>
+    </table>
 </div>
 
 <br>
@@ -217,8 +241,8 @@
         <th class="text-center text-ontable-sm">Tanggal</th>
         <th class="text-center text-ontable-sm">Batch ID</th>
         <th class="text-left text-ontable-sm">Nama Obat</th>
-        <th class="text-center text-ontable-sm">Kadaluarsa</th>
         <th class="text-center text-ontable-sm">Satuan</th>
+        <th class="text-center text-ontable-sm">Kadaluarsa</th>
         <th class="text-center text-ontable-sm">Jumlah Sistem</th>
         <th class="text-center text-ontable-sm">Jumlah Sebenarnya</th>
         <th class="text-center text-ontable-sm">Selisih</th>
@@ -234,11 +258,14 @@
             <tr style="border-bottom: 1px solid #ccc">
                 <td style="width: 10px !important" class="text-center text-ontable-sm">{{ $idx }}</td>
                 <td class="text-center text-ontable-sm">{{ \Carbon\Carbon::parse($value->date)->format('d/m/Y') }}</td>
-                <td class="text-center text-ontable-sm">{{ $value->category->name}}</td>
-                <td class="text-left text-ontable-sm">{{ $value->name}}</td>
-                <td class="text-center text-ontable-sm">{{ $value->unit->name}}</td>
-                <td class="text-center text-ontable-sm">{{ $detail->qty}}</td>
+                <td class="text-center text-ontable-sm">{{ $value->batch_id}}</td>
+                <td class="text-left text-ontable-sm">{{ $detail->medicine->name}}</td>
+                <td class="text-center text-ontable-sm">{{ $detail->medicine->unit->name}}</td>
                 <td class="text-center text-ontable-sm">{{ \Carbon\Carbon::parse($detail->expired_date)->format('d/m/Y') }}</td>
+                <td class="text-center text-ontable-sm">{{ $detail->current_qty}}</td>
+                <td class="text-center text-ontable-sm">{{ $detail->real_qty}}</td>
+                <td class="text-center text-ontable-sm">{{ ($detail->current_qty - $detail->real_qty) }}</td>
+                <td class="text-center text-ontable-sm">{{ strtoupper($detail->description) }}</td>
             </tr>
             @php
                 $idx += 1;
