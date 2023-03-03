@@ -67,11 +67,11 @@
                 <p class="title ">Master Barang </p>
                 <div class="absolute right-0 top-0 mt-3 mr-3">
                     <div class="flex">
-                        <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
+                        {{-- <button class="bg-green-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 filter_alt
                             </span>Filter
-                        </button>
+                        </button> --}}
                         <button onclick="location.href='{{ route('masterother') }}'"
                             class="bg-teal-500 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
