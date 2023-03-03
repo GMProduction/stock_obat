@@ -108,6 +108,10 @@ Route::middleware('auth')->group(
                 Route::get('/jurnal', [\App\Http\Controllers\GeneralLedgerReportController::class, 'index'])->name('jurnal');
                 Route::get('/jurnal/excel', [\App\Http\Controllers\GeneralLedgerReportController::class, 'excel'])->name('jurnal.excel');
                 Route::get('/jurnal/pdf', [\App\Http\Controllers\GeneralLedgerReportController::class, 'printToPDF'])->name('jurnal.pdf');
+                Route::get('/penyesuaian', [\App\Http\Controllers\ReportAdjustmentController::class, 'index'])->name('adjustment');
+                Route::get('/penyesuaian/excel', [\App\Http\Controllers\ReportAdjustmentController::class, 'excel'])->name('adjustment.excel');
+                Route::get('/penyesuaian/pdf', [\App\Http\Controllers\ReportAdjustmentController::class, 'printToPDF'])->name('adjustment.pdf');
+
             }
         );
     }

@@ -28,4 +28,14 @@ class StockAdjustmentRepository
             ->whereNull('stock_adjustment_id')
             ->get();
     }
+
+    public function getAdjustmentDataByPeriodic($startDate = '', $endDate = '', $preload = [])
+    {
+        $query = StockAdjustment::with($preload);
+        if ($startDate !== '' && $endDate !== '') {
+            $query->whereBetween('date', [$startDate, $endDate]);
+        }
+        return $query->orderBy('date', 'ASC')
+            ->get();
+    }
 }
