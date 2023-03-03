@@ -234,7 +234,13 @@
                         href="{{ route('jurnal') }}">
                         <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
                             class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
-                        <p class="title-menu block menu-text text-xs">Jurnal Barang</p>
+                        <p class="title-menu block menu-text text-xs">Laporan Jurnal</p>
+                    </a>
+                    <a class="menu nav-link {{ request()->is('laporan/penyesuaian') ? 'bg-primarylight2' : '' }}"
+                        href="{{ route('adjustment') }}">
+                        <img src="{{ asset('local/icons/fiber_manual_record.svg') }}"
+                            class=" mr-2 menu-icon text-xs w-6 object-scale-down" />
+                        <p class="title-menu block menu-text text-xs">Laporan Penyesuaian</p>
                     </a>
                 </div>
             </div>
