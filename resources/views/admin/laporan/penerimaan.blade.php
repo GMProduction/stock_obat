@@ -578,8 +578,7 @@
                         className: 'text-center'
                     }
                 ],
-                ordering: false,
-                dom: 't',
+                // ordering: false,
                 pagination: false
             });
 
