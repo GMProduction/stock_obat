@@ -54,7 +54,7 @@
                                 class=" mr-2 menu-icon text-sm w-6 object-scale-down" />
                             Export to Excel
                         </button>
-                        <button onclick="window.open('{{ route('cetakLaporanPenerimaan', ['id' => 1]) }}');"
+                        <button id="btn-print"
                             class="bg-orange-500 hover:bg-orange-300 transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 print
