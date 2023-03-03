@@ -68,7 +68,7 @@ class MedicineRepository extends BaseRepo
     {
         $data             = Medicine::with(['category:id,name', 'unit:id,name']);
         $this->selectData = ['name', 'unit_id', 'limit', 'category_id'];
-        $this->button     = ['edit', 'delete'];
+        $this->button     = ['edit'];
 
         return $this->datatabe($data);
     }
@@ -182,44 +182,44 @@ class MedicineRepository extends BaseRepo
 
     public function getMedicinesReportStockByLocation($locationID, $preload = [])
     {
-//        $preload = 'stock';
-//        if ($locationID === 'all') {
-//            $preload = 'stocks';
-//        }
-//        $data = Medicine::with(['category', 'unit', $preload => function ($q) use ($locationID) {
-//            if ($locationID !== 'all' && $locationID !== 'main') {
-//                return $q->where('location_id', '=', $locationID);
-//            }
-//        }])
-//            ->get();
+        //        $preload = 'stock';
+        //        if ($locationID === 'all') {
+        //            $preload = 'stocks';
+        //        }
+        //        $data = Medicine::with(['category', 'unit', $preload => function ($q) use ($locationID) {
+        //            if ($locationID !== 'all' && $locationID !== 'main') {
+        //                return $q->where('location_id', '=', $locationID);
+        //            }
+        //        }])
+        //            ->get();
         $data = Medicine::with($preload)
             ->get()->append(['stock', 'expiration']);
-//        $results = [];
-//
-//        foreach ($data as $value) {
-//            $qty = $value->qty;
-//            if ($locationID !== 'all' && $locationID !== 'main') {
-//                $qty = 0;
-//                if ($value->stock !== null) {
-//                    $qty = $value->stock->qty;
-//                }
-//            }
-//
-//            if ($locationID === 'all') {
-//                $qtyNonMain = 0;
-//                foreach ($value->stocks as $stock) {
-//                    $qtyNonMain += $stock->qty;
-//                }
-//                $qty += $qtyNonMain;
-//            }
-//            $tmp['id'] = $value->id;
-//            $tmp['name'] = $value->name;
-//            $tmp['category'] = $value->category->name;
-//            $tmp['unit'] = $value->unit->name;
-//            $tmp['qty'] = $qty;
-//            array_push($results, $tmp);
-//        }
-//        return $results;
+        //        $results = [];
+        //
+        //        foreach ($data as $value) {
+        //            $qty = $value->qty;
+        //            if ($locationID !== 'all' && $locationID !== 'main') {
+        //                $qty = 0;
+        //                if ($value->stock !== null) {
+        //                    $qty = $value->stock->qty;
+        //                }
+        //            }
+        //
+        //            if ($locationID === 'all') {
+        //                $qtyNonMain = 0;
+        //                foreach ($value->stocks as $stock) {
+        //                    $qtyNonMain += $stock->qty;
+        //                }
+        //                $qty += $qtyNonMain;
+        //            }
+        //            $tmp['id'] = $value->id;
+        //            $tmp['name'] = $value->name;
+        //            $tmp['category'] = $value->category->name;
+        //            $tmp['unit'] = $value->unit->name;
+        //            $tmp['qty'] = $qty;
+        //            array_push($results, $tmp);
+        //        }
+        //        return $results;
         return $data;
     }
 }

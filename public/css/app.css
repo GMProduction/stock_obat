@@ -1515,17 +1515,21 @@ input:checked + .toggle-bg {
 .bg-transparent {
   background-color: transparent;
 }
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(240 82 82 / var(--tw-bg-opacity));
 }
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
 .bg-gray-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+.bg-orange-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 186 140 / var(--tw-bg-opacity));
 }
 .bg-teal-500 {
   --tw-bg-opacity: 1;
@@ -1541,10 +1545,6 @@ input:checked + .toggle-bg {
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-}
-.bg-orange-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 186 140 / var(--tw-bg-opacity));
 }
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;

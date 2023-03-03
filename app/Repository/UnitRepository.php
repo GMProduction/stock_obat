@@ -11,19 +11,21 @@ class UnitRepository extends BaseRepo
     {
         $this->class = 'Unit';
         $this->selectData = ['name'];
-        $this->button = ['edit', 'delete'];
+        $this->button = ['edit',];
     }
 
-    public function patchForm(){
+    public function patchForm()
+    {
         return $this->patchData(Unit::class);
     }
 
-    public function showDatatable(){
+    public function showDatatable()
+    {
         return $this->datatabe(Unit::query());
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         return Unit::all();
     }
-
 }

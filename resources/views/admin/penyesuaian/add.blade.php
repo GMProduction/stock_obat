@@ -51,7 +51,7 @@
         <div class="backdrop-content">
             <div class="section">
                 <div class="text-center">
-                    <img src="{{ asset('/assets/images/docor.svg') }}" height="250">
+                    <img src="{{ asset('/local/images/loading.gif') }}" height="250">
                     <p style="color: gray; font-weight: bold;">Sedang menyimpan data...</p>
                 </div>
             </div>
@@ -63,9 +63,9 @@
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
                     <a href="{{ route('dashboard') }}"
-                       class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-secondary ">
+                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-secondary ">
                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                             </path>
@@ -76,22 +76,22 @@
                 <li>
                     <div class="flex items-center ">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
                         </svg>
                         <a href="{{ route('penyesuaian') }}"
-                           class="ml-1 text-sm font-medium text-gray-700  hover:text-secondary md:ml-2  ">Penyesuaian</a>
+                            class="ml-1 text-sm font-medium text-gray-700  hover:text-secondary md:ml-2  ">Penyesuaian</a>
                     </div>
                 </li>
                 <li>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
                         </svg>
                         <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Tambah</a>
                     </div>
@@ -122,13 +122,13 @@
                         <div class="mt-5">
                             <table id="tb-master" class="table display table-auto stripe hover  " style="width:100%;">
                                 <thead class="bg-gray-50 ">
-                                <th class="text-right text-xs py-3">No</th>
-                                <th class="text-left text-xs">Nama Barang</th>
-                                <th class="text-center text-xs">Satuan</th>
-                                <th class="text-center text-xs">Kadaluarsa</th>
-                                <th class="text-center text-xs">Jumlah Sistem</th>
-                                <th class="text-right text-xs">Jumlah Sebenarnya</th>
-                                <th class="text-center text-xs">Action</th>
+                                    <th class="text-right text-xs py-3">No</th>
+                                    <th class="text-left text-xs">Nama Barang</th>
+                                    <th class="text-center text-xs">Satuan</th>
+                                    <th class="text-center text-xs">Kadaluarsa</th>
+                                    <th class="text-center text-xs">Jumlah Sistem</th>
+                                    <th class="text-right text-xs">Jumlah Sebenarnya</th>
+                                    <th class="text-center text-xs">Action</th>
                                 </thead>
                                 <tbody>
                                 </tbody>
@@ -147,18 +147,17 @@
                                 <div class="relative">
                                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
-                                                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                  clip-rule="evenodd"></path>
+                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text"
-                                           required
-                                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
-                                           placeholder="Pilih Tanggal"
-                                           value="{{ \Carbon\Carbon::now()->format('d F Y') }}"
-                                           id="date" name="date">
+                                        required
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
+                                        placeholder="Pilih Tanggal" value="{{ \Carbon\Carbon::now()->format('d F Y') }}"
+                                        id="date" name="date">
                                 </div>
                             </div>
                             <div class="mb-3 mt-5">
@@ -166,9 +165,8 @@
                                     Penerimaan
                                 </label>
                                 <textarea type="text" id="description"
-                                          class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
-                                          rows="4"
-                                          placeholder="Catatan Penerimaan" name="description"></textarea>
+                                    class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4"
+                                    placeholder="Catatan Penerimaan" name="description"></textarea>
                             </div>
                         </form>
                     </div>
@@ -176,14 +174,13 @@
 
                 <div class="flex items-center justify-end pt-6 rounded-b border-t border-gray-200 ">
                     <button type="submit" id="btn-save" form="form-save"
-                            class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
+                        class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             save
                         </span>Simpan
                     </button>
-                    <button type="button" form="form-save"
-                            {{-- onclick="location.href={{ route('penerimaanbarang.cetak', ['id' => $data->id]) }}" --}}
-                            class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
+                    <button type="button" form="form-save" {{-- onclick="location.href={{ route('penerimaanbarang.cetak', ['id' => $data->id]) }}" --}}
+                        class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             print
                         </span>Simpan & Cetak
@@ -194,7 +191,7 @@
 
         <!-- Modal Tambah Master -->
         <div id="modal_tambahBarang" tabindex="-1" aria-hidden="true"
-             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
             <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow ">
@@ -204,13 +201,13 @@
                             Tambah Obat
                         </h3>
                         <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                                onclick="modaltambahmHide()">
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+                            onclick="modaltambahmHide()">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
-                                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                      clip-rule="evenodd"></path>
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
@@ -232,22 +229,21 @@
                             <div class="mt-3 mr-3" style="margin-bottom: 10px;">
                                 <div class="flex items-center justify-end">
                                     <a href="#" id="btn-add-adjustment"
-                                       class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm">
-                                        <span
-                                            class="material-symbols-outlined mr-2 menu-ico text-sm">
-                                        add
-                                    </span>Tambah
+                                        class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm">
+                                        <span class="material-symbols-outlined mr-2 menu-ico text-sm">
+                                            add
+                                        </span>Tambah
                                     </a>
                                 </div>
                             </div>
                             <div class="mt-3">
                                 <table id="tb-stock" class="table display table-auto stripe hover  "
-                                       style="width:100%;">
+                                    style="width:100%;">
                                     <thead class="bg-gray-50 ">
-                                    <th class="text-center text-xs">Kadaluarsa</th>
-                                    <th class="text-center text-xs">Jumlah Sistem</th>
-                                    <th class="text-center text-xs">Jumlah Sebenarnya</th>
-                                    <th class="text-center text-xs">Keterangan</th>
+                                        <th class="text-center text-xs">Kadaluarsa</th>
+                                        <th class="text-center text-xs">Jumlah Sistem</th>
+                                        <th class="text-center text-xs">Jumlah Sebenarnya</th>
+                                        <th class="text-center text-xs">Keterangan</th>
                                     </thead>
                                     <tbody>
                                     </tbody>
@@ -257,7 +253,7 @@
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end p-6 space-x-2 rounded-b border-t border-gray-200 ">
                             <button type="button" id="btn-add-adjustment-detail"
-                                    class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
+                                class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                 <span class="material-symbols-outlined text-white mr-3">
                                     save
                                 </span>Simpan Data
@@ -271,7 +267,7 @@
 
         <!-- Modal Tambah Sumber -->
         <div id="modal_tambahSumber" tabindex="-1" aria-hidden="true"
-             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
             <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow ">
@@ -281,13 +277,13 @@
                             Tambah Sumber Anggaran
                         </h3>
                         <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                                onclick="modaltambahsmHide()">
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+                            onclick="modaltambahsmHide()">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
-                                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                      clip-rule="evenodd"></path>
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
@@ -301,8 +297,8 @@
                                 <label for="e-nama-info" class="block mb-2 text-sm font-medium text-gray-700 ">Nama
                                     Sumber Anggaran</label>
                                 <input type="text" id="e-nama-info"
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                       placeholder="Masukan Nama Sumber Anggaran" required name="information-edit">
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
+                                    placeholder="Masukan Nama Sumber Anggaran" required name="information-edit">
                             </div>
 
 
@@ -310,7 +306,7 @@
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end p-6 space-x-2 rounded-b border-t border-gray-200 ">
                             <button type="submit" id="btn-patch"
-                                    class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
+                                class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                 <span class="material-symbols-outlined text-white mr-3">
                                     save
                                 </span>Simpan Data
@@ -334,10 +330,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/datepicker.min.js"></script>
 
     {{-- MODAL MASTER --}}
-    <script>
-
-
-    </script>
+    <script></script>
 
 
     {{-- MODAL SUMBER ANGGARAN --}}
@@ -355,7 +348,7 @@
             }
         });
 
-        $('.btn-tambahsumber').on('click', function (e) {
+        $('.btn-tambahsumber').on('click', function(e) {
 
             modal_tambahsm.show();
         });
@@ -396,12 +389,12 @@
             modal_tambahb.hide();
         }
 
-        $('.btn-tambahBarang').on('click', function (e) {
+        $('.btn-tambahBarang').on('click', function(e) {
 
             modal_tambahb.show();
         });
 
-        $(function () {
+        $(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -431,15 +424,18 @@
                 let response = await $.get(url);
                 let payload = response['payload'];
                 let tmpDataSet = [];
-                $.each(payload, function (k, v) {
+                $.each(payload, function(k, v) {
                     let date = new Date(v['expired_date']);
                     let vDate = date.toISOString().substring(0, 10);
                     let elDate = '<div class="relative mx-auto inline-block">\n' +
-                        '  <input readonly type="date" value="' + vDate + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                        '  <input readonly type="date" value="' + vDate +
+                        '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
                         '</div>';
                     let qty = v['qty'];
-                    let elStock = '<input type="text" type="number" value="' + qty + '" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
-                    let elDescription = '<input type="text" type="text" value="" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    let elStock = '<input type="text" type="number" value="' + qty +
+                        '" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    let elDescription =
+                        '<input type="text" type="text" value="" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
                     tmpDataSet.push([elDate, qty, elStock, elDescription]);
                 });
 
@@ -457,7 +453,7 @@
             try {
                 $('.backdrop-loader').css('display', 'block');
                 let tmpData = [];
-                tbStock.rows().every(function () {
+                tbStock.rows().every(function() {
                     let e = tbStock.cell(this.index(), 0).nodes().to$().find('input').val();
                     let c = tbStock.cell(this.index(), 1).data();
                     let r = tbStock.cell(this.index(), 2).nodes().to$().find('input').val();
@@ -473,7 +469,9 @@
                 };
                 let data = JSON.stringify(post_data);
                 let url = '{{ route('penyesuaian.stock') }}';
-                let response = await $.post(url, {data});
+                let response = await $.post(url, {
+                    data
+                });
                 if (response['status'] === 200) {
                     reload();
                     Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function() {
@@ -481,7 +479,7 @@
                     });
                 }
                 console.log(response);
-            }catch (e) {
+            } catch (e) {
                 let error_message = JSON.parse(e.responseText);
                 Swal.fire("Error!", error_message.message, "error");
             } finally {
@@ -489,16 +487,16 @@
             }
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.js-example-basic-single').select2();
 
             table = BasicDatatableGenerator('#tb-master', path, [{
-                data: 'DT_RowIndex',
-                name: 'DT_RowIndex',
-                searchable: false,
-                orderable: false,
-                className: 'text-center text-xs'
-            },
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    searchable: false,
+                    orderable: false,
+                    className: 'text-center text-xs'
+                },
                 {
                     data: 'medicine.name',
                     name: 'medicine.name',
@@ -550,43 +548,47 @@
 
             tbStock = $('#tb-stock').DataTable({
                 data: dataSet,
-                columnDefs: [
-                    {
-                        targets: [0, 1, 2],
-                        className: 'text-center'
-                    }
-                ],
+                columnDefs: [{
+                    targets: [0, 1, 2],
+                    className: 'text-center'
+                }],
                 ordering: false,
                 dom: 't',
                 pagination: false
             });
 
-            $('#btn-add-adjustment').on('click', function (e) {
+            $('#btn-add-adjustment').on('click', function(e) {
                 e.preventDefault();
                 let baseIndex = dataSet.length;
                 let tmpData = [];
-                tbStock.rows().every(function () {
+                tbStock.rows().every(function() {
                     let e = tbStock.cell(this.index(), 0).nodes().to$().find('input').val();
                     let c = tbStock.cell(this.index(), 1).data();
                     let r = tbStock.cell(this.index(), 2).nodes().to$().find('input').val();
                     let d = tbStock.cell(this.index(), 3).nodes().to$().find('input').val();
                     let elDate = '<div class="relative mx-auto inline-block">\n' +
-                        '  <input type="date" value="' + e + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                        '  <input type="date" value="' + e +
+                        '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
                         '</div>';
-                    if (this.index() <= (baseIndex -1)) {
+                    if (this.index() <= (baseIndex - 1)) {
                         elDate = '<div class="relative mx-auto inline-block">\n' +
-                            '  <input readonly type="date" value="' + e + '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
+                            '  <input readonly type="date" value="' + e +
+                            '" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
                             '</div>';
                     }
-                    let elStock = '<input type="text" type="number" value="' + r + '" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
-                    let elDescription = '<input type="text" type="text" value="' + d + '" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    let elStock = '<input type="text" type="number" value="' + r +
+                        '" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                    let elDescription = '<input type="text" type="text" value="' + d +
+                        '" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
                     tmpData.push([elDate, c, elStock, elDescription]);
                 });
                 let elTmpDate = '<div class="relative mx-auto inline-block">\n' +
                     '  <input type="date" value="" class="date-expired bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">\n' +
                     '</div>';
-                let elTmpStock = '<input type="text" type="number" value="0" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
-                let elTmpDescription = '<input type="text" type="text" value="" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                let elTmpStock =
+                    '<input type="text" type="number" value="0" class="bg-gray-50 border w-32 border-gray-300 text-gray-900 text-sm rounded-lg ">';
+                let elTmpDescription =
+                    '<input type="text" type="text" value="" class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg ">';
                 tmpData.push([
                     elTmpDate,
                     0,
@@ -597,12 +599,12 @@
                 tbStock.rows.add(tmpData).draw();
             });
 
-            $('#medicine').on('change', function () {
+            $('#medicine').on('change', function() {
                 let val = this.value;
                 getDataStockByMedicine(val);
             });
 
-            $('#btn-add-adjustment-detail').on('click', function (e) {
+            $('#btn-add-adjustment-detail').on('click', function(e) {
                 e.preventDefault();
                 Swal.fire({
                     title: "Konfirmasi!",
@@ -620,7 +622,7 @@
                 });
             });
 
-            $('#btn-save').on('click', function (e) {
+            $('#btn-save').on('click', function(e) {
                 e.preventDefault();
                 Swal.fire({
                     title: "Konfirmasi!",
