@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Exports\StockAdjustmentExport;
 use App\Exports\StockAdjustmentMainExport;
 use App\Helper\CustomController;
+use App\Models\StockAdjustment;
 use App\Repository\StockAdjustmentRepository;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -28,6 +29,12 @@ class ReportAdjustmentController extends CustomController
             return $this->basicDataTables($data);
         }
         return view('admin.laporan.adjustment');
+    }
+
+    public function detail($id)
+    {
+        $data = StockAdjustment::with(['details.medicine.unit'])->findOrFail($id);
+        return view('admin.laporan.adjustment-detail')->with(['data' => $data]);
     }
 
     public function excel()

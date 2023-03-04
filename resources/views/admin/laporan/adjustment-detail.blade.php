@@ -36,8 +36,8 @@
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"></path>
                         </svg>
-                        <a href="{{ route('penyesuaian') }}"
-                           class="ml-1 text-sm font-medium text-gray-700  md:ml-2  hover:text-secondary">Penyesuaian</a>
+                        <a href="{{ route('adjustment') }}"
+                           class="ml-1 text-sm font-medium text-gray-700  md:ml-2  hover:text-secondary">Laporan Penyesuaian</a>
                     </div>
                 </li>
                 <li>
@@ -48,7 +48,7 @@
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                   clip-rule="evenodd"></path>
                         </svg>
-                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Detail Penyesuaian
+                        <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Detail Laporan Penyesuaian
                             Obat</a>
                     </div>
                 </li>

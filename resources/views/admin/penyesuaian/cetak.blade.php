@@ -186,6 +186,7 @@
             <th class="text-center text-ontable " style="width: 200px">Kadaluarsa</th>
             <th class="text-center text-ontable" style="width: 20px">Jumlah Sistem</th>
             <th class="text-center text-ontable" style="width: 20px">Jumlah Sebenarnya</th>
+            <th class="text-center text-ontable" style="width: 20px">Selisih</th>
         </tr>
 
         </thead>
@@ -209,6 +210,9 @@
                 </td>
                 <td class="text-center text-ontable" style="width: 20px">
                     {{ $detail->real_qty }}
+                </td>
+                <td class="text-center text-ontable" style="width: 20px">
+                    {{ ($detail->real_qty - $detail->current_qty) }}
                 </td>
             </tr>
         @endforeach

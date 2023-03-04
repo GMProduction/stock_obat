@@ -266,7 +266,7 @@
                     orderable: false,
                     data: null,
                     render: function (data) {
-                        let url = '/penyesuaian/' + data['id'] + '/detail';
+                        let url = '/laporan/penyesuaian/' + data['id'] + '/detail';
                         return '<a href="' + url + '" data-id="' + data['id'] +
                             '" class="bg-blue-500 hover:bg-blue-300 transition-all duration-300 rounded-md   text-white px-3 py-2 text-sm">Detail</a>';
                     }

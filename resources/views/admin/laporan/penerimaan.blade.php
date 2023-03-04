@@ -196,7 +196,7 @@
                 <!-- Modal header -->
                 <div class="flex justify-between items-start p-4 rounded-t border-b ">
                     <h3 class="text-xl font-semibold text-gray-900 ">
-                        "NAMA BARANG"
+                        Laporan Detail Penerimaan Obat
                     </h3>
                     <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
@@ -215,60 +215,61 @@
                 <div class="section col-span-3 relative">
 
                     <div class="border rounded-md p-3">
-                        <button
-                            class="bg-orange-500 hover:bg-orange-300 ml-auto transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
+                        <button id="btn-detail-print"
+                                class="bg-orange-500 hover:bg-orange-300 ml-auto transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                 class="material-symbols-outlined mr-2 menu-icon text-sm">
                                 print
                             </span>Cetak Penerimaan
                         </button>
-
+                        <input type="hidden" id="detail-id" value="">
                         <div class="grid grid-cols-4 gap-2">
                             <div class="mb-3 ">
-                                <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor
+                                <label for="detail-batch-id" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor
                                     Batch
                                 </label>
-                                <input type="text" id="total"
+                                <input type="text" id="detail-batch-id"
                                        class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block "
-                                       readonly name="total" value="Test"/>
+                                       readonly name="detail-batch-id" value=""/>
                             </div>
 
                             <div class="mb-3 ">
-                                <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
+                                <label for="detail-date" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
                                     Datang
                                 </label>
-                                <input type="text" id="total"
+                                <input type="text" id="detail-date"
                                        class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block"
-                                       readonly name="total"/>
+                                       readonly name="detail-date"/>
                             </div>
 
                             <div class="mb-3 ">
-                                <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Sumber
+                                <label for="detail-budget-source"
+                                       class="block mb-2 text-sm font-medium text-gray-700 mt-3">Sumber
                                     Anggaran
                                 </label>
-                                <input type="text" id="total"
+                                <input type="text" id="detail-budget-source"
                                        class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block "
-                                       readonly name="total"/>
+                                       readonly name="detail-budget-source"/>
                             </div>
 
                             <div class="mb-3 ">
-                                <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total
+                                <label for="detail-total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total
                                     Biaya
                                 </label>
-                                <input type="text" id="total"
-                                       class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block "
-                                       readonly name="total"/>
+                                <input type="text" id="detail-total"
+                                       class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block text-right"
+                                       readonly name="detail-total"/>
                             </div>
                         </div>
 
 
                         <div class="mb-3 ">
-                            <label for="description" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
+                            <label for="detail-description" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
                                 Penerimaan
                             </label>
-                            <textarea type="text" id="description"
+                            <textarea type="text" id="detail-description"
                                       class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
                                       rows="4"
-                                      placeholder="Catatan Penerimaan" name="description"></textarea>
+                                      placeholder="Catatan Penerimaan" name="detail-description" readonly></textarea>
                         </div>
 
                     </div>
@@ -428,6 +429,15 @@
             modalDetail.hide();
         }
 
+        function clearDetail() {
+            $('#detail-id').val('');
+            $('#detail-batch-id').val('');
+            $('#detail-date').val('');
+            $('#detail-budget-source').val('');
+            $('#detail-total').val('');
+            $('#detail-description').val('');
+        }
+
         $('.btn-detail').on('click', function (e) {
             e.preventDefault();
             let id = this.dataset.id;
@@ -441,9 +451,27 @@
                 let response = await $.get(url);
                 let payload = response['payload'];
                 dataSetDetail = payload['medicine_ins'];
+                let batch_id = payload['batch_id'];
+                let date = payload['date'];
+                let budget_source = payload['budget_source']['name'];
+                let total = payload['total'];
+                let description = payload['description'];
+
+                let vDate = new Date(date);
+                $('#detail-id').val(id);
+                $('#detail-batch-id').val(batch_id);
+                $('#detail-date').val(vDate.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }));
+                $('#detail-budget-source').val(budget_source);
+                $('#detail-total').val('Rp. ' + total.toLocaleString('id-ID'));
+                $('#detail-description').val(description);
                 reloadTableDetail();
                 console.log(response);
             } catch (e) {
+                console.log(e)
                 alert('terjadi kesalahan server...');
             }
         }
@@ -537,6 +565,7 @@
                 columns: [
                     {
                         data: null,
+                        className: 'text-center text-xs',
                         render: function (data, type, full, meta) {
                             return meta.row + 1;
                         }
@@ -549,27 +578,41 @@
                     {
                         data: 'unit.name',
                         name: 'unit.name',
-                        className: 'text-left text-xs'
+                        className: 'text-center text-xs'
                     },
                     {
                         data: 'expired_date',
                         name: 'expired_date',
-                        className: 'text-left text-xs'
+                        className: 'text-center text-xs',
+                        render: function (data) {
+                            let date = new Date(data);
+                            return date.toLocaleString('id-ID', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                            });
+                        }
                     },
                     {
                         data: 'qty',
                         name: 'qty',
-                        className: 'text-left text-xs'
+                        className: 'text-center text-xs'
                     },
                     {
                         data: 'price',
                         name: 'price',
-                        className: 'text-left text-xs'
+                        className: 'text-right text-xs',
+                        render: function (data) {
+                            return 'Rp. ' + data.toLocaleString('id-ID');
+                        }
                     },
                     {
                         data: 'total',
                         name: 'total',
-                        className: 'text-left text-xs'
+                        className: 'text-right text-xs',
+                        render: function (data) {
+                            return 'Rp. ' + data.toLocaleString('id-ID');
+                        }
                     },
                 ],
                 columnDefs: [
@@ -625,6 +668,13 @@
                     date_start + '&date_end=' + date_end;
                 window.open(url, '_blank');
             });
+
+            $('#btn-detail-print').on('click', function (e) {
+                e.preventDefault();
+                let id = $('#detail-id').val();
+                let url = '/penerimaan/' + id + '/cetak';
+                window.open(url, '_blank');
+            })
         });
     </script>
 @endsection
