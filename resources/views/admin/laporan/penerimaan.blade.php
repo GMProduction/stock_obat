@@ -414,6 +414,7 @@
             onHide: () => {
                 console.log('modal is hidden');
                 dataSetDetail = [];
+                clearDetail();
             },
             onShow: () => {
 

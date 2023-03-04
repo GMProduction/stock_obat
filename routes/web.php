@@ -100,6 +100,7 @@ Route::middleware('auth')->group(
                 Route::get('/penerimaan/pdf', [\App\Http\Controllers\ReportTransactionInController::class, 'printToPDF'])->name('laporanpenerimaan.pdf');
                 Route::get('/laporanpenerimaan/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanPenerimaan'])->name('cetakLaporanPenerimaan');
                 Route::get('/barangkeluar', [\App\Http\Controllers\ReportTransactionOutController::class, 'index'])->name('laporanbarangkeluar');
+                Route::get('/barangkeluar/{id}/detail', [\App\Http\Controllers\ReportTransactionOutController::class, 'detail'])->name('laporanbarangkeluar.detail');
                 Route::get('/barangkeluar/excel', [\App\Http\Controllers\ReportTransactionOutController::class, 'exportToExcel'])->name('laporanbarangkeluar.excel');
                 Route::get('/barangkeluar/pdf', [\App\Http\Controllers\ReportTransactionOutController::class, 'printToPDF'])->name('laporanbarangkeluar.pdf');
                 Route::get('/laporanbarangkeluar/{id}', [\App\Http\Controllers\LaporanController::class, 'cetakLaporanBarangKeluar'])->name('cetakLaporanBarangKeluar');

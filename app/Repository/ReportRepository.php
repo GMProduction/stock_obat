@@ -57,4 +57,11 @@ class ReportRepository
         }
         return $query->get();
     }
+
+    public function getTransactionOutsDataByID($transactionOutID, $preload = [])
+    {
+        return TransactionOut::with($preload)
+            ->where('id', '=', $transactionOutID)
+            ->first();
+    }
 }

@@ -122,9 +122,15 @@ class TransactionInController extends CustomController
 //                $this->transactionInRepository->saveToGeneralLedger($general_ledger_data);
             }
             DB::commit();
+            if ($this->request->ajax()) {
+                return $this->jsonResponse('success', 200, $transaction_in->id);
+            }
             return redirect()->route('penerimaanbarang')->with('success', 'Berhasil menambahkan data...');
         } catch (\Exception $e) {
             DB::rollBack();
+            if ($this->request->ajax()) {
+                return $this->jsonResponse('terjadi kesalahan server', 500);
+            }
             return redirect()->back()->with('failed', 'Terjadi kesalahan server...' . $e->getMessage());
         }
     }

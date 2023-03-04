@@ -37,6 +37,17 @@ class ReportTransactionOutController extends CustomController
         return view('admin.laporan.barangkeluar')->with(['locations' => $locations]);
     }
 
+    public function detail($id)
+    {
+        try {
+            $preload = ['location', 'medicine_outs.medicine', 'medicine_outs.unit'];
+            $data = $this->reportRepository->getTransactionOutsDataByID($id, $preload);
+            return $this->jsonResponse('success', 200, $data);
+        } catch (\Exception $e) {
+            return $this->jsonResponse('terjadi kesalahan server...', 500);
+        }
+    }
+
     public function exportToExcel()
     {
         $date_start = Carbon::parse($this->field('date_start'))->format('Y-m-d');

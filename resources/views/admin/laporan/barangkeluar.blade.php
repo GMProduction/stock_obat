@@ -197,7 +197,7 @@
                             <!-- Modal header -->
                             <div class="flex justify-between items-start p-4 rounded-t border-b ">
                                 <h3 class="text-xl font-semibold text-gray-900 ">
-                                    "NAMA BARANG"
+                                    Laporan Detail Pengeluaran Obat
                                 </h3>
                                 <button type="button"
                                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
@@ -216,42 +216,42 @@
                             <div class="section relative">
 
                                 <div class="border rounded-md p-3">
-                                    <button
+                                    <button id="btn-detail-print"
                                         class="bg-orange-500 hover:bg-orange-300 ml-auto transition-all duration-300 rounded-md flex items-center text-white px-3 py-2 text-sm mr-3"><span
                                             class="material-symbols-outlined mr-2 menu-icon text-sm">
                                             print
                                         </span>Cetak Penerimaan
                                     </button>
-
+                                    <input type="hidden" id="detail-id" value="">
                                     <div class="grid grid-cols-3 gap-2">
                                         <div class="mb-3 ">
-                                            <label for="total"
+                                            <label for="detail-batch-id"
                                                 class="block mb-2 text-sm font-medium text-gray-700 mt-3">Nomor
                                                 Batch
                                             </label>
-                                            <input type="text" id="total"
+                                            <input type="text" id="detail-batch-id"
                                                 class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block "
-                                                readonly name="total" value="Test" />
+                                                readonly name="detail-batch-id" value="" />
                                         </div>
 
                                         <div class="mb-3 ">
-                                            <label for="total"
+                                            <label for="detail-date"
                                                 class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal Barang
                                                 Keluar
                                             </label>
-                                            <input type="text" id="total"
+                                            <input type="text" id="detail-date"
                                                 class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block"
-                                                readonly name="total" />
+                                                readonly name="detail-date" />
                                         </div>
 
                                         <div class="mb-3 ">
-                                            <label for="total"
+                                            <label for="detail-location"
                                                 class="block mb-2 text-sm font-medium text-gray-700 mt-3">Unit
                                                 Penerima
                                             </label>
-                                            <input type="text" id="total"
+                                            <input type="text" id="detail-location"
                                                 class="bg-gray-200  border  w-full p-1 border-gray-300 text-gray-900 rounded-sm text-sm  block "
-                                                readonly name="total" />
+                                                readonly name="detail-location" />
                                         </div>
 
 
@@ -259,13 +259,13 @@
 
 
                                     <div class="mb-3 ">
-                                        <label for="description"
+                                        <label for="detail-description"
                                             class="block mb-2 text-sm font-medium text-gray-700 mt-3">Catatan
                                             Barang Keluar
                                         </label>
-                                        <textarea type="text" id="description"
+                                        <textarea type="text" id="detail-description"
                                             class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4"
-                                            placeholder="Catatan Barang Keluar" name="description"></textarea>
+                                            placeholder="Catatan Barang Keluar" name="detail-description" readonly></textarea>
                                     </div>
 
                                 </div>
@@ -277,22 +277,22 @@
                                         style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                                         <thead>
                                             <tr>
-                                                <th data-priority="1" class="text-right text-xs">No</th>
-                                                <th data-priority="2" class="text-center text-xs">Nama Barang</th>
-                                                <th data-priority="2" class="text-center text-xs">Qty</th>
+                                                <th data-priority="1" class="text-center text-xs">No</th>
+                                                <th data-priority="2" class="text-left text-xs">Nama Barang</th>
                                                 <th data-priority="3" class="text-center text-xs">Satuan</th>
                                                 <th data-priority="2" class="text-center text-xs">Tanggal Expired</th>
+                                                <th data-priority="2" class="text-center text-xs">Jumlah</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td class="text-right text-xs">1</td>
-                                                <td class="text-center text-xs">Paracetamol</td>
-                                                <td class="text-center text-xs">10</td>
-                                                <td class="text-center text-xs">Tablet</td>
-                                                <td class="text-center text-xs">20 Desember 2024</td>
-                                            </tr>
+{{--                                            <tr>--}}
+{{--                                                <td class="text-right text-xs">1</td>--}}
+{{--                                                <td class="text-center text-xs">Paracetamol</td>--}}
+{{--                                                <td class="text-center text-xs">10</td>--}}
+{{--                                                <td class="text-center text-xs">Tablet</td>--}}
+{{--                                                <td class="text-center text-xs">20 Desember 2024</td>--}}
+{{--                                            </tr>--}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -313,9 +313,10 @@
     <script src="{{ asset('js/datatable.js') }}"></script>
 
     <script>
-        var table;
+        var table, tableDetail;
         var _loc = '';
         var path = '/{{ request()->path() }}';
+        var dataSetDetail = [];
 
         // set the dropdown menu element
         const $targetEl = document.getElementById('dropdownsumberanggaran');
@@ -354,6 +355,32 @@
             dropdownsumberanggaran.toggle();
         }
 
+        // MODAL DETAIL
+        const modalDetailElement = document.getElementById('modal_detail');
+        let modalDetail = new Modal(modalDetailElement, {
+            placement: 'bottom-right',
+            backdrop: 'dynamic',
+            closable: true,
+            onHide: () => {
+                dataSetDetail = [];
+                clearDetail();
+            },
+            onShow: () => {},
+            onToggle: () => {}
+        });
+
+        function modalDetailHide() {
+            modalDetail.hide();
+        }
+
+        function clearDetail() {
+            $('#detail-id').val('');
+            $('#detail-batch-id').val('');
+            $('#detail-date').val('');
+            $('#detail-location').val('');
+            $('#detail-description').val('');
+        }
+
         function dateChangeHandler() {
             let date_start = $('#date_start').val();
             let date_end = $('#date_end').val();
@@ -366,14 +393,41 @@
             table.ajax.reload();
         }
 
-        $(document).ready(function() {
-            var daftarbarang = $('#tb-daftarbarang').DataTable({
-                    responsive: true,
-                    "lengthChange": false
-                })
-                .columns.adjust()
-                .responsive.recalc();
+        function reloadTableDetail() {
+            tableDetail.clear().draw();
+            tableDetail.rows.add(dataSetDetail).draw();
+        }
 
+        async function detailShowHandler(id) {
+            try {
+                let url = '/{{ request()->path() }}/' + id + '/detail'
+                let response = await $.get(url);
+                let payload = response['payload'];
+                dataSetDetail = payload['medicine_outs'];
+                let batch_id = payload['batch_id'];
+                let date = payload['date'];
+                let location = payload['location']['name'];
+                let description = payload['description'];
+
+                let vDate = new Date(date);
+                $('#detail-id').val(id);
+                $('#detail-batch-id').val(batch_id);
+                $('#detail-date').val(vDate.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }));
+                $('#detail-location').val(location);
+                $('#detail-description').val(description);
+                reloadTableDetail();
+                console.log(response);
+            } catch (e) {
+                console.log(e)
+                alert('terjadi kesalahan server...');
+            }
+        }
+
+        $(document).ready(function() {
             table = BasicDatatableGenerator('#tb-master', path, [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -424,11 +478,61 @@
                 "fnDrawCallback": function(settings) {
                     $('.btndetail').on('click', function(e) {
                         e.preventDefault();
+                        let id = this.dataset.id;
+                        detailShowHandler(id);
                         modalDetail.show();
                     });
                 }
             });
 
+            tableDetail = $('#tb-daftarbarang').DataTable({
+                data: dataSetDetail,
+                columns: [
+                    {
+                        data: null,
+                        className: 'text-center text-xs',
+                        render: function (data, type, full, meta) {
+                            return meta.row + 1;
+                        }
+                    },
+                    {
+                        data: 'medicine.name',
+                        name: 'medicine.name',
+                        className: 'text-left text-xs'
+                    },
+                    {
+                        data: 'unit.name',
+                        name: 'unit.name',
+                        className: 'text-center text-xs'
+                    },
+                    {
+                        data: 'expired_date',
+                        name: 'expired_date',
+                        className: 'text-center text-xs',
+                        render: function (data) {
+                            let date = new Date(data);
+                            return date.toLocaleString('id-ID', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                            });
+                        }
+                    },
+                    {
+                        data: 'qty',
+                        name: 'qty',
+                        className: 'text-center text-xs'
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0],
+                        className: 'text-center'
+                    }
+                ],
+                // ordering: false,
+                pagination: false
+            });
 
             $('.pop-location').on('click', function(e) {
                 e.preventDefault();
@@ -475,6 +579,20 @@
                     date_start + '&date_end=' + date_end;
                 window.open(url, '_blank');
             });
+
+            $('.btndetail').on('click', function(e) {
+                e.preventDefault();
+                let id = this.dataset.id;
+                detailShowHandler(id);
+                modalDetail.show();
+            });
+
+            $('#btn-detail-print').on('click', function (e) {
+                e.preventDefault();
+                let id = $('#detail-id').val();
+                let url = '/pengeluaran/' + id + '/cetak';
+                window.open(url, '_blank');
+            })
         });
     </script>
 
@@ -511,24 +629,6 @@
         });
 
 
-        // MODAL DETAIL
-        const modalDetailElement = document.getElementById('modal_detail');
-        let modalDetail = new Modal(modalDetailElement, {
-            placement: 'bottom-right',
-            backdrop: 'dynamic',
-            closable: true,
-            onHide: () => {},
-            onShow: () => {},
-            onToggle: () => {}
-        });
 
-        function modalDetailHide() {
-            modalDetail.hide();
-        }
-
-        $('.btndetail').on('click', function(e) {
-
-            modalDetail.show();
-        });
     </script>
 @endsection
