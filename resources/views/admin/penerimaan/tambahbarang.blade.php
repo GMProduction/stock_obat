@@ -51,7 +51,7 @@
         <div class="backdrop-content">
             <div class="section">
                 <div class="text-center">
-                    <img src="{{ asset('/assets/images/docor.svg') }}" height="250">
+                    <img src="{{ asset('/local/images/loading.gif') }}" height="250">
                     <p style="color: gray; font-weight: bold;">Sedang menyimpan data...</p>
                 </div>
             </div>
@@ -306,38 +306,33 @@
                                 <div class="mb-3">
                                     <label for="qty" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Qty
                                     </label>
-                                    <input type="number" id="qty" min="1"
+                                    <input type="text" id="qty" min="1"
                                         class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                        placeholder="Qty yang diterima" required name="qty" value="0">
+                                        placeholder="Qty yang diterima" required name="qty" value="0"
+                                        onkeyup="format(this)" onclick="this.select()">
                                 </div>
 
-                                <div class="mb-3 grow">
-                                    {{--                                    <label for="satuan" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Satuan --}}
-                                    {{--                                    </label> --}}
-                                    {{--                                    <input type="number" id="qty" --}}
-                                    {{--                                           class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 " --}}
-                                    {{--                                           placeholder="Satuan" readonly name="satuan"> --}}
-                                </div>
-                            </div>
 
-                            <div class="flex gap-4">
                                 <div class="mb-3">
                                     <label for="price" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Harga
                                         Satuan
                                     </label>
-                                    <input type="number" id="price" min="0"
+                                    <input type="text" id="price" min="0" onclick="this.select()"
                                         class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                        placeholder="harga Satuan" required name="price" value="0">
+                                        placeholder="harga Satuan" required name="price" value="0"
+                                        onkeyup="format(this)">
                                 </div>
 
                                 <div class="mb-3 grow">
                                     <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total
                                     </label>
-                                    <input type="number" id="total"
+                                    <input type="text" id="total"
                                         class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
                                         placeholder="price" readonly name="total" value="0">
                                 </div>
                             </div>
+
+
 
                         </div>
                         <!-- Modal footer -->
@@ -506,8 +501,8 @@
                 let url = '{{ route('tambahbarang.cart') }}';
                 let data = {
                     medicine: $('#medicine').val(),
-                    qty: $('#qty').val(),
-                    price: $('#price').val(),
+                    qty: $('#qty').val().replace(/[, ]+/g, "").trim(),
+                    price: $('#price').val().replace(/[, ]+/g, "").trim(),
                     expired_date: $('#expired_date').val(),
                 };
                 let response = await $.post(url, data);
@@ -546,10 +541,11 @@
         }
 
         function calculateTotal() {
-            let qty = isNaN(parseInt($('#qty').val())) ? 0 : parseInt($('#qty').val());
-            let price = isNaN(parseInt($('#price').val())) ? 0 : parseInt($('#price').val());
+            let qty = isNaN(parseInt($('#qty').val())) ? 0 : parseInt($('#qty').val().replace(/[, ]+/g, "").trim());
+            let price = isNaN(parseInt($('#price').val())) ? 0 : parseInt($('#price').val().replace(/[, ]+/g, "").trim());
             let total = qty * price;
-            $('#total').val(total);
+            var totals = formattotal(total);
+            $('#total').val(totals);
         }
 
         function clear() {
@@ -705,5 +701,7 @@
 
         });
     </script>
+
+
     {{-- ACTION --}}
 @endsection

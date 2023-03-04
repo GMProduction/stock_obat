@@ -9,14 +9,16 @@ class LocationRepository extends BaseRepo
     public function __construct()
     {
         $this->selectData = ['name'];
-        $this->button = ['edit', 'delete'];
+        $this->button = ['edit',];
     }
 
-    public function patchForm(){
+    public function patchForm()
+    {
         return $this->patchData(Location::class);
     }
 
-    public function showDatatable(){
+    public function showDatatable()
+    {
         return $this->datatabe(Location::query());
     }
 
