@@ -63,9 +63,9 @@
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
                     <a href="{{ route('dashboard') }}"
-                       class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-secondary ">
+                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-secondary ">
                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                             </path>
@@ -76,23 +76,23 @@
                 <li>
                     <div class="flex items-center ">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
                         </svg>
                         <a href="{{ route('penerimaanbarang') }}"
-                           class="ml-1 text-sm font-medium text-gray-700  hover:text-secondary md:ml-2  ">Penerimaan
+                            class="ml-1 text-sm font-medium text-gray-700  hover:text-secondary md:ml-2  ">Penerimaan
                             Barang</a>
                     </div>
                 </li>
                 <li>
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"></path>
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
                         </svg>
                         <a href="#" class="ml-1 text-sm font-medium text-gray-700  md:ml-2  ">Tambah Barang</a>
                     </div>
@@ -125,14 +125,14 @@
                         <div class="mt-5">
                             <table id="tb-master" class="table display table-auto stripe hover  " style="width:100%;">
                                 <thead class="bg-gray-50 ">
-                                <th class="text-right text-xs py-3">No</th>
-                                <th class="text-left text-xs">Nama Barang</th>
-                                <th class="text-center text-xs">Qty</th>
-                                <th class="text-center text-xs">Satuan</th>
-                                <th class="text-center text-xs">Kadaluarsa</th>
-                                <th class="text-right text-xs">Harga Satuan</th>
-                                <th class="text-right text-xs">Total Harga</th>
-                                <th class="text-center text-xs">Action</th>
+                                    <th class="text-right text-xs py-3">No</th>
+                                    <th class="text-left text-xs">Nama Barang</th>
+                                    <th class="text-center text-xs">Qty</th>
+                                    <th class="text-center text-xs">Satuan</th>
+                                    <th class="text-center text-xs">Kadaluarsa</th>
+                                    <th class="text-right text-xs">Harga Satuan</th>
+                                    <th class="text-right text-xs">Total Harga</th>
+                                    <th class="text-center text-xs">Action</th>
                                 </thead>
                                 <tbody>
                                 </tbody>
@@ -155,29 +155,28 @@
                                 <div class="relative">
                                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
-                                                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                  clip-rule="evenodd"></path>
+                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text"
-                                           required
-                                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
-                                           placeholder="Pilih Tanggal"
-                                           value="{{ \Carbon\Carbon::now()->format('d F Y') }}"
-                                           id="date" name="date">
+                                        required
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
+                                        placeholder="Pilih Tanggal" value="{{ \Carbon\Carbon::now()->format('d F Y') }}"
+                                        id="date" name="date">
                                 </div>
                             </div>
 
                             <div class="mb-3 mt-5">
                                 <label for="budget_source"
-                                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Sumber
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Sumber
                                     Anggaran</label>
 
                                 <div class="flex">
                                     <select id="budget_source" name="budget_source"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected>Pilih Sumber Anggaran</option>
                                         @foreach ($budget_sources as $budget_source)
                                             <option value="{{ $budget_source->id }}">{{ $budget_source->name }}</option>
@@ -185,13 +184,13 @@
                                     </select>
 
                                     <button data-tooltip-target="tooltip-tambahsumber" type="button"
-                                            class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsumber"><span
+                                        class="bg-blue-500 ml-3 rounded-md flex items-center justify-center text-white px-3 py-2 text-sm btn-tambahsumber"><span
                                             class="material-symbols-outlined menu-ico text-sm">
                                             add
                                         </span></button>
 
                                     <div id="tooltip-tambahsumber" role="tooltip"
-                                         class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                         Tambah sumber anggaran "jika belum ada di dalam menu"
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
@@ -203,10 +202,10 @@
                                     Total Keseluruhan
                                 </label>
                                 <input type="text" id="summary"
-                                       class="bg-gray-200 border text-right w-full border-gray-300 text-gray-900 text-sm block
+                                    class="bg-gray-200 border text-right w-full border-gray-300 text-gray-900 text-sm block
                                 p-2.5 rounded-md"
-                                       placeholder="Total Keseluruhan" readonly name="total-keseluruhan"
-                                       value="Rp. {{ number_format($total, 0, ',', '.') }}">
+                                    placeholder="Total Keseluruhan" readonly name="total-keseluruhan"
+                                    value="Rp. {{ number_format($total, 0, ',', '.') }}">
                             </div>
 
                             <div class="mb-3 mt-5">
@@ -214,9 +213,8 @@
                                     Penerimaan
                                 </label>
                                 <textarea type="text" id="description"
-                                          class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 "
-                                          rows="4"
-                                          placeholder="Catatan Penerimaan" name="description"></textarea>
+                                    class="bg-gray-50 border rounded-md w-full border-gray-300 text-gray-900 text-sm  block  p-2.5 " rows="4"
+                                    placeholder="Catatan Penerimaan" name="description"></textarea>
                             </div>
                         </form>
                     </div>
@@ -224,16 +222,15 @@
 
                 <div class="flex items-center justify-end pt-6 rounded-b border-t border-gray-200 ">
                     <button type="submit" id="btn-save" form="form-save"
-                            class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
+                        class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             save
                         </span>Simpan
                     </button>
 
 
-                    <button type="button" id="btn-save-print"
-                            {{-- onclick="location.href={{ route('penerimaanbarang.cetak', ['id' => $data->id]) }}" --}}
-                            class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
+                    <button type="button" id="btn-save-print" {{-- onclick="location.href={{ route('penerimaanbarang.cetak', ['id' => $data->id]) }}" --}}
+                        class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
                             print
                         </span>Simpan & Cetak
@@ -247,7 +244,7 @@
 
         <!-- Modal Tambah Master -->
         <div id="modal_tambahBarang" tabindex="-1" aria-hidden="true"
-             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
             <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow ">
@@ -257,13 +254,13 @@
                             Tambah Barang
                         </h3>
                         <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                                onclick="modaltambahmHide()">
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+                            onclick="modaltambahmHide()">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
-                                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                      clip-rule="evenodd"></path>
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
@@ -286,23 +283,23 @@
 
                             <div class="mb-3 mt-5">
                                 <label for="expired_date"
-                                       class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
+                                    class="block mb-2 text-sm font-medium text-gray-700 mt-3">Tanggal
                                     Kadaluarsa
                                 </label>
                                 <div class="relative">
                                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
-                                                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                  clip-rule="evenodd"></path>
+                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-autohide datepicker-format="dd MM yyyy" type="text"
-                                           name="expired_date" required
-                                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
-                                           placeholder="Pilih Tanggal" id="expired_date"
-                                           value="{{ \Carbon\Carbon::now()->format('d F Y') }}">
+                                        name="expired_date" required
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
+                                        placeholder="Pilih Tanggal" id="expired_date"
+                                        value="{{ \Carbon\Carbon::now()->format('d F Y') }}">
                                 </div>
                             </div>
 
@@ -311,9 +308,9 @@
                                     <label for="qty" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Qty
                                     </label>
                                     <input type="text" id="qty" min="1"
-                                           class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                           placeholder="Qty yang diterima" required name="qty" value="0"
-                                           onkeyup="format(this)" onclick="this.select()">
+                                        class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
+                                        placeholder="Qty yang diterima" required name="qty" value="0"
+                                        onkeyup="format(this)" onclick="this.select()">
                                 </div>
 
 
@@ -322,17 +319,17 @@
                                         Satuan
                                     </label>
                                     <input type="text" id="price" min="0" onclick="this.select()"
-                                           class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                           placeholder="harga Satuan" required name="price" value="0"
-                                           onkeyup="format(this)">
+                                        onkeyup="format(this)"
+                                        class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
+                                        placeholder="harga Satuan" required name="price" value="0">
                                 </div>
 
                                 <div class="mb-3 grow">
                                     <label for="total" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Total
                                     </label>
                                     <input type="text" id="total"
-                                           class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                           placeholder="price" readonly name="total" value="0">
+                                        class="bg-gray-200  border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
+                                        placeholder="price" readonly name="total" value="0">
                                 </div>
                             </div>
 
@@ -341,7 +338,7 @@
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end p-6 space-x-2 rounded-b border-t border-gray-200 ">
                             <button type="button" id="btn-add-cart"
-                                    class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
+                                class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                 <span class="material-symbols-outlined text-white mr-3">
                                     save
                                 </span>Simpan Data
@@ -355,7 +352,7 @@
 
         <!-- Modal Tambah Sumber -->
         <div id="modal_tambahSumber" tabindex="-1" aria-hidden="true"
-             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
             <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow ">
@@ -365,13 +362,13 @@
                             Tambah Sumber Anggaran
                         </h3>
                         <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                                onclick="modaltambahsmHide()">
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+                            onclick="modaltambahsmHide()">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
-                                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                      clip-rule="evenodd"></path>
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
@@ -385,8 +382,8 @@
                                 <label for="e-nama-info" class="block mb-2 text-sm font-medium text-gray-700 ">Nama
                                     Sumber Anggaran</label>
                                 <input type="text" id="e-nama-info"
-                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                       placeholder="Masukan Nama Sumber Anggaran" required name="information-edit">
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
+                                    placeholder="Masukan Nama Sumber Anggaran" required name="information-edit">
                             </div>
 
 
@@ -394,7 +391,7 @@
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end p-6 space-x-2 rounded-b border-t border-gray-200 ">
                             <button type="submit" id="btn-patch"
-                                    class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
+                                class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                 <span class="material-symbols-outlined text-white mr-3">
                                     save
                                 </span>Simpan Data
@@ -441,7 +438,7 @@
             modal_tambahb.hide();
         }
 
-        $('.btn-tambahBarang').on('click', function (e) {
+        $('.btn-tambahBarang').on('click', function(e) {
 
             modal_tambahb.show();
         });
@@ -463,7 +460,7 @@
             }
         });
 
-        $('.btn-tambahsumber').on('click', function (e) {
+        $('.btn-tambahsumber').on('click', function(e) {
 
             modal_tambahsm.show();
         });
@@ -478,7 +475,7 @@
         var table;
         var path = '/{{ request()->path() }}';
 
-        $(function () {
+        $(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -511,7 +508,7 @@
                 let response = await $.post(url, data);
                 if (response['status'] === 200) {
                     reload();
-                    Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function () {
+                    Swal.fire("Berhasil!", "Berhasil menambah data..", "success").then(function() {
                         modaltambahmHide();
                         clear();
                     });
@@ -559,7 +556,7 @@
         }
 
         function storeCartHandler() {
-            $('#btn-add-cart').on('click', function (e) {
+            $('#btn-add-cart').on('click', function(e) {
                 e.preventDefault();
                 Swal.fire({
                     title: "Konfirmasi!",
@@ -579,7 +576,7 @@
         }
 
         function destroyHandler() {
-            $('.btn-delete').on('click', function (e) {
+            $('.btn-delete').on('click', function(e) {
                 e.preventDefault();
                 let id = this.dataset.id;
                 Swal.fire({
@@ -599,15 +596,15 @@
             });
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.js-example-basic-single').select2();
             table = BasicDatatableGenerator('#tb-master', path, [{
-                data: 'DT_RowIndex',
-                name: 'DT_RowIndex',
-                searchable: false,
-                orderable: false,
-                className: 'text-center text-xs'
-            },
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    searchable: false,
+                    orderable: false,
+                    className: 'text-center text-xs'
+                },
                 {
                     data: 'medicine.name',
                     name: 'medicine.name',
@@ -627,7 +624,7 @@
                     data: 'expired_date',
                     name: 'expired_date',
                     className: 'text-center text-xs',
-                    render: function (data) {
+                    render: function(data) {
                         let date = new Date(data);
                         return date.toLocaleString('id-ID', {
                             day: 'numeric',
@@ -641,7 +638,7 @@
                     data: 'price',
                     name: 'price',
                     className: 'text-right text-xs',
-                    render: function (data) {
+                    render: function(data) {
                         return 'Rp. ' + data.toLocaleString('id-ID');
                     }
                 },
@@ -649,7 +646,7 @@
                     data: 'total',
                     name: 'total',
                     className: 'text-right text-xs',
-                    render: function (data) {
+                    render: function(data) {
                         return 'Rp. ' + data.toLocaleString('id-ID');
                     }
                 },
@@ -658,15 +655,15 @@
                     searchable: false,
                     orderable: false,
                     data: null,
-                    render: function (data) {
+                    render: function(data) {
                         return '<button data-id="' + data['id'] +
                             '" class="btn-delete bg-secondary rounded-full text-white px-3 py-2 btn-detail text-xs my-1">Hapus</button>';
                     }
                 },
-            ], [], function (d) {
+            ], [], function(d) {
 
             }, {
-                "fnDrawCallback": function (setting) {
+                "fnDrawCallback": function(setting) {
                     let data = this.fnGetData();
                     let total = data.map(item => item['total']).reduce((prev, next) => prev + next, 0);
                     $('#summary').val('Rp. ' + total.toLocaleString('id-ID'));
@@ -675,16 +672,16 @@
                 dom: 't'
             });
 
-            $('#qty').on('input', function () {
+            $('#qty').on('input', function() {
                 calculateTotal();
             });
 
-            $('#price').on('input', function () {
+            $('#price').on('input', function() {
                 calculateTotal();
             });
             storeCartHandler();
             destroyHandler();
-            $('#btn-save').on('click', function (e) {
+            $('#btn-save').on('click', function(e) {
                 e.preventDefault();
                 Swal.fire({
                     title: "Konfirmasi!",

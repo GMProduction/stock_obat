@@ -213,7 +213,7 @@
                             </div>
 
                             {{-- MODAL ISI --}}
-                            <div class="section relative">
+                            <div class="section relative" style="overflow-y: scroll; max-height: 70vh">
 
                                 <div class="border rounded-md p-3">
                                     <button id="btn-detail-print"
@@ -286,13 +286,13 @@
                                         </thead>
 
                                         <tbody>
-{{--                                            <tr>--}}
-{{--                                                <td class="text-right text-xs">1</td>--}}
-{{--                                                <td class="text-center text-xs">Paracetamol</td>--}}
-{{--                                                <td class="text-center text-xs">10</td>--}}
-{{--                                                <td class="text-center text-xs">Tablet</td>--}}
-{{--                                                <td class="text-center text-xs">20 Desember 2024</td>--}}
-{{--                                            </tr>--}}
+                                            {{--                                            <tr> --}}
+                                            {{--                                                <td class="text-right text-xs">1</td> --}}
+                                            {{--                                                <td class="text-center text-xs">Paracetamol</td> --}}
+                                            {{--                                                <td class="text-center text-xs">10</td> --}}
+                                            {{--                                                <td class="text-center text-xs">Tablet</td> --}}
+                                            {{--                                                <td class="text-center text-xs">20 Desember 2024</td> --}}
+                                            {{--                                            </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -487,11 +487,10 @@
 
             tableDetail = $('#tb-daftarbarang').DataTable({
                 data: dataSetDetail,
-                columns: [
-                    {
+                columns: [{
                         data: null,
                         className: 'text-center text-xs',
-                        render: function (data, type, full, meta) {
+                        render: function(data, type, full, meta) {
                             return meta.row + 1;
                         }
                     },
@@ -509,7 +508,7 @@
                         data: 'expired_date',
                         name: 'expired_date',
                         className: 'text-center text-xs',
-                        render: function (data) {
+                        render: function(data) {
                             let date = new Date(data);
                             return date.toLocaleString('id-ID', {
                                 day: 'numeric',
@@ -524,12 +523,10 @@
                         className: 'text-center text-xs'
                     },
                 ],
-                columnDefs: [
-                    {
-                        targets: [0],
-                        className: 'text-center'
-                    }
-                ],
+                columnDefs: [{
+                    targets: [0],
+                    className: 'text-center'
+                }],
                 // ordering: false,
                 pagination: false
             });
@@ -587,7 +584,7 @@
                 modalDetail.show();
             });
 
-            $('#btn-detail-print').on('click', function (e) {
+            $('#btn-detail-print').on('click', function(e) {
                 e.preventDefault();
                 let id = $('#detail-id').val();
                 let url = '/pengeluaran/' + id + '/cetak';
@@ -627,8 +624,5 @@
 
             modal_tambahb.show();
         });
-
-
-
     </script>
 @endsection

@@ -263,9 +263,10 @@
                                 <div class="mb-3">
                                     <label for="qty" class="block mb-2 text-sm font-medium text-gray-700 mt-3">Qty
                                     </label>
-                                    <input type="number" id="qty" min="1"
+                                    <input type="text" id="qty" min="1"
                                         class="bg-gray-50 border min-w-[100px] border-gray-300 text-gray-900 text-sm  block w-full p-2.5 "
-                                        placeholder="Qty yang dikeluarkan" required name="qty" value="0">
+                                        placeholder="Qty yang dikeluarkan" required name="qty" value="0"
+                                        onclick="this.select()" onkeyup="format(this)">
                                 </div>
 
                             </div>
@@ -448,7 +449,7 @@
                 let url = '{{ route('pengeluaranbarang.cart') }}';
                 let data = {
                     medicine: $('#medicine').val(),
-                    qty: $('#qty').val()
+                    qty: $('#qty').val().replace(/[, ]+/g, "").trim()
                 };
                 let response = await $.post(url, data);
                 if (response['status'] === 200) {

@@ -191,7 +191,7 @@
 
         <!-- Modal Tambah Master -->
         <div id="modal_tambahBarang" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0  left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
             <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow ">
@@ -212,9 +212,11 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
+
+                    {{-- MODAL ISI --}}
                     <form method="post">
-                        <div class="p-6 ">
-                            <label for="medicine" class="block mb-2 text-sm font-medium text-gray-900 ">Pilih
+                        <div class="p-6 " style="overflow-y: scroll; max-height: 600px">
+                            <label for="medicine" class="block mb-2 text-sm font-medium text-gray-900">Pilih
                                 Obat</label>
                             <select
                                 class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -227,14 +229,7 @@
                                 @endforeach
                             </select>
                             <div class="mt-3 mr-3" style="margin-bottom: 10px;">
-                                <div class="flex items-center justify-end">
-                                    <a href="#" id="btn-add-adjustment"
-                                        class="bg-blue-500 rounded-md flex items-center text-white px-3 py-2 text-sm">
-                                        <span class="material-symbols-outlined mr-2 menu-ico text-sm">
-                                            add
-                                        </span>Tambah
-                                    </a>
-                                </div>
+
                             </div>
                             <div class="mt-3">
                                 <table id="tb-stock" class="table display table-auto stripe hover  "
@@ -252,6 +247,13 @@
                         </div>
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end p-6 space-x-2 rounded-b border-t border-gray-200 ">
+                            <a href="#" id="btn-add-adjustment"
+                                class="flex items-center text-white bg-blue-500 hover:bg-blue-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
+                                <span class="material-symbols-outlined text-white mr-3">
+                                    add
+                                </span>Tambah Obat Lain
+                            </a>
+
                             <button type="button" id="btn-add-adjustment-detail"
                                 class="ml-auto flex items-center text-white bg-primary hover:bg-primarylight focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 transition duration-300  focus:outline-none ">
                                 <span class="material-symbols-outlined text-white mr-3">
