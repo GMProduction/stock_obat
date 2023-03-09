@@ -1,4 +1,9 @@
 function datatable(tb, url, columns, createdRow = null, order = []) {
+    let columnDefs = [];
+    $.each(columns, function (k, v) {
+        columnDefs[k] = v;
+        columnDefs[k]['targets'] = k;
+    })
     $('#' + tb).DataTable({
         processing: true,
         serverSide: true,
@@ -22,6 +27,7 @@ function datatable(tb, url, columns, createdRow = null, order = []) {
         },
         order: order,
         createdRow: createdRow,
+        columnDefs: columnDefs,
         columns: columns
     }).columns.adjust()
         .responsive.recalc();

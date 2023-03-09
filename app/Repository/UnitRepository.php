@@ -11,7 +11,7 @@ class UnitRepository extends BaseRepo
     {
         $this->class = 'Unit';
         $this->selectData = ['name'];
-        $this->button = ['edit',];
+        $this->button = ['edit'];
     }
 
     public function patchForm()
@@ -28,4 +28,5 @@ class UnitRepository extends BaseRepo
     {
         return Unit::all();
     }
+
 }

@@ -9,7 +9,7 @@ class LocationRepository extends BaseRepo
     public function __construct()
     {
         $this->selectData = ['name'];
-        $this->button = ['edit',];
+        $this->button = ['edit'];
     }
 
     public function patchForm()

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Category;
 use App\Models\Medicine;
 use App\Models\MedicineIn;
+use App\Models\MedicineStock;
 use App\Models\Unit;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
@@ -76,9 +77,10 @@ class MedicineRepository extends BaseRepo
     public function showDatatableStock()
     {
 
-        $this->button = ['tambahStok'];
+        $this->button = ['detail'];
 
-        return $this->datatabe(Medicine::query());
+        $data = Medicine::get()->append(['stock']);
+        return $this->datatabe($data);
     }
 
     public function showDatatableStockDetail()

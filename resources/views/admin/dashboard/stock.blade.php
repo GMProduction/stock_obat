@@ -53,7 +53,7 @@
                             href="{{ route('penerimaanbarang') }}"><span
                                 class="material-symbols-outlined mr-2 menu-ico text-sm">
                                 add
-                            </span>Tambah
+                            </span>Penerimaan Barang
                         </a>
                     </div>
                 </div>

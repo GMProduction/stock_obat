@@ -54,4 +54,20 @@ class MasterOtherController extends Controller
         return $this->repoBudget->getAll();
     }
 
+    public function deleteData(){
+        if (request('type') == 'Unit'){
+            $cls = Unit::class;
+        }elseif (request('type') == 'Budget'){
+            $cls = BudgetSource::class;
+        }else{
+            return response()->json('Data not found',400);
+        }
+        $this->repo->destroy($cls, request('id'));
+
+        return response()->json([
+            'msg' => 'success',
+            'type'=> request('type')
+        ]);
+    }
+
 }

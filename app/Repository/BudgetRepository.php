@@ -9,8 +9,9 @@ class BudgetRepository extends BaseRepo
 {
     public function __construct()
     {
+        $this->class = 'Budget';
         $this->selectData = ['name'];
-        $this->button = ['edit',];
+        $this->button = ['edit'];
     }
 
     public function patchForm()

@@ -123,7 +123,7 @@
                 },
                 {data: 'name', name: 'name'},
                 {
-                    data: 'qty', name: 'qty', className: 'text-center'
+                    data: 'stock', name: 'stock', className: 'text-center'
                 },
                 {
                     className: "text-center",

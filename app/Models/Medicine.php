@@ -136,4 +136,11 @@ class Medicine extends Model
         }
         return 0;
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function medicine_stock(){
+        return $this->hasMany(MedicineStock::class,'medicine_id');
+    }
 }

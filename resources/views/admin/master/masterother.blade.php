@@ -386,9 +386,33 @@
             return false;
         }
 
+        $(document).on('click','#deleteData',function () {
+            let id = $(this).data('id');
+            let name = $(this).data('name');
+            let type = $(this).data('class');
+
+            let form_data = {
+                '_token' : '{{csrf_token()}}',
+                id,
+                type
+            }
+            console.log(form_data)
+            confirmDeleteAjax(type+' '+name, form_data, '{{route('deleteOther')}}',responseDeleteBudget);
+            return false;
+        })
+
         function responseSaveBudget() {
             modaltambahsmHide();
             $("#tb-asalobat").DataTable().ajax.reload();
+        }
+
+        function responseDeleteBudget(res) {
+            console.log('asda',res.type)
+            if (res?.type == 'Unit'){
+                $("#tb-satuan").DataTable().ajax.reload();
+            }else if(res?.type == 'Budget'){
+                $("#tb-asalobat").DataTable().ajax.reload();
+            }
         }
     </script>
 @endsection

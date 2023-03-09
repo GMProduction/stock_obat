@@ -47,6 +47,7 @@ Route::middleware('auth')->group(
                         Route::get('datatable-budget', [\App\Http\Controllers\MasterOtherController::class, 'datatableBudget'])->name('datatableBudget');
                         Route::get('unit-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllUnit'])->name('unitjson');
                         Route::get('budget-json', [\App\Http\Controllers\MasterOtherController::class, 'getAllBudget'])->name('budgetjson');
+                        Route::post('destroy', [\App\Http\Controllers\MasterOtherController::class, 'deleteData'])->name('deleteOther');
                     }
                 );
                 Route::prefix('category')->group(

@@ -95,8 +95,15 @@ abstract class BaseRepo
         $clas = $this->class;
 
         $id = $this->data->id;
+        $dataAttr = '';
+        foreach ($this->selectData as $key => $d) {
+            $dataAttr .= ' data-'.$d.'="'.$this->data[$d].'"';
+        }
+        if ($clas){
+            $dataAttr .= ' data-class='.$clas;
+        }
 
-        return '<a role="button" class="text-xs font-bold bg-red-500 rounded-full text-white px-3 py-2 btn-editsatuan"  id="deleteData" data-id="'.$id.'">Hapus</a>';
+        return '<a role="button" class="text-xs font-bold bg-red-500 rounded-full text-white px-3 py-2 btn-editsatuan"  id="deleteData" data-id="'.$id.'"  '.$dataAttr.'>Hapus</a>';
     }
 
     public function detail()
@@ -144,4 +151,11 @@ abstract class BaseRepo
         return response()->json('success');
     }
 
+    public function destroy($class, $id)
+    {
+        $data = $class::find($id);
+        $data->delete();
+
+        return 'success';
+    }
 }
