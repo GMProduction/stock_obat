@@ -166,23 +166,23 @@
 
                 </div>
 
-                <div class="flex items-center justify-between pt-6 rounded-b border-t border-gray-200 ">
-                    <div class="flex">
-                        <button type="submit" id="btn-save" form="form-save"
-                            class=" flex items-center text-white bg-blue-500 hover:bg-blue-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
-                            <span class="material-symbols-outlined text-white mr-3">
-                                edit
-                            </span> Ubah
-                        </button>
+                <div class="flex items-center justify-end pt-6 rounded-b border-t border-gray-200 ">
+{{--                    <div class="flex">--}}
+{{--                        <button type="submit" id="btn-save" form="form-save"--}}
+{{--                            class=" flex items-center text-white bg-blue-500 hover:bg-blue-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">--}}
+{{--                            <span class="material-symbols-outlined text-white mr-3">--}}
+{{--                                edit--}}
+{{--                            </span> Ubah--}}
+{{--                        </button>--}}
 
-                        <button type="submit" id="btn-save" form="form-save"
-                            onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})"
-                            class="ml-3 flex items-center text-white bg-red-500 hover:bg-red-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
-                            <span class="material-symbols-outlined text-white mr-3">
-                                delete
-                            </span> Hapus
-                        </button>
-                    </div>
+{{--                        <button type="submit" id="btn-save" form="form-save"--}}
+{{--                            onclick="confirmDelete(function(){alert('ok')}, function(){alert('cancel')})"--}}
+{{--                            class="ml-3 flex items-center text-white bg-red-500 hover:bg-red-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">--}}
+{{--                            <span class="material-symbols-outlined text-white mr-3">--}}
+{{--                                delete--}}
+{{--                            </span> Hapus--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
                     <a target="_blank" href="{{ route('penerimaanbarang.cetak', ['id' => $data->id]) }}" id="btn-print"
                         class="ml-5 flex items-center text-white bg-secondary hover:bg-secondary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-300  focus:outline-none ">
                         <span class="material-symbols-outlined text-white mr-3">
